@@ -1,7 +1,7 @@
+import Steps from 'components/howitworks/Steps';
 import Image from 'next/image'
 import HeroBackground from "public/main_cover.jpg"
 import React from 'react';
-import Steps from './steps';
 
 const HowItWorksSection = () => {
     return (
