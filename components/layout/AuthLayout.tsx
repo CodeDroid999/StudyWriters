@@ -10,10 +10,10 @@ export default function AuthLayout({
     <div className="mx-auto max-w-[1280px] px-3 sm:px-6 md:px-16">
       <header className="flex flex-row items-center justify-between  bg-white py-2 duration-300 ease-in">
         <h1 className="text-4xl font-bold md:text-5xl ">
-          <Link href="/">Airtaska</Link>
+          <Link href="/">QualityUnitedWriters</Link>
         </h1>
       </header>
-      <main className="mx-auto mt-24 w-full max-w-[400px]  md:mt-32">
+      <main className="mx-auto mt-12 w-full max-w-[400px]  md:mt-32">
         {children}
       </main>
     </div>
