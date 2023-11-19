@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';Cannot find module 'react-intersection-observer' or its corresponding type declarations.ts(2307)
+import { useInView } from 'react-intersection-observer';
 
 const StatsCounter = () => {
   const [ref, inView] = useInView({

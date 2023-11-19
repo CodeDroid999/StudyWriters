@@ -50,7 +50,6 @@ export default function Home(props: PageProps) {
       <HeroArea />
       <StatsCounter/>
       <PostYourAssignment />
-    
       <ReferFriends/>
       <HowItWorksSection />
       <Footer />
