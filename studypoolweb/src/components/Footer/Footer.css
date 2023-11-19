@@ -1,0 +1,61 @@
+.Footer{
+    background-color: #EFA593;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.Footer h1{display: flex;
+justify-content: start;
+color:#fff
+}
+.FooterDetails{
+    display: flex;
+    flex-direction: row;
+    background-color: #EFA593;
+    color:white;
+    flex-wrap: wrap;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+
+}
+
+
+.FooterSubjects{
+ margin-left: 3px;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+.FooterSubjects h3{
+    font-size: 29px;
+}
+.Pages{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+.Pages h3{
+    font-size: 29px;
+}
+.ContactUs{
+    display: flex;
+    flex-direction: column;
+    flex:2;
+   
+
+}
+.ContactUs button{
+    background-color: #fff;
+    width:20%;
+    height:130%;
+    color:#EFA593;
+    font-weight:bolder;
+    margin-top: 3px;
+}
+.ContactUs span{
+    margin-top: 6px;
+}
+.ContactUs h3{    
+    font-size: 29px;
+    margin-bottom: 6px;
+
+}

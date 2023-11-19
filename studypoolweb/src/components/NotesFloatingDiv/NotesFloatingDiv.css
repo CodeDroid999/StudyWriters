@@ -1,0 +1,51 @@
+.NotesFloatingDiv{
+width:21%;
+}
+ .NotesFloatingDiv .card{
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+     }
+.card{
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin-right: 4rem;
+
+    margin-top: 33px;
+    margin-bottom: 33px;
+    text-align:start;
+    font-family: arial;
+   
+}
+
+     .card .notesimage{
+        display: flex;
+        justify-content: center;
+     }
+     .card .notestext{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
+     .card .likes{
+        display: flex;
+        justify-content: center;
+     }
+
+    .NotesFloatingDiv .card  .notesimage img{
+    width: 100%;
+    height:60%;
+  
+}
+.NotesFloatingDiv .card  .likes img{
+    width: 42px;
+    height: 34px
+  
+}
+.numofviews{
+  font-weight: bolder;
+  position: relative;
+  top:9px;
+}

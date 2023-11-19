@@ -1,0 +1,83 @@
+.Notes{
+    margin-top: 5rem;
+margin-bottom: 6rem;
+    display: flex;
+  flex-direction: column;
+  background-color:  #EFEFEF;
+
+}
+
+
+.Notes .row1{
+    margin-left: 10%;
+margin-bottom:5% ;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+
+}
+
+.Notes .row2{
+    margin-left: 10%;
+    margin-bottom:5% ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   }
+   
+   
+.Notes .row3{
+    margin-left: 10%;
+    margin-bottom:5% ;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   }
+   
+
+   
+.myUploaddocsDetail{
+    display: flex;
+    flex-direction: row;
+margin-left: 1rem;
+margin-top: 6rem;
+}
+.myUploaddocsDetail .myUploaddocsApproved{
+margin-left: 4rem;
+margin-right: 4rem;
+}
+.myUploaddocsDetail img{
+    width:34px;
+    height:30px;
+}
+.withdrawEarningBtn button{
+    background-color: #EFA593;
+    width: 15rem;
+    height: 4.3rem;
+margin-left:45rem;
+
+}
+.withdrawEarningBtn button p{
+    color:aliceblue;
+    font-weight: bolder;
+font-size: 22px;
+
+}
+
+.numOfUploadDetails{
+font-weight: bolder;
+position: relative;
+bottom: 3px;
+left:3px;
+font-size: 2rem;
+}
+.DocsTitle{
+    font-size: 2.1rem;
+}
+
+@media  all and (max-width:1407px){
+.withdrawEarningBtn button{
+    margin-left: 3rem;;
+}
+}

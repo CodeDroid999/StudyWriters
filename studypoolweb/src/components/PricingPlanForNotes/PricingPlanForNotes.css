@@ -1,0 +1,43 @@
+
+
+.PricingPlanHeading{
+    margin-top: 3rem;
+    margin-bottom:3rem;
+font-size:4rem;
+display: flex;
+justify-content: center;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.pricingPlan{
+    display: flex;
+    flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+margin-bottom: 4rem;
+}
+
+.pricingPlan .planA{
+margin-left: 3rem;
+margin-right: 3rem;
+margin-top: 2rem;
+margin-bottom: 2rem;
+}
+
+
+.pricingPlan .planB{
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;    
+}
+    
+    
+.pricingPlan .planC{
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 2rem;
+margin-bottom: 2rem;
+}
+    

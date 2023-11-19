@@ -1,0 +1,13 @@
+mongodb+srv://Kashaf:<password>@cluster0.ltwtfvk.mongodb.net/?retryWrites=true&w=majority
+
+
+add in frontened 
+package.json after private:true
+ "proxy":"http://localhost:3030",
+
+ //CORS ERROR
+ when you work on different port and you want to send in other port so CORS error rise but we use proxy in package.json so this error will easily tackle
+
+
+//we will send cokkie ffrom frontened to backened
+  npm i cookie-parser//add in server

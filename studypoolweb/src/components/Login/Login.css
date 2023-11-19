@@ -1,0 +1,147 @@
+
+.Login{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    flex-wrap: wrap;
+}
+
+.col1{
+ display: flex;
+    flex:0.5;
+    background-color: white;
+ 
+}
+.col2 img{
+    position: relative;
+    right:2%;
+    top: 2%;
+}
+.col2{
+ display: flex;
+ flex: 1;
+    background-color: #EFA593;
+  
+
+}
+.col2  span{
+
+    font-size:53px;
+}
+.col3{
+
+display: flex;
+flex:3;
+    background-color: #EFA593;
+
+}
+.loginform{
+    margin: auto;
+}
+.loginform form{
+    padding:99px;
+}
+.center {
+    
+margin-top: 20%;
+
+margin-bottom: 20%;
+box-shadow: 5px 10px #888888;
+   
+    padding: 10px;
+ margin-left: auto;
+ margin-right: auto;
+    background-color: #fff;
+  }
+  .loginform form .heading{
+    display: flex;
+flex-direction: row;
+
+}
+.loginform form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+   
+  }
+  .loginform .welcome span:nth-of-type(1){
+    color: black;
+    font-weight: 900;
+      }
+  .loginform .welcome span:nth-of-type(2){
+color: #EFA593;
+font-weight: 900;
+  }
+.loginform form span{
+    margin-bottom: 20px;
+}
+ .col3 .loginform form span:nth-of-type(1){
+font-size: 34px;
+text-align: center;
+font-weight: 500;
+ }
+ .col3 .signupform form span:nth-of-type(2){
+    font-size: 34px;
+    text-align: center;
+    font-weight: 500;
+     }
+     
+ .loginbuttons span:nth-of-type(1){
+margin-right: 65px;
+ }
+
+ .loginbuttons {
+    display: flex;
+    flex-direction: row;
+  
+ 
+}
+.loginbuttons button{
+    background-color: transparent;
+width:11rem;
+height:2rem;
+box-shadow: 2px 3px #888888;
+border:#fff
+}
+ .loginformtextfield input {
+    border: none;
+    background-color: transparent;
+    resize: none;
+  
+}
+.loginformtextfield{
+    display: flex;
+justify-content: start;
+flex-direction:column;
+
+}
+
+.loginformtextfield span{
+   margin-top: -19px;
+}
+
+.loginform span:nth-of-type(6) button{
+    background-color: #EFA593;
+width:18rem;
+height:3rem;
+color:whitesmoke;
+box-shadow: 2px 3px #a45f4e;
+border: #EFA593;
+}
+
+.loginformtextfield hr{
+    width:100%;
+}
+.LoginHeading{
+    font-size: 33px;
+}
+@media only screen and (max-width: 1135px) {
+   .col2{
+    display: none;
+   }
+   .col1{
+    display: none;
+   }
+   
+  }

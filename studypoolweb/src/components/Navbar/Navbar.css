@@ -1,0 +1,264 @@
+.Navbar{
+border: 2px solid #EFEFEF;
+background-color: #ffffff;
+display: flex;
+justify-content:space-between;
+font-size: 29px;
+height:7rem;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 601;
+flex-wrap: wrap;
+
+}
+
+.Navbar .BrandName{
+    color:#EFA593;
+    
+    font-size: 3.8rem;
+}
+
+.Navbar .NavbarItem button{
+width:8.5rem;
+height:3.5rem;
+}
+.NavbarItem #signupbtn{
+    background-color: #EFA593;
+    border: 2px solid #EFA593;
+    color:white;
+    font-size: 11px;
+
+    
+}
+.NavbarItem #signupbtn p{
+color:white;
+
+}
+
+.NavbarItem #loginbtn{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+}
+
+#notesbtn{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+}
+#selldocsbtn{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+   
+}
+.NavbarItem a{
+    text-decoration: none;
+    color:black;
+    font-weight: 600;
+font-size: 1rem;
+}
+
+
+
+.NavbarItem #NavWork{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+}
+
+.NavbarItem #NavAbout{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+}
+
+.NavbarItem #NavContact{
+    background-color: #ffffff;
+    border:2px solid #ffffff;
+    color:black;
+}
+
+/* ... */
+
+.dropdown {
+  overflow: hidden;
+  background-color: #EFA593;
+  display: flex;
+}
+
+.dropdown button {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropbtn p{
+
+font-weight: bold;
+}
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 4px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown button:hover, .dropdown:hover .dropbtn {
+  background-color: #eb937d;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top:54px;
+}
+
+.dropdown-content button {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+
+/*  */
+.dropdown2 {
+    overflow: hidden;
+    background-color: #EFA593;
+    display: flex;
+margin-right: 2rem; 
+}
+  
+  .dropdown2 button {
+    float: left;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown2 {
+    float: left;
+    overflow: hidden;
+  }
+  .dropdown2 .dropbtn2 p{
+    font-weight: bold;
+  }
+  
+  .dropdown2 .dropbtn2 {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 4px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .dropdown2 button:hover, .dropdown2:hover .dropbtn2 {
+    background-color: #eb937d;
+  }
+  
+  .dropdown2-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top:54px;
+  }
+  
+  .dropdown2-content button {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown2-content button:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown2:hover .dropdown2-content {
+    display: block;
+  }
+  
+  
+  
+
+
+  
+.menu{
+  display: none;
+}
+.menu-line{
+  width:80px;
+  height:17px;
+  background-color: #ffa690;
+  margin-bottom: 12px;
+}
+
+@media  all and (max-width:826px){
+  .NavbarItem{
+      flex-direction: column;
+  }
+  .NavbarItem .container-icon{
+      width: 100%;
+  }
+  .menu{
+      display: block;
+      position: absolute;
+      right: 15px;
+      top:15px;
+  }
+  .NavbarItem{
+      list-style-type: none;
+      width:100%;
+      text-align: center;
+      padding-top: 10px;
+      display: none;
+  }
+  .nav-list .list-item{
+    display: block;
+    border-top: 1px solid #000;  
+  }
+  .primary-icon{
+      margin-top: 10px;
+      margin-left: 10px;
+  }
+  .active{
+      display: block;
+  }
+}

@@ -1,0 +1,38 @@
+.mainimage img{
+    margin-top: 3rem;
+    width:100%;
+    height:26rem;
+}
+
+.Uploadcontainer{
+    background-color: #EFEFEF;
+    width:100%;
+
+}
+
+
+.YoursUpload{
+    margin-top: 4rem;
+background-color:#EFEFEF;
+}
+.YoursUpload h5{
+    margin-top: 2rem;
+    color: #484343;
+    font-size: 14px;
+}
+#uploadName{
+    color:rgb(97, 67, 67);
+    font-size: 2rem;
+}
+.docsDetail{
+    display: flex;
+    flex-direction: row;
+}
+.docsDetail .DocsDeclined{
+margin-left: 2rem;
+margin-right: 2rem;
+}
+.docsDetail img{
+    width:24px;
+    height:25px;
+}

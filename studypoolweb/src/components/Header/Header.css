@@ -1,0 +1,37 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.Headerleft{
+
+ font-size: 29px;
+ margin-left: auto;
+ margin-right: auto;
+ padding-top: 23px;
+
+}
+
+.Headerright{
+    display: flex;
+    flex-direction: column;
+justify-content:center;
+flex-wrap: wrap;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+padding-top: 39px;
+font-weight: 580;
+font-size: 2rem;;
+
+}
+
+.Headerright input{
+    border-radius: 5px;
+}
+.HaederSearch{
+    border: 2px solid black;
+    height:33px;
+}
