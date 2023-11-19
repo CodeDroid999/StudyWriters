@@ -296,39 +296,48 @@ function Navbar() {
               >
                 Browse tasks
               </Link>
-              {!user ? (
-                <Link
-                  href="/how-it-works"
-                  className="font-medium text-gray-700 hover:text-green-500"
-                >
-                  How it works
-                </Link>
-              ) : (
-                <Link
-                  href={`/my-tasks/${user.userId}`}
-                  className="font-medium text-gray-700 hover:text-green-500"
-                >
-                  My tasks
-                </Link>
-              )}
 
-              <Link
-                href="/blog"
-                className="font-medium text-gray-700 hover:text-green-500"
-              >
-                Blog
-              </Link>
+
+
             </div>
           </div>
-
+          {!user ? (
+            <Link
+              href="/how-it-works"
+              className="font-medium text-gray-700 hover:text-green-500"
+            >
+              How it works
+            </Link>
+          ) : (
+            <Link
+              href={`/my-tasks/${user.userId}`}
+              className="font-medium text-gray-700 hover:text-green-500"
+            >
+              My task
+            </Link>
+          )}
           {!user ? (
             <div className="flex flex-row items-center space-x-5">
+              <Link
+                href="/how-it-works"
+                className="font-medium text-gray-700 hover:text-green-500"
+              >
+                Home
+              </Link>
+              <Link
+                href="/how-it-works"
+                className="font-medium text-gray-700 hover:text-green-500"
+              >
+                How it works
+              </Link>
+
               <Link
                 href="/signup"
                 className="font-medium text-gray-700 hover:text-green-500"
               >
                 Sign Up
               </Link>
+
               <Link
                 href="/login"
                 className="font-medium text-gray-700 hover:text-green-500"
@@ -339,7 +348,7 @@ function Navbar() {
                 href="/become-a-tasker"
                 className="rounded-3xl bg-blue-50 px-4 py-[6px] font-medium text-blue-600 hover:bg-blue-100 hover:text-green-700"
               >
-                Become a tasker
+                Become a tutor
               </Link>
             </div>
           ) : (
