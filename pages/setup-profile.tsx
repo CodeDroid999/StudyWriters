@@ -77,15 +77,6 @@ export default function CompleteAccount() {
           role: role,
         })
       }
-      // Make the HTTP request to notify admin that a new user has just signed up
-      const userData = {
-        firstName: firstName,
-        lastName: lastName,
-        mainRole: role,
-        role: role,
-      };
-
-      await axios.post('/api/newuser', userData);
       router.push('/')
       toast.success('Account has been updated')
     } catch (error) {
