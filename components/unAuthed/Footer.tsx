@@ -13,37 +13,7 @@ export default function Footer() {
     <div>
       <footer className="md:m-4 md:rounded-2xl bg-gray-200 px-2 py-2">
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
-          <div className="row flex justify-center md:space-x-6 space-y-3 md:space-y-0">
-            <div className="row space-x-2">
-              <div className=" font-semibold text-green-900">
-                Home
-              </div>
-              <div className=" font-semibold text-green-900">
-                How it works
-              </div>
-              <div className=" font-semibold text-green-900">
-                Help
-              </div>
-              <div className=" font-semibold text-green-900">
-                Refer a friend
-              </div>
-            </div>
-            <div className="row space-x-2">
-              <div className=" font-semibold text-green-900">
-                Sign up
-              </div>
-              <div className=" font-semibold text-green-900">
-                Sign in
-              </div>
-              <div className=" font-semibold text-green-900">
-                Blog
-              </div>
-              <div className=" font-semibold text-green-900">
-                Contact us
-              </div>
-            </div>
-
-          </div>
+         
           <div className="mt-2 grid gap-y-2 sm:mt-6 sm:flex sm:items-center sm:justify-center sm:gap-y-0">
             <div className="flex flex-col items-center justify-center">
               <div className="mb-1">
@@ -63,7 +33,7 @@ export default function Footer() {
 
           </div>
           <div className="mt-2 grid gap-y-2 sm:mt-6 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
-            <div className="flex flex-col items-center justify-between">
+            <div className="flex flex-col items-center justify-center">
               <div>
 
                 <p className=" font-bold text-sm text-center text-green-900 pr-2 pb-2 ">
