@@ -6,31 +6,31 @@ const SideNav = () => {
   return (
     <div className="flex flex-col sidenav">
       <div className="p-2 flex items-center">
-        <a href="/help" className="text-blue-400 text-left whitespace-nowrap">Help</a>
+        <link href="/help" className="text-blue-400 text-left whitespace-nowrap">Help</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/about" className="text-blue-400 text-left whitespace-nowrap">About</a>
+        <link href="/about" className="text-blue-400 text-left whitespace-nowrap">About</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/privacy" className="text-blue-400 text-left whitespace-nowrap">Privacy</a>
+        <link href="/privacy" className="text-blue-400 text-left whitespace-nowrap">Privacy</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/terms" className="text-blue-400 text-left whitespace-nowrap">Terms</a>
+        <link href="/terms" className="text-blue-400 text-left whitespace-nowrap">Terms</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/refund" className="text-blue-400 text-left whitespace-nowrap">Refund</a>
+        <link href="/refund" className="text-blue-400 text-left whitespace-nowrap">Refund</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/refer-a-friend" className="text-blue-400 text-left whitespace-nowrap">Refer a Friend</a>
+        <link href="/refer-a-friend" className="text-blue-400 text-left whitespace-nowrap">Refer a Friend</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/blog" className="text-blue-400 text-left whitespace-nowrap">Blog</a>
+        <link href="/blog" className="text-blue-400 text-left whitespace-nowrap">Blog</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/how-it-works" className="text-blue-400 text-left whitespace-nowrap">How It Works</a>
+        <link href="/how-it-works" className="text-blue-400 text-left whitespace-nowrap">How It Works</link>
       </div>
       <div className="p-2 flex items-center">
-        <a href="/contact-us" className="text-blue-400 text-left whitespace-nowrap">Contact Us</a>
+        <link href="/contact-us" className="text-blue-400 text-left whitespace-nowrap">Contact Us</link>
       </div>
     </div>
   );
