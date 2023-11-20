@@ -59,7 +59,7 @@ export default function PostYourTask() {
           href="/how-it-works"
           className="mt-3 flex flex-row items-center space-x-1 text-xl font-medium text-green-950 hover:text-green-900 md:mt-6"
         >
-          <p>Learn how Airtaska works </p>
+          <p classname="pt-1 pb-2 text-lg">Learn how Airtaska works </p>
           <MdArrowForward />
         </Link>
       </div>

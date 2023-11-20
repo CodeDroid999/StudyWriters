@@ -28,7 +28,7 @@ const HeroArea = () => {
                                             <h1>
                                                 Get on-demand Q&A<span> Homework help</span> from verified tutors.
                                             </h1>
-                                            <p>
+                                            <p classname="pt-1 pb-2 text-lg">
                                             Work with thousands of tutors to help you meet your deadlines and get the grades you so sorely need!
                                             </p>
                                             <div className="btn-box whitespace-nowrap">
@@ -50,7 +50,7 @@ const HeroArea = () => {
                                                 <span>
                                                     Tutor Online </span>
                                             </h1>
-                                            <p>Every 15 assigned tutoring, get 10% cash back (Limited to $50) on your posted assignments!</p>
+                                            <p classname="pt-1 pb-2 text-lg">Every 15 assigned tutoring, get 10% cash back (Limited to $50) on your posted assignments!</p>
                                             <div className="btn-box whitespace-nowrap">
                                                 <a href="/howitworks" className="btn-1 rounded"> Learn more </a>
                                                 <a href="" className="btn-2 rounded">Become a tutor</a>
@@ -68,7 +68,7 @@ const HeroArea = () => {
                                             <h1>
                                             APA examples/ samples<span> creative vision </span>
                                             </h1>
-                                            <p>
+                                            <p classname="pt-1 pb-2 text-lg">
                                                 Collaborate to bring your ideas to life with precision, creativity, and innovation. We are your
                                                 creative partner. </p>
                                             <div className="btn-box">

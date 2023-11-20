@@ -242,7 +242,7 @@ export default function Signup() {
         </button>
 
         <div className="flex flex-row space-x-3 text-base font-normal">
-          <p>Already have an account?</p>
+          <p classname="pt-1 pb-2 text-lg">Already have an account?</p>
           <p className="font-medium text-blue-700">
             <Link href="/login">Log in</Link>
           </p>

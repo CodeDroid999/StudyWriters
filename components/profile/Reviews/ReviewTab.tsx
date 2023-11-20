@@ -52,7 +52,7 @@ const ReviewsTab = ({ reviews }) => {
           {reviews.map((review) => (
             <ReviewCard key={review.id} review={review} />
           ))}
-          {reviews.length === 0 && <p>No reviews available.</p>}
+          {reviews.length === 0 && <p classname="pt-1 pb-2 text-lg">No reviews available.</p>}
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
       <hr className="mb-1 mt-1 bg-blue-800" />
-      <p>{review.review}</p>
+      <p classname="pt-1 pb-2 text-lg">{review.review}</p>
       <div className="mt-1 flex flex-row space-x-2">
         <div className="text-md">
           <StarRating rating={review.rating} />

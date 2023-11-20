@@ -11,7 +11,7 @@ export default function Footer() {
               <h4 className="font-semibold text-gray-100">Discover</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/how-it-works"
@@ -19,7 +19,7 @@ export default function Footer() {
                     How it works
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -27,7 +27,7 @@ export default function Footer() {
                     Airtaska for business
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/become-a-tasker"
@@ -35,7 +35,7 @@ export default function Footer() {
                     Earn money
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -43,7 +43,7 @@ export default function Footer() {
                     Side Hustle Calculator
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
@@ -51,7 +51,7 @@ export default function Footer() {
                     Search for jobs
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -59,7 +59,7 @@ export default function Footer() {
                     Costs Guides
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
@@ -67,7 +67,7 @@ export default function Footer() {
                     Service Guide
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -75,7 +75,7 @@ export default function Footer() {
                     Student Discount
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
@@ -90,7 +90,7 @@ export default function Footer() {
               <h4 className="font-semibold text-gray-100">Company</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/how-it-works"
@@ -98,7 +98,7 @@ export default function Footer() {
                     About us
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -106,7 +106,7 @@ export default function Footer() {
                     Careers
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
@@ -114,7 +114,7 @@ export default function Footer() {
                     Media enquiries
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
@@ -122,7 +122,7 @@ export default function Footer() {
                     Community guidelines
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -130,7 +130,7 @@ export default function Footer() {
                     Tasker principles
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -138,7 +138,7 @@ export default function Footer() {
                     Terms and Conditions
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/blog"
@@ -146,7 +146,7 @@ export default function Footer() {
                     Blog
                   </Link>{' '}
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/contact-us"
@@ -154,7 +154,7 @@ export default function Footer() {
                     Contact Us
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -162,7 +162,7 @@ export default function Footer() {
                     Privacy Policy
                   </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
@@ -176,7 +176,7 @@ export default function Footer() {
             <div className="col-span-1">
               <h4 className="font-semibold text-gray-100">Existing members</h4>
               <div className="mt-3 grid space-y-3">
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/post-task"
@@ -184,7 +184,7 @@ export default function Footer() {
                     Post a task
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
@@ -192,7 +192,7 @@ export default function Footer() {
                     Browse tasks
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/login"
@@ -200,7 +200,7 @@ export default function Footer() {
                     Log in
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/contact-us"
@@ -215,7 +215,7 @@ export default function Footer() {
               <h4 className="font-semibold text-gray-100">Popular Services</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
@@ -223,28 +223,28 @@ export default function Footer() {
                     Dissertation writing
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Research paper writing                  </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     College essay writing                  </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Resume and Cover letter writing                  </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
@@ -252,7 +252,7 @@ export default function Footer() {
                     Coursework help
                   </Link>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <Link
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
@@ -267,49 +267,49 @@ export default function Footer() {
               <h4 className="font-semibold text-gray-100">Popular locations</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     New Zealand                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Australia                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     United Kingdom                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     United States                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Singapore                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Canada                  </a>
                 </p>
-                <p>
+                <p classname="pt-1 pb-2 text-lg">
                   <a
                     className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"

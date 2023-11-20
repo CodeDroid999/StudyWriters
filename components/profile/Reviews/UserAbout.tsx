@@ -13,7 +13,7 @@ const UserAbout = ({ about }) => {
 
       {showDetails ? (
         <div>
-          <p>{about}</p>
+          <p classname="pt-1 pb-2 text-lg">{about}</p>
           <button
             className="mt-1 text-xs text-blue-500 underline"
             onClick={toggleDetails}
@@ -23,7 +23,7 @@ const UserAbout = ({ about }) => {
         </div>
       ) : (
         <div>
-          <p>{about?.slice(0, 500)}...</p>
+          <p classname="pt-1 pb-2 text-lg">{about?.slice(0, 500)}...</p>
           <button
             className="mt-1 text-xs text-blue-500 underline"
             onClick={toggleDetails}

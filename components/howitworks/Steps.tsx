@@ -25,7 +25,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-3xl text-center text-gray-600">
-                                <p> 1. Upload</p>
+                                <p classname="pt-1 pb-2 text-lg"> 1. Upload</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
@@ -45,7 +45,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-4xl text-center text-gray-600">
-                                <p>2. Pick</p>
+                                <p classname="pt-1 pb-2 text-lg">2. Pick</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
@@ -65,7 +65,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-3xl text-center text-gray-600">
-                                <p> 3. Pay</p>
+                                <p classname="pt-1 pb-2 text-lg"> 3. Pay</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
