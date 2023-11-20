@@ -165,31 +165,31 @@ export default function CompleteAccount() {
                 htmlFor="mainGoal"
                 className="mb-2 text-lg font-medium text-gray-700"
               >
-                What is your main goal on Airtaska?
+                What is your main goal on QualityUnitedWriters.com?
               </label>
               <div className="mt-2 flex w-full flex-row space-x-2">
                 <div
-                  onClick={() => handleRole('Poster')}
-                  className={`h-[80px] flex-1 cursor-pointer rounded-md p-2 font-medium  ${activeRole === 'Poster'
+                  onClick={() => handleRole('Student')}
+                  className={`h-[80px] flex-1 cursor-pointer rounded-md p-2 font-medium  ${activeRole === 'Student'
                     ? 'bg-green-950 text-gray-100'
                     : 'bg-gray-100 text-gray-700'
                     }`}
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCheckCircle size={20} className="mb-1" />
-                    Get things done
+                    Get Homework help
                   </div>
                 </div>
                 <div
-                  onClick={() => handleRole('Tasker')}
-                  className={`h-[80px] flex-1 cursor-pointer rounded-md p-2 font-medium  ${activeRole === 'Tasker'
+                  onClick={() => handleRole('Tutor')}
+                  className={`h-[80px] flex-1 cursor-pointer rounded-md p-2 font-medium  ${activeRole === 'Tutor'
                     ? 'bg-green-950 text-gray-100'
                     : 'bg-gray-100 text-gray-700'
                     }`}
                 >
                   <div className="flex h-full flex-col items-center justify-center ">
                     <BsCurrencyDollar size={20} className="mb-1" />
-                    Earn money
+                    Tutor and earn money
                   </div>
                 </div>
               </div>
