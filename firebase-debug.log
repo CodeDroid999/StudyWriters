@@ -1,0 +1,14 @@
+[debug] [2023-11-20T09:04:37.725Z] ----------------------------------------------------------------------
+[debug] [2023-11-20T09:04:37.729Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-11-20T09:04:37.729Z] CLI Version:   12.9.1
+[debug] [2023-11-20T09:04:37.730Z] Platform:      win32
+[debug] [2023-11-20T09:04:37.730Z] Node Version:  v18.14.0
+[debug] [2023-11-20T09:04:37.732Z] Time:          Mon Nov 20 2023 12:04:37 GMT+0300 (East Africa Time)
+[debug] [2023-11-20T09:04:37.733Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-20T09:04:37.888Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-20T09:04:37.889Z] > authorizing via signed-in user (johnmwega2002@gmail.com)
+[debug] [2023-11-20T09:04:37.889Z] [iam] checking project qualityunitedwriters for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2023-11-20T09:04:37.893Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/qualityunitedwriters:testIamPermissions [none]
+[debug] [2023-11-20T09:04:37.893Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/qualityunitedwriters:testIamPermissions x-goog-quota-user=projects/qualityunitedwriters
+[debug] [2023-11-20T09:04:37.893Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/qualityunitedwriters:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
