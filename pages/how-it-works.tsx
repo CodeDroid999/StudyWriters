@@ -1,42 +1,37 @@
-import React, { useState } from 'react'
-import Layout from 'components/layout/Layout'
-import Accordion from 'components/support/FAQAccordion'
-import PostTask from './post-task'
-import PostTaskCTA from 'components/howitworks/PostTaskCTA'
-import Head from 'next/head'
+import Steps from 'components/howitworks/Steps';
+import SideNav from 'components/unAuthed/SideNav';
+import Layout from 'components/unAuthed/layout';
+import Link from 'next/link';
+import React from 'react';
 
-export default function HowItWorks() {
-  return (
-    <div>
-      <Layout>
-        <Head>
-          <title>
-            Airtaska | Get More Done | Post any task. Pick the best person. Get it done. | Post your task for free Earn money as a tasker
-          </title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta
-            name="description"
-            content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
-          />
-          <meta name="keywords" content="Airtaska, tasks, tasker, earn money, post task" />
-          <meta name="author" content="Airtaska" />
-          <meta name="robots" content="index, follow" />
-          <meta name="og:title" property="og:title" content="Airtaska | Get More Done" />
-          <meta
-            name="og:description"
-            property="og:description"
-            content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
-          />
-          <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
-          <meta name="og:url" property="og:url" content="https://www.airtaska.com" />
-        </Head>
-        <div className="">
-          <div className="bg-neutral-100 lg:px-6 xl:px-12">
-            <PostTaskCTA />
-          </div>
+const Howitworks: React.FC = () => {
+    return (
+        <div className="h-50 flex items-center justify-center" style={{ backgroundImage: "url('public/main_cover.jpg')", backgroundSize: "cover" }}>
+            <Layout>
+                <div className="flex ">
+                    <div className="container flex">
+                        <div className="text-white  h-full">
+                            <SideNav />
+                        </div>
+                        <div className="mx-auto h-full pl-5">
+                            <h1 className="text-blue-500">How it works</h1>
+                            <h2>QualityUnitedWriters - How it works</h2>
+
+                            <p>
+                                Thousands of college students have used HomeWorkForYou as their secret weapon to make their life easier.
+                            </p>
+                            <p>Now it is your turn.                        </p>
+
+                            <h3>How to Get Started</h3>
+                            <Steps />
+
+                    
+                        </div>
+                    </div>
+                </div>
+            </Layout>
         </div>
-      </Layout>
-    </div>
-  )
-}
+    );
+};
+
+export default Howitworks;
