@@ -1,5 +1,5 @@
 import Steps from 'components/howitworks/Steps';
-import SideNav from 'components/unAuthed/SideNav';
+import SideNav from 'components/layout/SideNav';
 import Layout from 'components/unAuthed/layout';
 import Link from 'next/link';
 import React from 'react';
