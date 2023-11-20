@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/react';
 import React from 'react'
 
 export default function AuthLayout({
@@ -15,6 +16,7 @@ export default function AuthLayout({
       </header>
       <main className="mx-auto mt-12 w-full max-w-[400px]  md:mt-32">
         {children}
+        <Analytics />
       </main>
     </div>
   )
