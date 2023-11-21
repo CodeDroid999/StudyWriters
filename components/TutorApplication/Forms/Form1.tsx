@@ -56,58 +56,14 @@ export default function Form1() {
 
     const handleSave = async (e) => {
         e.preventDefault();
-    
+
         // Validate form data
         if (!firstName || !lastName || !country || !address || !city || !state) {
-          toast.error('Please fill in all required fields');
-          return;
+            toast.error('Please fill in all required fields');
+            return;
         }
-    
-        const formData = {
-          userId,
-          firstName,
-          lastName,
-          country,
-          address,
-          city,
-          state,
-          lastSchoolName,
-          howHeard,
-          major,
-          isSchoolTeacher,
-          hasAffiliation,
-          jobTitle,
-          employer,
-          startDate,
-          endDate,
-        };
-    
-        const userRef = collection(db, 'users');
-    
-        try {
-          // Query the database to check if the user exists
-          const q = query(userRef, where('userId', '==', userId));
-          const querySnapshot = await getDocs(q);
-    
-          if (!querySnapshot.empty) {
-            // If the user exists, update the document
-            const docSnapshot = querySnapshot.docs[0];
-            const userDocRef = doc(userRef, docSnapshot.id);
-    
-            await updateDoc(userDocRef, formData);
-            console.log('User document updated successfully');
-          } else {
-            // If the user doesn't exist, add a new document
-            await setDoc(userRef, formData);
-            console.log('User document added successfully');
-          }
-    
-          // You can redirect to the next page or perform other actions here
-          // For example, you can use the `router.push('/next-page')` from Next.js
-        } catch (error) {
-          console.error('Error querying or updating user document:', error);
-        }
-      };
+
+    }
 
 
     return (
