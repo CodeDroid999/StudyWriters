@@ -19,7 +19,7 @@ const Form2 = ({ onSave, onBack, subjects, rates }) => {
         <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
 
         <div className="mb-4">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
             Which subjects do you intend to tutor in? (at least one is required.)
           </label>
           <div className="flex flex-wrap gap-4 mt-2">

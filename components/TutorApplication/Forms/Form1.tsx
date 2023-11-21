@@ -1,4 +1,4 @@
-import { UserAuth } from 'context/AuthContext'
+import { UserAuth } from 'context/AuthContext';
 import {
     collection,
     doc,
@@ -6,19 +6,19 @@ import {
     query,
     updateDoc,
     where,
-} from 'firebase/firestore'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
-import { toast } from 'react-hot-toast'
+} from 'firebase/firestore';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
-import { auth, db } from '../../../firebase'
-import countryList from '../countryList'
+import { auth, db } from '../../../firebase';
+import countryList from '../countryList';
 
 export const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    const day = date.getDate()
-    const month = date.toLocaleString('en-us', { month: 'short' })
-    const year = date.getFullYear()
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('en-us', { month: 'short' });
+    const year = date.getFullYear();
     const suffix =
         day === 1 || day === 21 || day === 31
             ? 'st'
@@ -26,33 +26,34 @@ export const formatDate = (dateString) => {
                 ? 'nd'
                 : day === 3 || day === 23
                     ? 'rd'
-                    : 'th'
-    return `${day}${suffix} ${month} ${year}`
-}
-
+                    : 'th';
+    return `${day}${suffix} ${month} ${year}`;
+};
 
 
 
 export default function Form1() {
+    const { user } = UserAuth();
+    const router = useRouter();
+    const userId = router.query?.id;
+
     // Define constants for state variables using useState
-    const { user } = UserAuth()
-    const router = useRouter()
-    const userId = router.query?.id
-    const [firstName, setFirstName] = useState(user?.firstName)
-    const [lastName, setLastName] = useState(user?.lastName)
-    const [city, setCity] = useState(user?.city)
-    const [address, setAddress] = useState(user?.address)
-    const [startDate, setStartDate] = useState(user?.startDate)
-    const [endDate, setEndDate] = useState(user?.EndDate)
-    const [country, setCountry] = useState(user?.country);
-    const [state, setState] = useState(user?.state);
-    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName);
-    const [howHeard, setHowHeard] = useState(user?.howHeard);
-    const [major, setMajor] = useState(user?.major)
-    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolteacher);
-    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation);
-    const [jobTitle, setJobTitle] = useState(user?.jobtitlte);
-    const [employer, setEmployer] = useState(user?.employer);
+    const [firstName, setFirstName] = useState(user?.firstName || '');
+    const [lastName, setLastName] = useState(user?.lastName || '');
+    const [city, setCity] = useState(user?.city || '');
+    const [address, setAddress] = useState(user?.address || '');
+    const [startDate, setStartDate] = useState(user?.startDate || '');
+    const [endDate, setEndDate] = useState(user?.endDate || '');
+    const [country, setCountry] = useState(user?.country || '');
+    const [state, setState] = useState(user?.state || '');
+    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
+    const [howHeard, setHowHeard] = useState(user?.howHeard || '');
+    const [major, setMajor] = useState(user?.major || '');
+    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolTeacher || '');
+    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation || '');
+    const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
+    const [employer, setEmployer] = useState(user?.employer || '');
+    const [error, setError] = useState('');
 
     const handleSave = async (e) => {
         e.preventDefault();
@@ -63,7 +64,43 @@ export default function Form1() {
             return;
         }
 
-    }
+        try {
+            const q = query(
+                collection(db, 'users'),
+                where('userId', '==', user?.userId)
+            );
+
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                const docSnapshot = querySnapshot.docs[0];
+                const userDocRef = doc(db, 'users', docSnapshot.id);
+                await updateDoc(userDocRef, {
+                    firstName,
+                    lastName,
+                    country,
+                    address,
+                    city,
+                    state,
+                    howHeard,
+                    lastSchoolName,
+                    major,
+                    isSchoolTeacher,
+                    hasAffiliation,
+                    jobTitle,
+                    employer,
+                    startDate,
+                    endDate,
+                });
+            }
+
+            toast.success('Personal info has been updated');
+            router.reload();
+        } catch (error) {
+            console.error('Error updating personal info:', error.message);
+        }
+    };
+
 
 
     return (
@@ -251,6 +288,7 @@ export default function Form1() {
                             type="text"
                             placeholder="major"
                             onChange={(e) => setMajor(e.target.value)}
+                            value="major"
                             className={`rounded-lg border bg-gray-50 px-1 py-2
                   font-medium outline-none focus:border-blue-500`}
                         />
