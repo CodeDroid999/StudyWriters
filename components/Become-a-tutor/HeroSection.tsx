@@ -1,55 +1,39 @@
-import Home from 'components/layout/HomeSection';
-import CustomNavbar from 'components/layout/Navbar';
-import Image from 'next/image'
-import Link from 'next/link';
-import HeroBackground from "public/bg/Become-a-Tutor-cover.jpg"
+import Image from 'next/image';
 import React from 'react';
+import Home from 'components/layout/HomeSection';
+import Link from 'next/link';
+import HeroBackground from 'public/bg/Become-a-Tutor-cover.jpg';
 
 const HeroArea = () => {
     return (
-        <div className="hero_area">
-            <div className="hero_bg_box">
-                <div className="img-box">
-                    <Image
-                        src={HeroBackground}
-                        alt="task"
+        <div className="relative h-[80vh]">
+            {/* Background Image */}
+            <div className="absolute inset-0 overflow-hidden">
+                <Image
+                    src={HeroBackground}
+                    alt="Background"
+                    layout="fill"
+                    objectFit="cover"
+                />
+            </div>
 
-                        className="w-full h-full"
-                    />
+            {/* Content Overlay */}
+            <div className="absolute inset-0 flex items-end justify-center text-white">
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold mb-4 text-gray-200">Earn <span className="text-gray-200">money</span></h1>
+                    <h1 className="text-4xl font-bold mb-4">Homework questions</h1>
+                    <p className="text-lg mb-6">
+                        Earn up to <strong>$7,500 USD </strong>monthly working from home tutoring students!
+                    </p>
+                    <div className="btn-box whitespace-nowrap">
+                        <Link className="btn-1 p-2 text-xl rounded bg-yellow-500 text-white" href="tutor-application/step1">Apply now!</Link>
+                    </div>
+                    <p className="text-lg mt-4">Now accepting tutors from all over the world!</p>
                 </div>
             </div>
+
+            {/* Include Home component if needed */}
             <Home />
-            <section className=" slider_section ">
-                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-7">
-                                        <div className="detail-box">
-                                            <h1>
-                                                Earn money
-                                            </h1>
-                                            <h1>
-                                                Homework questions
-                                            </h1>
-                                            <p>
-                                                Earn up to <strong>$7,500 USD </strong>monthly working from home tutoring students!
-                                            </p>
-                                            <div className="btn-box whitespace-nowrap">
-                                                <Link href="/tutor-application/step1" className="btn-2 rounded bg-yellow-500 text-white"> Apply now! </Link>
-                                            </div>
-                                            <p>
-                                                Now accepting tutors from all over the world!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 };
