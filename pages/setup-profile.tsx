@@ -31,6 +31,20 @@ export default function CompleteAccount() {
     setActiveRole(selectedRole)
     setRole(selectedRole)
   }
+  const pushUser = (activeRole: string) => {
+    let page;
+    if (activeRole === 'student') {
+      toast.success(`Welcome onboard dear student . You are being redirected to the post-assignment page.`);
+      router.push('/post-assignment');
+    } else if (activeRole === 'tutor') {
+      toast.success(`Welcome onboard . You are being redirected to tutor-application.`);
+      router.push('/tutor-application/step1');
+    }
+    // Add more conditions if needed for other roles
+
+    // Show a toast message to the user
+    toast.success(`Thank you for choosing ${activeRole}. You are being redirected to the ${page}.`);
+  };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
@@ -77,7 +91,8 @@ export default function CompleteAccount() {
           role: role,
         })
       }
-      router.push('/')
+      // Call pushUser function with the active role after updating the user details
+      pushUser(role);
       toast.success('Account has been updated')
     } catch (error) {
       console.error('Error updating user details:', error.message)

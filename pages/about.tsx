@@ -1,48 +1,69 @@
 import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-
-import Steps from 'components/howitworks/Steps';
+import CustomNavbar from 'components/unAuthed/Navbar';
 import SideNav from 'components/layout/SideNav';
 import Footer from 'components/unAuthed/Footer';
-import CustomNavbar from 'components/unAuthed/Navbar';
-import Layout from 'components/unAuthed/layout';
+import Steps from 'components/howitworks/Steps';
 
 const About: React.FC = () => {
-  return (
-    <>
-      <CustomNavbar />
-      <div className="row flex pt-12">
-        <div className="container flex">
-          <div className="col-md-2 mx-auto">
-            <SideNav />
-          </div>
-          <div className="col-md-10 mx-auto h-full pl-5">
-            <Head>
-              {/* Add your meta tags here */}
-              <title>QualityUnitedWriters - How it Works</title>
-              {/* Additional meta tags can be added as needed */}
-            </Head>
-            <h1 className="text-blue-500 text-xl">How it works</h1>
-            <h2 className="text-orange-400 font-semibold">QualityUnitedWriters - How it works</h2>
+    return (
+        <>
+            <CustomNavbar />
+            <div className="row flex pt-12">
+                <div className="container flex">
+                    <div className="col-md-2 mx-auto">
+                        <SideNav />
+                    </div>
+                    <div className="col-md-10 mx-auto h-full pl-5">
+                        <h1 className="text-blue-500 text-xl">About Us</h1>
 
-            <p className="pt-1 pb-2 text-lg">
-              Thousands of college students have used QualityUnitedwriters as their secret weapon to make their life easier.
-            </p>
+                        <p className="pt-1 pb-2 text-lg">
+                            Welcome to QualityUnitedWriters, where academic excellence meets professional writing services.
+                        </p>
 
-            <p className="pt-1 pb-2 text-lg">Now it is your turn.</p>
+                        <h2 className="text-orange-400 font-semibold">Our Mission</h2>
 
-            <h1 className="text-blue-500 text-xl">How to Get Started</h1>
-            <Steps />
-            <div className="pt-1 pb-2 text-lg">
-              Embarking on your academic journey with QualityUnitedWriters is a seamless process designed to empower students and make their educational endeavors more manageable. Joining the ranks of thousands of college students who have already discovered the benefits, our platform acts as your secret weapon for academic success. The process is simple yet effective – students connect with skilled writers who excel in their respective fields. Whether it is a challenging assignment, research paper, or any academic task, QualityUnitedWriters is your go-to destination. Step by step, you post your task, select the best-suited writer, and watch as your academic workload becomes more manageable. Experience the convenience and excellence that QualityUnitedWriters brings to your educational journey.
+                        <p className="pt-1 pb-2 text-lg">
+                            At QualityUnitedWriters, our mission is to empower students on their educational journey by providing high-quality writing assistance.
+                        </p>
+
+                        <h2 className="text-orange-400 font-semibold">Who We Are</h2>
+
+                        <p className="pt-1 pb-2 text-lg">
+                            We are a team of dedicated writers and professionals committed to helping students succeed in their academic endeavors.
+                        </p>
+
+                        <h2 className="text-orange-400 font-semibold">Why Choose Us?</h2>
+
+                        <p className="pt-1 pb-2 text-lg">
+                            QualityUnitedWriters stands out for its commitment to excellence, timely delivery, and personalized approach to every students needs.
+                        </p>
+                        <h2 className="text-orange-400 font-semibold">How to get started?</h2>
+                        <Steps />
+
+                        <h2 className="text-orange-400 font-semibold">Our Values</h2>
+
+                        <p className="pt-1 pb-2 text-lg">
+                            Integrity, quality, and customer satisfaction are the core values that drive us. We believe in transparency and delivering work that exceeds expectations.
+                        </p>
+
+                        <h2 className="text-orange-400 font-semibold">Our Team</h2>
+
+                        <p className="pt-1 pb-2 text-lg">
+                            Meet our team of experienced writers and professionals, each dedicated to ensuring that you receive the best possible service.
+                        </p>
+
+                        <h2 className="text-orange-400 font-semibold">Contact Us</h2>
+
+                        <p className="pt-1 pb-2 text-lg">
+                            Have questions or need assistance? Feel free to reach out to our support team. We are here to help you.
+                        </p>
+
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 };
 
 export default About;

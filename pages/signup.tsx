@@ -126,25 +126,15 @@ export default function Signup() {
       const userRef = await addDoc(collection(db, 'users'), {
         firstName: '',
         lastName: '',
-        dateOfBirth: '',
         phoneNumber: '',
-        profilePicture: '',
-        billingAddress: '',
         mainRole: '',
         role: '',
         email: user.email,
         userId: user.uid,
-        bankAccount: {
-          accountHolderName: '',
-          accountNumber: '',
-          BSB: '',
-        },
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
         city: '',
-        skills: [],
-        education: [],
+        country:'',
+        State:'',
+        Address:'',
         createdAt: serverTimestamp(),
       })
 
@@ -242,7 +232,7 @@ export default function Signup() {
         </button>
 
         <div className="flex flex-row space-x-3 text-base font-normal">
-          <p classname="pt-1 pb-2 text-lg">Already have an account?</p>
+          <p className="pt-1 pb-2 text-lg">Already have an account?</p>
           <p className="font-medium text-blue-700">
             <Link href="/login">Log in</Link>
           </p>

@@ -1,170 +1,165 @@
 import React from 'react'
+import airtaskalogo from 'public/QualityUnitedWritersLogo.png'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
   return (
     <div>
-      <footer className="mx-4 rounded-2xl bg-green-900 px-2 py-2">
+      <footer className=" bg-gray-950 px-2 py-2">
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
+          <h4 className="font-semibold text-gray-100">SUBJECTS WE COVER</h4>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-gray-100">Discover</h4>
-
-              <div className="mt-3 grid space-y-3">
-                <p classname="pt-1 pb-2 text-lg">
+            <div className="md:col-md-1 sm:display-none whitespace-nowrap">
+              <div className="mt-3 grid space-y-1">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/how-it-works"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    href=""
                   >
-                    How it works
+                    Accounting
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    href=""
                   >
-                    Airtaska for business
+                    Algebra
                   </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/become-a-tasker"
                   >
-                    Earn money
+                    Art & Design
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Side Hustle Calculator
-                  </a>
+                    Article Writing                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
-                    Search for jobs
+                    Biology
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Costs Guides
+                    Business & Finance
                   </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
                   >
-                    Service Guide
+                    Calculus
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Student Discount
+                    Chemistry
                   </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
                   >
-                    New users FAQ
+                    Statistics
                   </Link>
                 </p>
               </div>
             </div>
 
-            <div className="md:col-span-1">
-              <h4 className="font-semibold text-gray-100">Company</h4>
-
-              <div className="mt-3 grid space-y-3">
-                <p classname="pt-1 pb-2 text-lg">
+            <div className="md:col-md-1 sm:display-none whitespace-nowrap">
+              <div className="mt-3 grid space-y-1">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/how-it-works"
                   >
-                    About us
+                    Communications
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Careers
+                    Computer Science
                   </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
                   >
-                    Media enquiries
+                    onomics
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/faq"
                   >
-                    Community guidelines
+                    Engineering
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Tasker principles
-                  </a>
+                    Excel                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Terms and Conditions
-                  </a>
+                    Environmental Science                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/blog"
                   >
-                    Blog
+                    Film
                   </Link>{' '}
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/contact-us"
                   >
-                    Contact Us
+                    Foreign Languages
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
-                    Privacy Policy
-                  </a>
+                    Science                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Investors
@@ -173,88 +168,49 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-span-1">
-              <h4 className="font-semibold text-gray-100">Existing members</h4>
-              <div className="mt-3 grid space-y-3">
-                <p classname="pt-1 pb-2 text-lg">
-                  <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/post-task"
-                  >
-                    Post a task
-                  </Link>
-                </p>
-                <p classname="pt-1 pb-2 text-lg">
-                  <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
-                  >
-                    Browse tasks
-                  </Link>
-                </p>
-                <p classname="pt-1 pb-2 text-lg">
-                  <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/login"
-                  >
-                    Log in
-                  </Link>
-                </p>
-                <p classname="pt-1 pb-2 text-lg">
-                  <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/contact-us"
-                  >
-                    Support center
-                  </Link>
-                </p>
-              </div>
-            </div>
-            <div className="col-span-1">
 
-              <h4 className="font-semibold text-gray-100">Popular Services</h4>
-
-              <div className="mt-3 grid space-y-3">
-                <p classname="pt-1 pb-2 text-lg">
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <div className="mt-3 grid space-y-1">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Dissertation writing
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Research paper writing                  </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     College essay writing                  </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Resume and Cover letter writing                  </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     Coursework help
                   </Link>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <Link
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="/browse-tasks"
                   >
                     All Services
@@ -263,72 +219,141 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-span-1 ">
-              <h4 className="font-semibold text-gray-100">Popular locations</h4>
-
-              <div className="mt-3 grid space-y-3">
-                <p classname="pt-1 pb-2 text-lg">
+            <div className="col-md-1 sm:display-none whitespace-nowrap ">
+              <div className="mt-3 grid space-y-1">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     New Zealand                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Australia                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     United Kingdom                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     United States                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Singapore                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     Canada                  </a>
                 </p>
-                <p classname="pt-1 pb-2 text-lg">
+                <p className="pt-1 text-lg">
                   <a
-                    className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
                     href="#"
                   >
                     England                  </a>
                 </p>
               </div>
             </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap flex flex-col justify-center Items-center align-center ">
+              <div className="mb-1 flex justify-center Items-center align-center">
+                <Link href="/" className="text-gray-700">
+                  <Image
+                    src={airtaskalogo}
+                    alt="task"
+                    className="h-[80px] w-[100%] mt-8"
+                    id="customfontsize"
+                  />
+                </Link>
+              </div>
+              <div className="text-center">
+                <p className="text-center text-gray-400 pt-2">
+                  QualityUnitedWriters Ltd.
+                </p>
+              </div>
+            </div>
           </div>
+          <hr />
+          <div className="row md:flex display-none pt-1 pb-3 mt-2 justify-between">
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2 underlined">
+                How it works 
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Honor Code 
+                              </Link>
+            </div>
 
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Terms of Service
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Homework Help 
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Documents
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Become a Tutor
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                DMcA Policy
+              </Link>
+            </div>
+
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Media & Press
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Blog
+              </Link>
+            </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <Link href="/how-it-works" className="text-gray-400 pt-2">
+                Our Mission              </Link>
+            </div>
+           
+          </div>
           <div className="mt-5 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex items-center justify-between">
               <p className="text-sm text-gray-400">
-                © 2022 Airtaska. All rights reserved.
+                © 2023 QualityUnitedWriters. All rights reserved.
               </p>
             </div>
             <div>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex text-sm h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://www.facebook.com/profile.php?id=100095462311480"
               >
                 <svg
@@ -344,7 +369,7 @@ export default function Footer() {
               </a>
 
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex text-sm h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://www.instagram.com/airtaska/?igshid=NGExMmI2YTkyZg%3D%3D"
               >
                 <svg
@@ -363,7 +388,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex text-sm h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="#"
               >
                 <svg
@@ -378,7 +403,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                className="inline-flex h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="inline-flex text-sm h-10 w-10 items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
                 href="https://twitter.com/airtaska?t=Z3QCo7Yclx-wZeWSPjjOcQ&s=09"
               >
                 <svg
