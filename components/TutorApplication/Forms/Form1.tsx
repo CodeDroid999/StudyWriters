@@ -95,7 +95,7 @@ export default function Form1() {
             }
 
             toast.success('Personal info has been updated');
-            router.reload();
+            router.push('tutor-application/step2');
         } catch (error) {
             console.error('Error updating personal info:', error.message);
         }

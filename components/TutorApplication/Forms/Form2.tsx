@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
+import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { db } from '../../../firebase';
+import router from 'next/router';
+import { UserAuth } from 'context/AuthContext';
 
-const Form2 = ({ onSave, onBack, subjects, rates }) => {
-  const [selectedSubjects, setSelectedSubjects] = useState(subjects || []);
-  const [selectedRate, setSelectedRate] = useState(rates || '$10');
+export default function Form2() {
+  const { user } = UserAuth();
+  const userId = user?.userId;
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [selectedRate, setSelectedRate] = useState('$10');
 
-  const handleSave = () => {
-    // Perform any necessary actions before moving to the next step
-    onSave({ selectedSubjects, selectedRate });
+  const handleBack = () => {
+    toast.success('Personal info has been updated');
+    router.push('tutor-application/step2');
+  };
+
+  const handleSave = async () => {
+    // Validate form data
+    if (!selectedSubjects.length || !selectedRate) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
+
+    try {
+      const q = query(collection(db, 'users'), where('userId', '==', userId));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const docSnapshot = querySnapshot.docs[0];
+        const userDocRef = doc(db, 'users', docSnapshot.id);
+        await updateDoc(userDocRef, {
+          subjects: selectedSubjects,
+          rate: selectedRate,
+        });
+        toast.success('Subject preferences and rates saved!');
+        router.push('tutor-application/step3');
+      } else {
+        toast.error('User document not found');
+      }
+    } catch (error) {
+      console.error('Error updating personal info:', error.message);
+      toast.error('Error updating personal info. Please try again.');
+    }
   };
 
   return (
@@ -66,7 +102,7 @@ const Form2 = ({ onSave, onBack, subjects, rates }) => {
           <button
             type="button"
             className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
-            onClick={onBack}
+            onClick={handleBack}
           >
             Back
           </button>
@@ -82,5 +118,3 @@ const Form2 = ({ onSave, onBack, subjects, rates }) => {
     </div>
   );
 };
-
-export default Form2;

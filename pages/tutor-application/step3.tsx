@@ -12,7 +12,7 @@ import Form2 from 'components/TutorApplication/Forms/Form2'
 
 
 
-export default function Step2() {
+export default function Step1() {
     const router = useRouter()
 
     useEffect(() => {
