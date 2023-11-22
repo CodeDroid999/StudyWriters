@@ -13,7 +13,7 @@ export default function Form2() {
 
   const handleBack = () => {
     toast.success('Personal info has been updated');
-    router.push('tutor-application/step2');
+    router.push('/tutor-application/step2');
   };
 
   const handleSave = async () => {
