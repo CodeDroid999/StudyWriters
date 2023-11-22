@@ -56,7 +56,7 @@ export default function Step2() {
             </header>
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
-                <div className="mx-auto mt-20 min-w-100">
+                <div className="mx-auto mt-20 min-w-100 shadow-2xl">
                     <Form2/>
                 </div>
             </div>
