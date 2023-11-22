@@ -1,13 +1,14 @@
 import React from 'react';
 import Alert from './Alert';
 import CustomNavbar from './Navbar';
+import Image from 'next/image';
 
 const Home: React.FC = () => {
     return (
         <header id="home" className="header_section">
              <div className="hero_bg_box">
                 <div className="img-box">
-                    <img src="public/hero-bg.jpg" alt="" />
+                    <Image src="public/hero-bg.jpg" alt="" />
                 </div>
             </div>
             <div className="">
