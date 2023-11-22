@@ -20,13 +20,14 @@ export default function BeYourOwnBoss() {
     },
   ]
   return (
-    <div className="my-4 flex flex-col-reverse rounded-none bg-green-500 px-3 py-16 sm:px-4 md:flex-row  md:px-8  lg:rounded-3xl xl:my-10 xl:px-36  xl:py-28">
+    <div className="flex flex-col-reverse rounded-none bg-gray-900 px-3 py-16 sm:px-4 md:flex-row  md:px-8   xl:my-10 xl:px-36  xl:py-28">
       <div className="flex flex-1 flex-col items-start justify-center">
         <h2 className="text-[40px] font-bold  text-white sm:text-[50px] sm:leading-[50px] ">
           Be your own boss
         </h2>
         <p className="my-5 text-lg font-medium text-white">
-        Find your next job on Airtaska whether you are a brilliant spreadsheet whiz or a conscientious tutor.
+        Find your next job on whether you are a brilliant spreadsheet
+         or a conscientious math whiz
         </p>
         <ul className="flex flex-col gap-2">
           {list.map(({ title }) => {
@@ -42,10 +43,10 @@ export default function BeYourOwnBoss() {
         </ul>
         <div className="my-8 w-full max-w-sm rounded-full bg-white px-4 py-2 sm:max-w-[250px] ">
           <Link
-            href="/become-a-tasker"
+            href="/become-a-tutor"
             className="flex w-full justify-center text-lg font-semibold text-blue-600"
           >
-            Earn money as a tasker
+            Earn money as a tutor
           </Link>
         </div>
       </div>
@@ -53,7 +54,7 @@ export default function BeYourOwnBoss() {
         <Image
           src={photo2}
           alt="task"
-          className="h-[400px] w-[100%] rounded-2xl  md:h-[500px] lg:h-[600px] lg:w-[500px] "
+          className="h-[400px] w-[100%]   md:h-[400px] lg:h-[600px] lg:w-[500px] "
         />
       </div>
     </div>

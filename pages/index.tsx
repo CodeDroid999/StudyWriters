@@ -1,8 +1,10 @@
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
+import PostAssignment from 'components/Homepage/PostAssignment'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
 import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
+import BeYourOwnBoss from 'components/home/BeYourOwnBoss'
 import Footer from 'components/unAuthed/Footer'
 import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
@@ -49,8 +51,8 @@ export default function Home(props: PageProps) {
       </Head>
       <HeroArea />
       <StatsCounter/>
-      <PostYourAssignment />
-      <ReferFriends/>
+      <PostAssignment/>
+      <BeYourOwnBoss/>
       <HowItWorksSection />
       <Footer />
     </>
