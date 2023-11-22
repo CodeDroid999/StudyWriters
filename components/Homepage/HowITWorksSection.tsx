@@ -1,4 +1,4 @@
-import Steps from 'components/howitworks/Steps';
+import Steps from 'components/Howitworks/Steps';
 import Image from 'next/image'
 import HeroBackground from "public/main_cover.jpg"
 import React from 'react';
