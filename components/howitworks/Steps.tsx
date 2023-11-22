@@ -9,7 +9,7 @@ import photo2 from "../../public/pick.png"
 import photo4 from "../../public/paypal.png"
 import photo3 from "../../public/pay.png"
 
-export default function Steps() {
+export default function StudentSteps() {
     return (
         <div>
             <footer className="md:m-4   px-2 py-2">
@@ -25,7 +25,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-3xl text-center text-gray-600">
-                                <p classname="pt-1 pb-2 text-lg"> 1. Upload</p>
+                                <p className="pt-1 pb-2 text-lg"> 1. Upload</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
@@ -45,7 +45,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-4xl text-center text-gray-600">
-                                <p classname="pt-1 pb-2 text-lg">2. Pick</p>
+                                <p className="pt-1 pb-2 text-lg">2. Pick</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
@@ -65,7 +65,7 @@ export default function Steps() {
                         <div>
 
                             <span className=" font-bold text-3xl text-center text-gray-600">
-                                <p classname="pt-1 pb-2 text-lg"> 3. Pay</p>
+                                <p className="pt-1 pb-2 text-lg"> 3. Pay</p>
                             </span>
 
                             <p className=" font-bold text-sm text-center text-gray-600 w-full">
