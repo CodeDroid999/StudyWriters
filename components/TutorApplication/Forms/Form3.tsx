@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
-import countryList from '../countryList';
-import { db } from '../../../firebase';
 
 export default function SkillAssessment() {
     const { user } = UserAuth();
@@ -13,12 +10,10 @@ export default function SkillAssessment() {
 
     const [selectedTopic, setSelectedTopic] = useState('');
     const [uploadFile, setUploadFile] = useState(null);
-    const [error, setError] = useState('');
     const [file, setFile] = useState(null);
 
     const handleDrop = (e) => {
         e.preventDefault();
-
         const droppedFile = e.dataTransfer.files[0];
         setFile(droppedFile);
     };
@@ -27,28 +22,18 @@ export default function SkillAssessment() {
         e.preventDefault();
     };
 
-
     const handleSave = async () => {
         // Validate form data
-        if (!selectedTopic || !uploadFile) {
-            toast.error('Please fill in all required fields');
+        if (!selectedTopic) {
+            toast.error('Please select a topic and upload a valid .doc or .docx file');
             return;
         }
-
-        // Validate file type (assuming you want only .doc and .docx)
-        const allowedFileTypes = ['.doc', '.docx'];
-        const fileType = uploadFile.name.slice(((uploadFile.name.lastIndexOf(".") - 1) >>> 0) + 2);
-        if (!allowedFileTypes.includes(`.${fileType}`)) {
-            toast.error('Please upload a valid .doc or .docx file');
-            return;
-        }
-
+        
         try {
             // Perform additional validations if needed
 
-            // Perform database update or document creation logic here
-            toast.success('Skill Assessment has been submitted!');
-            router.push('sell-docs/step3'); // Assuming there is a step3 page
+            // If both conditions are met, navigate to the 'thankyou' page
+            router.push('/tutor-application/thankyou');
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');
@@ -62,6 +47,8 @@ export default function SkillAssessment() {
 
     return (
         <div className="bg-white p-3">
+            
+            {/* ... (existing code) ... */}
             <p className="mb-1 text-right text-xs font-bold uppercase text-orange-400 md:text-sm">
                 Skill Assessment 2/3
             </p>
@@ -211,6 +198,9 @@ export default function SkillAssessment() {
                     </button>
                 </div>
             </form>
+
+            
         </div>
     );
 }
+

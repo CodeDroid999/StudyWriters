@@ -35,7 +35,7 @@ export default function Form2() {
           rate: selectedRate,
         });
         toast.success('Subject preferences and rates saved!');
-        router.push('tutor-application/step3');
+        router.push('/tutor-application/step3');
       } else {
         toast.error('User document not found');
       }
