@@ -32,8 +32,8 @@ const HeroArea = () => {
                                             Work with thousands of tutors to help you meet your deadlines and get the grades you so sorely need!
                                             </p>
                                             <div className="btn-box whitespace-nowrap">
-                                                <Link href="/howitworks" className="btn-1 rounded"> Learn more </a>
-                                                <Link href="" className="btn-2 rounded">Post Assignment</a>
+                                                <Link href="/howitworks" className="btn-1 rounded"> Learn more </Link>
+                                                <Link href="" className="btn-2 rounded">Post Assignment</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -52,8 +52,8 @@ const HeroArea = () => {
                                             </h1>
                                             <p classname="pt-1 pb-2 text-lg">Every 15 assigned tutoring, get 10% cash back (Limited to $50) on your posted assignments!</p>
                                             <div className="btn-box whitespace-nowrap">
-                                                <Link href="/howitworks" className="btn-1 rounded"> Learn more </a>
-                                                <Link href="" className="btn-2 rounded">Become a tutor</a>
+                                                <Link href="/howitworks" className="btn-1 rounded"> Learn more </Link>
+                                                <Link href="" className="btn-2 rounded">Become a tutor</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -72,8 +72,8 @@ const HeroArea = () => {
                                                 Collaborate to bring your ideas to life with precision, creativity, and innovation. We are your
                                                 creative partner. </p>
                                             <div className="btn-box">
-                                                <Link href="#about" className="btn-1"> Learn more </a>
-                                                <Link href="#contact" className="btn-2">Get A Quote</a>
+                                                <Link href="#about" className="btn-1"> Learn more </Link>
+                                                <Link href="#contact" className="btn-2">Get A Quote</Link>
                                             </div>
                                         </div>
                                     </div>

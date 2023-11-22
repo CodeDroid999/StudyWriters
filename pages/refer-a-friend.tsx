@@ -1,6 +1,7 @@
 
 import SideNav from 'components/layout/SideNav';
 import Layout from 'components/unAuthed/layout';
+import Link from 'next/link';
 import React from 'react';
 
 const ReferAFriend: React.FC = () => {
@@ -79,7 +80,7 @@ const ReferAFriend: React.FC = () => {
                         <p>
                             Want to start referring friends and earning?
                             <br />
-                            <Link href="#your-signup-link">Dont have an account yet? Sign Up!</a>
+                            <Link href="#your-signup-link">Dont have an account yet? Sign Up!</Link>
                         </p>
                     </div>
                 </div>
