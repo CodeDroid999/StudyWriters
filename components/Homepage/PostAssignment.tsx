@@ -138,14 +138,15 @@ export default function PostAssignment() {
 
   return (
     <div className="w-full bg-gray-100 pb-4">
-      <p className="pt-3 text-center text-3xl font-bold text-green-950">
+     <div className="container">
+     <p className="pt-3 text-center text-3xl font-bold text-green-950">
         Get Homework Help
       </p>
       <p className="text-gray text-center">
         Find a tutor to help you with your school!
       </p>
       <form className="mt-6 flex justify-between gap-4 md:mt-8">
-        <div className="flex flex-col col-md-3 col-sm-6">
+        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
           <label
             htmlFor="title"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -162,7 +163,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{titleError}</span>
           )}
         </div>
-        <div className="flex flex-col col-md-3 col-sm-6">
+        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
           <label
             htmlFor="dueDate"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -182,7 +183,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{dueDateError}</span>
           )}
         </div>
-        <div className="col-md-3 col-sm-6 flex flex-col ">
+        <div className="col-md-3 col-sm-6 pb-2 flex flex-col ">
           <label
             htmlFor="budget"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -198,7 +199,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{budgetError}</span>
           )}
         </div>
-        <div className="col-md-3 col-sm-6 flex justify-start align-right items-center">
+        <div className="col-md-3 col-sm-6 pb-2 flex justify-start align-right items-center">
           <div
             className="btn-1 bg-yellow-500 p-2 rounded text-white"
             onClick={handleSave}
@@ -207,6 +208,7 @@ export default function PostAssignment() {
           </div>
         </div>
       </form>
+     </div>
     </div>
   );
 }
