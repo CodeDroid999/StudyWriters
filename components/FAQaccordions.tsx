@@ -84,25 +84,7 @@ const FAQAccordion: React.FC = () => {
           />
         ))}
       </div>
-      <div className="flex space-x-2">
-        <div className="w-full max-w-sm rounded-full bg-green-600 px-1 py-1 pt-4 sm:w-[300px]  xl:my-1  xl:py-2 ">
-          <Link
-            href="/become-a-tasker"
-            className="flex w-full flex-row justify-center text-lg font-semibold text-white"
-          >
-            Join QualityUnitedWriters
-            <MdArrowForward size={28} className="ml-3 pt-1 " />
-          </Link>
-        </div>
-        <div className="w-full max-w-sm rounded-full bg-green-800 px-1 py-1 pt-4 sm:w-[300px]  xl:my-1  xl:py-2 ">
-          <Link
-            href="/faq"
-            className="flex w-full flex-row justify-center text-lg font-semibold text-white"
-          >
-            More Questions?          <MdArrowForward size={28} className="ml-3 pt-1 " />
-          </Link>
-        </div>
-      </div>
+      
     </div>
   )
 }
