@@ -145,7 +145,7 @@ export default function PostAssignment() {
         Find a tutor to help you with your school!
       </p>
       <form className="mt-6 flex justify-between gap-4 md:mt-8">
-        <div className="flex flex-col col-md-3">
+        <div className="flex flex-col col-md-3 col-sm-6">
           <label
             htmlFor="title"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -162,7 +162,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{titleError}</span>
           )}
         </div>
-        <div className="flex flex-col col-md-3">
+        <div className="flex flex-col col-md-3 col-sm-6">
           <label
             htmlFor="dueDate"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -182,7 +182,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{dueDateError}</span>
           )}
         </div>
-        <div className="col-md-3 flex flex-col ">
+        <div className="col-md-3 col-sm-6 flex flex-col ">
           <label
             htmlFor="budget"
             className="mb-2 text-lg font-medium text-gray-700"
@@ -198,7 +198,7 @@ export default function PostAssignment() {
             <span className="text-red-500">{budgetError}</span>
           )}
         </div>
-        <div className="col-md-3 flex justify-start align-right items-center">
+        <div className="col-md-3 col-sm-6 flex justify-start align-right items-center">
           <div
             className="btn-1 bg-yellow-500 p-2 rounded text-white"
             onClick={handleSave}
