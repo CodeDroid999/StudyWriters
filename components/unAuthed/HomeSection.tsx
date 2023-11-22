@@ -1,14 +1,16 @@
+// Import necessary modules and components
 import React from 'react';
-import Alert from './Alert';
+import Alert from './Alert'; // Adjust the path if needed
 import CustomNavbar from './Navbar';
 import Image from 'next/image';
 
+// Define the Home component
 const Home: React.FC = () => {
     return (
         <header id="home" className="header_section">
-             <div className="hero_bg_box">
+            <div className="hero_bg_box">
                 <div className="img-box">
-                    <Image src="public/hero-bg.jpg" alt="" />
+                    <Image src="classNameg" alt="" />
                 </div>
             </div>
             <div className="">
@@ -21,4 +23,5 @@ const Home: React.FC = () => {
     );
 };
 
+// Export the Home component
 export default Home;
