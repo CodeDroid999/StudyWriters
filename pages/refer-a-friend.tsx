@@ -79,7 +79,7 @@ const ReferAFriend: React.FC = () => {
                         <p>
                             Want to start referring friends and earning?
                             <br />
-                            <a href="#your-signup-link">Dont have an account yet? Sign Up!</a>
+                            <Link href="#your-signup-link">Dont have an account yet? Sign Up!</a>
                         </p>
                     </div>
                 </div>
