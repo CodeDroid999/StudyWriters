@@ -83,7 +83,7 @@ export default function ReleasePayment({
               />
             </div>
             <div className="mt-5 text-base font-medium text-gray-700">
-              <p classname="pt-1 pb-2 text-lg">
+              <p className="pt-1 pb-2 text-lg">
                 You are releasing payment for{' '}
                 <span className="text-blue-500">{taskData.title}</span>.{' '}
                 <span className="text-green-950">

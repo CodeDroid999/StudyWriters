@@ -81,7 +81,7 @@ export default function WithdrawFromTask({ taskId, taskData, poster }) {
               />
             </div>
             <div className="mb-10 mt-5 text-base font-medium text-black">
-              <p classname="pt-1 pb-2 text-lg">Are you sure you want to withdraw from this task?</p>
+              <p className="pt-1 pb-2 text-lg">Are you sure you want to withdraw from this task?</p>
             </div>
             <div className="flex w-full flex-row space-x-4">
               <button
