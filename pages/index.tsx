@@ -52,12 +52,10 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <HeroArea />
-      <StatsCounter/>
-      <PostAssignment/>
-      <div className="px-3 sm:px-4 lg:px-6 xl:px-12">
-        <Features />
-      </div>
-      <BeYourOwnBoss/>
+      <StatsCounter />
+      <PostAssignment />
+      <Features />
+      <BeYourOwnBoss />
       <HowItWorksSection />
       <div className="bg-neutral-100 lg:px-6 xl:px-12">
         <FAQAccordion />
