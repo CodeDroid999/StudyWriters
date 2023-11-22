@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import router, { useRouter } from 'next/router'; 
 import Cookies from 'js-cookie';
+import Link from 'next/link';
 
 
 type ContactFormData = {
@@ -237,7 +238,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                             By selecting this, you agree to our{' '}
                             <Link href="#" className="font-semibold text-indigo-600">
                                 privacy&nbsp;policy
-                            </a>
+                            </Link>
                             .
                         </Switch.Label>
                     </Switch.Group>
