@@ -9,7 +9,7 @@ const ThankYouPage = () => {
   };
 
   const handleViewApplication = () => {
-    router.push('/view-application'); // Update with the actual route for viewing the application
+    router.push('/'); // Update with the actual route for viewing the application
   };
 
   return (
