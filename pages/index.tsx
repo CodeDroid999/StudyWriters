@@ -1,3 +1,4 @@
+import FAQAccordion from 'components/FAQaccordions'
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostAssignment from 'components/Homepage/PostAssignment'
@@ -54,6 +55,9 @@ export default function Home(props: PageProps) {
       <PostAssignment/>
       <BeYourOwnBoss/>
       <HowItWorksSection />
+      <div className="bg-neutral-100 lg:px-6 xl:px-12">
+        <FAQAccordion />
+      </div>
       <Footer />
     </>
   )
