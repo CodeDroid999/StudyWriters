@@ -11,7 +11,7 @@ const HowItWorksSection = () => {
             <p className=" text-center">
                 Thousands of college students have used HomeWorkForYou as their secret weapon to make their life easier.
            <br></br>Now it is your turn.                        </p>
-            <StudentStepsSteps />
+            <StudentSteps />
         </div>
     );
 };
