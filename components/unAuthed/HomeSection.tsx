@@ -12,7 +12,7 @@ const Home: React.FC = () => {
                     <Image
                      src="/public/hero-bg.jpg"
                      width={200}
-                     height={height}
+                     height={400}
                       alt="" />
                 </div>
             </div>

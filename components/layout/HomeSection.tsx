@@ -8,7 +8,11 @@ const Home: React.FC = () => {
         <header id="home" className="header_section">
              <div className="hero_bg_box">
                 <div className="img-box">
-                    <Image src="public/hero-bg.jpg" alt="" />
+                <Image
+                     src="/public/hero-bg.jpg"
+                     width={200}
+                     height={140}
+                      alt="" />
                 </div>
             </div>
             <div className="">
