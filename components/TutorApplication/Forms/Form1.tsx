@@ -1,9 +1,11 @@
 import { UserAuth } from 'context/AuthContext';
 import {
+    addDoc,
     collection,
     doc,
     getDocs,
     query,
+    serverTimestamp,
     updateDoc,
     where,
 } from 'firebase/firestore';
@@ -13,6 +15,7 @@ import { toast } from 'react-hot-toast';
 
 import { auth, db } from '../../../firebase';
 import countryList from '../countryList';
+import { getAuth } from 'firebase/auth';
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -42,10 +45,11 @@ export default function Form1() {
     const [lastName, setLastName] = useState(user?.lastName || '');
     const [city, setCity] = useState(user?.city || '');
     const [address, setAddress] = useState(user?.address || '');
-    const [startDate, setStartDate] = useState(user?.startDate || '');
-    const [endDate, setEndDate] = useState(user?.endDate || '');
     const [country, setCountry] = useState(user?.country || '');
     const [state, setState] = useState(user?.state || '');
+    {/*applications*/ }
+    const [startDate, setStartDate] = useState(user?.startDate || '');
+    const [endDate, setEndDate] = useState(user?.endDate || '');
     const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
     const [howHeard, setHowHeard] = useState(user?.howHeard || '');
     const [major, setMajor] = useState(user?.major || '');
@@ -57,21 +61,24 @@ export default function Form1() {
 
     const handleSave = async (e) => {
         e.preventDefault();
-
-        // Validate form data
-        if (!firstName || !lastName || !country || !address || !city || !state) {
-            toast.error('Please fill in all required fields');
-            return;
-        }
-
+    
         try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+    
+            if (!user) {
+                // User is not logged in
+                // Handle the case where the user is not logged in
+                return;
+            }
+    
             const q = query(
                 collection(db, 'users'),
-                where('userId', '==', user?.userId)
+                where('userId', '==', user?.uid)
             );
-
+    
             const querySnapshot = await getDocs(q);
-
+    
             if (!querySnapshot.empty) {
                 const docSnapshot = querySnapshot.docs[0];
                 const userDocRef = doc(db, 'users', docSnapshot.id);
@@ -82,24 +89,43 @@ export default function Form1() {
                     address,
                     city,
                     state,
-                    howHeard,
-                    lastSchoolName,
-                    major,
-                    isSchoolTeacher,
-                    hasAffiliation,
-                    jobTitle,
-                    employer,
-                    startDate,
-                    endDate,
                 });
+            } else {
+                // Handle the case where the user document is not found
             }
-
+    
+            const applicationDocRef = await addDoc(collection(db, 'applications'), {
+                userId: user.uid,
+                createdAt: serverTimestamp(),
+                read: false,
+                firstName,
+                lastName,
+                country,
+                address,
+                city,
+                state,
+                howHeard,
+                lastSchoolName,
+                major,
+                isSchoolTeacher,
+                hasAffiliation,
+                jobTitle,
+                employer,
+                startDate,
+                endDate,
+                // Add other details specific to applications here
+            });
+    
             toast.success('Personal info has been updated');
+            toast.success('Application has been saved');
             router.push('tutor-application/step2');
         } catch (error) {
-            console.error('Error updating personal info:', error.message);
+            console.error('Error updating personal info or saving application:', error.message);
+            toast.error('Error updating. Please try again.');
         }
     };
+    
+
 
 
 
