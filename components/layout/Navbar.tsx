@@ -320,13 +320,13 @@ function Navbar() {
               </Link>
             </div>
           ) : (
-            <div className="flex flex-row items-center space-x-5">
-              <div className="flex flex-row hover:bg-gray-100">
+            <div className="flex flex-row items-center space-x-1">
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link href="/boost-earnings" className="font-medium text-gray-700 hover:text-green-500">
                   Boost Earnings
                 </Link>
               </div>
-              <div className="flex flex-row hover:bg-gray-100">
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
                   <Link href="/post-assignment" className="font-medium text-gray-700 hover:text-green-500">
                     Post Assignment
@@ -340,7 +340,7 @@ function Navbar() {
                   </Link>
                 )}
               </div>
-              <div className="flex flex-row hover:bg-gray-100">
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
                   <Link href="/browse-assignment" className="font-medium text-gray-700 hover:text-green-500">
                     My Assignments
@@ -355,7 +355,7 @@ function Navbar() {
                 )}
               </div>
 
-              <div className="flex flex-row hover:bg-gray-100">
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
                   href={`/notifications/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
@@ -364,7 +364,7 @@ function Navbar() {
                 </Link>
                 {unReadNotifications.length > 0 && <RedDot />}
               </div>
-              <div className="flex flex-row hover:bg-gray-100">
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
                   href={`/messages/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
@@ -372,6 +372,11 @@ function Navbar() {
                   Messages
                 </Link>
                 {unReadMessages.length > 0 && <RedDot />}
+              </div>
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                <Link href="/alerts" className="font-medium text-gray-700 hover:text-green-500">
+                  Alerts
+                </Link>
               </div>
               <Avartar />
             </div>
