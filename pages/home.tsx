@@ -11,6 +11,7 @@ import { Post, Settings } from 'lib/sanity.queries'
 import type { SharedPageProps } from 'pages/_app'
 import FAQAccordion from 'components/FAQaccordions'
 import Head from 'next/head'
+import PostAssignment from 'components/Homepage/PostAssignment'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -49,7 +50,7 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
       <div className="px-3 sm:px-4 lg:px-6 xl:px-12">
-        
+      <PostAssignment />
         <PostYourTask />
         <Features />
       </div>

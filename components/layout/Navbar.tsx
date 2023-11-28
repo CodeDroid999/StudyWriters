@@ -160,44 +160,7 @@ function Navbar() {
                 />
               </div>
             </Link>
-            <div className="flex flex-row items-center space-x-1">
-              <Link
-                href="/post-task"
-                className="rounded-xl bg-green-500  px-2 py-1 text-white hover:bg-sky-500"
-                style={{ whiteSpace: 'nowrap' }}
-                id="customfontsize"
-              >
-                Post a task
-              </Link>
 
-              <Link
-                href="/browse-tasks"
-                className="text-gray-700 hover:text-green-500"
-                style={{ whiteSpace: 'nowrap' }}
-                id="customfontsize"
-              >
-                Browse assignments
-              </Link>
-              {!user ? (
-                <Link
-                  href="/how-it-works"
-                  className="text-gray-700 hover:text-green-500"
-                  style={{ whiteSpace: 'nowrap' }}
-                  id="customfontsize"
-                >
-                  How it works
-                </Link>
-              ) : (
-                <Link
-                  href={`/my-assignments/${user.userId}`}
-                  className="font-medium text-gray-700 hover:text-green-500"
-                  style={{ whiteSpace: 'nowrap' }}
-                  id="customfontsize"
-                >
-                  My tasks
-                </Link>
-              )}
-            </div>
           </div>
 
           {/*buffer div*/}
@@ -209,7 +172,7 @@ function Navbar() {
                 <div className="flex flex-row items-center space-x-1">
                   <Link
                     href="/signup"
-                    className="font-medium text-gray-700 hover:text-green-500"
+                    className="text-gray-700 hover:text-green-500"
                     style={{ whiteSpace: 'nowrap' }}
                     id="customfontsize"
                   >
@@ -217,7 +180,7 @@ function Navbar() {
                   </Link>
                   <Link
                     href="/login"
-                    className="font-medium text-gray-700 hover:text-green-500"
+                    className="text-gray-700 hover:text-green-500"
                     style={{ whiteSpace: 'nowrap' }}
                     id="customfontsize"
                   >
@@ -234,6 +197,50 @@ function Navbar() {
                 </div>
               ) : (
                 <div className="flex flex-row items-center space-x-1">
+                  <div className="flex">
+                    <Link
+                      href="/boost-earnings"
+                      className="text-gray-700 hover:text-green-500"
+                      style={{ whiteSpace: 'nowrap' }}
+                      id="customfontsize"
+                    >
+                      Boost Earnings
+                    </Link>
+                  </div>
+                  <div className="flex">
+                    {userRole === 'Student' && (
+                      <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500">
+                        Post Assignment
+                      </Link>
+                    )}
+
+                    {userRole === 'Tutor' && (
+                      <Link
+                        href="/browse-assignments"
+                        className="text-gray-700 hover:text-green-500 text-sm"
+                        style={{ whiteSpace: 'nowrap' }}
+                        id="customfontsize"
+                      >
+                        Browse
+                        {unReadNotifications.length > 0 && <RedDot />}
+
+                      </Link>
+                    )}
+                  </div>
+                  <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                    {userRole === 'Student' && (
+                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500">
+                        My Assignments
+                      </Link>
+                    )}
+
+                    {userRole === 'Tutor' && (
+                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 text-sm hover:text-green-500 whitespace-nowrap">
+                        Answer Questions
+                        {unReadNotifications.length > 0 && <RedDot />}
+                      </Link>
+                    )}
+                  </div>
                   <div className="flex">
                     <Link
                       href={`/notifications/${user.userId}`}
@@ -255,6 +262,17 @@ function Navbar() {
                       Messages
                     </Link>
                     {unReadMessages.length > 0 && <RedDot />}
+                  </div>
+                  <div className="flex">
+                    <Link
+                      href={`/alerts/${user.userId}`}
+                      className="text-gray-700 hover:text-green-500"
+                      style={{ whiteSpace: 'nowrap' }}
+                      id="customfontsize"
+                    >
+                      Alerts
+                    </Link>
+                    {unReadNotifications.length > 0 && <RedDot />}
                   </div>
 
                   <div className="pr-5">
@@ -288,33 +306,33 @@ function Navbar() {
             <div className="flex flex-row items-center space-x-5">
               <Link
                 href="/"
-                className="font-medium text-gray-700 hover:text-green-500"
+                className="text-gray-700 hover:text-green-500"
               >
                 Home
               </Link>
               <Link
                 href="/how-it-works"
-                className="font-medium text-gray-700 hover:text-green-500"
+                className="text-gray-700 hover:text-green-500"
               >
                 How it works
               </Link>
 
               <Link
                 href="/signup"
-                className="font-medium text-gray-700 hover:text-green-500"
+                className="text-gray-700 hover:text-green-500"
               >
                 Sign Up
               </Link>
 
               <Link
                 href="/login"
-                className="font-medium text-gray-700 hover:text-green-500"
+                className="text-gray-700 hover:text-green-500"
               >
                 Log In
               </Link>
               <Link
                 href="/become-a-tutor"
-                className="rounded-3xl bg-blue-50 px-4 py-[6px] font-medium text-blue-600 hover:bg-blue-100 hover:text-green-700"
+                className="rounded-3xl bg-blue-50 px-4 py-[6px] text-blue-600 hover:bg-blue-100 hover:text-green-700"
               >
                 Become a tutor
               </Link>
@@ -322,33 +340,33 @@ function Navbar() {
           ) : (
             <div className="flex flex-row items-center space-x-1">
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                <Link href="/boost-earnings" className="font-medium text-gray-700 hover:text-green-500">
+                <Link href="/boost-earnings" className="text-gray-700 hover:text-green-500">
                   Boost Earnings
                 </Link>
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
-                  <Link href="/post-assignment" className="font-medium text-gray-700 hover:text-green-500">
+                  <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
                     Post Assignment
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href={`/my-assignments/${user.userId}`}  className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Browse Assignments
+                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                    Browse
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
-                  <Link href={`/my-assignments/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500">
+                  <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500">
                     My Assignments
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href={`/my-assignments/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Answer Questions
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
@@ -358,7 +376,7 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
                   href={`/notifications/${user.userId}`}
-                  className="font-medium text-gray-700 hover:text-green-500"
+                  className="text-gray-700 hover:text-green-500"
                 >
                   Notifications
                 </Link>
@@ -367,14 +385,14 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
                   href={`/messages/${user.userId}`}
-                  className="font-medium text-gray-700 hover:text-green-500"
+                  className="text-gray-700 hover:text-green-500"
                 >
                   Messages
                 </Link>
                 {unReadMessages.length > 0 && <RedDot />}
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                <Link href={`/alerts/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500">
+                <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
                   Alerts
                 </Link>
               </div>
