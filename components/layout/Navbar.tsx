@@ -176,7 +176,7 @@ function Navbar() {
                 style={{ whiteSpace: 'nowrap' }}
                 id="customfontsize"
               >
-                Browse tasks
+                Browse assignments
               </Link>
               {!user ? (
                 <Link

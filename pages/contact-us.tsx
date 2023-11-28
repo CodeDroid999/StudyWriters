@@ -38,7 +38,7 @@ const Contact = () => {
           content="Airtaska is your one-stop destination for finding the right tasks and talented taskers. Post any task, pick the best person, and get it done. Join now to earn money as a tasker or post your tasks for free."
         />
         <meta name="og:image" property="og:image" content="public/airtaskalogo.jpeg" />
-        <meta name="og:url" property="og:url" content="https://www.airtaska.com" />
+        <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
 
       <div className="container mx-auto flex justify-center items-center ">
