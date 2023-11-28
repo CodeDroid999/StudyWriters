@@ -26,8 +26,8 @@ type Notification = {
   read: boolean
   receiverId: string
   senderId: string
- assignmentId: string
-  taskTitle: string
+  assignmentId: string
+  assignmentTitle: string
   type: string
 }
 
@@ -41,9 +41,8 @@ function Navbar() {
   const [unReadNotifications, setUnreadNotifications] = useState([])
   const [unReadMessages, setUnreadMessages] = useState([])
   const [loading, setLoading] = useState(false)
-  const [userRole] = useState([])
-
   const userId = user?.userId
+  const userRole = user?.role
 
   useEffect(() => {
     if (userId) {
@@ -283,45 +282,12 @@ function Navbar() {
                 </Link>
               </h1>
             </div>
-
-            <div className="flex flex-row items-center space-x-5">
-              <Link
-                href="/post-task"
-                className="rounded-3xl bg-green-500  px-5 py-[6px] font-medium text-white hover:bg-sky-500 "
-              >
-                Post a task
-              </Link>
-
-              <Link
-                href="/browse-tasks"
-                className="font-medium text-gray-700 hover:text-green-500"
-              >
-                Browse tasks
-              </Link>
-
-
-
-            </div>
           </div>
-          {!user ? (
-            <Link
-              href="/how-it-works"
-              className="font-medium text-gray-700 hover:text-green-500"
-            >
-              How it works
-            </Link>
-          ) : (
-            <Link
-              href={`/my-tasks/${user.userId}`}
-              className="font-medium text-gray-700 hover:text-green-500"
-            >
-              My task
-            </Link>
-          )}
+
           {!user ? (
             <div className="flex flex-row items-center space-x-5">
               <Link
-                href="/how-it-works"
+                href="/"
                 className="font-medium text-gray-700 hover:text-green-500"
               >
                 Home
@@ -355,10 +321,12 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-5">
-              <div className="flex flex-row">
-                <Dropdown />
+              <div className="flex flex-row hover:bg-grey-100">
+                <Link href="/boost-earnings" className="font-medium text-gray-700 hover:text-green-500">
+                  Boost Earnings
+                </Link>
               </div>
-              <div className="flex flex-row">
+              <div className="flex flex-row hover:bg-grey-100">
                 {userRole === 'Student' && (
                   <Link href="/post-assignment" className="font-medium text-gray-700 hover:text-green-500">
                     Post Assignment
@@ -366,13 +334,28 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500">
+                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Browse Assignments
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
               </div>
-              <div className="flex flex-row">
+              <div className="flex flex-row hover:bg-grey-100">
+                {userRole === 'Student' && (
+                  <Link href="/browse-assignment" className="font-medium text-gray-700 hover:text-green-500">
+                    My Assignments
+                  </Link>
+                )}
+
+                {userRole === 'Tutor' && (
+                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
+                   Answer Questions
+                    {unReadNotifications.length > 0 && <RedDot />}
+                  </Link>
+                )}
+              </div>
+
+              <div className="flex flex-row hover:bg-grey-100">
                 <Link
                   href={`/notifications/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
@@ -381,7 +364,7 @@ function Navbar() {
                 </Link>
                 {unReadNotifications.length > 0 && <RedDot />}
               </div>
-              <div className="flex flex-row">
+              <div className="flex flex-row hover:bg-grey-100">
                 <Link
                   href={`/messages/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"

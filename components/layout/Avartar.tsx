@@ -48,7 +48,7 @@ export default function Avartar() {
           className="bg-white- 500 mt-2 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100  "
           href={`/profile/${user?.userId}`}
         >
-          My Tasker Dashboard
+          My Tutor Dashboard
         </Link>
         <Link
           className="bg-white- 500 mt-2 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800  hover:bg-neutral-100 "
@@ -72,7 +72,7 @@ export default function Avartar() {
           {isDropdownOpen && (
             <div className="absolute right-0 top-10 flex flex-col rounded text-black bg-white p-2 shadow-md">
               <Link href={`/settings/mobile-number/${user?.userId}`} className="text-black">
-              Mobile   </Link>
+                Mobile   </Link>
               <Link href={`/settings/email/${user?.userId}`}>Email</Link>
               <Link href="/forgot-password">Change password</Link>
             </div>

@@ -46,7 +46,7 @@ export default function Avatar() {
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/profile/${user?.userId}`}
           >
-            My Tasker Dashboard
+            My Tutor Dashboard
           </Link>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
