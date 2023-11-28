@@ -5,11 +5,11 @@ const ThankYouPage = () => {
   const router = useRouter();
 
   const handleGoToHome = () => {
-    router.push('/');
+    router.push('/home');
   };
 
   const handleViewApplication = () => {
-    router.push('/'); // Update with the actual route for viewing the application
+    router.push('/home'); // Update with the actual route for viewing the application
   };
 
   return (

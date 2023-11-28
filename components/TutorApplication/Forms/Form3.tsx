@@ -28,7 +28,7 @@ export default function SkillAssessment() {
             toast.error('Please select a topic and upload a valid .doc or .docx file');
             return;
         }
-        
+
         try {
             // Perform additional validations if needed
 
@@ -47,8 +47,6 @@ export default function SkillAssessment() {
 
     return (
         <div className="bg-white p-3">
-            
-            {/* ... (existing code) ... */}
             <p className="mb-1 text-right text-xs font-bold uppercase text-orange-400 md:text-sm">
                 Skill Assessment 2/3
             </p>
@@ -93,7 +91,7 @@ export default function SkillAssessment() {
                     </select>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 ">
                     <p className="text-xl font-bold text-blue-950">Requirements:</p>
                     <div className="p-2">
                         <ul className="list-inside list-disc">
@@ -163,7 +161,7 @@ export default function SkillAssessment() {
                 </label>
 
                 <div
-                    className="drop-container h-40 flex align-center items-center justify-center rounded-md bg-gray-100"
+                    className="drop-container h-40 flex align-center items-center justify-center rounded-md bg-gray-100 border-dashed border-2 border-sky-500 "
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                 >
@@ -199,7 +197,7 @@ export default function SkillAssessment() {
                 </div>
             </form>
 
-            
+
         </div>
     );
 }

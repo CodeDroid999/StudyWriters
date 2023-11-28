@@ -95,10 +95,7 @@ export default function Form1() {
             }
     
             const applicationDocRef = await addDoc(collection(db, 'applications'), {
-                userId: user.uid,
-                createdAt: serverTimestamp(),
-                read: false,
-                firstName,
+                               firstName,
                 lastName,
                 country,
                 address,
@@ -113,12 +110,15 @@ export default function Form1() {
                 employer,
                 startDate,
                 endDate,
+                userId: user.uid,
+                createdAt: serverTimestamp(),
+                read: false,
                 // Add other details specific to applications here
             });
     
             toast.success('Personal info has been updated');
             toast.success('Application has been saved');
-            router.push('tutor-application/step2');
+            router.push('/tutor-application/step2');
         } catch (error) {
             console.error('Error updating personal info or saving application:', error.message);
             toast.error('Error updating. Please try again.');
