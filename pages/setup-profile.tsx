@@ -42,8 +42,6 @@ export default function CompleteAccount() {
     }
     // Add more conditions if needed for other roles
 
-    // Show a toast message to the user
-    toast.success(`Thank you for choosing ${activeRole}. You are being redirected to the ${page}.`);
   };
 
   const handleSubmit = async (event: any) => {
