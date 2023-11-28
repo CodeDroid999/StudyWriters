@@ -229,7 +229,7 @@ function Navbar() {
                   </div>
                   <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                     {userRole === 'Student' && (
-                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500">
+                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
                         My Assignments
                       </Link>
                     )}

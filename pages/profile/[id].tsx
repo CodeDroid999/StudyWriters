@@ -28,10 +28,10 @@ export const formatDate = (dateString) => {
     day === 1 || day === 21 || day === 31
       ? 'st'
       : day === 2 || day === 22
-      ? 'nd'
-      : day === 3 || day === 23
-      ? 'rd'
-      : 'th'
+        ? 'nd'
+        : day === 3 || day === 23
+          ? 'rd'
+          : 'th'
   return `${day}${suffix} ${month} ${year}`
 }
 
@@ -144,147 +144,141 @@ export default function ProfilePage({
           </div>
         </div>
       ) : (
-        <div className="mt-40 bg-gray-100 pt-10 antialiased">
+        <div className="mt-20 bg-gray-100 pt-10 antialiased">
           <div className="container mx-auto">
-            <div className="relative mx-auto w-5/6 rounded-lg bg-white shadow md:w-5/6 lg:w-4/6 xl:w-3/6">
-              <div className="flex flex-row p-3 ">
-                <div className="flex w-full rounded bg-blue-200 p-3 ">
-                  <div
-                    className="flex flex-col justify-center "
-                    style={{ width: '20vw' }}
-                  >
-                    <div className="flex justify-center">
-                      <Image
-                        src={user?.profilePicture || profile}
-                        alt="profile picture"
-                        height={200}
-                        width={200}
-                        className="mr-2 h-[120px] w-[120px] rounded-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <EditProfilePicture />
-                    </div>
+            <div className="flex flex-row p-3 ">
+              <div className="flex w-full rounded bg-blue-200 p-3 ">
+                <div
+                  className="flex flex-col justify-center "
+                  style={{ width: '20vw' }}
+                >
+                  <div className="flex justify-center">
+                    <Image
+                      src={user?.profilePicture || profile}
+                      alt="profile picture"
+                      height={200}
+                      width={200}
+                      className="mr-2 h-[120px] w-[120px] rounded-full object-cover"
+                    />
                   </div>
-                  <div className="justify-right flex min-h-full w-full flex-col p-3">
-                    <p className="text-left text-xl font-bold text-blue-900">
-                      {user?.firstName} {user?.lastName}
-                    </p>
-                    <p className="mt-2 rounded  p-1 text-left text-sm font-medium text-gray-400">
-                      {user?.email}
-                    </p>
+                  <div>
+                    <EditProfilePicture />
                   </div>
                 </div>
+                <div className="justify-right flex min-h-full w-full flex-col p-3">
+                  <p className="text-left text-xl font-bold text-blue-900">
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <p className="mt-2 rounded  p-1 text-left text-sm font-medium text-gray-400">
+                    {user?.email}
+                  </p>
+                </div>
               </div>
+            </div>
 
-              <div className="mt-1">
-                <div className="my-1">
-                  <div className="flex items-center justify-center">
-                    <div className="mx-3  mb-2 w-full justify-center rounded-lg bg-blue-200 text-white">
-                      <h3 className="p-3 text-lg text-gray-900 md:text-2xl lg:text-2xl">
-                        Stats
-                      </h3>
-                      {/* ... (user stats content) */}
-                      <div className="flex flex-wrap items-center  justify-center gap-2 p-5 pt-1">
-                        <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                          <div className="p-4 md:p-7">
-                            <h2 className="text-center text-xl capitalize text-gray-200">
-                              {completedTasks.length}
-                            </h2>
-                            <h3 className="text-center  text-sm  text-gray-400">
-                              Tasks completed
-                            </h3>
-                          </div>
+            <div className="mt-1">
+              <div className="my-1">
+                <div className="flex items-center justify-center">
+                  <div className="mx-3  mb-2 w-full justify-center rounded-lg bg-blue-200 text-white">
+                    <h3 className="p-3 text-lg text-gray-900 md:text-2xl lg:text-2xl">
+                      Stats
+                    </h3>
+                    {/* ... (user stats content) */}
+                    <div className="flex flex-wrap items-center  justify-center gap-2 p-5 pt-1">
+                      <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
+                        <div className="p-4 md:p-7">
+                          <h2 className="text-center text-xl capitalize text-gray-200">
+                            {completedTasks.length}
+                          </h2>
+                          <h3 className="text-center  text-sm  text-gray-400">
+                           Assignments completed
+                          </h3>
                         </div>
-                        <div className="w-42 h-42 flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                          <div className="p-4 md:p-7">
-                            <h2 className="text-center text-xl capitalize text-gray-200">
-                              {tasks.length}
-                            </h2>
-                            <h3 className="text-center  text-sm  text-gray-400">
-                              Tasks Assigned
-                            </h3>
-                          </div>
+                      </div>
+                      <div className="w-42 h-42 flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
+                        <div className="p-4 md:p-7">
+                          <h2 className="text-center text-xl capitalize text-gray-200">
+                            {tasks.length}
+                          </h2>
+                          <h3 className="text-center  text-sm  text-gray-400">
+                          Homeworks signed
+                          </h3>
                         </div>
+                      </div>
 
-                        <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                          <div className="p-4 md:p-7">
-                            <h2 className="text-center text-lg capitalize text-gray-200">
-                              {myTaskerReviews.length}
-                            </h2>
-                            <h3 className="text-center  text-sm  text-gray-400">
-                              Reviews
-                            </h3>
-                          </div>
+                      <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
+                        <div className="p-4 md:p-7">
+                          <h2 className="text-center text-lg capitalize text-gray-200">
+                            {myTaskerReviews.length}
+                          </h2>
+                          <h3 className="text-center  text-sm  text-gray-400">
+                            Reviews
+                          </h3>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="my-5 flex items-center justify-between space-x-1 px-6">
-                    <button
-                      className={`${
-                        activeTab === 'basic' ? 'bg-gray-200' : ''
-                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
-                      onClick={() => handleTabClick('basic')}
-                    >
-                      Personal Info
-                    </button>
-                    <button
-                      className={`${
-                        activeTab === 'skills' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
-                      onClick={() => handleTabClick('skills')}
-                    >
-                      Skills & Education
-                    </button>
-                    <button
-                      className={`${
-                        activeTab === 'bio' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
-                      onClick={() => handleTabClick('bio')}
-                    >
-                      Bio
-                    </button>
-                    <button
-                      className={`${
-                        activeTab === 'reviews' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
-                      onClick={() => handleTabClick('reviews')}
-                    >
-                      Reviews
-                    </button>
-                  </div>
-
-                  {activeTab === 'basic' && (
-                    <div className="w-full p-4">
-                      {/* Content for the Personal Info tab */}
-                      <PersonalInfoTab />
-                    </div>
-                  )}
-
-                  {activeTab === 'skills' && (
-                    <div className="w-full p-4">
-                      {/* Content for the Skills & Education tab */}
-                      <SkillsAndEducation />
-                    </div>
-                  )}
-
-                  {activeTab === 'bio' && (
-                    <div className="w-full p-4">
-                      {/* Content for the Languages tab */}
-                      <Bio />
-                    </div>
-                  )}
-
-                  {activeTab === 'reviews' && (
-                    <div className="w-full p-4">
-                      {/* Content for the Reviews tab */}
-                      <ReviewsTab reviews={myTaskerReviews} />
-                    </div>
-                  )}
-
-                  {/* ... (other code) */}
                 </div>
+                <div className="my-5 flex items-center justify-between space-x-1 px-6">
+                  <button
+                    className={`${activeTab === 'basic' ? 'bg-gray-200' : ''
+                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                    onClick={() => handleTabClick('basic')}
+                  >
+                    Personal Info
+                  </button>
+                  <button
+                    className={`${activeTab === 'skills' ? 'bg-gray-100' : ''
+                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                    onClick={() => handleTabClick('skills')}
+                  >
+                    Skills & Education
+                  </button>
+                  <button
+                    className={`${activeTab === 'bio' ? 'bg-gray-100' : ''
+                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                    onClick={() => handleTabClick('bio')}
+                  >
+                    Bio
+                  </button>
+                  <button
+                    className={`${activeTab === 'reviews' ? 'bg-gray-100' : ''
+                      } w-full whitespace-nowrap rounded py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                    onClick={() => handleTabClick('reviews')}
+                  >
+                    Reviews
+                  </button>
+                </div>
+
+                {activeTab === 'basic' && (
+                  <div className="w-full p-4">
+                    {/* Content for the Personal Info tab */}
+                    <PersonalInfoTab />
+                  </div>
+                )}
+
+                {activeTab === 'skills' && (
+                  <div className="w-full p-4">
+                    {/* Content for the Skills & Education tab */}
+                    <SkillsAndEducation />
+                  </div>
+                )}
+
+                {activeTab === 'bio' && (
+                  <div className="w-full p-4">
+                    {/* Content for the Languages tab */}
+                    <Bio />
+                  </div>
+                )}
+
+                {activeTab === 'reviews' && (
+                  <div className="w-full p-4">
+                    {/* Content for the Reviews tab */}
+                    <ReviewsTab reviews={myTaskerReviews} />
+                  </div>
+                )}
+
+                {/* ... (other code) */}
               </div>
             </div>
           </div>
