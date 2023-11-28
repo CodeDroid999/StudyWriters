@@ -321,12 +321,12 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-5">
-              <div className="flex flex-row hover:bg-grey-100">
+              <div className="flex flex-row hover:bg-gray-100">
                 <Link href="/boost-earnings" className="font-medium text-gray-700 hover:text-green-500">
                   Boost Earnings
                 </Link>
               </div>
-              <div className="flex flex-row hover:bg-grey-100">
+              <div className="flex flex-row hover:bg-gray-100">
                 {userRole === 'Student' && (
                   <Link href="/post-assignment" className="font-medium text-gray-700 hover:text-green-500">
                     Post Assignment
@@ -340,7 +340,7 @@ function Navbar() {
                   </Link>
                 )}
               </div>
-              <div className="flex flex-row hover:bg-grey-100">
+              <div className="flex flex-row hover:bg-gray-100">
                 {userRole === 'Student' && (
                   <Link href="/browse-assignment" className="font-medium text-gray-700 hover:text-green-500">
                     My Assignments
@@ -355,7 +355,7 @@ function Navbar() {
                 )}
               </div>
 
-              <div className="flex flex-row hover:bg-grey-100">
+              <div className="flex flex-row hover:bg-gray-100">
                 <Link
                   href={`/notifications/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
@@ -364,7 +364,7 @@ function Navbar() {
                 </Link>
                 {unReadNotifications.length > 0 && <RedDot />}
               </div>
-              <div className="flex flex-row hover:bg-grey-100">
+              <div className="flex flex-row hover:bg-gray-100">
                 <Link
                   href={`/messages/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
