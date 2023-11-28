@@ -43,12 +43,12 @@ export default function TaskDetails(props: any) {
   const { taskData, taskerDetails, posterDetails } = props
   const { user } = UserAuth()
   const router = useRouter()
-  const taskId = router.query.id.toString()
+  constassignmentId = router.query.id.toString()
   const poster = posterDetails
 
   useEffect(() => {
     setLoading(true)
-    const offersCollectionRef = collection(db, 'tasks', taskId, 'offers')
+    const offersCollectionRef = collection(db, 'tasks',assignmentId, 'offers')
     const unsubscribe = onSnapshot(offersCollectionRef, async (snapshot) => {
       const updatedOffers: any = await Promise.all(
         snapshot.docs.map(async (doc) => {
@@ -81,14 +81,14 @@ export default function TaskDetails(props: any) {
 
   const withdrawOffer = async (offerId: string) => {
     try {
-      await deleteDoc(doc(db, 'tasks', taskId, 'offers', offerId))
+      await deleteDoc(doc(db, 'tasks',assignmentId, 'offers', offerId))
       await addDoc(collection(db, 'notifications'), {
         receiverId: taskData.poster.userId,
         senderId: user.userId,
         type: 'WithdrawOffer',
         content: 'has withdrawn offer on',
         taskTitle: taskData.title,
-        taskId,
+       assignmentId,
         read: false,
         createdAt: serverTimestamp(),
       })
@@ -163,12 +163,12 @@ export default function TaskDetails(props: any) {
                 {user && taskData.poster.userId === user?.userId && (
                   <div className="w-full">
                     {taskData.status === 'Open' && (
-                      <UpdateTask taskId={taskId} taskData={taskData} />
+                      <UpdateTaskassignmentId={taskId} taskData={taskData} />
                     )}
                     {(taskData.status === 'Open' ||
                       taskData.status === 'Assigned') && (
                       <CancelTask
-                        taskId={taskId}
+                       assignmentId={taskId}
                         taskData={taskData}
                         tasker={taskerDetails}
                       />
@@ -182,7 +182,7 @@ export default function TaskDetails(props: any) {
                       !taskData.posterReview ? (
                         <AddReview
                           taskerDetails={taskerDetails}
-                          taskId={taskId}
+                         assignmentId={taskId}
                           poster={poster}
                           taskData={taskData}
                         />
@@ -198,7 +198,7 @@ export default function TaskDetails(props: any) {
                           taskData={taskData}
                           taskerDetails={taskerDetails}
                           poster={poster}
-                          taskId={taskId}
+                         assignmentId={taskId}
                         />
                       )
                     )}
@@ -296,7 +296,7 @@ export default function TaskDetails(props: any) {
                                 <RequestPayment
                                   taskData={taskData}
                                   poster={poster}
-                                  taskId={taskId}
+                                 assignmentId={taskId}
                                 />
                               </div>
                             )}
@@ -321,7 +321,7 @@ export default function TaskDetails(props: any) {
                             <div className="mt-5">
                               <AddReview
                                 taskerDetails={taskerDetails}
-                                taskId={taskId}
+                               assignmentId={taskId}
                                 poster={poster}
                                 taskData={taskData}
                               />
@@ -340,7 +340,7 @@ export default function TaskDetails(props: any) {
                 <MoreOptions
                   taskData={taskData}
                   poster={poster}
-                  taskId={taskId}
+                 assignmentId={taskId}
                 />
               )}
             </div>
@@ -410,13 +410,13 @@ export default function TaskDetails(props: any) {
                               customerId={taskerDetails?.userId}
                               posterId={poster.userId}
                               taskData={taskData}
-                              taskId={taskId}
+                             assignmentId={taskId}
                               tasker={taskerDetails}
                               poster={poster}
                             />
                           </div>
                         )}
-                      <TaskReviews taskId={taskId} />
+                      <TaskReviewsassignmentId={taskId} />
                     </div>
                   )}
                 </div>
@@ -495,7 +495,7 @@ export default function TaskDetails(props: any) {
                               customerId={offer.userId}
                               posterId={poster.userId}
                               taskData={taskData}
-                              taskId={taskId}
+                             assignmentId={taskId}
                               offerId={offer.offerId}
                               poster={poster}
                               customer={offer.customer}
@@ -524,9 +524,9 @@ export default function TaskDetails(props: any) {
 }
 
 export async function getServerSideProps({ params }) {
-  const taskId = params.id
+  constassignmentId = params.id
 
-  const docRef = doc(db, 'tasks', taskId)
+  const docRef = doc(db, 'tasks',assignmentId)
   const docSnap = await getDoc(docRef)
 
   const taskData = docSnap.data()

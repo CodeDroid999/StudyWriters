@@ -8,7 +8,7 @@ import { db } from '../../firebase'
 import { UserAuth } from 'context/AuthContext'
 import { toast } from 'react-hot-toast'
 
-export default function UpdateTask({ taskId, taskData }) {
+export default function UpdateTask({assignmentId, taskData }) {
   const [title, setTitle] = useState(taskData?.title)
   const [titleError, setTitleError] = useState('')
   const [dueDate, setDueDate] = useState(taskData?.dueDate)
@@ -75,7 +75,7 @@ export default function UpdateTask({ taskId, taskData }) {
     if (hasError) {
       return
     }
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
     await updateDoc(taskRef, {
       dueDate,
       budget,

@@ -19,7 +19,7 @@ export default function NewMessage({
   customerId,
   posterId,
   taskData,
-  taskId,
+ assignmentId,
   poster,
   tasker,
 }) {
@@ -83,7 +83,7 @@ export default function NewMessage({
       type: 'Message',
       content: 'has sent you a message on',
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })

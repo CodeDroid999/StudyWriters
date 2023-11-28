@@ -26,7 +26,7 @@ export default function MyTasksPage() {
 
   useEffect(() => {
     setLoading(true)
-    const q = query(collection(db, 'tasks'))
+    const q = query(collection(db, 'assignments'))
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const updatedTasks = []
@@ -36,7 +36,7 @@ export default function MyTasksPage() {
 
         const id = doc.id
 
-        const offersCollectionRef = collection(db, 'tasks', id, 'offers')
+        const offersCollectionRef = collection(db, 'assignments', id, 'offers')
         const offersQuerySnapshot = await getDocs(offersCollectionRef)
         const offers = offersQuerySnapshot.docs.map((offerDoc) => {
           const offerData = offerDoc.data()

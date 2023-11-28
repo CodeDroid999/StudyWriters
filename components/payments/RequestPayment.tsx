@@ -12,14 +12,14 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function RequestPayment({ taskData, poster, taskId }) {
+export default function RequestPayment({ taskData, poster,assignmentId }) {
   const [step, setStep] = useState(1)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const { user } = UserAuth()
   const router = useRouter()
 
   const handleRequestPayment = async () => {
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
 
     await updateDoc(taskRef, {
       paymentRequested: true,
@@ -31,7 +31,7 @@ export default function RequestPayment({ taskData, poster, taskId }) {
       type: 'RequestPayment',
       content: 'has requested payment on',
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })

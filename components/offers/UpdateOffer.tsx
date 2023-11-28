@@ -31,7 +31,7 @@ export default function MakeOffer({
   const router = useRouter()
   const { user } = UserAuth()
 
-  const taskId = router.query.id.toString()
+  constassignmentId = router.query.id.toString()
 
   const openForm = () => {
     setIsFormOpen(true)
@@ -89,7 +89,7 @@ export default function MakeOffer({
 
   const SubmitForm = async (event: any) => {
     event.preventDefault()
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
     const offerRef = doc(collection(taskRef, 'offers'), offerId)
     await updateDoc(offerRef, {
       amount: newOffer,
@@ -104,7 +104,7 @@ export default function MakeOffer({
       type: 'UpdateOffer',
       content: 'has updated offer made on',
       taskTitle,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })

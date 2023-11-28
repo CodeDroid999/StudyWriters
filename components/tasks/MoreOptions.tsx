@@ -5,7 +5,7 @@ import PostSimilarTask from './PostSimilarTask'
 import { AiFillCaretDown } from 'react-icons/ai'
 import { UserAuth } from 'context/AuthContext'
 
-export default function MoreOptions({ taskData, poster, taskId }) {
+export default function MoreOptions({ taskData, poster,assignmentId }) {
   const [isOpen, setIsOpen] = useState(false)
   const { user } = UserAuth()
   return (
@@ -28,7 +28,7 @@ export default function MoreOptions({ taskData, poster, taskId }) {
             taskData.tasker.userId === user?.userId &&
             taskData.status === 'Assigned' && (
               <WithdrawFromTask
-                taskId={taskId}
+               assignmentId={taskId}
                 taskData={taskData}
                 poster={poster}
               />

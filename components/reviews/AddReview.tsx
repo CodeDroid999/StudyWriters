@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaStar } from 'react-icons/fa'
 
-export default function AddReview({ taskerDetails, taskId, poster, taskData }) {
+export default function AddReview({ taskerDetails,assignmentId, poster, taskData }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
@@ -62,12 +62,12 @@ export default function AddReview({ taskerDetails, taskId, poster, taskData }) {
       timestamp: serverTimestamp(),
       posterId,
       taskerId,
-      taskId,
+     assignmentId,
       senderId: userId,
       receiverId,
     })
 
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
 
     if (posterId === userId) {
       await updateDoc(taskRef, {
@@ -85,7 +85,7 @@ export default function AddReview({ taskerDetails, taskId, poster, taskData }) {
       type: 'Review',
       content: 'has reviewed you on',
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })

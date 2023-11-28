@@ -12,7 +12,7 @@ import Image from 'next/image'
 import profile from 'public/profile.jpeg'
 import Link from 'next/link'
 
-export default function TaskReviews({ taskId }) {
+export default function TaskReviews({assignmentId }) {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('Poster')
@@ -23,7 +23,7 @@ export default function TaskReviews({ taskId }) {
       const reviewsRef = collection(db, 'reviews')
 
       // Fetch task's reviews
-      const reviewsQuery = query(reviewsRef, where('taskId', '==', taskId))
+      const reviewsQuery = query(reviewsRef, where('taskId', '==',assignmentId))
 
       const unsubscribe = onSnapshot(reviewsQuery, async (querySnapshot) => {
         const reviewsData = await Promise.all(

@@ -12,13 +12,13 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { UserAuth } from 'context/AuthContext'
 
-export default function WithdrawFromTask({ taskId, taskData, poster }) {
+export default function WithdrawFromTask({assignmentId, taskData, poster }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const { user } = UserAuth()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'tasks', taskId)
+      const taskRef = doc(db, 'tasks',assignmentId)
 
       await updateDoc(taskRef, {
         tasker: {
@@ -36,7 +36,7 @@ export default function WithdrawFromTask({ taskId, taskData, poster }) {
         type: 'CancelTask',
         content: 'has withdrawn from',
         taskTitle: taskData.title,
-        taskId,
+       assignmentId,
         read: false,
         createdAt: serverTimestamp(),
       })

@@ -58,7 +58,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
 
   const router = useRouter()
   const { user } = UserAuth()
-  const taskId = router.query.id.toString()
+  constassignmentId = router.query.id.toString()
 
   const openForm = () => {
     setIsFormOpen(true)
@@ -69,7 +69,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
   }
 
   const assignTask = async () => {
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
 
     const newDoc: any = await updateDoc(taskRef, {
       status: 'Assigned',
@@ -94,7 +94,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
       type: 'AcceptOffer',
       content: 'has accepted your offer on',
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
@@ -110,7 +110,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
       taskerId: offer.userId,
       posterId: user.userId,
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       createdAt: serverTimestamp(),
       taskerAmount: {
         price: offer.amount,

@@ -26,7 +26,7 @@ type Notification = {
   read: boolean
   receiverId: string
   senderId: string
-  taskId: string
+ assignmentId: string
   taskTitle: string
   type: string
 }
@@ -41,6 +41,7 @@ function Navbar() {
   const [unReadNotifications, setUnreadNotifications] = useState([])
   const [unReadMessages, setUnreadMessages] = useState([])
   const [loading, setLoading] = useState(false)
+  const [userRole] = useState([])
 
   const userId = user?.userId
 
@@ -358,12 +359,18 @@ function Navbar() {
                 <Dropdown />
               </div>
               <div className="flex flex-row">
-                <Link
-                  href={`/assignments/${user.userId}`}
-                  className="font-medium text-gray-700 hover:text-green-500"
-                >
-                  Assignments                </Link>
-                {unReadNotifications.length > 0 && <RedDot />}
+                {userRole === 'Student' && (
+                  <Link href="/post-assignment" className="font-medium text-gray-700 hover:text-green-500">
+                    Post Assignment
+                  </Link>
+                )}
+
+                {userRole === 'Tutor' && (
+                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500">
+                    Browse Assignments
+                    {unReadNotifications.length > 0 && <RedDot />}
+                  </Link>
+                )}
               </div>
               <div className="flex flex-row">
                 <Link

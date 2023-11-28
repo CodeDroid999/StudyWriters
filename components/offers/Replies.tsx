@@ -21,7 +21,7 @@ export default function Replies({
   customerId,
   posterId,
   taskData,
-  taskId,
+ assignmentId,
   offerId,
   poster,
   customer,
@@ -32,7 +32,7 @@ export default function Replies({
   const { user } = UserAuth()
 
   useEffect(() => {
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
     const offerRef = doc(taskRef, 'offers', offerId)
     const repliesCollectionRef = collection(offerRef, 'replies')
     const unsubscribe = onSnapshot(repliesCollectionRef, async (snapshot) => {
@@ -65,14 +65,14 @@ export default function Replies({
     return () => {
       unsubscribe()
     }
-  }, [offerId, taskId])
+  }, [offerId,assignmentId])
 
   const sendReply = async (e: any) => {
     e.preventDefault()
     if (!newReply) {
       return
     }
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
     const offerRef = doc(taskRef, 'offers', offerId)
     const repliesCollectionRef = collection(offerRef, 'replies')
 
@@ -97,7 +97,7 @@ export default function Replies({
       type: 'Message',
       content: 'has sent you a message on',
       taskTitle: taskData.title,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })

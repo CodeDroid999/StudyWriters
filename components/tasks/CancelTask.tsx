@@ -11,12 +11,12 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function CancelTask({ taskId, taskData, tasker }) {
+export default function CancelTask({assignmentId, taskData, tasker }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'tasks', taskId)
+      const taskRef = doc(db, 'tasks',assignmentId)
       if (taskData.status === 'Assigned') {
         await updateDoc(taskRef, {
           status: 'Cancelled',
@@ -27,7 +27,7 @@ export default function CancelTask({ taskId, taskData, tasker }) {
           type: 'CancelTask',
           content: 'has cancelled ',
           taskTitle: taskData.title,
-          taskId,
+         assignmentId,
           read: false,
           createdAt: serverTimestamp(),
         })

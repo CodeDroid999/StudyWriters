@@ -21,7 +21,7 @@ export default function MakeOffer({ posterId, taskTitle, poster }) {
   const router = useRouter()
   const { user } = UserAuth()
 
-  const taskId = router.query.id.toString()
+  constassignmentId = router.query.id.toString()
 
   const openForm = () => {
     if (
@@ -92,7 +92,7 @@ export default function MakeOffer({ posterId, taskTitle, poster }) {
 
   const SubmitForm = async (event: any) => {
     event.preventDefault()
-    const taskRef = doc(db, 'tasks', taskId)
+    const taskRef = doc(db, 'tasks',assignmentId)
     await addDoc(collection(taskRef, 'offers'), {
       userId: user.userId,
       amount: offer,
@@ -108,7 +108,7 @@ export default function MakeOffer({ posterId, taskTitle, poster }) {
       type: 'MakeOffer',
       content: 'has made an offer on',
       taskTitle,
-      taskId,
+     assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
