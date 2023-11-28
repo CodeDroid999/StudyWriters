@@ -354,8 +354,16 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-5">
-               <div className="flex flex-row">
-               <Dropdown/>
+              <div className="flex flex-row">
+                <Dropdown />
+              </div>
+              <div className="flex flex-row">
+                <Link
+                  href={`/assignments/${user.userId}`}
+                  className="font-medium text-gray-700 hover:text-green-500"
+                >
+                  Assignments                </Link>
+                {unReadNotifications.length > 0 && <RedDot />}
               </div>
               <div className="flex flex-row">
                 <Link
