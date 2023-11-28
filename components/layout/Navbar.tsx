@@ -334,7 +334,7 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href={`/my-assignments/${user.userId}`}  className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Browse Assignments
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
@@ -342,14 +342,14 @@ function Navbar() {
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
-                  <Link href="/browse-assignment" className="font-medium text-gray-700 hover:text-green-500">
+                  <Link href={`/my-assignments/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500">
                     My Assignments
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/browse-assignments" className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
-                   Answer Questions
+                  <Link href={`/my-assignments/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500 whitespace-nowrap">
+                    Answer Questions
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
@@ -374,7 +374,7 @@ function Navbar() {
                 {unReadMessages.length > 0 && <RedDot />}
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                <Link href="/alerts" className="font-medium text-gray-700 hover:text-green-500">
+                <Link href={`/alerts/${user.userId}`} className="font-medium text-gray-700 hover:text-green-500">
                   Alerts
                 </Link>
               </div>
