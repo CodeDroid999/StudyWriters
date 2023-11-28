@@ -1,32 +1,26 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link if you're using React Router
 
 const Dropdown = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const options = ['Educators', 'Educator Portal', 'Educator Summit'];
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setDropdownOpen(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
     <div className="dropdown">
-      <div
-        className={`dropdown-toggle ${dropdownOpen ? 'open' : ''}`}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
-      >
-        {selectedOption || 'Select an option'}
-        <i className="material-icons">arrow_drop_down</i>
+      <div className="dropdown-toggle" onClick={toggleDropdown}>
+        Educators <i className="material-icons">arrow_drop_down</i>
       </div>
       {dropdownOpen && (
         <ul className="dropdown-menu">
-          {options.map((option, index) => (
-            <li key={index} onClick={() => handleOptionClick(option)}>
-              {option}
-            </li>
-          ))}
+          <li>
+            <Link to="/educator-portal">Educator Portal</Link>
+          </li>
+          <li>
+            <Link to="/educator-summit">Educator Summit</Link>
+          </li>
         </ul>
       )}
     </div>

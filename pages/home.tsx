@@ -49,7 +49,7 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.airtaska.com" />
       </Head>
       <div className="px-3 sm:px-4 lg:px-6 xl:px-12">
-        <Hero />
+        
         <PostYourTask />
         <Features />
       </div>

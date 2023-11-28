@@ -13,7 +13,11 @@ import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import type { SharedPageProps } from 'pages/_app'
-import React, { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase'
+import toast from 'react-hot-toast'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -26,6 +30,19 @@ interface Query {
 
 export default function Home(props: PageProps) {
   const { posts, settings, draftMode } = props
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get('redirect');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push(redirect || '/home');
+        toast.success('Logged In');
+      }
+    });
+    return () => unsubscribe();
+  }, [router, redirect]);
 
   return (
     <>

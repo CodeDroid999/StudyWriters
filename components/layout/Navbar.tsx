@@ -17,6 +17,7 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { useRouter } from 'next/router'
+import Dropdown from './DropDown'
 
 type Notification = {
   id: string
@@ -188,7 +189,7 @@ function Navbar() {
                 </Link>
               ) : (
                 <Link
-                  href={`/my-tasks/${user.userId}`}
+                  href={`/my-assignments/${user.userId}`}
                   className="font-medium text-gray-700 hover:text-green-500"
                   style={{ whiteSpace: 'nowrap' }}
                   id="customfontsize"
@@ -223,12 +224,12 @@ function Navbar() {
                     Log In
                   </Link>
                   <Link
-                    href="/become-a-tasker"
+                    href="/become-a-tutor"
                     className="rounded-2xl bg-blue-50 px-2 py-[3px] text-blue-700 hover:bg-blue-100 hover:text-green-700"
                     style={{ whiteSpace: 'nowrap' }}
                     id="customfontsize"
                   >
-                    Become a tasker
+                    Become a Tutor
                   </Link>
                 </div>
               ) : (
@@ -345,7 +346,7 @@ function Navbar() {
                 Log In
               </Link>
               <Link
-                href="/become-a-tasker"
+                href="/become-a-tutor"
                 className="rounded-3xl bg-blue-50 px-4 py-[6px] font-medium text-blue-600 hover:bg-blue-100 hover:text-green-700"
               >
                 Become a tutor
@@ -353,6 +354,9 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-5">
+               <div className="flex flex-row">
+               <Dropdown/>
+              </div>
               <div className="flex flex-row">
                 <Link
                   href={`/notifications/${user.userId}`}
