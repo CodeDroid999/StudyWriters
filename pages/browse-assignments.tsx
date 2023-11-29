@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
-import TaskCard from 'components/browse-assignments/TaskCard';
 import {
   collection,
   getDocs,
@@ -11,6 +10,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
+import TaskCard from 'components/browse-tasks/TaskCard';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
