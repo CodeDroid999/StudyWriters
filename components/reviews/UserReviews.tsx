@@ -86,7 +86,7 @@ export default function UserReviews({ userId }) {
           {taskerReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user ha no reviews as a Tutor!
+                This user has no reviews as a Tutor!
               </h1>
             </div>
           ) : (
