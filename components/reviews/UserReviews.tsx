@@ -49,8 +49,8 @@ export default function UserReviews({ userId }) {
       }
     }
   }, [userId])
-  const taskerReviews = reviews.filter(
-    (review) => review.receiverId === review.taskerId
+  const tutorReviews = reviews.filter(
+    (review) => review.receiverId === review.tutorId
   )
   const studentReviews = reviews.filter(
     (review) => review.receiverId === review.posterId
@@ -83,14 +83,14 @@ export default function UserReviews({ userId }) {
       </div>
       {activeTab === 'Tutor' && (
         <div>
-          {taskerReviews.length === 0 ? (
+          {tutorReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
                 This user has no reviews as a Tutor!
               </h1>
             </div>
           ) : (
-            <ReviewsTab reviews={taskerReviews} />
+            <ReviewsTab reviews={tutorReviews} />
           )}
         </div>
       )}

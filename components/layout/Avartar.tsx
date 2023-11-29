@@ -12,9 +12,13 @@ export default function Avartar() {
   }
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isMainDropdownOpen, setIsMainDropdownOpen] = useState(false)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
+  }
+  const toggleMainDropdown = () => {
+    setIsMainDropdownOpen(!isMainDropdownOpen)
   }
 
   const closeDropdown = () => {
@@ -22,7 +26,7 @@ export default function Avartar() {
   }
   return (
     <div className="hs-dropdown bg-white-500 relative inline-flex [--trigger:hover]">
-      <span id="hs-dropdown-hover-event">
+      <span id="hs-dropdown-hover-event" onClick={toggleMainDropdown}>
         <Image
           src={user?.profilePicture || profile}
           alt="profile"
@@ -31,13 +35,23 @@ export default function Avartar() {
           className="h-[50px] w-[50px] cursor-pointer rounded-full object-cover"
         />
       </span>
-
+      {isMainDropdownOpen && (
       <div
         className="hs-dropdown-menu duration mt-2 hidden min-w-[15rem] rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] before:absolute before:-top-4 before:left-0 before:h-4 before:w-full after:absolute after:-bottom-4 after:left-0 after:h-4 after:w-full hs-dropdown-open:opacity-100 "
         aria-labelledby="hs-dropdown-hover-event"
       >
         <div className="rounded bg-gray-100">
+        <span id="hs-dropdown-hover-event">
+        <Image
+          src={user?.profilePicture || profile}
+          alt="profile"
+          width={50}
+          height={50}
+          className="h-[50px] w-[50px] cursor-pointer rounded-full object-cover"
+        />
+      </span>
           <Link href={`/public-profile/${user?.userId}`}>
+            
             <span className="flex items-center gap-x-3.5 px-3 pt-1 text-sm text-blue-900 hover:bg-neutral-100 ">
               {user?.firstName} {user?.lastName}
             </span>
@@ -85,6 +99,7 @@ export default function Avartar() {
           Log out
         </div>
       </div>
+         )}
     </div>
   )
 }

@@ -18,10 +18,10 @@ export const formatDate = (dateString) => {
     day === 1 || day === 21 || day === 31
       ? 'st'
       : day === 2 || day === 22
-      ? 'nd'
-      : day === 3 || day === 23
-      ? 'rd'
-      : 'th'
+        ? 'nd'
+        : day === 3 || day === 23
+          ? 'rd'
+          : 'th'
   return `${day}${suffix} ${month} ${year}`
 }
 
@@ -76,9 +76,10 @@ export default function PublicProfile() {
           </div>
         </div>
       ) : (
-        <div className="mx-auto mt-20 min-h-screen max-w-[1000px]  px-3 pt-10 antialiased">
-          <div className=" flex flex-col ">
-            <div className="flex-1">
+        <div className="min-w-100  min-h-screen  bg-blue-100">
+          <div className="bg-blue-100 mx-auto mt-20 min-h-screen max-w-[1000px]  px-3 pt-10 antialiased">
+          <div className=" flex space-x-2">
+            <div className="">
               <Image
                 src={user?.profilePicture || profile}
                 alt="profile picture"
@@ -87,15 +88,16 @@ export default function PublicProfile() {
                 className="h-[100px] w-[100px] rounded-full object-cover"
               />
             </div>
-            <p className="text-2xl font-semibold text-green-950">
-              {user?.firstName} {user?.lastName}
-            </p>
-           {/*Commenting this line to accomodate reviews older than join date of users
-           {user?.createdAt && (
-              <p className="text-sm font-medium text-green-950">
-                Member since {user?.createdAt}
+            <div className="flex flex-col justify-center align-center items-center">
+              <p className="text-2xl font-semibold text-green-950">
+                {user?.firstName} {user?.lastName}
               </p>
-           )} */}
+              {user?.createdAt && (
+                <p className="text-sm font-medium text-green-950">
+                  Member since {user?.createdAt}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="mt-3">
@@ -142,6 +144,7 @@ export default function PublicProfile() {
             )}
           </div>
           <div>{user && <UserReviews userId={user?.userId} />}</div>
+        </div>
         </div>
       )}
     </div>
