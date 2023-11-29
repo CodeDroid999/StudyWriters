@@ -31,7 +31,7 @@ export default function MakeOffer({
   const router = useRouter()
   const { user } = UserAuth()
 
-  constassignmentId = router.query.id.toString()
+  const assignmentId = router.query.id.toString()
 
   const openForm = () => {
     setIsFormOpen(true)

@@ -27,7 +27,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
   const [billingAddress, setBillingAddress] = useState('')
   const [billingAddressError, setBillingAddressError] = useState('')
   const router = useRouter()
-  constassignmentId = router.query.id.toString()
+  const assignmentId = router.query.id.toString()
 
   const dateHandler = async (event: any) => {
     event.preventDefault()

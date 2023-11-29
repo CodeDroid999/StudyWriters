@@ -110,7 +110,7 @@ export default function PostSimilarTask({ assignmentData }) {
       taskerReview: false,
     })
 
-    constassignmentId = docRef.id
+    const assignmentId = docRef.id
 
     const usersCollection = collection(db, 'users')
     const querySnapshot = await getDocs(usersCollection)

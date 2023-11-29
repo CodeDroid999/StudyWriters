@@ -21,7 +21,7 @@ export default function MakeOffer({ posterId, taskTitle, student }) {
   const router = useRouter()
   const { user } = UserAuth()
 
-  constassignmentId = router.query.id.toString()
+  const assignmentId = router.query.id.toString()
 
   const openForm = () => {
     if (

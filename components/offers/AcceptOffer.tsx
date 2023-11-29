@@ -58,7 +58,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
 
   const router = useRouter()
   const { user } = UserAuth()
-  constassignmentId = router.query.id.toString()
+  const assignmentId = router.query.id.toString()
 
   const openForm = () => {
     setIsFormOpen(true)
