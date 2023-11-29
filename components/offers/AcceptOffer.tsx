@@ -124,7 +124,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
       },
     })
 
-    toast.success('You successfully assigned the task')
+    toast.success('You successfully assigned the assignment')
     closeForm()
     router.reload()
   }

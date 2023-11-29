@@ -81,10 +81,10 @@ export default function Outgoing() {
                 </h1>
                 <div className="mt-6">
                   <Link
-                    href="/post-task"
+                    href="/post-assignment"
                     className="rounded-full bg-green-500 px-4 py-2 font-semibold text-white"
                   >
-                    Post a task
+                    Post a assignment
                   </Link>
                 </div>
               </div>

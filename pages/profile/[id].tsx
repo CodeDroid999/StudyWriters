@@ -69,7 +69,7 @@ export default function ProfilePage({
       const assignmentsPromise = getDocs(assignmentsQuery).then((assignmentQuerySnapshot) => {
         const assignments = assignmentQuerySnapshot.docs.map((doc) => {
           const data = doc.data()
-          // Additional processing for task data if needed
+          // Additional processing for assignment data if needed
           return { id: doc.id, ...data }
         })
         return assignments
@@ -126,7 +126,7 @@ export default function ProfilePage({
     setActiveTab(tab)
   }
 
-  const completedAssignments = assignments.filter((task) => task.status === 'Completed')
+  const completedAssignments = assignments.filter((assignment) => assignment.status === 'Completed')
   const myTutorReviews = reviews.filter(
     (review) => review.senderId !== review.tutorId
   )

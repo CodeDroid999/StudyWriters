@@ -154,7 +154,7 @@ function Navbar() {
               <div className="mb-1">
                 <Image
                   src={airtaskalogo}
-                  alt="task"
+                  alt="assignment"
                   className="h-[40px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px]"
                   id="customfontsize"
                 />
@@ -293,7 +293,7 @@ function Navbar() {
                   <div className="mb-1">
                     <Image
                       src={airtaskalogo}
-                      alt="task"
+                      alt="assignment"
                       className="h-[50px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px] "
                     />
                   </div>

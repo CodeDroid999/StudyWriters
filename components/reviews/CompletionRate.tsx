@@ -33,7 +33,7 @@ export default function CompletionRate({ reviews, userId }) {
   }, [userId])
   const positiveReviews = reviews?.filter((review) => review.rating >= 4)
   const totalPositiveReviews = positiveReviews.length
-  const completedTasks = tasks?.filter((task) => task.status === 'Completed')
+  const completedTasks = tasks?.filter((assignment) => assignment.status === 'Completed')
   const totalJobsCompleted = completedTasks.length
   function calculateJobCompletionRate(
     totalPositiveReviews,

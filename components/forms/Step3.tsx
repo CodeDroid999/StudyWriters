@@ -93,7 +93,7 @@ export default function Step3({ handlePreviousStep }: Props) {
       bcc: userEmails,
       message: {
         subject: 'New Task',
-        html: `A new task has been posted`,
+        html: `A new assignment has been posted`,
       },
     })
 
@@ -145,7 +145,7 @@ export default function Step3({ handlePreviousStep }: Props) {
             className="flex-1 rounded-xl bg-green-500 py-2 text-center text-white"
             onClick={handleNext}
           >
-            Post task
+            Post assignment
           </button>
         </div>
       </form>

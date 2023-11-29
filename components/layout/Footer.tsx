@@ -277,7 +277,7 @@ export default function Footer() {
                 <Link href="/" className="text-gray-700">
                   <Image
                     src={airtaskalogo}
-                    alt="task"
+                    alt="assignment"
                     className="h-[80px] w-[100%] mt-8"
                     id="customfontsize"
                   />

@@ -53,16 +53,16 @@ const Accordion: React.FC = () => {
     {
       question: 'What services are available on Airtaska?',
       answer:
-        'We offer a wide range of services, from posting tasks to finding the ideal candidate for your specific needs. From Technical writing which involves taking highly technical information like user manuals and research and turning it into content that the average person can understand. We have also a bunch of interesting tasks as well, for example, Web content and blog writing, Copywriting, Newswriting, Business writing, Ghostwritering, Instructional writing, and Resume writing. The customer will let you know if the task needs to be completed in person or remote and provide dates that tasks need to be completed by.',
+        'We offer a wide range of services, from posting tasks to finding the ideal candidate for your specific needs. From Technical writing which involves taking highly technical information like user manuals and research and turning it into content that the average person can understand. We have also a bunch of interesting tasks as well, for example, Web content and blog writing, Copywriting, Newswriting, Business writing, Ghostwritering, Instructional writing, and Resume writing. The customer will let you know if the assignment needs to be completed in person or remote and provide dates that tasks need to be completed by.',
     }, {
       question: 'What tasks are available for me to do?',
       answer:
-        'There’s a wide range of tasks on Airtaska. From Technical writing which involves taking highly technical information like user manuals and research and turning it into content that the average person can understand. We have also a bunch of interesting tasks as well, for example, Web content and blog writing, Copywriting, Newswriting, Business writing, Ghostwritering, Instructional writing, and Resume writing. The customer will let you know if the task needs to be completed in person or remote and provide dates that tasks need to be completed by.',
+        'There’s a wide range of tasks on Airtaska. From Technical writing which involves taking highly technical information like user manuals and research and turning it into content that the average person can understand. We have also a bunch of interesting tasks as well, for example, Web content and blog writing, Copywriting, Newswriting, Business writing, Ghostwritering, Instructional writing, and Resume writing. The customer will let you know if the assignment needs to be completed in person or remote and provide dates that tasks need to be completed by.',
     },
     {
       question: 'How do i get paid?',
       answer:
-        ' You may commence the task assured that Airtaska has guaranteed the payment from the Student. Once you finish the job and claim payment, the Student will receive a notification to release the funds to your designated bank account. Airtaska will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the Airtaska platform, hence, increasing the potential for you to generate more earnings',
+        ' You may commence the assignment assured that Airtaska has guaranteed the payment from the Student. Once you finish the job and claim payment, the Student will receive a notification to release the funds to your designated bank account. Airtaska will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the Airtaska platform, hence, increasing the potential for you to generate more earnings',
     },
     {
       question: 'Is there insurance?',
@@ -72,7 +72,7 @@ const Accordion: React.FC = () => {
     {
       question: 'Can I get alerts or notifications for tasks?',
       answer:
-        'Of course! Set up task alerts in your account settings and we will let you know when any new tasks appear that match your interests.',
+        'Of course! Set up assignment alerts in your account settings and we will let you know when any new tasks appear that match your interests.',
     },
     // Add more FAQ items as needed...
   ]

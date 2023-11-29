@@ -22,7 +22,7 @@ export default function TaskReviews({assignmentId }) {
       setLoading(true)
       const reviewsRef = collection(db, 'reviews')
 
-      // Fetch task's reviews
+      // Fetch assignment's reviews
       const reviewsQuery = query(reviewsRef, where('taskId', '==',assignmentId))
 
       const unsubscribe = onSnapshot(reviewsQuery, async (querySnapshot) => {

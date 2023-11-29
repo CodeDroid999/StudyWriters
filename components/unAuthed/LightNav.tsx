@@ -28,7 +28,7 @@ const LightCustomNavbar = () => {
                 <div className="mb-1">
                   <Image
                    src={logo}
-                    alt="task"
+                    alt="assignment"
                     width={200}
                     height={100}
                     className="h-[50px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px]"

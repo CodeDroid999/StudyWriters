@@ -34,7 +34,7 @@ export default async function handler(
             <!-- For Task Posters -->
             <h2>For Task Posters:</h2>
             <ul>
-              <li><Link href="https://www.QualityUnited Writers.com/post-task">Post your tasks for free</a> and connect with skilled taskers.</li>
+              <li><Link href="https://www.QualityUnited Writers.com/post-assignment">Post your tasks for free</a> and connect with skilled taskers.</li>
               <li>Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-tasks">browse tasks</a>, and unlock a world of opportunities on Airtaska.</li>
               <li>Find the perfect candidates to get your work done efficiently.</li>
               <li>Enjoy the flexibility to <Link href="https://www.QualityUnited Writers.com/how-it-works">manage projects your way</a>.</li>

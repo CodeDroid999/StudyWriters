@@ -11,7 +11,7 @@ const HeroArea = () => {
                 <div className="img-box">
                 <Image
                     src={HeroBackground}
-                    alt="task"
+                    alt="assignment"
                     
                     className="w-full h-full"
                   />

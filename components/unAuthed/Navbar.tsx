@@ -28,7 +28,7 @@ const CustomNavbar = () => {
                 <div className="mb-1">
                   <Image
                     src={logo}
-                    alt="task"
+                    alt="assignment"
                     className="h-[150px] w-[100%] md:h-[150px] lg:h-[60px] lg:w-[50px]"
                   />
                 </div>

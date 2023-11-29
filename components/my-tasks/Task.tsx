@@ -1,23 +1,23 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function Task({ task }) {
+export default function Task({ assignment }) {
   return (
     <Link
-      href={`/tasks/${task.id}`}
+      href={`/tasks/${assignment.id}`}
       className="flex h-[100px] w-full flex-1 flex-col justify-between rounded-md bg-gray-50 p-2"
     >
       <div className="flex flex-row justify-between text-lg font-semibold text-green-950">
-        <span className="flex-1 ">{task.title}</span>
-        <span className="">${task.budget}</span>
+        <span className="flex-1 ">{assignment.title}</span>
+        <span className="">${assignment.budget}</span>
       </div>
       <div>
         <span
           className={`${
-            task.status === 'Completed' ? 'text-blue-500' : 'text-blue-600'
+            assignment.status === 'Completed' ? 'text-blue-500' : 'text-blue-600'
           } font-semibold`}
         >
-          {task.status}
+          {assignment.status}
         </span>
       </div>
     </Link>

@@ -18,7 +18,7 @@ export default function StudentSteps() {
                         <div className="mb-1">
                             <Image
                                 src={photo1}
-                                alt="task"
+                                alt="assignment"
                                 className="h-[150px] w-[100%]"
                             />
                         </div>
@@ -38,7 +38,7 @@ export default function StudentSteps() {
                         <div className="mb-1">
                             <Image
                                 src={photo2}
-                                alt="task"
+                                alt="assignment"
                                 className="h-[150px] w-[100%]"
                             />
                         </div>
@@ -58,7 +58,7 @@ export default function StudentSteps() {
                         <div className="mb-1">
                             <Image
                                 src={photo3}
-                                alt="task"
+                                alt="assignment"
                                 className="h-[150px] w-[100%]"
                             />
                         </div>

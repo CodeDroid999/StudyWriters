@@ -12,8 +12,8 @@ export default function MyTasks({ heading, tasks, warning }) {
         <div>
           <h1 className="text-2xl font-medium text-green-950">{heading}</h1>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {tasks.map((task: any) => (
-              <Task key={task.id} task={task} />
+            {tasks.map((assignment: any) => (
+              <Task key={assignment.id} assignment={assignment} />
             ))}
           </div>
         </div>

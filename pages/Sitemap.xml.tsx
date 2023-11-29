@@ -86,7 +86,7 @@ export async function getServerSideProps({ res }) {
       priority: 0.6,
     },
     {
-      url: '/post-task',
+      url: '/post-assignment',
       priority: 0.6,
     },
     {

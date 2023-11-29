@@ -10,7 +10,7 @@ const ImageHeader = () => {
                 <div className="img-box">
                 <Image
                     src={HeroBackground}
-                    alt="task"
+                    alt="assignment"
                     
                   />
                 </div>

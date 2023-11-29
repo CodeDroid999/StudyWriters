@@ -16,7 +16,7 @@ export default function PostTask() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        router.push(`/login?redirect=/post-task`)
+        router.push(`/login?redirect=/post-assignment`)
       }
     })
     return () => unsubscribe()
