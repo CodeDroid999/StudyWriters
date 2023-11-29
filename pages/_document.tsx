@@ -5,8 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/favicon/favicon.ico" />
-        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet"/>
+        <link rel="icon" href="/favicon/QualityUnitedWritersLogo.ico" />
       </Head>
 
       <body className="">
