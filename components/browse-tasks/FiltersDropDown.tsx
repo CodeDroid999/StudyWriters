@@ -67,7 +67,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
                   checked={selectedOptions.includes(options[2])}
                   onChange={() => handleSelectOption(options[2])}
                 />
-                Tasks with no offers only
+               Assignments with no offers only
                 <div className="mb-4 text-left  text-neutral-500">
                   Hide assignments that have offers
                 </div>

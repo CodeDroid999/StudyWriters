@@ -26,7 +26,7 @@ const StatsCounter = () => {
         <h2 className="text-3xl font-bold">
           <CountUp end={136050} duration={2} start={startAnimation ? null : undefined} /> +
         </h2>
-        <p className="text-sm">Completed Tasks</p>
+        <p className="text-sm">CompletedAssignments</p>
       </div>
       <div className="text-center p-2">
         <h2 className="text-3xl font-bold">

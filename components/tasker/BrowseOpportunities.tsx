@@ -20,7 +20,7 @@ export default function BrowseOpportunities() {
           </h1>
           <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-green-950">
             Sign up and start browsing instantly. Set up notifications on the
-            Airtasker App to be alerted in real time about jobs that mach your
+            to be alerted in real time about jobs that mach your
             skills and interest.
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function BrowseOpportunities() {
             href="/signup"
             className="flex w-full justify-center text-lg font-semibold text-blue-500"
           >
-            Join Airtaska
+            Join us
           </Link>
         </div>
       </div>
