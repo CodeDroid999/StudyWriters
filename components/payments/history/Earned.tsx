@@ -84,7 +84,7 @@ export default function Earned() {
                     href="/browse-tasks"
                     className="rounded-full bg-green-500 px-4 py-2 font-semibold text-white"
                   >
-                    Browse Tasks
+                    Browse Assignments
                   </Link>
                 </div>
               </div>
