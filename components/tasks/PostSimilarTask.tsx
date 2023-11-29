@@ -16,14 +16,14 @@ import { db } from '../../firebase'
 import { toast } from 'react-hot-toast'
 import { UserAuth } from 'context/AuthContext'
 
-export default function PostSimilarTask({ taskData }) {
-  const [title, setTitle] = useState(taskData?.title)
+export default function PostSimilarTask({ assignmentData }) {
+  const [title, setTitle] = useState(assignmentData?.title)
   const [titleError, setTitleError] = useState('')
-  const [dueDate, setDueDate] = useState(taskData?.dueDate)
+  const [dueDate, setDueDate] = useState(assignmentData?.dueDate)
   const [dueDateError, setDueDateError] = useState('')
-  const [description, setDescription] = useState(taskData?.description)
+  const [description, setDescription] = useState(assignmentData?.description)
   const [descriptionError, setDescriptionError] = useState('')
-  const [budget, setBudget] = useState(taskData?.budget)
+  const [budget, setBudget] = useState(assignmentData?.budget)
   const [budgetError, setBudgetError] = useState('')
   const [isFormOpen, setIsFormOpen] = useState(false)
   const { user } = UserAuth()
@@ -132,9 +132,9 @@ export default function PostSimilarTask({ taskData }) {
       },
     })
 
-    toast.success('Task has been posted')
+    toast.success('Assignmenthas been posted')
 
-    router.push(`/assignments/${taskId}`)
+    router.push(`/assignments/${assignmentId}`)
 
     closeForm()
   }
@@ -169,7 +169,7 @@ export default function PostSimilarTask({ taskData }) {
                     htmlFor="title"
                     className="mb-1 text-base font-medium text-gray-700"
                   >
-                    Task title
+                    Assignmenttitle
                   </label>
                   <input
                     type="text"

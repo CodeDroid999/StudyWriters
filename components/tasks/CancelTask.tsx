@@ -11,22 +11,22 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function CancelTask({assignmentId, taskData, tutor }) {
+export default function CancelTask({assignmentId, assignmentData, tutor }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const cancelTask = async () => {
     try {
       const taskRef = doc(db, 'assignments',assignmentId)
-      if (taskData.status === 'Assigned') {
+      if (assignmentData.status === 'Assigned') {
         await updateDoc(taskRef, {
           status: 'Cancelled',
         })
         await addDoc(collection(db, 'notifications'), {
-          receiverId: taskData.tutor.userId,
-          senderId: taskData.student.userId,
+          receiverId: assignmentData.tutor.userId,
+          senderId: assignmentData.student.userId,
           type: 'CancelTask',
           content: 'has cancelled ',
-          taskTitle: taskData.title,
+          taskTitle: assignmentData.title,
          assignmentId,
           read: false,
           createdAt: serverTimestamp(),
@@ -35,8 +35,8 @@ export default function CancelTask({assignmentId, taskData, tutor }) {
           to: tutor?.email,
           cc: 'airtaska@gmail.com',
           message: {
-            subject: 'Task Cancelled',
-            html: `${taskData.title} is no longer available, it has been cancelled by the student.`,
+            subject: 'AssignmentCancelled',
+            html: `${assignmentData.title} is no longer available, it has been cancelled by the student.`,
           },
         })
       } else {
@@ -47,7 +47,7 @@ export default function CancelTask({assignmentId, taskData, tutor }) {
     } catch (error) {
       console.error('Error cancelling assignment:', error)
     }
-    toast.success('Task has been canceled')
+    toast.success('Assignmenthas been canceled')
     setIsFormOpen(false)
     router.reload()
   }

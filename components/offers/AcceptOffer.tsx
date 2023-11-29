@@ -20,7 +20,7 @@ import PaymentForm from 'components/payments/PaymentForm'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
-export default function AcceptOffer({ offer, taskData, student }) {
+export default function AcceptOffer({ offer, assignmentData, student }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [clientSecret, setClientSecret] = React.useState('')
 
@@ -93,7 +93,7 @@ export default function AcceptOffer({ offer, taskData, student }) {
       senderId: user.userId,
       type: 'AcceptOffer',
       content: 'has accepted your offer on',
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -102,14 +102,14 @@ export default function AcceptOffer({ offer, taskData, student }) {
       to: offer?.customer.email,
       message: {
         subject: 'Offer Accepted',
-        html: `${user?.firstName} has accepted your offer on ${taskData?.title}. You can now start working on it!`,
+        html: `${user?.firstName} has accepted your offer on ${assignmentData?.title}. You can now start working on it!`,
       },
     })
 
     await addDoc(collection(db, 'payments'), {
       taskerId: offer.userId,
       posterId: user.userId,
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       createdAt: serverTimestamp(),
       taskerAmount: {
@@ -166,14 +166,14 @@ export default function AcceptOffer({ offer, taskData, student }) {
                     {student?.firstName} {student?.lastName}
                   </span>
                   <span className="text-sm font-medium text-gray-800">
-                    {taskData.title}
+                    {assignmentData.title}
                   </span>
                 </div>
               </div>
 
               <div className="mt-3 w-full">
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">
-                  <span>Task Price</span>
+                  <span>AssignmentPrice</span>
                   <span>${offer.amount}</span>
                 </div>
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">

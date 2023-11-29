@@ -46,7 +46,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
         <div className="w-40% absolute right-0 top-full mt-2 rounded-lg border bg-white shadow-lg">
           <div className="w-full whitespace-nowrap">
             <div className="flex flex-col px-4 py-2">
-              <div className="mb-4 text-left  text-neutral-500">Task price</div>
+              <div className="mb-4 text-left  text-neutral-500">Assignmentprice</div>
               <label className="block cursor-pointer">
                 <input
                   type="checkbox"

@@ -298,7 +298,7 @@ export default function MakeOffer({ posterId, taskTitle, student }) {
                           Get paid securely
                         </h1>
                         <p className="text-xs font-medium text-gray-700">
-                          Task funds are held securely until the assignment is
+                          Assignmentfunds are held securely until the assignment is
                           completed.
                         </p>
                       </div>

@@ -98,7 +98,7 @@ export default function Earned() {
                     >
                       <span
                         className="cursor-pointer text-blue-500"
-                        onClick={() => router.push(`/assignments/${payment.taskId}`)}
+                        onClick={() => router.push(`/assignments/${payment.assignmentId}`)}
                       >
                         {payment.taskTitle}
                       </span>

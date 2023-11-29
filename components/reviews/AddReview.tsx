@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaStar } from 'react-icons/fa'
 
-export default function AddReview({ taskerDetails,assignmentId, student, taskData }) {
+export default function AddReview({ tutorDetails,assignmentId, student, assignmentData }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
@@ -22,7 +22,7 @@ export default function AddReview({ taskerDetails,assignmentId, student, taskDat
   const { user } = UserAuth()
   const userId = user?.userId
   const posterId = student.userId
-  const taskerId = taskerDetails.userId
+  const taskerId = tutorDetails.userId
   const router = useRouter()
 
   let firstName: string
@@ -30,9 +30,9 @@ export default function AddReview({ taskerDetails,assignmentId, student, taskDat
   let profilePic: string
 
   if (posterId === userId) {
-    firstName = taskerDetails.firstName
-    lastName = taskerDetails.lastName
-    profilePic = taskerDetails.profilePicture
+    firstName = tutorDetails.firstName
+    lastName = tutorDetails.lastName
+    profilePic = tutorDetails.profilePicture
   } else if (taskerId === userId) {
     firstName = student.firstName
     lastName = student.lastName
@@ -84,7 +84,7 @@ export default function AddReview({ taskerDetails,assignmentId, student, taskDat
       senderId: user.userId,
       type: 'Review',
       content: 'has reviewed you on',
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -94,15 +94,15 @@ export default function AddReview({ taskerDetails,assignmentId, student, taskDat
         to: student?.email,
         message: {
           subject: 'New Review',
-          html: `${taskerDetails?.firstName} has reviewed you on ${taskData.title}`,
+          html: `${tutorDetails?.firstName} has reviewed you on ${assignmentData.title}`,
         },
       })
     } else if (receiverId === taskerId) {
       await addDoc(collection(db, 'mail'), {
-        to: taskerDetails?.email,
+        to: tutorDetails?.email,
         message: {
           subject: 'New Review',
-          html: `${student?.firstName} has reviewed you on ${taskData.title}`,
+          html: `${student?.firstName} has reviewed you on ${assignmentData.title}`,
         },
       })
     }

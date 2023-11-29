@@ -84,7 +84,7 @@ export async function getServerSideProps() {
           })
         );
 
-        return { id, ...data, offers, posterDetails: posterData };
+        return { id, ...data, offers, studentDetails: posterData };
       })
     );
 

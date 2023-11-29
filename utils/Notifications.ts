@@ -92,7 +92,7 @@ const cancelTaskEmail = async ({ email, taskTitle }) => {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
-      subject: 'Task Cancelled',
+      subject: 'AssignmentCancelled',
       text: `${taskTitle} is no longer available, it has been cancelled by the student.`,
     }
 

@@ -76,7 +76,7 @@ export default function Step3({ handlePreviousStep }: Props) {
       taskerReview: false,
     })
 
-    const taskId = docRef.id
+    const assignmentId = docRef.id
     const usersCollection = collection(db, 'users')
     const querySnapshot = await getDocs(usersCollection)
 
@@ -97,9 +97,9 @@ export default function Step3({ handlePreviousStep }: Props) {
       },
     })
 
-    toast.success('Task has been posted')
+    toast.success('Assignmenthas been posted')
 
-    router.push(`/assignments/${taskId}`)
+    router.push(`/assignments/${assignmentId}`)
   }
 
   const handlePrevious = () => {

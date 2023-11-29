@@ -31,8 +31,8 @@ export default async function handler(
             <p className="pt-1 pb-2 text-lg">Dear ${firstName} ${lastName},</p>
             <p className="pt-1 pb-2 text-lg">Thank you for joining Airtaska, your one-stop destination for finding the right assignments and talented taskers. We're excited to have you on board and want to express our gratitude for choosing <Link href="https://www.QualityUnited Writers.com">Airtaska</a>.</p>
             
-            <!-- For Task Posters -->
-            <h2>For Task Posters:</h2>
+            <!-- For AssignmentPosters -->
+            <h2>For AssignmentPosters:</h2>
             <ul>
               <li><Link href="https://www.QualityUnited Writers.com/post-assignment">Post your assignments for free</a> and connect with skilled taskers.</li>
               <li>Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-assignments">browse assignments</a>, and unlock a world of opportunities on Airtaska.</li>

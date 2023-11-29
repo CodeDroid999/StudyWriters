@@ -18,12 +18,12 @@ export default function TaskReviews({assignmentId }) {
   const [activeTab, setActiveTab] = useState('Student')
 
   useEffect(() => {
-    if (taskId) {
+    if (assignmentId) {
       setLoading(true)
       const reviewsRef = collection(db, 'reviews')
 
       // Fetch assignment's reviews
-      const reviewsQuery = query(reviewsRef, where('taskId', '==',assignmentId))
+      const reviewsQuery = query(reviewsRef, where('assignmentId', '==',assignmentId))
 
       const unsubscribe = onSnapshot(reviewsQuery, async (querySnapshot) => {
         const reviewsData = await Promise.all(
@@ -51,7 +51,7 @@ export default function TaskReviews({assignmentId }) {
         unsubscribe()
       }
     }
-  }, [taskId])
+  }, [assignmentId])
 
   const taskerReviews = reviews.filter(
     (review) => review.senderId === review.taskerId

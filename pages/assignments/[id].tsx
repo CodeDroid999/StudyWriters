@@ -24,27 +24,35 @@ import Image from 'next/image'
 import profile from 'public/profile.jpeg'
 import AcceptOffer from 'components/offers/AcceptOffer'
 import NewMessage from 'components/messaging/NewMessage'
-import Replies from 'components/offers/Replies'
-import RequestPayment from 'components/payments/RequestPayment'
-import ReleasePayment from 'components/payments/ReleasePayment'
-import AddReview from 'components/reviews/AddReview'
-import TaskReviews from 'components/reviews/TaskReviews'
 import Link from 'next/link'
 import TaskerRating from 'components/reviews/TaskerRating'
-import UpdateTask from 'components/assignments/UpdateTask'
-import CancelTask from 'components/assignments/CancelTask'
-import WithdrawFromTask from 'components/assignments/WithdrawFromTask'
-import MoreOptions from 'components/assignments/MoreOptions'
-import PostSimilarTask from 'components/assignments/PostSimilarTask'
+import AddReview from 'components/reviews/AddReview'
+import Replies from 'components/offers/Replies'
+import ReleasePayment from 'components/payments/ReleasePayment'
+import RequestPayment from 'components/payments/RequestPayment'
+import CancelTask from 'components/tasks/CancelTask'
+import MoreOptions from 'components/tasks/MoreOptions'
+import UpdateTask from 'components/tasks/UpdateTask'
+import TaskReviews from 'components/reviews/TaskReviews'
+
+
+
+
+
+
+
+
+
+
 
 export default function TaskDetails(props: any) {
   const [offers, setOffers] = useState([])
   const [loading, setLoading] = useState(false)
-  const { taskData, taskerDetails, posterDetails } = props
+  const { assignmentData, tutorDetails, studentDetails } = props
   const { user } = UserAuth()
   const router = useRouter()
-  constassignmentId = router.query.id.toString()
-  const student = posterDetails
+  const assignmentId = router.query.id.toString()
+  const student = studentDetails
 
   useEffect(() => {
     setLoading(true)
@@ -77,17 +85,17 @@ export default function TaskDetails(props: any) {
     return () => {
       unsubscribe()
     }
-  }, [taskId])
+  }, [assignmentId])
 
   const withdrawOffer = async (offerId: string) => {
     try {
       await deleteDoc(doc(db, 'assignments',assignmentId, 'offers', offerId))
       await addDoc(collection(db, 'notifications'), {
-        receiverId: taskData.student.userId,
+        receiverId: assignmentData.student.userId,
         senderId: user.userId,
         type: 'WithdrawOffer',
         content: 'has withdrawn offer on',
-        taskTitle: taskData.title,
+        taskTitle: assignmentData.title,
        assignmentId,
         read: false,
         createdAt: serverTimestamp(),
@@ -96,7 +104,7 @@ export default function TaskDetails(props: any) {
         to: student?.email,
         message: {
           subject: 'Offer Withdrawn',
-          html: `${user?.firstName} has withdrawn offer made on ${taskData.title}`,
+          html: `${user?.firstName} has withdrawn offer made on ${assignmentData.title}`,
         },
       })
       toast.success('Offer has been withdrawn')
@@ -113,7 +121,7 @@ export default function TaskDetails(props: any) {
         <div className="w-full">
           {/**Status */}
           <div className="flex max-w-[130px] justify-center rounded-full bg-green-500  p-1  text-xs font-bold uppercase text-green-950">
-            {taskData.status}
+            {assignmentData.status}
           </div>
 
           <div className="mt-3 flex flex-col md:flex-row md:justify-between">
@@ -121,7 +129,7 @@ export default function TaskDetails(props: any) {
               {/**post title */}
               <div className="mt-2">
                 <h1 className="text text-2xl font-bold text-green-950 sm:text-3xl xl:text-4xl">
-                  {taskData.title}
+                  {assignmentData.title}
                 </h1>
               </div>
               {/**Post details */}
@@ -134,7 +142,7 @@ export default function TaskDetails(props: any) {
                     {student.firstName} {student.lastName}
                   </p>
                   <p className="text-sm font-medium text-green-950">
-                    On {taskData.createdAt}
+                    On {assignmentData.createdAt}
                   </p>
                 </div>
                 <div className="flex flex-col">
@@ -142,7 +150,7 @@ export default function TaskDetails(props: any) {
                     Due Date
                   </h4>
                   <p className="text-sm font-semibold text-green-950">
-                    {formatDate(taskData.dueDate)}
+                    {formatDate(assignmentData.dueDate)}
                   </p>
                 </div>
               </div>
@@ -153,61 +161,61 @@ export default function TaskDetails(props: any) {
               <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-100 p-3 ">
                 <div className="flex flex-col items-center justify-center pb-4">
                   <h1 className="text-xs font-bold uppercase text-green-950">
-                    Task Budget
+                    AssignmentBudget
                   </h1>
                   <p className="text-5xl font-bold text-green-950">
-                    ${taskData.budget}
+                    ${assignmentData.budget}
                   </p>
                 </div>
 
-                {user && taskData.student.userId === user?.userId && (
+                {user && assignmentData.student.userId === user?.userId && (
                   <div className="w-full">
-                    {taskData.status === 'Open' && (
-                      <UpdateTaskassignmentId={taskId} taskData={taskData} />
+                    {assignmentData.status === 'Open' && (
+                      <UpdateTask assignmentId={assignmentId} assignmentData={assignmentData} />
                     )}
-                    {(taskData.status === 'Open' ||
-                      taskData.status === 'Assigned') && (
+                    {(assignmentData.status === 'Open' ||
+                      assignmentData.status === 'Assigned') && (
                       <CancelTask
-                       assignmentId={taskId}
-                        taskData={taskData}
-                        tutor={taskerDetails}
+                       assignmentId={assignmentId}
+                        assignmentData={assignmentData}
+                        tutor={tutorDetails}
                       />
                     )}
-                    {taskData.status === 'Cancelled' && (
+                    {assignmentData.status === 'Cancelled' && (
                       <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
-                        {taskData.status}
+                        {assignmentData.status}
                       </div>
                     )}
-                    {taskData.paymentReleased ? (
-                      !taskData.posterReview ? (
+                    {assignmentData.paymentReleased ? (
+                      !assignmentData.posterReview ? (
                         <AddReview
-                          taskerDetails={taskerDetails}
-                         assignmentId={taskId}
+                          tutorDetails={tutorDetails}
+                         assignmentId={assignmentId}
                           student={student}
-                          taskData={taskData}
+                          assignmentData={assignmentData}
                         />
                       ) : (
                         <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-500">
-                          {taskData.status}
+                          {assignmentData.status}
                         </div>
                       )
                     ) : (
-                      taskData.paymentRequested &&
-                      taskData.status === 'Assigned' && (
+                      assignmentData.paymentRequested &&
+                      assignmentData.status === 'Assigned' && (
                         <ReleasePayment
-                          taskData={taskData}
-                          taskerDetails={taskerDetails}
+                          assignmentData={assignmentData}
+                          tutorDetails={tutorDetails}
                           student={student}
-                         assignmentId={taskId}
+                         assignmentId={assignmentId}
                         />
                       )
                     )}
                   </div>
                 )}
 
-                {user && taskData.student.userId !== user?.userId && (
+                {user && assignmentData.student.userId !== user?.userId && (
                   <div className="w-full">
-                    {taskData.status === 'Open' ? (
+                    {assignmentData.status === 'Open' ? (
                       offers.some(
                         (offer: any) => offer.userId === user.userId
                       ) ? (
@@ -231,9 +239,9 @@ export default function TaskDetails(props: any) {
                                 <UpdateOffer
                                   proposal={offer.proposal}
                                   offerId={offer.offerId}
-                                  student={posterDetails}
+                                  student={studentDetails}
                                   posterId={student.userId}
-                                  taskTitle={taskData.title}
+                                  taskTitle={assignmentData.title}
                                 />
                               </div>
                             )
@@ -242,32 +250,32 @@ export default function TaskDetails(props: any) {
                         })
                       ) : (
                         <MakeOffer
-                          posterId={taskData.student.userId}
-                          taskTitle={taskData.title}
-                          student={posterDetails}
+                          posterId={assignmentData.student.userId}
+                          taskTitle={assignmentData.title}
+                          student={studentDetails}
                         />
                       )
-                    ) : taskData.tutor.userId === user?.userId ? (
+                    ) : assignmentData.tutor.userId === user?.userId ? (
                       <div>
-                        {taskData.paymentRequested &&
-                        (taskData.status === 'Assigned' ||
-                          taskData.status === 'Completed') ? (
+                        {assignmentData.paymentRequested &&
+                        (assignmentData.status === 'Assigned' ||
+                          assignmentData.status === 'Completed') ? (
                           <div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
                               <span>Your Offer</span>
-                              <span>${taskData.tutor.price}</span>
+                              <span>${assignmentData.tutor.price}</span>
                             </div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
                               <span>Service fee</span>
-                              <span>-${taskData.tutor.serviceFee}</span>
+                              <span>-${assignmentData.tutor.serviceFee}</span>
                             </div>
                             <div className="flex flex-row items-center justify-between text-base font-medium text-green-950">
                               <span>Earned</span>
-                              <span>${taskData.tutor.finalPrice}</span>
+                              <span>${assignmentData.tutor.finalPrice}</span>
                             </div>
-                            {taskData.status === 'Completed' ? (
+                            {assignmentData.status === 'Completed' ? (
                               <div className="mt-3 rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-500">
-                                {taskData.status}
+                                {assignmentData.status}
                               </div>
                             ) : (
                               <div className="mt-3 rounded-full bg-white px-4 py-2 text-center text-base font-semibold  text-green-950">
@@ -277,33 +285,33 @@ export default function TaskDetails(props: any) {
                           </div>
                         ) : (
                           <div>
-                            {taskData.status === 'Assigned' && (
+                            {assignmentData.status === 'Assigned' && (
                               <div>
                                 <div className="my-3 w-full text-sm">
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                                     <span>Your Offer</span>
-                                    <span>${taskData.tutor.price}</span>
+                                    <span>${assignmentData.tutor.price}</span>
                                   </div>
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                                     <span>Service fee</span>
-                                    <span>-${taskData.tutor.serviceFee}</span>
+                                    <span>-${assignmentData.tutor.serviceFee}</span>
                                   </div>
                                   <div className="flex flex-row items-center justify-between font-medium text-green-950">
                                     <span>You will receive</span>
-                                    <span>${taskData.tutor.finalPrice}</span>
+                                    <span>${assignmentData.tutor.finalPrice}</span>
                                   </div>
                                 </div>
                                 <RequestPayment
-                                  taskData={taskData}
+                                  assignmentData={assignmentData}
                                   student={student}
-                                 assignmentId={taskId}
+                                 assignmentId={assignmentId}
                                 />
                               </div>
                             )}
-                            {taskData.status === 'Cancelled' && (
+                            {assignmentData.status === 'Cancelled' && (
                               <div>
                                 <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
-                                  {taskData.status}
+                                  {assignmentData.status}
                                 </div>
                                 <button
                                   onClick={() => router.push('/contact-us')}
@@ -316,21 +324,21 @@ export default function TaskDetails(props: any) {
                           </div>
                         )}
 
-                        {!taskData.taskerReview &&
-                          taskData.status === 'Completed' && (
+                        {!assignmentData.taskerReview &&
+                          assignmentData.status === 'Completed' && (
                             <div className="mt-5">
                               <AddReview
-                                taskerDetails={taskerDetails}
-                               assignmentId={taskId}
+                                tutorDetails={tutorDetails}
+                               assignmentId={assignmentId}
                                 student={student}
-                                taskData={taskData}
+                                assignmentData={assignmentData}
                               />
                             </div>
                           )}
                       </div>
                     ) : (
                       <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950">
-                        {taskData.status}
+                        {assignmentData.status}
                       </div>
                     )}
                   </div>
@@ -338,9 +346,9 @@ export default function TaskDetails(props: any) {
               </div>
               {user && (
                 <MoreOptions
-                  taskData={taskData}
+                  assignmentData={assignmentData}
                   student={student}
-                 assignmentId={taskId}
+                 assignmentId={assignmentId}
                 />
               )}
             </div>
@@ -349,7 +357,7 @@ export default function TaskDetails(props: any) {
           <div className="mt-4">
             <h1 className="text-xl font-semibold text-green-950">Details</h1>
             <p className="flex-1 text-base font-medium text-gray-700">
-              {taskData.description}
+              {assignmentData.description}
             </p>
           </div>
           <div className="mt-4">
@@ -364,19 +372,19 @@ export default function TaskDetails(props: any) {
                 </div>
               </div>
             ) : offers.length > 0 ? (
-              taskData.status === 'Assigned' ||
-              taskData.status === 'Completed' ? (
+              assignmentData.status === 'Assigned' ||
+              assignmentData.status === 'Completed' ? (
                 <div className="my-3">
-                  {taskerDetails && (
+                  {tutorDetails && (
                     <div>
                       <h1 className="mb-2 text-lg font-semibold uppercase text-blue-900">
                         Assigned to:
                       </h1>
 
                       <div className="flex flex-1 flex-row items-start">
-                        <Link href={`/public-profile/${taskerDetails?.userId}`}>
+                        <Link href={`/public-profile/${tutorDetails?.userId}`}>
                           <Image
-                            src={taskerDetails?.profilePicture || profile}
+                            src={tutorDetails?.profilePicture || profile}
                             alt="profile"
                             width={45}
                             height={45}
@@ -385,44 +393,44 @@ export default function TaskDetails(props: any) {
                         </Link>
                         <div className="ml-2 flex flex-col ">
                           <Link
-                            href={`/public-profile/${taskerDetails?.userId}`}
+                            href={`/public-profile/${tutorDetails?.userId}`}
                           >
                             <h1 className="cursor-pointer text-lg font-medium text-green-950">
-                              {taskerDetails?.firstName}{' '}
-                              {taskerDetails?.lastName}
+                              {tutorDetails?.firstName}{' '}
+                              {tutorDetails?.lastName}
                             </h1>
                           </Link>
-                          <TaskerRating userId={taskerDetails?.userId} />
+                          <TaskerRating userId={tutorDetails?.userId} />
                         </div>
                       </div>
 
                       <div className="mt-3 w-full rounded-xl bg-gray-200 p-3 font-medium text-gray-800">
-                        {taskData.tutor.proposal}
+                        {assignmentData.tutor.proposal}
                       </div>
                       {user &&
-                        (taskData.student.userId === user.userId ||
-                          taskData.tutor.userId === user.userId) && (
+                        (assignmentData.student.userId === user.userId ||
+                          assignmentData.tutor.userId === user.userId) && (
                           <div className="mt-3">
                             <h1 className="mb-2 text-xs font-bold uppercase text-green-950">
                               Private messages
                             </h1>
                             <NewMessage
-                              customerId={taskerDetails?.userId}
+                              customerId={tutorDetails?.userId}
                               posterId={student.userId}
-                              taskData={taskData}
-                             assignmentId={taskId}
-                              tutor={taskerDetails}
+                              assignmentData={assignmentData}
+                             assignmentId={assignmentId}
+                              tutor={tutorDetails}
                               student={student}
                             />
                           </div>
                         )}
-                      <TaskReviewsassignmentId={taskId} />
+                      <TaskReviews assignmentId={assignmentId} />
                     </div>
                   )}
                 </div>
               ) : (
                 <div className="my-3">
-                  {taskData.status === 'Open' && (
+                  {assignmentData.status === 'Open' && (
                     <div>
                       <h1 className="mb-2 text-2xl font-semibold text-green-950">
                         Offers
@@ -470,17 +478,17 @@ export default function TaskDetails(props: any) {
                             )}
 
                             {user &&
-                              taskData.status === 'Open' &&
-                              taskData.student.userId === user.userId && (
+                              assignmentData.status === 'Open' &&
+                              assignmentData.student.userId === user.userId && (
                                 <div className="flex flex-1 flex-row items-center justify-end space-x-4">
                                   <div className="text-2xl font-semibold text-green-950">
                                     ${offer.amount}
                                   </div>
                                   <div className="w-[100px]">
                                     <AcceptOffer
-                                      taskData={taskData}
+                                      assignmentData={assignmentData}
                                       offer={offer}
-                                      student={posterDetails}
+                                      student={studentDetails}
                                     />
                                   </div>
                                 </div>
@@ -494,8 +502,8 @@ export default function TaskDetails(props: any) {
                             <Replies
                               customerId={offer.userId}
                               posterId={student.userId}
-                              taskData={taskData}
-                             assignmentId={taskId}
+                              assignmentData={assignmentData}
+                             assignmentId={assignmentId}
                               offerId={offer.offerId}
                               student={student}
                               customer={offer.customer}
@@ -509,7 +517,7 @@ export default function TaskDetails(props: any) {
               )
             ) : (
               <div>
-                {taskData.status === 'Open' && (
+                {assignmentData.status === 'Open' && (
                   <p className="mt-12 text-center text-lg font-semibold text-green-950 ">
                     No offers yet!
                   </p>
@@ -524,41 +532,41 @@ export default function TaskDetails(props: any) {
 }
 
 export async function getServerSideProps({ params }) {
-  constassignmentId = params.id
+  const assignmentId = params.id
 
   const docRef = doc(db, 'assignments',assignmentId)
   const docSnap = await getDoc(docRef)
 
-  const taskData = docSnap.data()
-  taskData.createdAt = formatDate(taskData.createdAt.toDate())
+  const assignmentData = docSnap.data()
+  assignmentData.createdAt = formatDate(assignmentData.createdAt.toDate())
 
-  const posterSnapshot = await getDocs(
+  const studentSnapshot = await getDocs(
     query(
       collection(db, 'users'),
-      where('userId', '==', taskData.student.userId)
+      where('userId', '==', assignmentData.student.userId)
     )
   )
 
-  const posterDetails = posterSnapshot.docs[0].data()
-  posterDetails.createdAt = formatDate(posterDetails.createdAt.toDate())
+  const studentDetails = studentSnapshot.docs[0].data()
+  studentDetails.createdAt = formatDate(studentDetails.createdAt.toDate())
 
-  const taskerSnapshot = await getDocs(
+  const tutorSnapshot = await getDocs(
     query(
       collection(db, 'users'),
-      where('userId', '==', taskData.tutor.userId)
+      where('userId', '==', assignmentData.tutor.userId)
     )
   )
 
-  const taskerDetails = taskerSnapshot.docs[0]?.data() || null
-  if (taskerDetails) {
-    taskerDetails.createdAt = formatDate(taskerDetails.createdAt.toDate())
+  const tutorDetails = tutorSnapshot.docs[0]?.data() || null
+  if (tutorDetails) {
+    tutorDetails.createdAt = formatDate(tutorDetails.createdAt.toDate())
   }
 
   return {
     props: {
-      taskData,
-      posterDetails,
-      taskerDetails,
+      assignmentData,
+      studentDetails,
+      tutorDetails,
     },
   }
 }

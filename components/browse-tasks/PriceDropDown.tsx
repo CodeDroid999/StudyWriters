@@ -60,7 +60,7 @@ const PriceDropdown: React.FC<DropdownProps> = ({ options }) => {
             <div className="flex items-center justify-center">
               <div className="rounded-lg bg-white p-4 shadow-lg">
                 <div className="mb-4 text-left  text-neutral-500">
-                  Task price
+                  Assignmentprice
                 </div>
                 <span className="ml-4">${price} - $9999</span>
                 <div className="flex overflow-x-auto">

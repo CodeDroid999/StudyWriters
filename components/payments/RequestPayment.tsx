@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function RequestPayment({ taskData, student,assignmentId }) {
+export default function RequestPayment({ assignmentData, student,assignmentId }) {
   const [step, setStep] = useState(1)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const { user } = UserAuth()
@@ -30,7 +30,7 @@ export default function RequestPayment({ taskData, student,assignmentId }) {
       senderId: user.userId,
       type: 'RequestPayment',
       content: 'has requested payment on',
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -39,7 +39,7 @@ export default function RequestPayment({ taskData, student,assignmentId }) {
       to: student?.email,
       message: {
         subject: 'Payment Request',
-        html: `${user?.firstName} has requested payment on ${taskData.title}. Confirm everything is done then release payment.`,
+        html: `${user?.firstName} has requested payment on ${assignmentData.title}. Confirm everything is done then release payment.`,
       },
     })
 
@@ -78,18 +78,18 @@ export default function RequestPayment({ taskData, student,assignmentId }) {
                 </div>
                 <p className="font-medium text-gray-700">
                   You are requesting for payment for{' '}
-                  <span className="text-blue-600">{taskData.title}</span>.{' '}
+                  <span className="text-blue-600">{assignmentData.title}</span>.{' '}
                   {student.firstName} {student.lastName} will be notified to
                   release payment.
                 </p>
                 <div className="pt-3">
                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                     <span>Service fee</span>
-                    <span>-${taskData.tutor.serviceFee}</span>
+                    <span>-${assignmentData.tutor.serviceFee}</span>
                   </div>
                   <div className="flex flex-row items-center justify-between font-medium text-green-950">
                     <span>You will receive</span>
-                    <span>${taskData.tutor.finalPrice}</span>
+                    <span>${assignmentData.tutor.finalPrice}</span>
                   </div>
                 </div>
                 <div className="pt-16">

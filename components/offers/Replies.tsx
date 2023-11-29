@@ -20,7 +20,7 @@ import Image from 'next/image'
 export default function Replies({
   customerId,
   posterId,
-  taskData,
+  assignmentData,
  assignmentId,
   offerId,
   student,
@@ -96,7 +96,7 @@ export default function Replies({
       senderId: user.userId,
       type: 'Message',
       content: 'has sent you a message on',
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -106,7 +106,7 @@ export default function Replies({
         to: student?.email,
         message: {
           subject: 'New Reply',
-          html: `${customer?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${customer?.firstName} has sent you a message on ${assignmentData.title}`,
         },
       })
     } else if (receiverId === customerId) {
@@ -114,7 +114,7 @@ export default function Replies({
         to: customer?.email,
         message: {
           subject: 'New Reply',
-          html: `${student?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${student?.firstName} has sent you a message on ${assignmentData.title}`,
         },
       })
     }
@@ -155,7 +155,7 @@ export default function Replies({
                         <span className="text-base text-blue-400">
                           {reply.senderDetails.firstName}
                         </span>
-                        {reply.senderId === taskData.student.userId && (
+                        {reply.senderId === assignmentData.student.userId && (
                           <span className="flex items-center rounded-xl bg-gray-500 px-2 py-0.5 text-center text-[10px] font-medium uppercase text-gray-200">
                             Student
                           </span>

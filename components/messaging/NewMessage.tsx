@@ -18,7 +18,7 @@ import { useRouter } from 'next/router'
 export default function NewMessage({
   customerId,
   posterId,
-  taskData,
+  assignmentData,
  assignmentId,
   student,
   tutor,
@@ -82,7 +82,7 @@ export default function NewMessage({
       senderId: user.userId,
       type: 'Message',
       content: 'has sent you a message on',
-      taskTitle: taskData.title,
+      taskTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -92,7 +92,7 @@ export default function NewMessage({
         to: student?.email,
         message: {
           subject: 'New Message',
-          html: `${tutor?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${tutor?.firstName} has sent you a message on ${assignmentData.title}`,
         },
       })
     } else if (receiverId === customerId) {
@@ -100,7 +100,7 @@ export default function NewMessage({
         to: tutor?.email,
         message: {
           subject: 'New Message',
-          html: `${student?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${student?.firstName} has sent you a message on ${assignmentData.title}`,
         },
       })
     }
