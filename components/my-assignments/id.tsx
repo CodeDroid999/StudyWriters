@@ -12,12 +12,12 @@ import React, { useEffect, useState } from 'react'
 import { formatDate } from 'pages/profile/[id]'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
-import MyTasks from 'components/my-tasks/MyTasks'
 import { UserAuth } from 'context/AuthContext'
+import MyAssignments from 'pages/my-asssignments/MyAssignments'
 
-export default function MyTasksPage() {
+export default function MyassignmentsPage() {
   const [selectedFilter, setSelectedFilter] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [assignments, setassignments] = useState([])
   const [loading, setLoading] = useState(false)
   const { user } = UserAuth()
 
@@ -26,17 +26,17 @@ export default function MyTasksPage() {
 
   useEffect(() => {
     setLoading(true)
-    const q = query(collection(db, 'tasks'))
+    const q = query(collection(db, 'assignments'))
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const updatedTasks = []
+      const updatedassignments = []
 
       querySnapshot.forEach(async (doc) => {
         const data = doc.data()
 
         const id = doc.id
 
-        const offersCollectionRef = collection(db, 'tasks', id, 'offers')
+        const offersCollectionRef = collection(db, 'assignments', id, 'offers')
         const offersQuerySnapshot = await getDocs(offersCollectionRef)
         const offers = offersQuerySnapshot.docs.map((offerDoc) => {
           const offerData = offerDoc.data()
@@ -44,10 +44,10 @@ export default function MyTasksPage() {
           return offerData
         })
 
-        updatedTasks.push({ id, ...data, offers })
+        updatedassignments.push({ id, ...data, offers })
       })
 
-      setTasks(updatedTasks)
+      setassignments(updatedassignments)
       setLoading(false)
     })
 
@@ -64,17 +64,17 @@ export default function MyTasksPage() {
     })
     return () => unsubscribe()
   }, [router])
-  const postedTasks = tasks.filter((task) => task.poster.userId === userId)
-  const assignedTasks = tasks.filter(
-    (task) => task.tasker.userId === userId && task.status === 'Assigned'
+  const postedassignments = assignments.filter((assignment) => assignment.poster.userId === userId)
+  const assignedassignments = assignments.filter(
+    (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
   )
-  const completedTasks = tasks.filter(
-    (task) => task.tasker.userId === userId && task.status === 'Completed'
+  const completedassignments = assignments.filter(
+    (assignment) => assignment.tutor.userId === userId && assignment.status === 'Completed'
   )
-  const pendingOffers = tasks.filter((task) => {
+  const pendingOffers = assignments.filter((assignment) => {
     return (
-      task.status === 'Open' &&
-      task.offers.some((offer: any) => offer.userId === userId)
+      assignment.status === 'Open' &&
+      assignment.offers.some((offer: any) => offer.userId === userId)
     )
   })
 
@@ -108,10 +108,10 @@ export default function MyTasksPage() {
                 className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
               >
                 <option value="">Select Filter</option>
-                <option value="posted">PostedAssignments</option>
-                <option value="assigned">Tasks Assigned</option>
+                <option value="posted">Posted Assignments</option>
+                <option value="assigned">Homeworks Assigned</option>
                 <option value="offers-pending">Offers Pending</option>
-                <option value="completed">Tasks Completed</option>
+                <option value="completed">Assignments Completed</option>
               </select>
             </div>
           </div>
@@ -120,36 +120,36 @@ export default function MyTasksPage() {
               <div className="mt-28 flex flex-col items-center justify-center">
                 <h1 className="text-xl font-medium text-gray-700">
                   Hello {user?.firstName}, select a category to display your
-                  tasks
+                  assignments
                 </h1>
               </div>
             )}
             {selectedFilter === 'posted' && (
-              <MyTasks
-                heading="PostedAssignments"
-                tasks={postedTasks}
-                warning="You have not posted any tasks!"
+              <MyAssignments
+                heading="Posted Assignments"
+                assignments={postedassignments}
+                warning="You have not posted any assignments!"
               />
             )}
             {selectedFilter === 'assigned' && (
-              <MyTasks
-                heading="Tasks I have been assigned"
-                tasks={assignedTasks}
-                warning="You have not been assigned any tasks!"
+              <MyAssignments
+                heading="Assignments I have been assigned"
+                assignments={assignedassignments}
+                warning="You have not been assigned any assignments!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
-              <MyTasks
+              <MyAssignments
                 heading="My active offers"
-                tasks={pendingOffers}
+                assignments={pendingOffers}
                 warning="You have no pending offers!"
               />
             )}
             {selectedFilter === 'completed' && (
-              <MyTasks
-                heading="Tasks I have completed"
-                tasks={completedTasks}
-                warning="You have not completed any tasks!"
+              <MyAssignments
+                heading="Assignments I have completed"
+                assignments={completedassignments}
+                warning="You have not completed any assignments!"
               />
             )}
           </div>
