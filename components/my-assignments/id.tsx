@@ -15,7 +15,7 @@ import { useRouter } from 'next/router'
 import { UserAuth } from 'context/AuthContext'
 import MyAssignments from 'pages/my-asssignments/MyAssignments'
 
-export default function MyassignmentsPage() {
+export default function Myassignments() {
   const [selectedFilter, setSelectedFilter] = useState('')
   const [assignments, setassignments] = useState([])
   const [loading, setLoading] = useState(false)
