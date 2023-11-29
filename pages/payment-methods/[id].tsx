@@ -36,7 +36,7 @@ export default function PaymentMethods() {
             <p className="text-base  text-gray-800">
               When you are ready to accept a Taskers offer, you will be required
               to pay for the task. Payment will be held securely until the task
-              is complete and you release payment to the Tasker.
+              is complete and you release payment to the Tutor.
             </p>
           </div>
           <div>

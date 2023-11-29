@@ -40,7 +40,7 @@ const FAQAccordion: React.FC = () => {
     {
       question: 'What is QualityUnitedWriters?',
       answer:
-        'QualityUnitedWriters is your go-to platform for getting things done quickly, precisely, and efficiently as well as getting your next job.Get your work done as a Client, Get your next side-hustle as a Tasker '
+        'QualityUnitedWriters is your go-to platform for getting things done quickly, precisely, and efficiently as well as getting your next job.Get your work done as a Client, Get your next side-hustle as a Tutor '
     }, {
       question: 'What services are available on QualityUnitedWriters?',
       answer:

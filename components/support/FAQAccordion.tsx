@@ -40,14 +40,14 @@ const Accordion: React.FC = () => {
     {
       question: 'What is Airtaska?',
       answer:
-        'Airtaska is your go-to platform for getting things done quickly, precisely, and efficiently as well as getting your next job.Get your work done as a Client, Get your next side-hustle as a Tasker '
+        'Airtaska is your go-to platform for getting things done quickly, precisely, and efficiently as well as getting your next job.Get your work done as a Client, Get your next side-hustle as a Tutor '
     },
     {
       question:'Who is a Poster?',
       answer:"A poster is someone who posts tasks or work on the website. It typically means a user or contributor who shares Research, Technical, Assignments, or any form of work on our platform. Posters are members of our online community, researchers, students, professors, developers  bloggers, writers, photographers, or anyone who actively posts things to be done.",
     },
     {
-      question:'Who is a Tasker',
+      question:'Who is a Tutor',
       answer:"A tasker is someone who takes on the tasks or work posted by the poster. Taskers play a pivotal role on our platform, and they are the individuals who bring the posted projects and assignments to life. Taskers can encompass a wide range of skills and expertise, making them valuable assets to our online community."
     },
     {

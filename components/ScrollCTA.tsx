@@ -29,7 +29,7 @@ export default function ScrollCTA() {
               <li>
                 <p className="my-2 block p-3 text-xl">
                   <span className="w-10 rounded-full bg-blue-100 px-2">3</span>{' '}
-                  Receive quotes and pick the best Tasker
+                  Receive quotes and pick the best Tutor
                 </p>
               </li>
             </ul>

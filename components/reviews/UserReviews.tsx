@@ -13,7 +13,7 @@ import ReviewsTab from 'components/profile/Reviews/ReviewTab'
 export default function UserReviews({ userId }) {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
-  const [activeTab, setActiveTab] = useState('Tasker')
+  const [activeTab, setActiveTab] = useState('Tutor')
   useEffect(() => {
     if (userId) {
       setLoading(true)
@@ -62,13 +62,13 @@ export default function UserReviews({ userId }) {
       <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
         <span
           className={`${
-            activeTab === 'Tasker'
+            activeTab === 'Tutor'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
           } cursor-pointer border border-x-transparent border-t-transparent px-3`}
-          onClick={() => setActiveTab('Tasker')}
+          onClick={() => setActiveTab('Tutor')}
         >
-          As A Tasker
+          As A Tutor
         </span>
         <span
           className={`${
@@ -81,12 +81,12 @@ export default function UserReviews({ userId }) {
           As A Poster
         </span>
       </div>
-      {activeTab === 'Tasker' && (
+      {activeTab === 'Tutor' && (
         <div>
           {taskerReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user ha no reviews as a Tasker!
+                This user ha no reviews as a Tutor!
               </h1>
             </div>
           ) : (

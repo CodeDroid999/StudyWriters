@@ -78,16 +78,16 @@ export default function TaskReviews({assignmentId }) {
             </span>
             <span
               className={`${
-                activeTab === 'Tasker'
+                activeTab === 'Tutor'
                   ? 'border-b-blue-600 text-green-950'
                   : 'border-none'
               } cursor-pointer border border-x-transparent border-t-transparent px-3`}
-              onClick={() => setActiveTab('Tasker')}
+              onClick={() => setActiveTab('Tutor')}
             >
-              Tasker
+              Tutor
             </span>
           </div>
-          {activeTab == 'Tasker' && (
+          {activeTab == 'Tutor' && (
             <div>
               {taskerReviews.length === 0 ? (
                 <div>
