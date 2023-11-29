@@ -72,13 +72,13 @@ export default function UserReviews({ userId }) {
         </span>
         <span
           className={`${
-            activeTab === 'Poster'
+            activeTab === 'Student'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
           } cursor-pointer border border-x-transparent border-t-transparent px-3`}
-          onClick={() => setActiveTab('Poster')}
+          onClick={() => setActiveTab('Student')}
         >
-          As A Poster
+          As A Student
         </span>
       </div>
       {activeTab === 'Tutor' && (
@@ -94,12 +94,12 @@ export default function UserReviews({ userId }) {
           )}
         </div>
       )}
-      {activeTab === 'Poster' && (
+      {activeTab === 'Student' && (
         <div>
           {posterReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user no reviews as a Job Poster!
+                This user no reviews as a Job Student!
               </h1>
             </div>
           ) : (

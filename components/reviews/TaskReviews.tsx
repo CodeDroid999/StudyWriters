@@ -15,7 +15,7 @@ import Link from 'next/link'
 export default function TaskReviews({assignmentId }) {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
-  const [activeTab, setActiveTab] = useState('Poster')
+  const [activeTab, setActiveTab] = useState('Student')
 
   useEffect(() => {
     if (taskId) {
@@ -68,13 +68,13 @@ export default function TaskReviews({assignmentId }) {
           <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
             <span
               className={`${
-                activeTab === 'Poster'
+                activeTab === 'Student'
                   ? 'border-b-blue-600 text-green-950'
                   : 'border-none'
               } cursor-pointer border border-x-transparent border-t-transparent px-3`}
-              onClick={() => setActiveTab('Poster')}
+              onClick={() => setActiveTab('Student')}
             >
-              Poster
+              Student
             </span>
             <span
               className={`${
@@ -131,7 +131,7 @@ export default function TaskReviews({assignmentId }) {
               )}
             </div>
           )}
-          {activeTab == 'Poster' && (
+          {activeTab == 'Student' && (
             <div>
               {posterReviews.length === 0 ? (
                 <div>

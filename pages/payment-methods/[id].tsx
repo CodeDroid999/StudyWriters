@@ -45,7 +45,7 @@ export default function PaymentMethods() {
             </h1>
             <p className="text-base  text-gray-700">
               Once a job is completed, you will be able to request payment
-              from the Job Poster, who will then release it to your nominated
+              from the Job Student, who will then release it to your nominated
               account.
             </p>
           </div>

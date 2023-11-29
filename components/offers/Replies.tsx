@@ -157,7 +157,7 @@ export default function Replies({
                         </span>
                         {reply.senderId === taskData.poster.userId && (
                           <span className="flex items-center rounded-xl bg-gray-500 px-2 py-0.5 text-center text-[10px] font-medium uppercase text-gray-200">
-                            Poster
+                            Student
                           </span>
                         )}
                       </div>

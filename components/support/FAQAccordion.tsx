@@ -43,7 +43,7 @@ const Accordion: React.FC = () => {
         'Airtaska is your go-to platform for getting things done quickly, precisely, and efficiently as well as getting your next job.Get your work done as a Client, Get your next side-hustle as a Tutor '
     },
     {
-      question:'Who is a Poster?',
+      question:'Who is a Student?',
       answer:"A poster is someone who posts tasks or work on the website. It typically means a user or contributor who shares Research, Technical, Assignments, or any form of work on our platform. Posters are members of our online community, researchers, students, professors, developers  bloggers, writers, photographers, or anyone who actively posts things to be done.",
     },
     {
@@ -62,7 +62,7 @@ const Accordion: React.FC = () => {
     {
       question: 'How do i get paid?',
       answer:
-        ' You may commence the task assured that Airtaska has guaranteed the payment from the Poster. Once you finish the job and claim payment, the Poster will receive a notification to release the funds to your designated bank account. Airtaska will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the Airtaska platform, hence, increasing the potential for you to generate more earnings',
+        ' You may commence the task assured that Airtaska has guaranteed the payment from the Student. Once you finish the job and claim payment, the Student will receive a notification to release the funds to your designated bank account. Airtaska will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the Airtaska platform, hence, increasing the potential for you to generate more earnings',
     },
     {
       question: 'Is there insurance?',

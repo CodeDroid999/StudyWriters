@@ -53,7 +53,7 @@ const FAQAccordion: React.FC = () => {
     {
       question: 'How do i get paid?',
       answer:
-        ' You may commence the task assured that QualityUnitedWriters has guaranteed the payment from the Poster. Once you finish the job and claim payment, the Poster will receive a notification to release the funds to your designated bank account. QualityUnitedWriters will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the QualityUnitedWriters platform, hence, increasing the potential for you to generate more earnings',
+        ' You may commence the task assured that QualityUnitedWriters has guaranteed the payment from the Student. Once you finish the job and claim payment, the Student will receive a notification to release the funds to your designated bank account. QualityUnitedWriters will deduct a service fee, encompassing transactional, insurance, and maintenance costs, upon the release of payment to upgrade and advance the QualityUnitedWriters platform, hence, increasing the potential for you to generate more earnings',
     },
     {
       question: 'Is there insurance?',
