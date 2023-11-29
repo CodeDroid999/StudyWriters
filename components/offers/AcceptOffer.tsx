@@ -173,7 +173,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
 
               <div className="mt-3 w-full">
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">
-                  <span>Assignment  Price</span>
+                  <span>Assignment     Price</span>
                   <span>${offer.amount}</span>
                 </div>
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">

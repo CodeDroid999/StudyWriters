@@ -83,7 +83,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
       description,
     })
 
-    toast.success('Assignmenthas been updated')
+    toast.success('Assignment    has been updated')
     router.reload()
 
     closeForm()
@@ -96,7 +96,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Update Assignment 
+        Update Assignment    
       </button>
 
       {isFormOpen && (
@@ -104,7 +104,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div className={`flex flex-row items-center justify-between`}>
               <span className="flex-1 text-center text-xl font-medium text-gray-700">
-                Update Assignment 
+                Update Assignment    
               </span>
               <AiOutlineClose
                 size={20}
@@ -119,7 +119,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
                     htmlFor="title"
                     className="mb-1 text-base font-medium text-gray-700"
                   >
-                    Assignmenttitle
+                    Assignment title
                   </label>
                   <input
                     type="text"

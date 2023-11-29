@@ -44,7 +44,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
         to: student?.email,
         cc: 'airtaska@gmail.com',
         message: {
-          subject: 'Withdrawal From Assignment ',
+          subject: 'Withdrawal From Assignment    ',
           html: `${user?.firstName} has withdrawn from ${assignmentData.title}, the assignment is now open to other freelancers.`,
         },
       })
@@ -61,7 +61,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
         onClick={() => setIsFormOpen(true)}
         className="mt-2 w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Withdraw From Assignment 
+        Withdraw From Assignment    
       </button>
 
       {isFormOpen && (
@@ -72,7 +72,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
                flex-row justify-between`}
             >
               <div className="flex-1 text-center text-base font-medium text-gray-800">
-                Withdraw From Assignment 
+                Withdraw From Assignment    
               </div>
               <AiOutlineClose
                 size={20}

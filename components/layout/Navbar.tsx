@@ -210,7 +210,7 @@ function Navbar() {
                   <div className="flex">
                     {userRole === 'Student' && (
                       <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500">
-                        Post Assignment  
+                        Post Assignment     
                       </Link>
                     )}
 
@@ -347,7 +347,7 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
                   <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
-                    Post Assignment  
+                    Post Assignment     
                   </Link>
                 )}
 

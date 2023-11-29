@@ -92,7 +92,7 @@ export default function Step3({ handlePreviousStep }: Props) {
       to: 'airtaska@gmail.com',
       bcc: userEmails,
       message: {
-        subject: 'New Assignment ',
+        subject: 'New Assignment    ',
         html: `A new assignment has been posted`,
       },
     })

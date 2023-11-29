@@ -34,7 +34,7 @@ const HeroArea = () => {
                                             </p>
                                             <div className="btn-box whitespace-nowrap">
                                                 <Link href="/howitworks" className="btn-1 rounded"> Learn more </Link>
-                                                <Link href="" className="btn-2 rounded">Post Assignment  </Link>
+                                                <Link href="" className="btn-2 rounded">Post Assignment     </Link>
                                             </div>
                                         </div>
                                     </div>

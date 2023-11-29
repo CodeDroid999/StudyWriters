@@ -127,7 +127,7 @@ export default function PostSimilarTask({ assignmentData }) {
       to: 'airtaska@gmail.com',
       bcc: userEmails,
       message: {
-        subject: 'New Assignment ',
+        subject: 'New Assignment    ',
         html: `A new assignment has been posted`,
       },
     })
@@ -146,7 +146,7 @@ export default function PostSimilarTask({ assignmentData }) {
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Post Similar Assignment 
+        Post Similar Assignment    
       </button>
 
       {isFormOpen && (
@@ -154,7 +154,7 @@ export default function PostSimilarTask({ assignmentData }) {
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div className={`flex flex-row items-center justify-between`}>
               <span className="flex-1 text-center text-xl font-medium text-gray-700">
-                Post Assignment 
+                Post Assignment    
               </span>
               <AiOutlineClose
                 size={20}
@@ -169,7 +169,7 @@ export default function PostSimilarTask({ assignmentData }) {
                     htmlFor="title"
                     className="mb-1 text-base font-medium text-gray-700"
                   >
-                    Assignmenttitle
+                    Assignment title
                   </label>
                   <input
                     type="text"
