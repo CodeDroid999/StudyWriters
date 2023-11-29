@@ -1,5 +1,5 @@
 import React from 'react';
-import Assignment     from './Assignment    ';
+import Assignment from './Task';
 
 export default function MyTasks({ heading, assignments, warning }) {
   return (
