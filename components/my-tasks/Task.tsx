@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function Task({ assignment }) {
+export default function Assignment ({ assignment }) {
   return (
     <Link
       href={`/assignments/${assignment.id}`}

@@ -57,7 +57,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
         onClick={() => setIsFormOpen(true)}
         className="mt-2 w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Cancel Task
+        Cancel Assignment 
       </button>
 
       {isFormOpen && (
@@ -68,7 +68,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
                flex-row justify-between`}
             >
               <div className="flex-1 text-center text-base font-medium text-gray-800">
-                Cancel Task
+                Cancel Assignment 
               </div>
               <AiOutlineClose
                 size={20}
@@ -90,7 +90,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
                 onClick={cancelTask}
                 className="flex-1 rounded-full bg-green-600 px-2 py-1.5 text-center font-medium text-white"
               >
-                Cancel Task
+                Cancel Assignment 
               </button>
             </div>
           </div>

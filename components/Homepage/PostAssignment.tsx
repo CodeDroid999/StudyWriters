@@ -120,12 +120,12 @@ export default function PostAssignment() {
         to: 'qualityunited340@gmail.com',
         bcc: userEmails,
         message: {
-          subject: 'New Assignment ',
+          subject: 'New Assignment  ',
           html: `A new assignment has been posted`,
         },
       });
 
-      toast.success('Assignment  has been posted');
+      toast.success('Assignment   has been posted');
       // You can redirect to the assignment page or do any other necessary action
       // router.push(`/assignments/${assignmentId}`);
     } catch (error) {
@@ -204,7 +204,7 @@ export default function PostAssignment() {
             className="btn-1 bg-yellow-500 p-2 rounded text-white"
             onClick={handleSave}
           >
-            Post Assignment 
+            Post Assignment  
           </div>
         </div>
       </form>

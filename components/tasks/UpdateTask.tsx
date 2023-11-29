@@ -96,7 +96,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Update Task
+        Update Assignment 
       </button>
 
       {isFormOpen && (
@@ -104,7 +104,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div className={`flex flex-row items-center justify-between`}>
               <span className="flex-1 text-center text-xl font-medium text-gray-700">
-                Update Task
+                Update Assignment 
               </span>
               <AiOutlineClose
                 size={20}
