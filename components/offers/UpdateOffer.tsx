@@ -18,7 +18,7 @@ export default function MakeOffer({
   proposal,
   offerId,
   student,
-  taskTitle,
+  assignmentTitle,
   posterId,
 }) {
   const [step, setStep] = useState(1)
@@ -103,7 +103,7 @@ export default function MakeOffer({
       senderId: user.userId,
       type: 'UpdateOffer',
       content: 'has updated offer made on',
-      taskTitle,
+      assignmentTitle,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -112,7 +112,7 @@ export default function MakeOffer({
       to: student?.email,
       message: {
         subject: 'Offer Updated',
-        html: `${user?.userId} has updated offer made on ${taskTitle}`,
+        html: `${user?.userId} has updated offer made on ${assignmentTitle}`,
       },
     })
     toast.success('Your offer has been updated')

@@ -100,7 +100,7 @@ export default function Outgoing() {
                         className="cursor-pointer text-blue-500"
                         onClick={() => router.push(`/assignments/${payment.assignmentId}`)}
                       >
-                        {payment.taskTitle}
+                        {payment.assignmentTitle}
                       </span>
                       <span className="font-medium text-green-950">
                         ${payment.student.finalPrice}

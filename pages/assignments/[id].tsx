@@ -95,7 +95,7 @@ export default function TaskDetails(props: any) {
         senderId: user.userId,
         type: 'WithdrawOffer',
         content: 'has withdrawn offer on',
-        taskTitle: assignmentData.title,
+        assignmentTitle: assignmentData.title,
        assignmentId,
         read: false,
         createdAt: serverTimestamp(),
@@ -241,7 +241,7 @@ export default function TaskDetails(props: any) {
                                   offerId={offer.offerId}
                                   student={studentDetails}
                                   posterId={student.userId}
-                                  taskTitle={assignmentData.title}
+                                  assignmentTitle={assignmentData.title}
                                 />
                               </div>
                             )
@@ -251,7 +251,7 @@ export default function TaskDetails(props: any) {
                       ) : (
                         <MakeOffer
                           posterId={assignmentData.student.userId}
-                          taskTitle={assignmentData.title}
+                          assignmentTitle={assignmentData.title}
                           student={studentDetails}
                         />
                       )

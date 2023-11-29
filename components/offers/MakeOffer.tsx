@@ -9,7 +9,7 @@ import { UserAuth } from 'context/AuthContext'
 import { toast } from 'react-hot-toast'
 import ConfirmProfile from './ConfirmProfile'
 
-export default function MakeOffer({ posterId, taskTitle, student }) {
+export default function MakeOffer({ posterId, assignmentTitle, student }) {
   const [step, setStep] = useState(1)
   const [offer, setOffer] = useState('')
   const [proposal, setProposal] = useState('')
@@ -107,7 +107,7 @@ export default function MakeOffer({ posterId, taskTitle, student }) {
       senderId: user.userId,
       type: 'MakeOffer',
       content: 'has made an offer on',
-      taskTitle,
+      assignmentTitle,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -116,7 +116,7 @@ export default function MakeOffer({ posterId, taskTitle, student }) {
       to: student?.email,
       message: {
         subject: 'New Offer',
-        html: `You have received a new offer on ${taskTitle}`,
+        html: `You have received a new offer on ${assignmentTitle}`,
       },
     })
 

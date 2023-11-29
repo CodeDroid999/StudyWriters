@@ -22,7 +22,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
   const { user } = UserAuth()
   const userId = user?.userId
   const posterId = student.userId
-  const taskerId = tutorDetails.userId
+  const tutorId = tutorDetails.userId
   const router = useRouter()
 
   let firstName: string
@@ -51,7 +51,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
     let receiverId: string
 
     if (posterId === userId) {
-      receiverId = taskerId
+      receiverId = tutorId
     } else if (taskerId === userId) {
       receiverId = posterId
     }
@@ -61,7 +61,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       review,
       timestamp: serverTimestamp(),
       posterId,
-      taskerId,
+      tutorId,
      assignmentId,
       senderId: userId,
       receiverId,
@@ -84,7 +84,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       senderId: user.userId,
       type: 'Review',
       content: 'has reviewed you on',
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -97,7 +97,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
           html: `${tutorDetails?.firstName} has reviewed you on ${assignmentData.title}`,
         },
       })
-    } else if (receiverId === taskerId) {
+    } else if (receiverId === tutorId) {
       await addDoc(collection(db, 'mail'), {
         to: tutorDetails?.email,
         message: {

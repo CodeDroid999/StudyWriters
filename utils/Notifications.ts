@@ -26,13 +26,13 @@ const sendEmailToAirtaska = async (to, subject, text, email) => {
   }
 }
 
-const newOfferEmail = async ({ email, taskTitle }) => {
+const newOfferEmail = async ({ email, assignmentTitle }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'New Offer',
-      text: `You have received a new offer on ${taskTitle}`,
+      text: `You have received a new offer on ${assignmentTitle}`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -42,13 +42,13 @@ const newOfferEmail = async ({ email, taskTitle }) => {
   }
 }
 
-const acceptOfferEmail = async ({ email, taskTitle, name }) => {
+const acceptOfferEmail = async ({ email, assignmentTitle, name }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Offer Accepted',
-      text: `${name} has accepted your offer on ${taskTitle}. You can now start working on it!`,
+      text: `${name} has accepted your offer on ${assignmentTitle}. You can now start working on it!`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -57,13 +57,13 @@ const acceptOfferEmail = async ({ email, taskTitle, name }) => {
     console.error('Error sending email:', error)
   }
 }
-const withdrawOfferEmail = async ({ email, taskTitle, name }) => {
+const withdrawOfferEmail = async ({ email, assignmentTitle, name }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Offer Withdrawal',
-      text: `${name} has withdrawn offer made on ${taskTitle}`,
+      text: `${name} has withdrawn offer made on ${assignmentTitle}`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -72,13 +72,13 @@ const withdrawOfferEmail = async ({ email, taskTitle, name }) => {
     console.error('Error sending email:', error)
   }
 }
-const withdrawFromTaskEmail = async ({ email, taskTitle, name }) => {
+const withdrawFromTaskEmail = async ({ email, assignmentTitle, name }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Withdrawal from assignment',
-      text: `${name} has withdrawn from ${taskTitle}, the assignment is now open to other freelancers.`,
+      text: `${name} has withdrawn from ${assignmentTitle}, the assignment is now open to other freelancers.`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -87,13 +87,13 @@ const withdrawFromTaskEmail = async ({ email, taskTitle, name }) => {
     console.error('Error sending email:', error)
   }
 }
-const cancelTaskEmail = async ({ email, taskTitle }) => {
+const cancelTaskEmail = async ({ email, assignmentTitle }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'AssignmentCancelled',
-      text: `${taskTitle} is no longer available, it has been cancelled by the student.`,
+      text: `${assignmentTitle} is no longer available, it has been cancelled by the student.`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -102,13 +102,13 @@ const cancelTaskEmail = async ({ email, taskTitle }) => {
     console.error('Error sending email:', error)
   }
 }
-const updateOfferEmail = async ({ email, taskTitle, name }) => {
+const updateOfferEmail = async ({ email, assignmentTitle, name }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Offer Update',
-      text: `${name} has updated offer made on ${taskTitle}`,
+      text: `${name} has updated offer made on ${assignmentTitle}`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -117,13 +117,13 @@ const updateOfferEmail = async ({ email, taskTitle, name }) => {
     console.error('Error sending email:', error)
   }
 }
-const requestPaymentEmail = async ({ email, taskTitle, name }) => {
+const requestPaymentEmail = async ({ email, assignmentTitle, name }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Payment Requested',
-      text: `${name} has requested payment on ${taskTitle}. Confirm everything is done then release payment.`,
+      text: `${name} has requested payment on ${assignmentTitle}. Confirm everything is done then release payment.`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -136,14 +136,14 @@ const requestPaymentEmail = async ({ email, taskTitle, name }) => {
 const releasePaymentAdminEmail = async ({
   accountName,
   accountNumber,
-  taskTitle,
+  assignmentTitle,
 }) => {
   try {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: process.env.NODEMAILER_EMAIL,
       subject: 'Release Payment',
-      text: `Payment needs to be released for ${taskTitle}. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
+      text: `Payment needs to be released for ${assignmentTitle}. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -155,7 +155,7 @@ const releasePaymentAdminEmail = async ({
 const releasePaymentTaskerEmail = async ({
   accountName,
   accountNumber,
-  taskTitle,
+  assignmentTitle,
   taskerEmail,
 }) => {
   try {
@@ -163,7 +163,7 @@ const releasePaymentTaskerEmail = async ({
       from: process.env.NODEMAILER_EMAIL,
       to: taskerEmail,
       subject: 'Payment Released',
-      text: `Payment has been released by the student for ${taskTitle}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
+      text: `Payment has been released by the student for ${assignmentTitle}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
     }
 
     await transporter.sendMail(mailOptions)

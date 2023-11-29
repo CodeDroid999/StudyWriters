@@ -33,7 +33,7 @@ export default function ReleasePayment({
       senderId: student.userId,
       type: 'ReleasePayment',
       content: 'has released payment on',
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),

@@ -199,7 +199,7 @@ export default function Notifications() {
 
                     <span className="ml-1.5 text-blue-700">
                       <Link href={`/assignments/${notification.assignmentId}`}>
-                        {notification.taskTitle}
+                        {notification.assignmentTitle}
                       </Link>
                     </span>
                   </h1>

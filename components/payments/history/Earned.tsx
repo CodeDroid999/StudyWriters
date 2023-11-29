@@ -45,7 +45,7 @@ export default function Earned() {
   }, [userId])
 
   const getPayment = payments.reduce(
-    (total, payment) => total + parseFloat(payment.taskerAmount.finalPrice),
+    (total, payment) => total + parseFloat(payment.tutorAmount.finalPrice),
     0
   )
   const netPayment = getPayment.toFixed(2)
@@ -100,10 +100,10 @@ export default function Earned() {
                         className="cursor-pointer text-blue-500"
                         onClick={() => router.push(`/assignments/${payment.assignmentId}`)}
                       >
-                        {payment.taskTitle}
+                        {payment.assignmentTitle}
                       </span>
                       <span className="font-medium text-green-950">
-                        ${payment.taskerAmount.finalPrice}
+                        ${payment.tutorAmount.finalPrice}
                       </span>
                       <span className="text-sm text-gray-700">
                         {' '}

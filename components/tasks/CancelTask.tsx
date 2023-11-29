@@ -26,7 +26,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
           senderId: assignmentData.student.userId,
           type: 'CancelTask',
           content: 'has cancelled ',
-          taskTitle: assignmentData.title,
+          assignmentTitle: assignmentData.title,
          assignmentId,
           read: false,
           createdAt: serverTimestamp(),

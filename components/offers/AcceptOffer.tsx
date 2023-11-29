@@ -68,7 +68,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
     setIsFormOpen(false)
   }
 
-  const assignTask = async () => {
+  const assignTutor = async () => {
     const taskRef = doc(db, 'assignments',assignmentId)
 
     const newDoc: any = await updateDoc(taskRef, {
@@ -93,7 +93,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
       senderId: user.userId,
       type: 'AcceptOffer',
       content: 'has accepted your offer on',
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
@@ -107,12 +107,12 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
     })
 
     await addDoc(collection(db, 'payments'), {
-      taskerId: offer.userId,
+      tutorId: offer.userId,
       posterId: user.userId,
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       createdAt: serverTimestamp(),
-      taskerAmount: {
+      tutorAmount: {
         price: offer.amount,
         serviceFee: offer.serviceFee,
         finalPrice: offer.finalPrice,
@@ -124,7 +124,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
       },
     })
 
-    toast.success('You successfully assigned the assignment')
+    toast.success('You successfully assigned the Homework')
     closeForm()
     router.reload()
   }
@@ -173,7 +173,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
 
               <div className="mt-3 w-full">
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">
-                  <span>AssignmentPrice</span>
+                  <span>Assignment Price</span>
                   <span>${offer.amount}</span>
                 </div>
                 <div className="flex flex-row items-center justify-between font-medium text-gray-600">
@@ -187,7 +187,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
               </div>
               {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
-                  <PaymentForm assignTask={assignTask} />
+                  <PaymentForm assignTutor={assignTutor} />
                 </Elements>
               )}
             </div>

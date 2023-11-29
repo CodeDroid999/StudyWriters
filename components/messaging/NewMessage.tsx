@@ -82,7 +82,7 @@ export default function NewMessage({
       senderId: user.userId,
       type: 'Message',
       content: 'has sent you a message on',
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),

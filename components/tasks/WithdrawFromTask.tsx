@@ -35,7 +35,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
         senderId: user.userId,
         type: 'CancelTask',
         content: 'has withdrawn from',
-        taskTitle: assignmentData.title,
+        assignmentTitle: assignmentData.title,
        assignmentId,
         read: false,
         createdAt: serverTimestamp(),

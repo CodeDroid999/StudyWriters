@@ -30,7 +30,7 @@ export default function RequestPayment({ assignmentData, student,assignmentId })
       senderId: user.userId,
       type: 'RequestPayment',
       content: 'has requested payment on',
-      taskTitle: assignmentData.title,
+      assignmentTitle: assignmentData.title,
      assignmentId,
       read: false,
       createdAt: serverTimestamp(),

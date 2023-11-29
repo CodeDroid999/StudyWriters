@@ -1,7 +1,7 @@
 import React from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 
-export default function PaymentForm({ assignTask }) {
+export default function PaymentForm({ assignTutor }) {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -56,7 +56,7 @@ export default function PaymentForm({ assignTask }) {
     if (error?.type === 'card_error' || error?.type === 'validation_error') {
       setMessage(error?.message)
     } else {
-      await assignTask()
+      await assignTutor()
     }
 
     setIsLoading(false)
