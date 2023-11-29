@@ -99,7 +99,7 @@ export default function UserReviews({ userId }) {
           {studentReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user no reviews as a Job Student!
+                This user no reviews as a Student!
               </h1>
             </div>
           ) : (
