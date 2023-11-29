@@ -31,7 +31,7 @@ export default function PostTaskCTA() {
             href="/post-assignment"
             className="flex w-full justify-center text-lg font-semibold text-white"
           >
-            Post a assignment for free!
+            Post an assignment for free!
           </Link>
         </div>
       </div>
