@@ -42,7 +42,7 @@ export default function ProfilePage({
   children: React.ReactNode
   hasNewNotifications: boolean
 }) {
-  const [tasks, setTasks] = useState([])
+  const [assignments, setAssignments] = useState([])
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('basic') // Default tab is 'Personal Info tab'
@@ -54,25 +54,25 @@ export default function ProfilePage({
     if (userId) {
       setLoading(true)
 
-      const tasksQuery = query(
-        collection(db, 'tasks'),
-        where('tasker.userId', '==', userId)
+      const assignmentsQuery = query(
+        collection(db, 'users'),
+        where('tutor.userId', '==', userId)
       )
 
       // Create a query for reviews
       const reviewsQuery = query(
         collection(db, 'reviews'),
-        where('taskerId', '==', userId)
+        where('tutorId', '==', userId)
       )
 
       // Fetch tasks
-      const tasksPromise = getDocs(tasksQuery).then((taskQuerySnapshot) => {
-        const tasks = taskQuerySnapshot.docs.map((doc) => {
+      const assignmentsPromise = getDocs(assignmentsQuery).then((assignmentQuerySnapshot) => {
+        const assignments = assignmentQuerySnapshot.docs.map((doc) => {
           const data = doc.data()
           // Additional processing for task data if needed
           return { id: doc.id, ...data }
         })
-        return tasks
+        return assignments
       })
 
       // Fetch reviews
@@ -101,9 +101,9 @@ export default function ProfilePage({
         })
 
       // Wait for both promises to resolve
-      Promise.all([tasksPromise, reviewsPromise])
-        .then(([tasks, reviews]) => {
-          setTasks(tasks)
+      Promise.all([assignmentsPromise, reviewsPromise])
+        .then(([assignments, reviews]) => {
+          setAssignments(assignments)
           setReviews(reviews)
           setLoading(false)
         })
@@ -126,9 +126,9 @@ export default function ProfilePage({
     setActiveTab(tab)
   }
 
-  const completedTasks = tasks.filter((task) => task.status === 'Completed')
-  const myTaskerReviews = reviews.filter(
-    (review) => review.senderId !== review.taskerId
+  const completedAssignments = assignments.filter((task) => task.status === 'Completed')
+  const myTutorReviews = reviews.filter(
+    (review) => review.senderId !== review.tutorId
   )
   return (
     <div>
@@ -188,7 +188,7 @@ export default function ProfilePage({
                       <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
                         <div className="p-4 md:p-7">
                           <h2 className="text-center text-xl capitalize text-gray-200">
-                            {completedTasks.length}
+                            {completedAssignments.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
                            Assignments completed
@@ -198,10 +198,10 @@ export default function ProfilePage({
                       <div className="w-42 h-42 flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
                         <div className="p-4 md:p-7">
                           <h2 className="text-center text-xl capitalize text-gray-200">
-                            {tasks.length}
+                            {assignments.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
-                          Homeworks signed
+                          Homeworks Assigned
                           </h3>
                         </div>
                       </div>
@@ -209,7 +209,7 @@ export default function ProfilePage({
                       <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
                         <div className="p-4 md:p-7">
                           <h2 className="text-center text-lg capitalize text-gray-200">
-                            {myTaskerReviews.length}
+                            {myTutorReviews.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
                             Reviews
@@ -274,7 +274,7 @@ export default function ProfilePage({
                 {activeTab === 'reviews' && (
                   <div className="w-full p-4">
                     {/* Content for the Reviews tab */}
-                    <ReviewsTab reviews={myTaskerReviews} />
+                    <ReviewsTab reviews={myTutorReviews} />
                   </div>
                 )}
 
