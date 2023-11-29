@@ -33,7 +33,7 @@ export default function Avatar() {
       </span>
       {isMainDropdownOpen && (
         <div className="absolute right-0 top-8 mt-2 min-w-[15rem] rounded-lg bg-white p-2  shadow-md ">
-          <div className="rounded bg-gray-100">
+          <div className="rounded bg-gray-100 pt-2 pb-2">
             <Link href={`/public-profile/${user?.userId}`}>
               <span className="flex items-center gap-x-3.5 px-3 pt-1 text-sm text-blue-900 hover:bg-neutral-100 ">
                 <Image
@@ -47,12 +47,23 @@ export default function Avatar() {
               </span>
             </Link>
           </div>
-
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/become-a-tutor"
+          >
+            Answer Questions
+          </Link>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/profile/${user?.userId}`}
           >
-            My Tutor Dashboard
+            My Profile
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/become-a-tutor"
+          >
+            How it Works
           </Link>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "

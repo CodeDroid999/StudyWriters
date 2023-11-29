@@ -100,7 +100,7 @@ export default function PublicProfile() {
             </div>
           </div>
 
-          <div className="mt-3">
+          <div className="mt-3 bg-gray-100 p-3">
             {user?.aboutDescription && (
               <div className="mb-2 w-full justify-center text-white">
                 <p className="text-base font-medium text-gray-700">
