@@ -21,7 +21,7 @@ export default function Earned() {
       const paymentsRef = collection(db, 'payments')
 
       // Fetch user's outgoing payments
-      const paymentsQuery = query(paymentsRef, where('taskerId', '==', userId))
+      const paymentsQuery = query(paymentsRef, where('tutorId', '==', userId))
 
       const unsubscribe = onSnapshot(paymentsQuery, async (querySnapshot) => {
         const paymentsData = await Promise.all(

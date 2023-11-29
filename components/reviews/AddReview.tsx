@@ -33,7 +33,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
     firstName = tutorDetails.firstName
     lastName = tutorDetails.lastName
     profilePic = tutorDetails.profilePicture
-  } else if (taskerId === userId) {
+  } else if (tutorId === userId) {
     firstName = student.firstName
     lastName = student.lastName
     profilePic = student.profilePicture
@@ -52,7 +52,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
 
     if (posterId === userId) {
       receiverId = tutorId
-    } else if (taskerId === userId) {
+    } else if (tutorId === userId) {
       receiverId = posterId
     }
 
@@ -73,7 +73,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       await updateDoc(taskRef, {
         posterReview: true,
       })
-    } else if (taskerId === userId) {
+    } else if (tutorId === userId) {
       await updateDoc(taskRef, {
         taskerReview: true,
       })

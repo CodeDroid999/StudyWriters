@@ -41,7 +41,7 @@ export default function TaskerRating({ userId }) {
   }, [userId])
 
   const taskerReviews: any = reviews.filter(
-    (review) => review.receiverId === review.taskerId
+    (review) => review.receiverId === review.tutorId
   )
   const totalRatings = taskerReviews.reduce(
     (sum, review) => sum + review.rating,
