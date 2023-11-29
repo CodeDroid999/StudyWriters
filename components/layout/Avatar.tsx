@@ -55,14 +55,18 @@ export default function Avatar() {
           </Link>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/my-assignments"      >
+            My Answers
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/profile/${user?.userId}`}
           >
             My Profile
           </Link>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
-            href="/become-a-tutor"
-          >
+            href="/how-it-works"      >
             How it Works
           </Link>
           <Link
@@ -77,6 +81,10 @@ export default function Avatar() {
           >
             Payment Methods
           </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/how-it-works"      >
+            Honor Code          </Link>
           <div className="">
             <div
               onClick={toggleDropdown}
@@ -100,6 +108,12 @@ export default function Avatar() {
             className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
           >
             Log out
+          </div>
+          <div
+            onClick={handleLogOut}
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+          >
+            Swap to Student Mode
           </div>
         </div>
       )}
