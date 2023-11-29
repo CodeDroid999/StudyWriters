@@ -1,5 +1,5 @@
-import React from 'react'
-import Assignmentfrom './Task'
+import React from 'react';
+import Assignment from './Task';
 
 export default function MyTasks({ heading, assignments, warning }) {
   return (
@@ -13,11 +13,11 @@ export default function MyTasks({ heading, assignments, warning }) {
           <h1 className="text-2xl font-medium text-green-950">{heading}</h1>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {assignments.map((assignment: any) => (
-              <Assignmentkey={assignment.id} assignment={assignment} />
+              <Assignment key={assignment.id} assignment={assignment} />
             ))}
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
