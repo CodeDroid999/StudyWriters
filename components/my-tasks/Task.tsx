@@ -4,7 +4,7 @@ import React from 'react'
 export default function Task({ assignment }) {
   return (
     <Link
-      href={`/tasks/${assignment.id}`}
+      href={`/assignments/${assignment.id}`}
       className="flex h-[100px] w-full flex-1 flex-col justify-between rounded-md bg-gray-50 p-2"
     >
       <div className="flex flex-row justify-between text-lg font-semibold text-green-950">

@@ -31,11 +31,11 @@ import AddReview from 'components/reviews/AddReview'
 import TaskReviews from 'components/reviews/TaskReviews'
 import Link from 'next/link'
 import TaskerRating from 'components/reviews/TaskerRating'
-import UpdateTask from 'components/tasks/UpdateTask'
-import CancelTask from 'components/tasks/CancelTask'
-import WithdrawFromTask from 'components/tasks/WithdrawFromTask'
-import MoreOptions from 'components/tasks/MoreOptions'
-import PostSimilarTask from 'components/tasks/PostSimilarTask'
+import UpdateTask from 'components/assignments/UpdateTask'
+import CancelTask from 'components/assignments/CancelTask'
+import WithdrawFromTask from 'components/assignments/WithdrawFromTask'
+import MoreOptions from 'components/assignments/MoreOptions'
+import PostSimilarTask from 'components/assignments/PostSimilarTask'
 
 export default function TaskDetails(props: any) {
   const [offers, setOffers] = useState([])
@@ -48,7 +48,7 @@ export default function TaskDetails(props: any) {
 
   useEffect(() => {
     setLoading(true)
-    const offersCollectionRef = collection(db, 'tasks',assignmentId, 'offers')
+    const offersCollectionRef = collection(db, 'assignments',assignmentId, 'offers')
     const unsubscribe = onSnapshot(offersCollectionRef, async (snapshot) => {
       const updatedOffers: any = await Promise.all(
         snapshot.docs.map(async (doc) => {
@@ -81,7 +81,7 @@ export default function TaskDetails(props: any) {
 
   const withdrawOffer = async (offerId: string) => {
     try {
-      await deleteDoc(doc(db, 'tasks',assignmentId, 'offers', offerId))
+      await deleteDoc(doc(db, 'assignments',assignmentId, 'offers', offerId))
       await addDoc(collection(db, 'notifications'), {
         receiverId: taskData.student.userId,
         senderId: user.userId,
@@ -526,7 +526,7 @@ export default function TaskDetails(props: any) {
 export async function getServerSideProps({ params }) {
   constassignmentId = params.id
 
-  const docRef = doc(db, 'tasks',assignmentId)
+  const docRef = doc(db, 'assignments',assignmentId)
   const docSnap = await getDoc(docRef)
 
   const taskData = docSnap.data()

@@ -69,7 +69,7 @@ export default function AcceptOffer({ offer, taskData, student }) {
   }
 
   const assignTask = async () => {
-    const taskRef = doc(db, 'tasks',assignmentId)
+    const taskRef = doc(db, 'assignments',assignmentId)
 
     const newDoc: any = await updateDoc(taskRef, {
       status: 'Assigned',

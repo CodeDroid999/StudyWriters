@@ -65,7 +65,7 @@ export default function ProfilePage({
         where('tutorId', '==', userId)
       )
 
-      // Fetch tasks
+      // Fetch assignments
       const assignmentsPromise = getDocs(assignmentsQuery).then((assignmentQuerySnapshot) => {
         const assignments = assignmentQuerySnapshot.docs.map((doc) => {
           const data = doc.data()

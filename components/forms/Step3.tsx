@@ -50,7 +50,7 @@ export default function Step3({ handlePreviousStep }: Props) {
       return
     }
 
-    const docRef = await addDoc(collection(db, 'tasks'), {
+    const docRef = await addDoc(collection(db, 'assignments'), {
       title: title,
       description: description,
       dueDate: dueDate,
@@ -99,7 +99,7 @@ export default function Step3({ handlePreviousStep }: Props) {
 
     toast.success('Task has been posted')
 
-    router.push(`/tasks/${taskId}`)
+    router.push(`/assignments/${taskId}`)
   }
 
   const handlePrevious = () => {

@@ -77,7 +77,7 @@ export default function Outgoing() {
             {payments.length === 0 ? (
               <div className="mt-28 flex flex-col items-center">
                 <h1 className="text-xl font-semibold text-green-950 ">
-                  You havent paid for any tasks yet. But lets change that!
+                  You havent paid for any assignments yet. But lets change that!
                 </h1>
                 <div className="mt-6">
                   <Link
@@ -98,7 +98,7 @@ export default function Outgoing() {
                     >
                       <span
                         className="cursor-pointer text-blue-500"
-                        onClick={() => router.push(`/tasks/${payment.taskId}`)}
+                        onClick={() => router.push(`/assignments/${payment.taskId}`)}
                       >
                         {payment.taskTitle}
                       </span>

@@ -46,7 +46,7 @@ export default function Footer() {
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     Biology
                   </Link>
@@ -174,7 +174,7 @@ export default function Footer() {
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     Dissertation writing
                   </Link>
@@ -182,28 +182,28 @@ export default function Footer() {
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     Research paper writing                  </Link>
                 </p>
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     College essay writing                  </Link>
                 </p>
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     Resume and Cover letter writing                  </Link>
                 </p>
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     Coursework help
                   </Link>
@@ -211,7 +211,7 @@ export default function Footer() {
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                   >
                     All Services
                   </Link>

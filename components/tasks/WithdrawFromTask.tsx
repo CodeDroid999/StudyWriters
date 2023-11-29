@@ -18,7 +18,7 @@ export default function WithdrawFromTask({assignmentId, taskData, student }) {
   const { user } = UserAuth()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'tasks',assignmentId)
+      const taskRef = doc(db, 'assignments',assignmentId)
 
       await updateDoc(taskRef, {
         tutor: {

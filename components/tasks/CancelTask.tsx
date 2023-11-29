@@ -16,7 +16,7 @@ export default function CancelTask({assignmentId, taskData, tutor }) {
   const router = useRouter()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'tasks',assignmentId)
+      const taskRef = doc(db, 'assignments',assignmentId)
       if (taskData.status === 'Assigned') {
         await updateDoc(taskRef, {
           status: 'Cancelled',

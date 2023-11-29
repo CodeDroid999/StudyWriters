@@ -32,7 +32,7 @@ export default function Replies({
   const { user } = UserAuth()
 
   useEffect(() => {
-    const taskRef = doc(db, 'tasks',assignmentId)
+    const taskRef = doc(db, 'assignments',assignmentId)
     const offerRef = doc(taskRef, 'offers', offerId)
     const repliesCollectionRef = collection(offerRef, 'replies')
     const unsubscribe = onSnapshot(repliesCollectionRef, async (snapshot) => {
@@ -72,7 +72,7 @@ export default function Replies({
     if (!newReply) {
       return
     }
-    const taskRef = doc(db, 'tasks',assignmentId)
+    const taskRef = doc(db, 'assignments',assignmentId)
     const offerRef = doc(taskRef, 'offers', offerId)
     const repliesCollectionRef = collection(offerRef, 'replies')
 

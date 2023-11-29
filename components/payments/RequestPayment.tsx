@@ -19,7 +19,7 @@ export default function RequestPayment({ taskData, student,assignmentId }) {
   const router = useRouter()
 
   const handleRequestPayment = async () => {
-    const taskRef = doc(db, 'tasks',assignmentId)
+    const taskRef = doc(db, 'assignments',assignmentId)
 
     await updateDoc(taskRef, {
       paymentRequested: true,
@@ -144,10 +144,10 @@ export default function RequestPayment({ taskData, student,assignmentId }) {
                 </div>
                 <div className="mt-8 flex w-full flex-col items-center">
                   <Link
-                    href="/browse-tasks"
+                    href="/browse-assignments"
                     className="rounded-full bg-blue-700 px-4 py-2 text-white"
                   >
-                    Browse more tasks
+                    Browse more assignments
                   </Link>
                 </div>
               </div>

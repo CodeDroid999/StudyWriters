@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
-import TaskCard from 'components/browse-tasks/TaskCard';
+import TaskCard from 'components/browse-assignments/TaskCard';
 import {
   collection,
   getDocs,

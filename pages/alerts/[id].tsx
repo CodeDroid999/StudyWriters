@@ -198,7 +198,7 @@ export default function Notifications() {
                     <span className=""> {notification.content}</span>
 
                     <span className="ml-1.5 text-blue-700">
-                      <Link href={`/tasks/${notification.taskId}`}>
+                      <Link href={`/assignments/${notification.taskId}`}>
                         {notification.taskTitle}
                       </Link>
                     </span>

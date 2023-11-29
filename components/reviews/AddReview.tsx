@@ -67,7 +67,7 @@ export default function AddReview({ taskerDetails,assignmentId, student, taskDat
       receiverId,
     })
 
-    const taskRef = doc(db, 'tasks',assignmentId)
+    const taskRef = doc(db, 'assignments',assignmentId)
 
     if (posterId === userId) {
       await updateDoc(taskRef, {

@@ -29,13 +29,13 @@ export default async function handler(
           <body>
             <h1>Welcome to Airtaska!</h1>
             <p className="pt-1 pb-2 text-lg">Dear ${firstName} ${lastName},</p>
-            <p className="pt-1 pb-2 text-lg">Thank you for joining Airtaska, your one-stop destination for finding the right tasks and talented taskers. We're excited to have you on board and want to express our gratitude for choosing <Link href="https://www.QualityUnited Writers.com">Airtaska</a>.</p>
+            <p className="pt-1 pb-2 text-lg">Thank you for joining Airtaska, your one-stop destination for finding the right assignments and talented taskers. We're excited to have you on board and want to express our gratitude for choosing <Link href="https://www.QualityUnited Writers.com">Airtaska</a>.</p>
             
             <!-- For Task Posters -->
             <h2>For Task Posters:</h2>
             <ul>
-              <li><Link href="https://www.QualityUnited Writers.com/post-assignment">Post your tasks for free</a> and connect with skilled taskers.</li>
-              <li>Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-tasks">browse tasks</a>, and unlock a world of opportunities on Airtaska.</li>
+              <li><Link href="https://www.QualityUnited Writers.com/post-assignment">Post your assignments for free</a> and connect with skilled taskers.</li>
+              <li>Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-assignments">browse assignments</a>, and unlock a world of opportunities on Airtaska.</li>
               <li>Find the perfect candidates to get your work done efficiently.</li>
               <li>Enjoy the flexibility to <Link href="https://www.QualityUnited Writers.com/how-it-works">manage projects your way</a>.</li>
               <li>Pay as you use with no subscription or credit fees.</li>
@@ -65,8 +65,8 @@ export default async function handler(
               <li>Be sure to check out our <Link href="https://www.QualityUnited Writers.com/faq">frequently asked questions</a> for more information.</li>
             </ul>
             
-            <p className="pt-1 pb-2 text-lg">Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-tasks">browse tasks</a>, and unlock a world of opportunities on Airtaska.</p>
-            <p className="pt-1 pb-2 text-lg">Thank you again for choosing Airtaska. We look forward to helping you achieve your goals and find the best solutions for your tasks.</p>
+            <p className="pt-1 pb-2 text-lg">Ready to get started? <Link href="https://www.QualityUnited Writers.com/signup">Create your account</a>, <Link href="https://www.QualityUnited Writers.com/browse-assignments">browse assignments</a>, and unlock a world of opportunities on Airtaska.</p>
+            <p className="pt-1 pb-2 text-lg">Thank you again for choosing Airtaska. We look forward to helping you achieve your goals and find the best solutions for your assignments.</p>
             
             <p className="pt-1 pb-2 text-lg">Best regards,<br>The Airtaska Team</p>
           </body>
