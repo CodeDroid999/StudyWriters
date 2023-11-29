@@ -23,7 +23,7 @@ export default function Replies({
   taskData,
  assignmentId,
   offerId,
-  poster,
+  student,
   customer,
 }) {
   const [repliesVisible, setRepliesVisible] = useState(false)
@@ -103,7 +103,7 @@ export default function Replies({
     })
     if (receiverId === posterId) {
       await addDoc(collection(db, 'mail'), {
-        to: poster?.email,
+        to: student?.email,
         message: {
           subject: 'New Reply',
           html: `${customer?.firstName} has sent you a message on ${taskData.title}`,
@@ -114,7 +114,7 @@ export default function Replies({
         to: customer?.email,
         message: {
           subject: 'New Reply',
-          html: `${poster?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${student?.firstName} has sent you a message on ${taskData.title}`,
         },
       })
     }
@@ -155,7 +155,7 @@ export default function Replies({
                         <span className="text-base text-blue-400">
                           {reply.senderDetails.firstName}
                         </span>
-                        {reply.senderId === taskData.poster.userId && (
+                        {reply.senderId === taskData.student.userId && (
                           <span className="flex items-center rounded-xl bg-gray-500 px-2 py-0.5 text-center text-[10px] font-medium uppercase text-gray-200">
                             Student
                           </span>

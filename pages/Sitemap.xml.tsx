@@ -150,7 +150,7 @@ export async function getServerSideProps({ res }) {
       priority: 0.6,
     },
     {
-      url: '/become-a-tasker',
+      url: '/become-a-tutor',
       priority: 0.5,
     },
     {

@@ -20,8 +20,8 @@ export default function NewMessage({
   posterId,
   taskData,
  assignmentId,
-  poster,
-  tasker,
+  student,
+  tutor,
 }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [message, setMessage] = useState('')
@@ -89,18 +89,18 @@ export default function NewMessage({
     })
     if (receiverId === posterId) {
       await addDoc(collection(db, 'mail'), {
-        to: poster?.email,
+        to: student?.email,
         message: {
           subject: 'New Message',
-          html: `${tasker?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${tutor?.firstName} has sent you a message on ${taskData.title}`,
         },
       })
     } else if (receiverId === customerId) {
       await addDoc(collection(db, 'mail'), {
-        to: tasker?.email,
+        to: tutor?.email,
         message: {
           subject: 'New Message',
-          html: `${poster?.firstName} has sent you a message on ${taskData.title}`,
+          html: `${student?.firstName} has sent you a message on ${taskData.title}`,
         },
       })
     }

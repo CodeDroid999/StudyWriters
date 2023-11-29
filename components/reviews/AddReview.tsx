@@ -14,14 +14,14 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaStar } from 'react-icons/fa'
 
-export default function AddReview({ taskerDetails,assignmentId, poster, taskData }) {
+export default function AddReview({ taskerDetails,assignmentId, student, taskData }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
 
   const { user } = UserAuth()
   const userId = user?.userId
-  const posterId = poster.userId
+  const posterId = student.userId
   const taskerId = taskerDetails.userId
   const router = useRouter()
 
@@ -34,9 +34,9 @@ export default function AddReview({ taskerDetails,assignmentId, poster, taskData
     lastName = taskerDetails.lastName
     profilePic = taskerDetails.profilePicture
   } else if (taskerId === userId) {
-    firstName = poster.firstName
-    lastName = poster.lastName
-    profilePic = poster.profilePicture
+    firstName = student.firstName
+    lastName = student.lastName
+    profilePic = student.profilePicture
   }
 
   const handleRatingClick = (newRating: number) => {
@@ -91,7 +91,7 @@ export default function AddReview({ taskerDetails,assignmentId, poster, taskData
     })
     if (receiverId === posterId) {
       await addDoc(collection(db, 'mail'), {
-        to: poster?.email,
+        to: student?.email,
         message: {
           subject: 'New Review',
           html: `${taskerDetails?.firstName} has reviewed you on ${taskData.title}`,
@@ -102,7 +102,7 @@ export default function AddReview({ taskerDetails,assignmentId, poster, taskData
         to: taskerDetails?.email,
         message: {
           subject: 'New Review',
-          html: `${poster?.firstName} has reviewed you on ${taskData.title}`,
+          html: `${student?.firstName} has reviewed you on ${taskData.title}`,
         },
       })
     }
@@ -140,7 +140,7 @@ export default function AddReview({ taskerDetails,assignmentId, poster, taskData
               <div className="flex w-full flex-row justify-center">
                 <Image
                   src={profilePic}
-                  alt="tasker"
+                  alt="tutor"
                   height={55}
                   width={55}
                   className="h-[55px] w-[55px] rounded-full object-cover"

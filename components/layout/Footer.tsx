@@ -31,7 +31,7 @@ export default function Footer() {
                 <p className="pt-1 text-lg">
                   <Link
                     className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="/become-a-tasker"
+                    href="/become-a-tutor"
                   >
                     Art & Design
                   </Link>

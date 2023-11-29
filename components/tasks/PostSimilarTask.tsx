@@ -91,13 +91,13 @@ export default function PostSimilarTask({ taskData }) {
       budget: budget,
       status: 'Open',
       createdAt: serverTimestamp(),
-      poster: {
+      student: {
         userId: user?.userId,
         price: '',
         bookingFee: '',
         finalPrice: '',
       },
-      tasker: {
+      tutor: {
         userId: '',
         price: '',
         serviceFee: '',

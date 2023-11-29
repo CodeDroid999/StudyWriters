@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 
 export default function ReleasePayment({
  assignmentId,
-  poster,
+  student,
   taskData,
   taskerDetails,
 }) {
@@ -29,8 +29,8 @@ export default function ReleasePayment({
       status: 'Completed',
     })
     await addDoc(collection(db, 'notifications'), {
-      receiverId: taskData.tasker.userId,
-      senderId: poster.userId,
+      receiverId: taskData.tutor.userId,
+      senderId: student.userId,
       type: 'ReleasePayment',
       content: 'has released payment on',
       taskTitle: taskData.title,
@@ -49,7 +49,7 @@ export default function ReleasePayment({
       to: taskerDetails?.email,
       message: {
         subject: 'Payment Released',
-        html: `Payment has been released by the poster for ${taskData?.title}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${taskerDetails?.bankAccount.accountHolderName}, Account Number: ${taskerDetails?.bankAccount.accountNumber}, BSB:${taskerDetails?.bankAccount.BSB} `,
+        html: `Payment has been released by the student for ${taskData?.title}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${taskerDetails?.bankAccount.accountHolderName}, Account Number: ${taskerDetails?.bankAccount.accountNumber}, BSB:${taskerDetails?.bankAccount.BSB} `,
       },
     })
 
@@ -94,15 +94,15 @@ export default function ReleasePayment({
             </div>
             <div className="mt-3 flex flex-row items-center justify-between text-sm font-medium text-gray-700">
               <span>Offer</span>
-              <span>${taskData.tasker.price}</span>
+              <span>${taskData.tutor.price}</span>
             </div>
             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-700">
               <span>Service fee</span>
-              <span>-${taskData.tasker.serviceFee}</span>
+              <span>-${taskData.tutor.serviceFee}</span>
             </div>
             <div className="mb-10 flex flex-row items-center justify-between text-base font-medium text-green-950">
               <span>Earned Amount</span>
-              <span>${taskData.tasker.finalPrice}</span>
+              <span>${taskData.tutor.finalPrice}</span>
             </div>
             <div className="w-full">
               <button

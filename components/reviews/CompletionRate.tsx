@@ -9,7 +9,7 @@ export default function CompletionRate({ reviews, userId }) {
     setLoading(true)
     const q = query(
       collection(db, 'tasks'),
-      where('tasker.userId', '==', userId)
+      where('tutor.userId', '==', userId)
     )
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {

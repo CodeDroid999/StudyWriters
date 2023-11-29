@@ -56,7 +56,7 @@ export default function TaskReviews({assignmentId }) {
   const taskerReviews = reviews.filter(
     (review) => review.senderId === review.taskerId
   )
-  const posterReviews = reviews.filter(
+  const studentReviews = reviews.filter(
     (review) => review.senderId === review.posterId
   )
 
@@ -133,7 +133,7 @@ export default function TaskReviews({assignmentId }) {
           )}
           {activeTab == 'Student' && (
             <div>
-              {posterReviews.length === 0 ? (
+              {studentReviews.length === 0 ? (
                 <div>
                   <h1 className="mt-5 font-medium text-green-950">
                     No review yet!
@@ -144,11 +144,11 @@ export default function TaskReviews({assignmentId }) {
                   <div className="w-full">
                     <div className="flex flex-1 flex-row items-center">
                       <Link
-                        href={`/public-profile/${posterReviews[0].reviewer.userId}`}
+                        href={`/public-profile/${studentReviews[0].reviewer.userId}`}
                       >
                         <Image
                           src={
-                            posterReviews[0].reviewer.profilePicture || profile
+                            studentReviews[0].reviewer.profilePicture || profile
                           }
                           width={45}
                           height={45}
@@ -157,18 +157,18 @@ export default function TaskReviews({assignmentId }) {
                         />
                       </Link>
                       <Link
-                        href={`/public-profile/${posterReviews[0].reviewer.userId}`}
+                        href={`/public-profile/${studentReviews[0].reviewer.userId}`}
                       >
                         <h1 className="ml-2 cursor-pointer text-lg font-medium text-green-950">
-                          {posterReviews[0].reviewer.firstName}{' '}
-                          {posterReviews[0].reviewer.lastName}
+                          {studentReviews[0].reviewer.firstName}{' '}
+                          {studentReviews[0].reviewer.lastName}
                         </h1>
                       </Link>
                     </div>
 
-                    <StarRating rating={posterReviews[0].rating} />
+                    <StarRating rating={studentReviews[0].rating} />
                     <p className="text-base text-gray-800">
-                      {posterReviews[0].review}
+                      {studentReviews[0].review}
                     </p>
                   </div>
                 </div>

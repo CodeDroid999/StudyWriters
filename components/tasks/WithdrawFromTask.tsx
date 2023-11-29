@@ -12,7 +12,7 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { UserAuth } from 'context/AuthContext'
 
-export default function WithdrawFromTask({assignmentId, taskData, poster }) {
+export default function WithdrawFromTask({assignmentId, taskData, student }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const { user } = UserAuth()
@@ -21,7 +21,7 @@ export default function WithdrawFromTask({assignmentId, taskData, poster }) {
       const taskRef = doc(db, 'tasks',assignmentId)
 
       await updateDoc(taskRef, {
-        tasker: {
+        tutor: {
           userId: '',
           price: '',
           serviceFee: '',
@@ -31,7 +31,7 @@ export default function WithdrawFromTask({assignmentId, taskData, poster }) {
         status: 'Open',
       })
       await addDoc(collection(db, 'notifications'), {
-        receiverId: taskData.poster.userId,
+        receiverId: taskData.student.userId,
         senderId: user.userId,
         type: 'CancelTask',
         content: 'has withdrawn from',
@@ -41,7 +41,7 @@ export default function WithdrawFromTask({assignmentId, taskData, poster }) {
         createdAt: serverTimestamp(),
       })
       await addDoc(collection(db, 'mail'), {
-        to: poster?.email,
+        to: student?.email,
         cc: 'airtaska@gmail.com',
         message: {
           subject: 'Withdrawal From Task',

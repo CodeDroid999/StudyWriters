@@ -5,7 +5,7 @@ import PostSimilarTask from './PostSimilarTask'
 import { AiFillCaretDown } from 'react-icons/ai'
 import { UserAuth } from 'context/AuthContext'
 
-export default function MoreOptions({ taskData, poster,assignmentId }) {
+export default function MoreOptions({ taskData, student,assignmentId }) {
   const [isOpen, setIsOpen] = useState(false)
   const { user } = UserAuth()
   return (
@@ -25,12 +25,12 @@ export default function MoreOptions({ taskData, poster,assignmentId }) {
         <div className="flex flex-col gap-0.5 rounded-xl rounded-t-none bg-gray-100 p-3">
           <PostSimilarTask taskData={taskData} />
           {!taskData.paymentRequested &&
-            taskData.tasker.userId === user?.userId &&
+            taskData.tutor.userId === user?.userId &&
             taskData.status === 'Assigned' && (
               <WithdrawFromTask
                assignmentId={taskId}
                 taskData={taskData}
-                poster={poster}
+                student={student}
               />
             )}
         </div>

@@ -93,7 +93,7 @@ const cancelTaskEmail = async ({ email, taskTitle }) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'Task Cancelled',
-      text: `${taskTitle} is no longer available, it has been cancelled by the poster.`,
+      text: `${taskTitle} is no longer available, it has been cancelled by the student.`,
     }
 
     await transporter.sendMail(mailOptions)
@@ -163,7 +163,7 @@ const releasePaymentTaskerEmail = async ({
       from: process.env.NODEMAILER_EMAIL,
       to: taskerEmail,
       subject: 'Payment Released',
-      text: `Payment has been released by the poster for ${taskTitle}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
+      text: `Payment has been released by the student for ${taskTitle}, it will take 2-5 business days to reflect in your nominated bank account. Account Holder Name: ${accountName}, Account Number: ${accountNumber}`,
     }
 
     await transporter.sendMail(mailOptions)

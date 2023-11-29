@@ -28,10 +28,10 @@ export default function Hero() {
           </div>
           <div className="my-2 w-full max-w-sm rounded-full bg-green-950 px-3 py-3 sm:w-[300px]  xl:my-3  xl:py-4 ">
             <Link
-              href="/become-a-tasker"
+              href="/become-a-tutor"
               className="flex w-full flex-row justify-center text-lg font-semibold text-white"
             >
-              Earn money as a tasker
+              Earn money as a tutor
               <MdArrowForward size={28} className="ml-3 pt-1 " />
             </Link>
           </div>

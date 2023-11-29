@@ -9,7 +9,7 @@ import { UserAuth } from 'context/AuthContext'
 import { toast } from 'react-hot-toast'
 import ConfirmProfile from './ConfirmProfile'
 
-export default function MakeOffer({ posterId, taskTitle, poster }) {
+export default function MakeOffer({ posterId, taskTitle, student }) {
   const [step, setStep] = useState(1)
   const [offer, setOffer] = useState('')
   const [proposal, setProposal] = useState('')
@@ -113,7 +113,7 @@ export default function MakeOffer({ posterId, taskTitle, poster }) {
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'mail'), {
-      to: poster?.email,
+      to: student?.email,
       message: {
         subject: 'New Offer',
         html: `You have received a new offer on ${taskTitle}`,

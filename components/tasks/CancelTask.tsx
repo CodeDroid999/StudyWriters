@@ -11,7 +11,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function CancelTask({assignmentId, taskData, tasker }) {
+export default function CancelTask({assignmentId, taskData, tutor }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const cancelTask = async () => {
@@ -22,8 +22,8 @@ export default function CancelTask({assignmentId, taskData, tasker }) {
           status: 'Cancelled',
         })
         await addDoc(collection(db, 'notifications'), {
-          receiverId: taskData.tasker.userId,
-          senderId: taskData.poster.userId,
+          receiverId: taskData.tutor.userId,
+          senderId: taskData.student.userId,
           type: 'CancelTask',
           content: 'has cancelled ',
           taskTitle: taskData.title,
@@ -32,11 +32,11 @@ export default function CancelTask({assignmentId, taskData, tasker }) {
           createdAt: serverTimestamp(),
         })
         await addDoc(collection(db, 'mail'), {
-          to: tasker?.email,
+          to: tutor?.email,
           cc: 'airtaska@gmail.com',
           message: {
             subject: 'Task Cancelled',
-            html: `${taskData.title} is no longer available, it has been cancelled by the poster.`,
+            html: `${taskData.title} is no longer available, it has been cancelled by the student.`,
           },
         })
       } else {

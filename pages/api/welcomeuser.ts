@@ -44,8 +44,8 @@ export default async function handler(
             <!-- For Taskers -->
             <h2>For Taskers:</h2>
             <ul>
-              <li><Link href="https://www.QualityUnited Writers.com/become-a-tasker">Earn money</a> doing what you're good at.</li>
-              <li><Link href="https://www.QualityUnited Writers.com/become-a-tasker">Expand your clientele</a> and grow your business.</li>
+              <li><Link href="https://www.QualityUnited Writers.com/become-a-tutor">Earn money</a> doing what you're good at.</li>
+              <li><Link href="https://www.QualityUnited Writers.com/become-a-tutor">Expand your clientele</a> and grow your business.</li>
               <li>Access thousands of job opportunities with no hidden costs.</li>
               <li>Enjoy the freedom to work on your schedule.</li>
             </ul>

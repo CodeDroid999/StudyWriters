@@ -44,7 +44,7 @@ export default function TaskDetails(props: any) {
   const { user } = UserAuth()
   const router = useRouter()
   constassignmentId = router.query.id.toString()
-  const poster = posterDetails
+  const student = posterDetails
 
   useEffect(() => {
     setLoading(true)
@@ -83,7 +83,7 @@ export default function TaskDetails(props: any) {
     try {
       await deleteDoc(doc(db, 'tasks',assignmentId, 'offers', offerId))
       await addDoc(collection(db, 'notifications'), {
-        receiverId: taskData.poster.userId,
+        receiverId: taskData.student.userId,
         senderId: user.userId,
         type: 'WithdrawOffer',
         content: 'has withdrawn offer on',
@@ -93,7 +93,7 @@ export default function TaskDetails(props: any) {
         createdAt: serverTimestamp(),
       })
       await addDoc(collection(db, 'mail'), {
-        to: poster?.email,
+        to: student?.email,
         message: {
           subject: 'Offer Withdrawn',
           html: `${user?.firstName} has withdrawn offer made on ${taskData.title}`,
@@ -131,7 +131,7 @@ export default function TaskDetails(props: any) {
                     Posted By
                   </h4>
                   <p className="text-lg font-medium text-green-950">
-                    {poster.firstName} {poster.lastName}
+                    {student.firstName} {student.lastName}
                   </p>
                   <p className="text-sm font-medium text-green-950">
                     On {taskData.createdAt}
@@ -160,7 +160,7 @@ export default function TaskDetails(props: any) {
                   </p>
                 </div>
 
-                {user && taskData.poster.userId === user?.userId && (
+                {user && taskData.student.userId === user?.userId && (
                   <div className="w-full">
                     {taskData.status === 'Open' && (
                       <UpdateTaskassignmentId={taskId} taskData={taskData} />
@@ -170,7 +170,7 @@ export default function TaskDetails(props: any) {
                       <CancelTask
                        assignmentId={taskId}
                         taskData={taskData}
-                        tasker={taskerDetails}
+                        tutor={taskerDetails}
                       />
                     )}
                     {taskData.status === 'Cancelled' && (
@@ -183,7 +183,7 @@ export default function TaskDetails(props: any) {
                         <AddReview
                           taskerDetails={taskerDetails}
                          assignmentId={taskId}
-                          poster={poster}
+                          student={student}
                           taskData={taskData}
                         />
                       ) : (
@@ -197,7 +197,7 @@ export default function TaskDetails(props: any) {
                         <ReleasePayment
                           taskData={taskData}
                           taskerDetails={taskerDetails}
-                          poster={poster}
+                          student={student}
                          assignmentId={taskId}
                         />
                       )
@@ -205,7 +205,7 @@ export default function TaskDetails(props: any) {
                   </div>
                 )}
 
-                {user && taskData.poster.userId !== user?.userId && (
+                {user && taskData.student.userId !== user?.userId && (
                   <div className="w-full">
                     {taskData.status === 'Open' ? (
                       offers.some(
@@ -231,8 +231,8 @@ export default function TaskDetails(props: any) {
                                 <UpdateOffer
                                   proposal={offer.proposal}
                                   offerId={offer.offerId}
-                                  poster={posterDetails}
-                                  posterId={poster.userId}
+                                  student={posterDetails}
+                                  posterId={student.userId}
                                   taskTitle={taskData.title}
                                 />
                               </div>
@@ -242,12 +242,12 @@ export default function TaskDetails(props: any) {
                         })
                       ) : (
                         <MakeOffer
-                          posterId={taskData.poster.userId}
+                          posterId={taskData.student.userId}
                           taskTitle={taskData.title}
-                          poster={posterDetails}
+                          student={posterDetails}
                         />
                       )
-                    ) : taskData.tasker.userId === user?.userId ? (
+                    ) : taskData.tutor.userId === user?.userId ? (
                       <div>
                         {taskData.paymentRequested &&
                         (taskData.status === 'Assigned' ||
@@ -255,15 +255,15 @@ export default function TaskDetails(props: any) {
                           <div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
                               <span>Your Offer</span>
-                              <span>${taskData.tasker.price}</span>
+                              <span>${taskData.tutor.price}</span>
                             </div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
                               <span>Service fee</span>
-                              <span>-${taskData.tasker.serviceFee}</span>
+                              <span>-${taskData.tutor.serviceFee}</span>
                             </div>
                             <div className="flex flex-row items-center justify-between text-base font-medium text-green-950">
                               <span>Earned</span>
-                              <span>${taskData.tasker.finalPrice}</span>
+                              <span>${taskData.tutor.finalPrice}</span>
                             </div>
                             {taskData.status === 'Completed' ? (
                               <div className="mt-3 rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-500">
@@ -282,20 +282,20 @@ export default function TaskDetails(props: any) {
                                 <div className="my-3 w-full text-sm">
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                                     <span>Your Offer</span>
-                                    <span>${taskData.tasker.price}</span>
+                                    <span>${taskData.tutor.price}</span>
                                   </div>
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                                     <span>Service fee</span>
-                                    <span>-${taskData.tasker.serviceFee}</span>
+                                    <span>-${taskData.tutor.serviceFee}</span>
                                   </div>
                                   <div className="flex flex-row items-center justify-between font-medium text-green-950">
                                     <span>You will receive</span>
-                                    <span>${taskData.tasker.finalPrice}</span>
+                                    <span>${taskData.tutor.finalPrice}</span>
                                   </div>
                                 </div>
                                 <RequestPayment
                                   taskData={taskData}
-                                  poster={poster}
+                                  student={student}
                                  assignmentId={taskId}
                                 />
                               </div>
@@ -322,7 +322,7 @@ export default function TaskDetails(props: any) {
                               <AddReview
                                 taskerDetails={taskerDetails}
                                assignmentId={taskId}
-                                poster={poster}
+                                student={student}
                                 taskData={taskData}
                               />
                             </div>
@@ -339,7 +339,7 @@ export default function TaskDetails(props: any) {
               {user && (
                 <MoreOptions
                   taskData={taskData}
-                  poster={poster}
+                  student={student}
                  assignmentId={taskId}
                 />
               )}
@@ -397,22 +397,22 @@ export default function TaskDetails(props: any) {
                       </div>
 
                       <div className="mt-3 w-full rounded-xl bg-gray-200 p-3 font-medium text-gray-800">
-                        {taskData.tasker.proposal}
+                        {taskData.tutor.proposal}
                       </div>
                       {user &&
-                        (taskData.poster.userId === user.userId ||
-                          taskData.tasker.userId === user.userId) && (
+                        (taskData.student.userId === user.userId ||
+                          taskData.tutor.userId === user.userId) && (
                           <div className="mt-3">
                             <h1 className="mb-2 text-xs font-bold uppercase text-green-950">
                               Private messages
                             </h1>
                             <NewMessage
                               customerId={taskerDetails?.userId}
-                              posterId={poster.userId}
+                              posterId={student.userId}
                               taskData={taskData}
                              assignmentId={taskId}
-                              tasker={taskerDetails}
-                              poster={poster}
+                              tutor={taskerDetails}
+                              student={student}
                             />
                           </div>
                         )}
@@ -471,7 +471,7 @@ export default function TaskDetails(props: any) {
 
                             {user &&
                               taskData.status === 'Open' &&
-                              taskData.poster.userId === user.userId && (
+                              taskData.student.userId === user.userId && (
                                 <div className="flex flex-1 flex-row items-center justify-end space-x-4">
                                   <div className="text-2xl font-semibold text-green-950">
                                     ${offer.amount}
@@ -480,7 +480,7 @@ export default function TaskDetails(props: any) {
                                     <AcceptOffer
                                       taskData={taskData}
                                       offer={offer}
-                                      poster={posterDetails}
+                                      student={posterDetails}
                                     />
                                   </div>
                                 </div>
@@ -493,11 +493,11 @@ export default function TaskDetails(props: any) {
                           <div>
                             <Replies
                               customerId={offer.userId}
-                              posterId={poster.userId}
+                              posterId={student.userId}
                               taskData={taskData}
                              assignmentId={taskId}
                               offerId={offer.offerId}
-                              poster={poster}
+                              student={student}
                               customer={offer.customer}
                             />
                           </div>
@@ -535,7 +535,7 @@ export async function getServerSideProps({ params }) {
   const posterSnapshot = await getDocs(
     query(
       collection(db, 'users'),
-      where('userId', '==', taskData.poster.userId)
+      where('userId', '==', taskData.student.userId)
     )
   )
 
@@ -545,7 +545,7 @@ export async function getServerSideProps({ params }) {
   const taskerSnapshot = await getDocs(
     query(
       collection(db, 'users'),
-      where('userId', '==', taskData.tasker.userId)
+      where('userId', '==', taskData.tutor.userId)
     )
   )
 

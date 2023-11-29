@@ -17,7 +17,7 @@ import { toast } from 'react-hot-toast'
 export default function MakeOffer({
   proposal,
   offerId,
-  poster,
+  student,
   taskTitle,
   posterId,
 }) {
@@ -109,7 +109,7 @@ export default function MakeOffer({
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'mail'), {
-      to: poster?.email,
+      to: student?.email,
       message: {
         subject: 'Offer Updated',
         html: `${user?.userId} has updated offer made on ${taskTitle}`,

@@ -54,7 +54,7 @@ export async function getServerSideProps() {
         data.createdAt = formatDate(data.createdAt.toDate());
         const id = doc.id;
 
-        const userQuery = query(collection(db, 'users'), where('userId', '==', data.poster.userId));
+        const userQuery = query(collection(db, 'users'), where('userId', '==', data.student.userId));
         const usersSnapshot = await getDocs(userQuery);
 
         const posterDoc = usersSnapshot.docs[0];

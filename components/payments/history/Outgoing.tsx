@@ -45,7 +45,7 @@ export default function Outgoing() {
   }, [userId])
 
   const getPayment = payments.reduce(
-    (total, payment) => total + parseFloat(payment.poster.finalPrice),
+    (total, payment) => total + parseFloat(payment.student.finalPrice),
     0
   )
   const netPayment = getPayment.toFixed(2)
@@ -103,7 +103,7 @@ export default function Outgoing() {
                         {payment.taskTitle}
                       </span>
                       <span className="font-medium text-green-950">
-                        ${payment.poster.finalPrice}
+                        ${payment.student.finalPrice}
                       </span>
                       <span className="text-sm text-gray-700">
                         {' '}

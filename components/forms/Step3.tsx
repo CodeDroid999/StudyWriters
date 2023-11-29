@@ -57,13 +57,13 @@ export default function Step3({ handlePreviousStep }: Props) {
       budget: budget,
       status: 'Open',
       createdAt: serverTimestamp(),
-      poster: {
+      student: {
         userId: userId,
         price: '',
         bookingFee: '',
         finalPrice: '',
       },
-      tasker: {
+      tutor: {
         userId: '',
         price: '',
         serviceFee: '',

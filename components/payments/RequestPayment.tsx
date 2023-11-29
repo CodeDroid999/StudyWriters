@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function RequestPayment({ taskData, poster,assignmentId }) {
+export default function RequestPayment({ taskData, student,assignmentId }) {
   const [step, setStep] = useState(1)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const { user } = UserAuth()
@@ -26,7 +26,7 @@ export default function RequestPayment({ taskData, poster,assignmentId }) {
     })
 
     await addDoc(collection(db, 'notifications'), {
-      receiverId: poster.userId,
+      receiverId: student.userId,
       senderId: user.userId,
       type: 'RequestPayment',
       content: 'has requested payment on',
@@ -36,7 +36,7 @@ export default function RequestPayment({ taskData, poster,assignmentId }) {
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'mail'), {
-      to: poster?.email,
+      to: student?.email,
       message: {
         subject: 'Payment Request',
         html: `${user?.firstName} has requested payment on ${taskData.title}. Confirm everything is done then release payment.`,
@@ -79,17 +79,17 @@ export default function RequestPayment({ taskData, poster,assignmentId }) {
                 <p className="font-medium text-gray-700">
                   You are requesting for payment for{' '}
                   <span className="text-blue-600">{taskData.title}</span>.{' '}
-                  {poster.firstName} {poster.lastName} will be notified to
+                  {student.firstName} {student.lastName} will be notified to
                   release payment.
                 </p>
                 <div className="pt-3">
                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
                     <span>Service fee</span>
-                    <span>-${taskData.tasker.serviceFee}</span>
+                    <span>-${taskData.tutor.serviceFee}</span>
                   </div>
                   <div className="flex flex-row items-center justify-between font-medium text-green-950">
                     <span>You will receive</span>
-                    <span>${taskData.tasker.finalPrice}</span>
+                    <span>${taskData.tutor.finalPrice}</span>
                   </div>
                 </div>
                 <div className="pt-16">
@@ -137,7 +137,7 @@ export default function RequestPayment({ taskData, poster,assignmentId }) {
                 </div>
                 <div className="mt-1">
                   <p className="text-center text-sm font-medium text-gray-700">
-                    We have notified {poster.firstName} {poster.lastName} to
+                    We have notified {student.firstName} {student.lastName} to
                     release payment. It will take 2-5 business days to reach
                     your account.
                   </p>

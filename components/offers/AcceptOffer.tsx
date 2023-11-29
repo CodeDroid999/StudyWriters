@@ -20,7 +20,7 @@ import PaymentForm from 'components/payments/PaymentForm'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
-export default function AcceptOffer({ offer, taskData, poster }) {
+export default function AcceptOffer({ offer, taskData, student }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [clientSecret, setClientSecret] = React.useState('')
 
@@ -73,14 +73,14 @@ export default function AcceptOffer({ offer, taskData, poster }) {
 
     const newDoc: any = await updateDoc(taskRef, {
       status: 'Assigned',
-      tasker: {
+      tutor: {
         userId: offer.userId,
         price: offer.amount,
         serviceFee: offer.serviceFee,
         finalPrice: offer.finalPrice,
         proposal: offer.proposal,
       },
-      poster: {
+      student: {
         userId: user.userId,
         price: offer.amount,
         bookingFee: bookingFee,
@@ -117,7 +117,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
         serviceFee: offer.serviceFee,
         finalPrice: offer.finalPrice,
       },
-      poster: {
+      student: {
         price: offer.amount,
         bookingFee: bookingFee,
         finalPrice: finalPrice,
@@ -155,7 +155,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
             <div className="flex flex-col items-center gap-2 pt-8">
               <div className="flex w-full flex-row items-center">
                 <Image
-                  src={poster?.profilePicture || profile}
+                  src={student?.profilePicture || profile}
                   height={50}
                   width={50}
                   alt="profile"
@@ -163,7 +163,7 @@ export default function AcceptOffer({ offer, taskData, poster }) {
                 />
                 <div className="ml-3 flex flex-1 flex-col">
                   <span className="text-base font-semibold text-blue-950">
-                    {poster?.firstName} {poster?.lastName}
+                    {student?.firstName} {student?.lastName}
                   </span>
                   <span className="text-sm font-medium text-gray-800">
                     {taskData.title}

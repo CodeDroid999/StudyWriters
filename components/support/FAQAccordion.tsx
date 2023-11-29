@@ -44,11 +44,11 @@ const Accordion: React.FC = () => {
     },
     {
       question:'Who is a Student?',
-      answer:"A poster is someone who posts tasks or work on the website. It typically means a user or contributor who shares Research, Technical, Assignments, or any form of work on our platform. Posters are members of our online community, researchers, students, professors, developers  bloggers, writers, photographers, or anyone who actively posts things to be done.",
+      answer:"A student is someone who posts tasks or work on the website. It typically means a user or contributor who shares Research, Technical, Assignments, or any form of work on our platform. Posters are members of our online community, researchers, students, professors, developers  bloggers, writers, photographers, or anyone who actively posts things to be done.",
     },
     {
       question:'Who is a Tutor',
-      answer:"A tasker is someone who takes on the tasks or work posted by the poster. Taskers play a pivotal role on our platform, and they are the individuals who bring the posted projects and assignments to life. Taskers can encompass a wide range of skills and expertise, making them valuable assets to our online community."
+      answer:"A tutor is someone who takes on the tasks or work posted by the student. Taskers play a pivotal role on our platform, and they are the individuals who bring the posted projects and assignments to life. Taskers can encompass a wide range of skills and expertise, making them valuable assets to our online community."
     },
     {
       question: 'What services are available on Airtaska?',
@@ -91,7 +91,7 @@ const Accordion: React.FC = () => {
       <div className="flex space-x-2">
         <div className="w-full max-w-sm rounded-full bg-green-600 px-1 py-1 pt-4 sm:w-[300px]  xl:my-1  xl:py-2 ">
           <Link
-            href="/become-a-tasker"
+            href="/become-a-tutor"
             className="flex w-full flex-row justify-center text-lg font-semibold text-white"
           >
             Join Airtaska
