@@ -15,9 +15,9 @@ import { useRouter } from 'next/router'
 import { UserAuth } from 'context/AuthContext'
 import MyAssignments from 'pages/my-asssignments/MyAssignments'
 
-export default function Myassignments() {
+export default function MyTasksPage() {
   const [selectedFilter, setSelectedFilter] = useState('')
-  const [assignments, setassignments] = useState([])
+  const [assignments, setTasks] = useState([])
   const [loading, setLoading] = useState(false)
   const { user } = UserAuth()
 
@@ -29,7 +29,7 @@ export default function Myassignments() {
     const q = query(collection(db, 'assignments'))
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const updatedassignments = []
+      const updatedTasks = []
 
       querySnapshot.forEach(async (doc) => {
         const data = doc.data()
@@ -44,10 +44,10 @@ export default function Myassignments() {
           return offerData
         })
 
-        updatedassignments.push({ id, ...data, offers })
+        updatedTasks.push({ id, ...data, offers })
       })
 
-      setassignments(updatedassignments)
+      setTasks(updatedTasks)
       setLoading(false)
     })
 
@@ -64,17 +64,17 @@ export default function Myassignments() {
     })
     return () => unsubscribe()
   }, [router])
-  const postedassignments = assignments.filter((assignment) => assignment.poster.userId === userId)
-  const assignedassignments = assignments.filter(
-    (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
+  const postedTasks = assignments.filter((task) => task.poster.userId === userId)
+  const assignedTasks = assignments.filter(
+    (task) => task.tasker.userId === userId && task.status === 'Assigned'
   )
-  const completedassignments = assignments.filter(
-    (assignment) => assignment.tutor.userId === userId && assignment.status === 'Completed'
+  const completedTasks = assignments.filter(
+    (task) => task.tasker.userId === userId && task.status === 'Completed'
   )
-  const pendingOffers = assignments.filter((assignment) => {
+  const pendingOffers = assignments.filter((task) => {
     return (
-      assignment.status === 'Open' &&
-      assignment.offers.some((offer: any) => offer.userId === userId)
+      task.status === 'Open' &&
+      task.offers.some((offer: any) => offer.userId === userId)
     )
   })
 
@@ -127,14 +127,14 @@ export default function Myassignments() {
             {selectedFilter === 'posted' && (
               <MyAssignments
                 heading="Posted Assignments"
-                assignments={postedassignments}
+                assignments={postedTasks}
                 warning="You have not posted any assignments!"
               />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignments
-                heading="Assignments I have been assigned"
-                assignments={assignedassignments}
+                heading="Tasks I have been assigned"
+                assignments={assignedTasks}
                 warning="You have not been assigned any assignments!"
               />
             )}
@@ -147,8 +147,8 @@ export default function Myassignments() {
             )}
             {selectedFilter === 'completed' && (
               <MyAssignments
-                heading="Assignments I have completed"
-                assignments={completedassignments}
+                heading="Tasks I have completed"
+                assignments={completedTasks}
                 warning="You have not completed any assignments!"
               />
             )}
