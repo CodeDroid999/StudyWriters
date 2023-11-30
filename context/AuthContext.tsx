@@ -9,6 +9,7 @@ import {
 } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import Image from 'next/image';
+import HeroBackground from "public/svg/Ripple-1.2s-228px.svg"
 
 interface User {
   firstName: any;
@@ -86,24 +87,19 @@ export function AuthContextProvider({
   }, []);
 
   if (loading) {
-    // You can render a loading spinner or message here
-    return
-    <div className="min-w-screen min-h-screen relative">
-      <Image
-        src="/public/bg/Teal_bg.png"
-        alt="Background Image"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-      />
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 flex justify-center items-center">
-        <div className="text-white text-center z-10">
-          Loading...
+    return (
+      <div className="relative h-[100vh] w-100 flex justify-center align-center items-center">
+        <div className="">
+          <Image
+            src={HeroBackground}
+            alt="Background"
+           width="200"
+           height="200"
+          />
         </div>
       </div>
-    </div>
 
-      ;
+    );
   }
 
   if (error) {
