@@ -14,7 +14,6 @@ import {
 } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { UserAuth } from 'context/AuthContext'
-import { formatDate } from 'pages/profile/[id]'
 import MakeOffer from 'components/offers/MakeOffer'
 import UpdateOffer from 'components/offers/UpdateOffer'
 import { useRouter } from 'next/router'
@@ -34,7 +33,7 @@ import CancelTask from 'components/tasks/CancelTask'
 import MoreOptions from 'components/tasks/MoreOptions'
 import UpdateTask from 'components/tasks/UpdateTask'
 import TaskReviews from 'components/reviews/TaskReviews'
-
+import { formatDate } from 'pages/profile/[id]'
 
 
 
@@ -86,6 +85,9 @@ export default function TaskDetails(props: any) {
       unsubscribe()
     }
   }, [assignmentId])
+
+
+  
 
   const withdrawOffer = async (offerId: string) => {
     try {
