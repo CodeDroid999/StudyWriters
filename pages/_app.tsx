@@ -28,9 +28,7 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
 
-  useEffect(() => {
-    import('preline')
-  }, [])
+ 
   return (
     <>
       <AuthContextProvider>

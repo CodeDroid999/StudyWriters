@@ -96,7 +96,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Update Assignment    
+        Update   
       </button>
 
       {isFormOpen && (

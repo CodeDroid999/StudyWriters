@@ -47,7 +47,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
     } catch (error) {
       console.error('Error cancelling assignment:', error)
     }
-    toast.success('Assignmenthas been canceled')
+    toast.success('Assignment has been canceled')
     setIsFormOpen(false)
     router.reload()
   }
@@ -55,9 +55,9 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="mt-2 w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="mt-2 w-full cursor-pointer rounded-full bg-red-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Cancel Assignment    
+        Cancel 
       </button>
 
       {isFormOpen && (
