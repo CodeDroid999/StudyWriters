@@ -17,6 +17,8 @@ export default function Form2() {
   };
 
   const handleSave = async () => {
+    console.log('User:', user);
+
     // Validate form data
     if (!selectedSubjects.length || !selectedRate) {
       toast.error('Please fill in all required fields');
