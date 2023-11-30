@@ -11,6 +11,7 @@ import { auth, db } from '../firebase';
 import Image from 'next/image';
 
 interface User {
+  firstName: any;
   userId: string;
   // Add other user properties as needed
   role: string; // Assuming there is a 'role' field in your user data
