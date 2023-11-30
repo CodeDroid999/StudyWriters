@@ -8,6 +8,7 @@ import {
   where,
 } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import Image from 'next/image';
 
 interface User {
   userId: string;
@@ -26,7 +27,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   user: null,
   userRole: null,
-  logOut: () => {},
+  logOut: () => { },
   loading: false,
   error: null,
 });
@@ -85,7 +86,23 @@ export function AuthContextProvider({
 
   if (loading) {
     // You can render a loading spinner or message here
-    return <div>Loading...</div>;
+    return
+    <div className="min-w-screen min-h-screen relative">
+      <Image
+        src="/public/bg/Teal_bg.png"
+        alt="Background Image"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+      />
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 flex justify-center items-center">
+        <div className="text-white text-center z-10">
+          Loading...
+        </div>
+      </div>
+    </div>
+
+      ;
   }
 
   if (error) {

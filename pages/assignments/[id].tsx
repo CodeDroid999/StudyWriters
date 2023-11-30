@@ -87,8 +87,6 @@ export default function TaskDetails(props: any) {
   }, [assignmentId])
 
 
-  
-
   const withdrawOffer = async (offerId: string) => {
     try {
       await deleteDoc(doc(db, 'assignments',assignmentId, 'offers', offerId))
