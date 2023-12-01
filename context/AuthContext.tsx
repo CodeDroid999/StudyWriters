@@ -30,6 +30,7 @@ type User = {
   userId?: string;
   profilePicture?: string;
   dateOfBirth?: string;
+  phoneNumber?: string;
 };
 
 
