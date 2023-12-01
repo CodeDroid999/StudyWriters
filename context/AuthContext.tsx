@@ -40,8 +40,8 @@ type User = {
     accountNumber: string;
     // other properties
   };
-  skills?: skill[];
-  education?: education[];
+  skills?: string[];
+  education?: string[];
 };
 
 
