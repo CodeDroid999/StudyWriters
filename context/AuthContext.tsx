@@ -31,6 +31,7 @@ type User = {
   profilePicture?: string;
   dateOfBirth?: string;
   phoneNumber?: string;
+  billingAddress?: string; 
 };
 
 
