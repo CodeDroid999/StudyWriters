@@ -32,6 +32,7 @@ type User = {
   dateOfBirth?: string;
   phoneNumber?: string;
   billingAddress?: string; 
+  aboutDescription?: string;
   bankAccount?: {
     accountHolderName: string;
     accountNumber: string;
