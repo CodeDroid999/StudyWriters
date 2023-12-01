@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/favicon/QualityUnitedWritersLogo.ico" />
+        <link rel="icon" href="/favicon/logo.ico" />
       </Head>
 
       <body className="">
