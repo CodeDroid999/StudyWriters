@@ -35,7 +35,7 @@ export default function CompleteAccount() {
     let page;
     if (activeRole === 'Student') {
       toast.success(`Welcome onboard dear student . You are being redirected to the post-assignment page.`);
-      router.push('/post-assignment');
+      router.push('/post-first-assignment');
     } else if (activeRole === 'Tutor') {
       toast.success(`Welcome onboard . You are being redirected to tutor-application.`);
       router.push('/tutor-application/step1');
