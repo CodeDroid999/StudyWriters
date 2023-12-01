@@ -27,6 +27,7 @@ type User = {
   jobTitle?: string;
   employer?: string;
   role?: string;
+  userId?: string;
 };
 
 
