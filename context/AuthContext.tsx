@@ -38,6 +38,7 @@ type User = {
   bankAccount?: {
     accountHolderName: string;
     accountNumber: string;
+    BSB: string;
     // other properties
   };
   skills?: string[];
