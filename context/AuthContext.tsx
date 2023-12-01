@@ -31,15 +31,17 @@ type User = {
   profilePicture?: string;
   dateOfBirth?: string;
   phoneNumber?: string;
-  billingAddress?: string; 
+  billingAddress?: string;
   aboutDescription?: string;
-  postalCode?:string;
-  email?:string;
+  postalCode?: string;
+  email?: string;
   bankAccount?: {
     accountHolderName: string;
     accountNumber: string;
     // other properties
   };
+  skills?: [];
+  education: [];
 };
 
 
@@ -118,8 +120,8 @@ export function AuthContextProvider({
           <Image
             src={HeroBackground}
             alt="Background"
-           width="200"
-           height="200"
+            width="200"
+            height="200"
           />
         </div>
       </div>
