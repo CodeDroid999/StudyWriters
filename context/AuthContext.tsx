@@ -10,13 +10,25 @@ import {
 import { auth, db } from '../firebase';
 import Image from 'next/image';
 import HeroBackground from "public/svg/Ripple-1.2s-228px.svg"
+type User = {
+  firstName?: string;
+  lastName?: string;
+  city?: string;
+  address?: string;
+  country?: string;
+  state?: string;
+  startDate?: string;
+  endDate?: string;
+  lastSchoolName?: string;
+  howHeard?: string;
+  major?: string;
+  isSchoolTeacher?: string;
+  hasAffiliation?: string;
+  jobTitle?: string;
+  employer?: string;
+  role?: string;
+};
 
-interface User {
-  firstName: any;
-  userId: string;
-  // Add other user properties as needed
-  role: string; // Assuming there is a 'role' field in your user data
-}
 
 interface AuthContextType {
   user: User | null;

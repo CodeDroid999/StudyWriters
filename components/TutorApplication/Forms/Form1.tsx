@@ -47,7 +47,6 @@ export default function Form1() {
     const [address, setAddress] = useState(user?.address || '');
     const [country, setCountry] = useState(user?.country || '');
     const [state, setState] = useState(user?.state || '');
-    {/*applications*/ }
     const [startDate, setStartDate] = useState(user?.startDate || '');
     const [endDate, setEndDate] = useState(user?.endDate || '');
     const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
@@ -58,6 +57,7 @@ export default function Form1() {
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
     const [error, setError] = useState('');
+    
 
     const handleSave = async (e) => {
         e.preventDefault();
