@@ -29,6 +29,7 @@ type User = {
   role?: string;
   userId?: string;
   profilePicture?: string;
+  dateOfBirth?: string;
 };
 
 
