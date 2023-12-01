@@ -11,7 +11,7 @@ import {
   where,
 } from 'firebase/firestore'
 import React, { useState } from 'react'
-import { toast } from 'react-hot-toast'
+
 
 const SkillsAndEducation = () => {
   const { user } = UserAuth()
