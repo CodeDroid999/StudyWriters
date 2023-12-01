@@ -8,7 +8,7 @@ import useFormStore from 'store/store'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 
-export default function PostTask() {
+export default function FirstPostTask() {
   const [step, setStep] = useState(1)
   const clearData = useFormStore((state) => state.clearStore)
   const router = useRouter()
