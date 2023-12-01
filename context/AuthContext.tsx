@@ -33,7 +33,8 @@ type User = {
   phoneNumber?: string;
   billingAddress?: string; 
   aboutDescription?: string;
-  postalCode?:string
+  postalCode?:string;
+  email?:string;
   bankAccount?: {
     accountHolderName: string;
     accountNumber: string;
