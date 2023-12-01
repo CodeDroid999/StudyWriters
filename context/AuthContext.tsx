@@ -28,6 +28,7 @@ type User = {
   employer?: string;
   role?: string;
   userId?: string;
+  proFilePicture?: string;
 };
 
 
