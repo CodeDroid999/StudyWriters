@@ -32,6 +32,11 @@ type User = {
   dateOfBirth?: string;
   phoneNumber?: string;
   billingAddress?: string; 
+  bankAccount?: {
+    accountHolderName: string;
+    accountNumber: string;
+    // other properties
+  };
 };
 
 
