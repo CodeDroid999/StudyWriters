@@ -29,6 +29,7 @@ type User = {
   role?: string;
   userId?: string;
   proFilePicture?: string;
+  proFile?: string;
 };
 
 
