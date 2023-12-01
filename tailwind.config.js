@@ -5,7 +5,6 @@ module.exports = {
     './intro-template/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './plugins/**/*.{js,ts,jsx,tsx}',
-    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {
