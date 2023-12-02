@@ -7,8 +7,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
-const boostEarnings
-: React.FC = () => {
+const Howitworks: React.FC = () => {
     return (
         <>
             <Head>
@@ -62,5 +61,4 @@ const boostEarnings
     );
 };
 
-export default boostEarnings
-;
+export default Howitworks;
