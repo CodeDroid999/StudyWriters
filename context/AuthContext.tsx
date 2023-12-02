@@ -79,17 +79,21 @@ export function AuthContextProvider({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setLoading(true);
-
+  
       if (currentUser) {
         const q = query(
           collection(db, 'users'),
           where('userId', '==', currentUser.uid)
         );
-
+  
         const unsubscribeSnapshot = onSnapshot(q, (querySnapshot) => {
           if (!querySnapshot.empty) {
             const doc = querySnapshot.docs[0];
             const userData = doc.data() as User;
+  
+            // Update the userId property
+            userData.userId = currentUser.uid;
+  
             setUser(userData);
             setUserRole(userData.role); // Assuming 'role' is a field in your user data
             setError(null);
@@ -97,23 +101,25 @@ export function AuthContextProvider({
             console.error('User not found.');
             setError('User not found.');
           }
-
+  
           setLoading(false);
         });
+  
+        return () => {
+          unsubscribeSnapshot(); // Unsubscribe from the snapshot
+        };
       } else {
         setUser(null);
         setUserRole(null);
         setLoading(false);
       }
     });
-
+  
     return () => {
       unsubscribe();
-      // Add the unsubscribe for unsubscribeSnapshot here
-      // Example: unsubscribeSnapshot();
     };
   }, []);
-
+  
   if (loading) {
     return (
       <div className="relative h-[100vh] w-100 flex justify-center align-center items-center">
