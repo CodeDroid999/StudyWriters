@@ -15,7 +15,7 @@ interface CardProps {
   posterId: string
 }
 
-const TaskCard: React.FC<CardProps> = ({
+const AssignmentCard: React.FC<CardProps> = ({
   id,
   title,
   date,
@@ -111,4 +111,4 @@ const TaskCard: React.FC<CardProps> = ({
   )
 }
 
-export default TaskCard
+export default AssignmentCard

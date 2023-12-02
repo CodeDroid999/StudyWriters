@@ -1,42 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
-import {
-  collection,
-  getDocs,
-  orderBy,
-  query,
-  where,
-} from 'firebase/firestore';
+import AssignmentCard from 'components/browse-assignments/AssignmentCard'; // Assuming you have an AssignmentCard component
+import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import TaskCard from 'components/browse-tasks/TaskCard';
+
+const MapCenter = { lng: 151.2093, lat: -33.8688 }; // Sydney
 
 const BrowseAssignments: React.FC = (props: any) => {
+  const [userLocation, setUserLocation] = useState<number[] | null>(null);
   const { assignments } = props;
 
+  useEffect(() => {
+    // Get the user's location using the browser's geolocation API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation([longitude, latitude]);
+        },
+        (error) => {
+          console.error('Error getting user location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not available in this browser.');
+    }
+  }, []);
+
   return (
-    <div className="flex flex-col " style={{ height: '100vh', overflowY: 'auto', overflowX: 'auto' }}>
+    <div className="flex flex-col" style={{ height: '100vh', overflowY: 'auto', overflowX: 'auto' }}>
+      <Head>
+        {/* Add your meta tags here */}
+      </Head>
+
       <Navbar />
-      <div className="w-full">
-        <div className="bg-neutral-100" style={{ height: '100vh', overflowY: 'auto' }}>
-          <div className="w-50">
-            {assignments.map((assignment: any) => (
-              <TaskCard
-                key={assignment.id}
-                id={assignment.id}
-                title={assignment.title}
-                date={assignment.dueDate}
-                status={assignment.status}
-                price={assignment.budget}
-                offers={assignment.offers}
-                profilePicture={assignment.studentDetails.profilePicture}
-                studentId={assignment.studentDetails.userId}
-              />
-            ))}
+      <main className="mt-20 lg:mt-24" style={{ height: '100vh', overflowY: 'auto' }}>
+        <div className="w-full"></div>
+        <div className="mx-5 flex items-center justify-center">
+          <div className="h-full w-full md:w-1/3">
+            <div className="bg-neutral-100" style={{ height: '100vh', overflowY: 'auto' }}>
+              <div className="w-50">
+                {assignments.map((assignment: any) => (
+                  <AssignmentCard
+                    key={assignment.id}
+                    id={assignment.id}
+                    title={assignment.title}
+                    date={assignment.dueDate}
+                    status={assignment.status}
+                    price={assignment.budget}
+                    offers={assignment.offers}
+                    tutorProfilePicture={assignment.tutorDetails.profilePicture}
+                    tutorId={assignment.tutorDetails.userId}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
@@ -54,44 +77,33 @@ export async function getServerSideProps() {
         data.createdAt = formatDate(data.createdAt.toDate());
         const id = doc.id;
 
-        const userQuery = query(collection(db, 'users'), where('userId', '==', data.student.userId));
-        const usersSnapshot = await getDocs(userQuery);
-
-        const studentDoc = usersSnapshot.docs[0];
-        const studentData = studentDoc.data();
-        studentData.createdAt = formatDate(studentData.createdAt.toDate());
-
-        const offersCollectionRef = collection(db, 'assignments', id, 'offers');
-        const offersQuerySnapshot = await getDocs(offersCollectionRef);
-
-        const offers = await Promise.all(
-          offersQuerySnapshot.docs.map(async (offerDoc) => {
-            const offerData = offerDoc.data();
-            offerData.createdAt = formatDate(offerData.createdAt.toDate());
-
-            const customerQuery = query(collection(db, 'users'), where('userId', '==', offerData.userId));
-            const customerSnapshot = await getDocs(customerQuery);
-
-            const customerDoc = customerSnapshot.docs[0];
-            const customerData = customerDoc.data();
-            customerData.createdAt = formatDate(customerData.createdAt.toDate());
-
-            return {
-              offerId: offerDoc.id,
-              ...offerData,
-              customer: customerData,
-            };
-          })
+        const qTutor = query(
+          collection(db, 'users'),
+          where('userId', '==', data.tutor.userId)
         );
-        
 
-        return { id, ...data, offers, studentDetails: studentData };
+        const usersSnapshot = await getDocs(qTutor);
+
+        if (usersSnapshot.docs.length === 0) {
+          console.error(`No tutor document found for userId: ${data.tutor.userId}`);
+          return null;
+        }
+
+        const tutorDoc = usersSnapshot.docs[0];
+        const tutorData = tutorDoc.data();
+        tutorData.createdAt = formatDate(tutorData.createdAt.toDate());
+
+        // Rest of your code for fetching offers
+
+        return { id, ...data, offers, tutorDetails: tutorData };
       })
     );
 
+    const validAssignments = assignments.filter((assignment) => assignment !== null);
+
     return {
       props: {
-        assignments,
+        assignments: validAssignments,
       },
     };
   } catch (error) {
