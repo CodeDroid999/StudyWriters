@@ -45,6 +45,7 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider)
       const user = result.user
       const userRef = await addDoc(collection(db, 'users'), {
+        userId: user.uid,
         firstName: '',
         lastName: '',
         dateOfBirth: '',
@@ -53,8 +54,7 @@ export default function Signup() {
         mainRole: '',
         role: '',
         email: user.email,
-        userId: user.uid,
-        aboutDescription: '',
+              aboutDescription: '',
         postalCode: '',
         tag: '',
         city: '',
@@ -110,28 +110,44 @@ export default function Signup() {
       //send welcome message to user
       // Create user data for the HTTP request
       const userData = {
-        firstName: '', // Fill in the user's first name
-        lastName: '',  // Fill in the user's last name
-        email: user.email, // Use the user's email
+        userId: user.uid,
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        phoneNumber: '',
+        profilePicture: '',
+        mainRole: '',
+        role: '',
+        email: user.email,
+              aboutDescription: '',
+        postalCode: '',
+        tag: '',
+        city: '',
+        skills: [],
+        education: [],
+        createdAt: serverTimestamp(),
       };
 
       // Make the HTTP request to the api/welcomeuser route
       await axios.post('/api/welcomeuser', userData);
       const userRef = await addDoc(collection(db, 'users'), {
+        userId: user.uid,
         firstName: '',
         lastName: '',
+        dateOfBirth: '',
         phoneNumber: '',
+        profilePicture: '',
         mainRole: '',
         role: '',
         email: user.email,
-        userId: user.uid,
+              aboutDescription: '',
+        postalCode: '',
+        tag: '',
         city: '',
-        country:'',
-        State:'',
-        Address:'',
+        skills: [],
+        education: [],
         createdAt: serverTimestamp(),
       })
-
 
     } catch (error) {
       const errorCode = error.code
