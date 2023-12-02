@@ -17,6 +17,7 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import Head from 'next/head'
 import axios from 'axios';
+import { updateUser } from 'utils/UpdateUserCreds'
 
 
 export default function Signup() {
@@ -25,6 +26,7 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+
 
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -101,6 +103,24 @@ export default function Signup() {
         password
       )
       const user = userCredential.user
+      const userRef = await addDoc(collection(db, 'users'), {
+        userId: user.uid,
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        phoneNumber: '',
+        profilePicture: '',
+        mainRole: '',
+        role: '',
+        email: user.email,
+        aboutDescription: '',
+        postalCode: '',
+        tag: '',
+        city: '',
+        skills: [],
+        education: [],
+        createdAt: serverTimestamp(),
+      })
       // Send verification email
       await sendEmailVerification(user)
       // Display success message to user
@@ -130,26 +150,9 @@ export default function Signup() {
 
       // Make the HTTP request to the api/welcomeuser route
       await axios.post('/api/welcomeuser', userData);
-      const userRef = await addDoc(collection(db, 'users'), {
-        userId: user.uid,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        profilePicture: '',
-        mainRole: '',
-        role: '',
-        email: user.email,
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
-        createdAt: serverTimestamp(),
-      })
-      // Update the userId state after the user is created
-      await updateUserId(user.uid);
+    
+    
+      
 
     } catch (error) {
       const errorCode = error.code

@@ -95,7 +95,7 @@ export function AuthContextProvider({
             setUser(userData);
             setUserRole(userData.role); // Assuming 'role' is a field in your user data
             // Update the userId property
-            userData.userId = currentUser.uid;
+
             setError(null);
           } else {
             console.error('User not found.');
@@ -104,7 +104,7 @@ export function AuthContextProvider({
 
           setLoading(false);
         });
-
+       
         return () => {
           unsubscribeSnapshot(); // Unsubscribe from the snapshot
         };
