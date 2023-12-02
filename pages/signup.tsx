@@ -54,7 +54,7 @@ export default function Signup() {
         mainRole: '',
         role: '',
         email: user.email,
-              aboutDescription: '',
+        aboutDescription: '',
         postalCode: '',
         tag: '',
         city: '',
@@ -119,7 +119,7 @@ export default function Signup() {
         mainRole: '',
         role: '',
         email: user.email,
-              aboutDescription: '',
+        aboutDescription: '',
         postalCode: '',
         tag: '',
         city: '',
@@ -140,7 +140,7 @@ export default function Signup() {
         mainRole: '',
         role: '',
         email: user.email,
-              aboutDescription: '',
+        aboutDescription: '',
         postalCode: '',
         tag: '',
         city: '',
@@ -148,7 +148,10 @@ export default function Signup() {
         education: [],
         createdAt: serverTimestamp(),
       })
-         } catch (error) {
+      // Update the userId state after the user is created
+      await updateUserId(user.uid);
+
+    } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message
       if (errorCode === 'auth/email-already-in-use') {
@@ -158,9 +161,10 @@ export default function Signup() {
       }
     }
   }
+
   return (
     <AuthLayout>
-     <Head>
+      <Head>
         <title>
           QualityUnitedWriters - Your Academic Research and Project Partner
         </title>
@@ -259,3 +263,7 @@ export default function Signup() {
     </AuthLayout>
   )
 }
+function updateUserId(uid: string) {
+  throw new Error('Function not implemented.')
+}
+
