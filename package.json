@@ -6,6 +6,7 @@
     "deploy": "npm run build && npm run deploy-functions && vercel --prod",
     "deploy-functions": "cd functions && npm install && npm run build",
     "dev": "next dev",
+    "clean": "rm -rf node_modules/.cache",
     "format": "npx prettier --write . --ignore-path .gitignore --cache",
     "lint": "next lint -- --ignore-path .gitignore",
     "lint:fix": "npm run format && npm run lint -- --fix",
