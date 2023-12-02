@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Analytics } from '@vercel/analytics/react';
 import React from 'react'
 
 export default function AuthLayout({
