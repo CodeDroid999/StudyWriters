@@ -29,11 +29,11 @@ import AddReview from 'components/reviews/AddReview'
 import Replies from 'components/offers/Replies'
 import ReleasePayment from 'components/payments/ReleasePayment'
 import RequestPayment from 'components/payments/RequestPayment'
-import CancelTask from 'components/tasks/CancelTask'
-import MoreOptions from 'components/tasks/MoreOptions'
-import UpdateTask from 'components/tasks/UpdateTask'
 import TaskReviews from 'components/reviews/TaskReviews'
 import { formatDate } from 'pages/profile/[id]'
+import CancelTask from 'components/tasks/CancelTask'
+import UpdateTask from 'components/tasks/UpdateTask'
+import MoreOptions from 'components/tasks/MoreOptions'
 
 
 

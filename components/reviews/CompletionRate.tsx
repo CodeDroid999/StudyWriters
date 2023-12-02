@@ -3,7 +3,7 @@ import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
 
 export default function CompletionRate({ reviews, userId }) {
-  const [assignments, setTasks] = useState([])
+  const [assignments, setAssignments] = useState([])
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
@@ -13,17 +13,17 @@ export default function CompletionRate({ reviews, userId }) {
     )
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const updatedTasks = []
+      const updatedAssignments = []
 
       querySnapshot.forEach(async (doc) => {
         const data = doc.data()
 
         const id = doc.id
 
-        updatedTasks.push({ id, ...data })
+        updatedAssignments.push({ id, ...data })
       })
 
-      setTasks(updatedTasks)
+      setAssignments(updatedAssignments)
       setLoading(false)
     })
 

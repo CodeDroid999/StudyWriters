@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import TaskCard from 'components/browse-tasks/TaskCard';
+import TaskCard from 'components/browse-assignments/TaskCard';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
