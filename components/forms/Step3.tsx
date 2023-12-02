@@ -72,7 +72,7 @@ export default function Step3({ handlePreviousStep }: Props) {
       },
       paymentRequested: false,
       paymentReleased: false,
-      posterReview: false,
+      studentReview: false,
       taskerReview: false,
     })
 

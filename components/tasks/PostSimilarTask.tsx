@@ -106,7 +106,7 @@ export default function PostSimilarTask({ assignmentData }) {
       },
       paymentRequested: false,
       paymentReleased: false,
-      posterReview: false,
+      studentReview: false,
       taskerReview: false,
     })
 

@@ -12,7 +12,7 @@ interface CardProps {
   price: number
   offers: any
   profilePicture: string
-  posterId: string
+  studentId: string
 }
 
 const TaskCard: React.FC<CardProps> = ({
@@ -23,7 +23,7 @@ const TaskCard: React.FC<CardProps> = ({
   price,
   offers,
   profilePicture,
-  posterId,
+  studentId,
 }) => {
   const { user } = UserAuth()
 
@@ -94,7 +94,7 @@ const TaskCard: React.FC<CardProps> = ({
             </div>
             <div className="flex flex-grow"></div>
             <div className="bottom  flex justify-end">
-              <Link href={`/public-profile/${posterId}`}>
+              <Link href={`/public-profile/${studentId}`}>
                 <Image
                   src={profilePicture || profile}
                   alt="profile"

@@ -21,7 +21,7 @@ export default function Outgoing() {
       const paymentsRef = collection(db, 'payments')
 
       // Fetch user's outgoing payments
-      const paymentsQuery = query(paymentsRef, where('posterId', '==', userId))
+      const paymentsQuery = query(paymentsRef, where('studentId', '==', userId))
 
       const unsubscribe = onSnapshot(paymentsQuery, async (querySnapshot) => {
         const paymentsData = await Promise.all(

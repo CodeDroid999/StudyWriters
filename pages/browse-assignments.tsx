@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import TaskCard from 'components/browse-assignments/TaskCard';
+import TaskCard from 'components/browse-tasks/TaskCard';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
@@ -31,7 +31,7 @@ const BrowseAssignments: React.FC = (props: any) => {
                 price={assignment.budget}
                 offers={assignment.offers}
                 profilePicture={assignment.studentDetails.profilePicture}
-                posterId={assignment.studentDetails.userId}
+                studentId={assignment.studentDetails.userId}
               />
             ))}
           </div>
@@ -57,9 +57,9 @@ export async function getServerSideProps() {
         const userQuery = query(collection(db, 'users'), where('userId', '==', data.student.userId));
         const usersSnapshot = await getDocs(userQuery);
 
-        const posterDoc = usersSnapshot.docs[0];
-        const posterData = posterDoc.data();
-        posterData.createdAt = formatDate(posterData.createdAt.toDate());
+        const studentDoc = usersSnapshot.docs[0];
+        const studentData = studentDoc.data();
+        studentData.createdAt = formatDate(studentData.createdAt.toDate());
 
         const offersCollectionRef = collection(db, 'assignments', id, 'offers');
         const offersQuerySnapshot = await getDocs(offersCollectionRef);
@@ -84,7 +84,7 @@ export async function getServerSideProps() {
           })
         );
 
-        return { id, ...data, offers, studentDetails: posterData };
+        return { id, ...data, offers, studentDetails: studentData };
       })
     );
 
