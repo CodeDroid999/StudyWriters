@@ -83,6 +83,7 @@ export async function getServerSideProps() {
             };
           })
         );
+        
 
         return { id, ...data, offers, studentDetails: studentData };
       })

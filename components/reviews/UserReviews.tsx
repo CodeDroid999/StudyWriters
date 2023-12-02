@@ -53,7 +53,7 @@ export default function UserReviews({ userId }) {
     (review) => review.receiverId === review.tutorId
   )
   const studentReviews = reviews.filter(
-    (review) => review.receiverId === review.studentId
+    (review) => review.receiverId === review.posterId
   )
 
   return (
