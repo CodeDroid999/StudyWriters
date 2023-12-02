@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
-import AssignmentCard from 'components/browse-assignments/AssignmentCard'; // Assuming you have an AssignmentCard component
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
+import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 
 const MapCenter = { lng: 151.2093, lat: -33.8688 }; // Sydney
 

@@ -110,7 +110,7 @@ export default function MyAssignmentsPage() {
                 <option value="">Select Filter</option>
                 <option value="posted">Posted Assignments</option>
                 <option value="assigned">Assignments Assigned</option>
-                <option value="offers-pending">Offers Pending</option>
+                <option value="offers-pending">Bids Pending</option>
                 <option value="completed">Assignments Completed</option>
               </select>
             </div>

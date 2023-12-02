@@ -433,7 +433,7 @@ export default function TaskDetails(props: any) {
                   {assignmentData.status === 'Open' && (
                     <div>
                       <h1 className="mb-2 text-2xl font-semibold text-green-950">
-                        Offers
+                        Bids
                       </h1>
                       {offers.map((offer: any) => (
                         <div key={offer.offerId} className="mb-1 ">

@@ -79,7 +79,7 @@ const AssignmentCard: React.FC<CardProps> = ({
                 {offers?.length == 1 ? (
                   <span>{offers?.length} Offer</span>
                 ) : (
-                  <span>{offers?.length} Offers</span>
+                  <span>{offers?.length} Bids</span>
                 )}
               </span>
             </p>
