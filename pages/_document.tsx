@@ -8,7 +8,7 @@ export default function Document() {
         <link rel="icon" href="/favicon/logo.ico" />
       </Head>
 
-      <body className="">
+      <body className="w-100">
         <Main />
         <NextScript />
 
