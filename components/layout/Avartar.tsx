@@ -10,7 +10,6 @@ export default function Avartar() {
   const handleLogOut = () => {
     logOut()
   }
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMainDropdownOpen, setIsMainDropdownOpen] = useState(false)
 
@@ -21,85 +20,103 @@ export default function Avartar() {
     setIsMainDropdownOpen(!isMainDropdownOpen)
   }
 
-  const closeDropdown = () => {
-    setIsDropdownOpen(false)
-  }
   return (
-    <div className="hs-dropdown bg-white-500 relative inline-flex [--trigger:hover]">
-      <span id="hs-dropdown-hover-event" onClick={toggleMainDropdown}>
+    <div className=" relative inline-flex justify-end ">
+      <span onClick={toggleMainDropdown}>
         <Image
           src={user?.profilePicture || profile}
           alt="profile"
-          width={50}
-          height={50}
-          className="h-[50px] w-[50px] cursor-pointer rounded-full object-cover"
+          width={25}
+          height={25}
+          className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
         />
       </span>
       {isMainDropdownOpen && (
-      <div
-        className="hs-dropdown-menu duration mt-2 hidden min-w-[15rem] rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] before:absolute before:-top-4 before:left-0 before:h-4 before:w-full after:absolute after:-bottom-4 after:left-0 after:h-4 after:w-full hs-dropdown-open:opacity-100 "
-        aria-labelledby="hs-dropdown-hover-event"
-      >
-        <div className="rounded bg-gray-100">
-        <span id="hs-dropdown-hover-event">
-        <Image
-          src={user?.profilePicture || profile}
-          alt="profile"
-          width={50}
-          height={50}
-          className="h-[50px] w-[50px] cursor-pointer rounded-full object-cover"
-        />
-      </span>
-          <Link href={`/public-profile/${user?.userId}`}>
-            
-            <span className="flex items-center gap-x-3.5 px-3 pt-1 text-sm text-blue-900 hover:bg-neutral-100 ">
-              {user?.firstName} {user?.lastName}
-            </span>
-            <span className="px-3 text-xs text-gray-500">Public Profile</span>
-          </Link>
-        </div>
-        <Link
-          className="bg-white- 500 mt-2 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100  "
-          href={`/profile/${user?.userId}`}
-        >
-          My Tutor Dashboard
-        </Link>
-        <Link
-          className="bg-white- 500 mt-2 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800  hover:bg-neutral-100 "
-          href={`/payment-history/${user?.userId}`}
-        >
-          Payment History
-        </Link>
-        <Link
-          className="bg-white- 500 mt-2 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800  hover:bg-neutral-100 "
-          href={`/payment-methods/${user?.userId}`}
-        >
-          Payment Methods
-        </Link>
-        <div className="relative inline-block w-full">
-          <div
-            onMouseEnter={toggleDropdown}
-            className="mt-2 flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 "
-          >
-            Settings
+        <div className="absolute right-0 top-8 mt-2 min-w-[15rem] rounded-lg bg-white p-2  shadow-md ">
+          <div className="rounded bg-gray-100 pt-2 pb-2">
+            <Link href={`/public-profile/${user?.userId}`}>
+              <span className="flex items-center gap-x-3.5 px-3 pt-1 text-sm text-blue-900 hover:bg-neutral-100 ">
+                <Image
+                  src={user?.profilePicture || profile}
+                  alt="profile"
+                  width={25}
+                  height={25}
+                  className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
+                />
+                {user?.firstName} {user?.lastName}
+              </span>
+            </Link>
           </div>
-          {isDropdownOpen && (
-            <div className="absolute right-0 top-10 flex flex-col rounded text-black bg-white p-2 shadow-md">
-              <Link href={`/settings/mobile-number/${user?.userId}`} className="text-black">
-                Mobile   </Link>
-              <Link href={`/settings/email/${user?.userId}`}>Email</Link>
-              <Link href="/forgot-password">Change password</Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/become-a-tutor"
+          >
+            Answer Questions
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/my-assignments"      >
+            My Answers
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href={`/profile/${user?.userId}`}
+          >
+            My Profile
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/how-it-works"      >
+            How it Works
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href={`/payment-history/${user?.userId}`}
+          >
+            Payment History
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href={`/payment-methods/${user?.userId}`}
+          >
+            Payment Methods
+          </Link>
+          <Link
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            href="/how-it-works"      >
+            Honor Code          </Link>
+          <div className="">
+            <div
+              onClick={toggleDropdown}
+              className="mt-1 flex cursor-pointer items-center px-3  text-sm text-gray-800 hover:bg-gray-100 "
+            >
+              Settings
             </div>
-          )}
+            {isDropdownOpen && (
+              <div className="ml-4 flex flex-col rounded p-1 text-sm text-gray-800 ">
+                <Link href={`/settings/mobile-number/${user?.userId}`}>
+                  Mobile
+                </Link>
+                <Link href={`/settings/email/${user?.userId}`}>Email</Link>
+                <Link href="/forgot-password">Change password</Link>
+              </div>
+            )}
+          </div>
+
+          <div
+            onClick={handleLogOut}
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+          >
+            Log out
+          </div>
+          <div
+            onClick={handleLogOut}
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+          >
+            Swap to Student Mode
+          </div>
         </div>
-        <div
-          onClick={handleLogOut}
-          className="mt-2 flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 "
-        >
-          Log out
-        </div>
-      </div>
-         )}
+      )}
     </div>
   )
 }
