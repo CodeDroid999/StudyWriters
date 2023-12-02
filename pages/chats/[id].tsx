@@ -187,7 +187,7 @@ export default function ChatRoom() {
 
       <div className=" mt-12">
         <h1 className="text-center text-sm font-medium text-gray-400">
-          For your protection, keep communication and payments within Airtaska.
+          For your protection, keep communication and payments within QualityunitedWriters.
         </h1>
         <div className="mb-20 mt-5">
           {messages.map((message: any) => (

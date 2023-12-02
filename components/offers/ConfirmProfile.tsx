@@ -144,7 +144,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
               Before you make an offer
             </h1>
             <p className="text-sm font-medium text-gray-600">
-              Help us keep Airtaska safe and fun, and fill in a few details
+              Help us keep QualityunitedWriters safe and fun, and fill in a few details
             </p>
           </div>
           <div className="my-4">

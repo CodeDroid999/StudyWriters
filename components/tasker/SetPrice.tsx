@@ -20,7 +20,7 @@ export default function SetPrice() {
             href="/signup"
             className="flex w-full justify-center text-lg font-semibold text-blue-500"
           >
-            Join Airtaska
+            Join QualityunitedWriters
           </Link>
         </div>
       </div>

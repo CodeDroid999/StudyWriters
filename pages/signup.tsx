@@ -148,8 +148,7 @@ export default function Signup() {
         education: [],
         createdAt: serverTimestamp(),
       })
-
-    } catch (error) {
+         } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message
       if (errorCode === 'auth/email-already-in-use') {

@@ -285,7 +285,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
                 </div>
                 <div className="flex flex-col items-center">
                   <p className="mt-1 text-sm font-medium text-gray-500">
-                    * Airtaska automatically includes a Service Fee to cover
+                    * QualityunitedWriters automatically includes a Service Fee to cover
                     insurance and transaction costs.
                   </p>
                   <div className="mt-4 max-w-[280px] rounded-xl border border-gray-400 px-3 py-2">
