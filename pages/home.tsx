@@ -52,7 +52,6 @@ export default function Home(props: PageProps) {
       <div className="px-3 sm:px-4 lg:px-6 xl:px-12">
       <PostAssignment />
         <PostYourTask />
-        <Features />
       </div>
       <div className="lg:px-6 xl:px-12">
         <BeYourOwnBoss />

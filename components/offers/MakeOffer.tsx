@@ -193,7 +193,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
                     htmlFor="offer"
                     className="text-lg font-medium text-green-950"
                   >
-                    Your Offer
+                    Your Bid
                   </label>
                   <div className="relative flex flex-row items-center">
                     <BsCurrencyDollar className="absolute left-0 mx-2  pt-0.5 text-3xl text-green-950" />

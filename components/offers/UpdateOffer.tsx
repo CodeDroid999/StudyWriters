@@ -146,7 +146,7 @@ export default function MakeOffer({
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Update offer
+        Update Bid
       </button>
 
       {isFormOpen && (
@@ -177,7 +177,7 @@ export default function MakeOffer({
                     htmlFor="offer"
                     className="text-lg font-medium text-green-950"
                   >
-                    Your Offer
+                    Your Bid
                   </label>
                   <div className="relative flex flex-row items-center">
                     <BsCurrencyDollar className="absolute left-0 mx-2  pt-0.5 text-3xl text-green-950" />

@@ -224,7 +224,7 @@ export default function TaskDetails(props: any) {
                             return (
                               <div key={offer.offerId}>
                                 <div className="rounded-full bg-white p-2 text-center font-medium text-blue-400 ">
-                                  You offered ${offer.amount}
+                                  You bidded ${offer.amount}
                                 </div>
                                 <div className="my-3 w-full text-sm">
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
@@ -262,7 +262,7 @@ export default function TaskDetails(props: any) {
                           assignmentData.status === 'Completed') ? (
                           <div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
-                              <span>Your Offer</span>
+                              <span>Your Bid</span>
                               <span>${assignmentData.tutor.price}</span>
                             </div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
@@ -289,7 +289,7 @@ export default function TaskDetails(props: any) {
                               <div>
                                 <div className="my-3 w-full text-sm">
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
-                                    <span>Your Offer</span>
+                                    <span>Your Bid</span>
                                     <span>${assignmentData.tutor.price}</span>
                                   </div>
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
