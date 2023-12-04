@@ -519,7 +519,7 @@ export default function TaskDetails(props: any) {
               <div>
                 {assignmentData.status === 'Open' && (
                   <p className="mt-12 text-center text-lg font-semibold text-green-950 ">
-                    No offers yet!
+                    No a bid yet!
                   </p>
                 )}
               </div>
