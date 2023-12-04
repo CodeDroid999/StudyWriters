@@ -293,7 +293,7 @@ export default function MakeOffer({
                   onClick={SubmitForm}
                   className="mt-10 w-full rounded-full bg-green-500 py-2 font-semibold text-white"
                 >
-                  Submit new offer
+                  Submit new bid
                 </button>
               </div>
             )}

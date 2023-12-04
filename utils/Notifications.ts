@@ -32,7 +32,7 @@ const newOfferEmail = async ({ email, assignmentTitle }) => {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
       subject: 'New Offer',
-      text: `You have received a new offer on ${assignmentTitle}`,
+      text: `You have received a new bid on ${assignmentTitle}`,
     }
 
     await transporter.sendMail(mailOptions)

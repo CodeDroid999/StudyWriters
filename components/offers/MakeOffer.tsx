@@ -116,7 +116,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
       to: student?.email,
       message: {
         subject: 'New Offer',
-        html: `You have received a new offer on ${assignmentTitle}`,
+        html: `You have received a new bid on ${assignmentTitle}`,
       },
     })
 
