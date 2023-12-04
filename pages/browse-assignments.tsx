@@ -19,7 +19,7 @@ const BrowseAssignments: React.FC = (props: any) => {
     <div className="flex flex-col " style={{ height: '100vh', overflowY: 'auto', overflowX: 'auto' }}>
       <Navbar />
       <div className="w-full">
-        <div className="bg-neutral-100" style={{ height: '100vh', overflowY: 'auto' }}>
+        <div className="bg-neutral-100 mx-auto" style={{ height: '100vh', overflowY: 'auto' }}>
           <div className="w-50">
             {assignments.map((assignment: any) => (
               <AssignmentCard
