@@ -21,7 +21,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
 
   const { user } = UserAuth()
   const userId = user?.userId
-  const studentId = student.userId
+  const posterId = student.userId
   const tutorId = tutorDetails.userId
   const router = useRouter()
 
@@ -29,7 +29,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
   let lastName: string
   let profilePic: string
 
-  if (studentId === userId) {
+  if (posterId === userId) {
     firstName = tutorDetails.firstName
     lastName = tutorDetails.lastName
     profilePic = tutorDetails.profilePicture
@@ -50,17 +50,17 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
 
     let receiverId: string
 
-    if (studentId === userId) {
+    if (posterId === userId) {
       receiverId = tutorId
     } else if (tutorId === userId) {
-      receiverId = studentId
+      receiverId = posterId
     }
 
     await addDoc(collection(db, 'reviews'), {
       rating,
       review,
       timestamp: serverTimestamp(),
-      studentId,
+      posterId,
       tutorId,
      assignmentId,
       senderId: userId,
@@ -69,7 +69,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
 
     const taskRef = doc(db, 'assignments',assignmentId)
 
-    if (studentId === userId) {
+    if (posterId === userId) {
       await updateDoc(taskRef, {
         posterReview: true,
       })
@@ -89,7 +89,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       read: false,
       createdAt: serverTimestamp(),
     })
-    if (receiverId === studentId) {
+    if (receiverId === posterId) {
       await addDoc(collection(db, 'mail'), {
         to: student?.email,
         message: {

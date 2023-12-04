@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 
 export default function NewMessage({
   customerId,
-  studentId,
+  posterId,
   assignmentData,
  assignmentId,
   student,
@@ -31,8 +31,8 @@ export default function NewMessage({
   let receiverId: string
 
   if (customerId === user.userId) {
-    receiverId = studentId
-  } else if (studentId === user.userId) {
+    receiverId = posterId
+  } else if (posterId === user.userId) {
     receiverId = customerId
   }
 
@@ -43,7 +43,7 @@ export default function NewMessage({
       return
     }
 
-    const participants = [studentId, customerId]
+    const participants = [posterId, customerId]
     participants.sort() // Sort to ensure consistent chat IDs
 
     const chatQuery = query(
@@ -87,7 +87,7 @@ export default function NewMessage({
       read: false,
       createdAt: serverTimestamp(),
     })
-    if (receiverId === studentId) {
+    if (receiverId === posterId) {
       await addDoc(collection(db, 'mail'), {
         to: student?.email,
         message: {

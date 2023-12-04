@@ -57,7 +57,7 @@ export default function TaskReviews({assignmentId }) {
     (review) => review.senderId === review.tutorId
   )
   const studentReviews = reviews.filter(
-    (review) => review.senderId === review.studentId
+    (review) => review.senderId === review.posterId
   )
 
   return (

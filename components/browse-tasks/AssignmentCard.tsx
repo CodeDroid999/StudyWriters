@@ -18,14 +18,16 @@ interface CardProps {
 }
 
 const AssignmentCard: React.FC<CardProps> = ({
-  id,
   title,
+  id,
   date,
   status,
   price,
   offers,
   profilePicture,
   studentId,
+  tutorProfilePicture,
+  tutorId,
 }) => {
   const { user } = UserAuth()
 
