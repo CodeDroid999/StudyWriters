@@ -12,7 +12,7 @@ interface CardProps {
   price: number
   offers: any
   profilePicture: string
-  posterId: string
+  studentId: string
   tutorProfilePicture: string;
   tutorId: string; // Add tutorId to the type
 }
@@ -25,7 +25,7 @@ const AssignmentCard: React.FC<CardProps> = ({
   price,
   offers,
   profilePicture,
-  posterId,
+  studentId,
 }) => {
   const { user } = UserAuth()
 
@@ -96,7 +96,7 @@ const AssignmentCard: React.FC<CardProps> = ({
             </div>
             <div className="flex flex-grow"></div>
             <div className="bottom  flex justify-end">
-              <Link href={`/public-profile/${posterId}`}>
+              <Link href={`/public-profile/${studentId}`}>
                 <Image
                   src={profilePicture || profile}
                   alt="profile"

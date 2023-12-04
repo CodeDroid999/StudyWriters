@@ -19,7 +19,7 @@ import Image from 'next/image'
 
 export default function Replies({
   customerId,
-  posterId,
+  studentId,
   assignmentData,
  assignmentId,
   offerId,
@@ -86,8 +86,8 @@ export default function Replies({
     let receiverId: string
 
     if (customerId === user.userId) {
-      receiverId = posterId
-    } else if (posterId === user.userId) {
+      receiverId = studentId
+    } else if (studentId === user.userId) {
       receiverId = customerId
     }
 
@@ -101,7 +101,7 @@ export default function Replies({
       read: false,
       createdAt: serverTimestamp(),
     })
-    if (receiverId === posterId) {
+    if (receiverId === studentId) {
       await addDoc(collection(db, 'mail'), {
         to: student?.email,
         message: {
@@ -128,7 +128,7 @@ export default function Replies({
           onClick={() => setRepliesVisible(!repliesVisible)}
           className="text-base font-medium text-blue-800"
         >
-          {user && (user.userId === customerId || user.userId === posterId)
+          {user && (user.userId === customerId || user.userId === studentId)
             ? 'Reply'
             : replies.length > 0 && 'See replies'}
         </button>
@@ -190,7 +190,7 @@ export default function Replies({
               </div>
             ))}
           </div>
-          {user && (user.userId === customerId || user.userId === posterId) && (
+          {user && (user.userId === customerId || user.userId === studentId) && (
             <div className="mt-3">
               <form className=" mx-auto mb-2 flex  flex-row items-center rounded-xl border border-gray-400 ">
                 <input
