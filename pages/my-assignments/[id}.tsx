@@ -1,21 +1,18 @@
-import Navbar from 'components/layout/Navbar'
-import { db, auth } from '../../firebase'
+import Navbar from 'components/layout/Navbar';
+import { db, auth } from '../../firebase';
 import {
   collection,
   getDocs,
   onSnapshot,
-  orderBy,
   query,
   where,
-} from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
-import { formatDate } from 'pages/profile/[id]'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useRouter } from 'next/router'
-import { UserAuth } from 'context/AuthContext'
-import MyAssignments from 'components/my-assignments/myAssignments'
-
-// ... (imports remain unchanged)
+} from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { formatDate } from 'pages/profile/[id]';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { UserAuth } from 'context/AuthContext';
+import MyAssignments from 'components/my-assignments/myAssignments';
 
 export default function MyAssignmentsPage() {
   const [selectedFilter, setSelectedFilter] = useState('');
@@ -33,7 +30,10 @@ export default function MyAssignmentsPage() {
 
     setLoading(true);
 
-    const q = query(collection(db, 'assignments'));
+    const q = query(
+      collection(db, 'assignments'),
+      where('student.userId', '==', userId) // Filter assignments by the user who posted them
+    );
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const updatedAssignments = [];
@@ -67,7 +67,7 @@ export default function MyAssignmentsPage() {
     return () => unsubscribe();
   }, [router]);
 
-  const postedAssignments = assignments.filter((assignment) => assignment.student.userId === userId);
+  const postedAssignments = assignments; // Assignments are already filtered by the user who posted them
   const assignedAssignments = assignments.filter(
     (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
   );
@@ -122,8 +122,7 @@ export default function MyAssignmentsPage() {
             {!selectedFilter && (
               <div className="mt-28 flex flex-col items-center justify-center">
                 <h1 className="text-xl font-medium text-gray-700">
-                  Hello {user?.firstName}, select a category to display your
-                  assignments
+                  Hello {user?.firstName}, select a category to display your assignments
                 </h1>
               </div>
             )}
