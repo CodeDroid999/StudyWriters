@@ -15,68 +15,71 @@ import { useRouter } from 'next/router'
 import { UserAuth } from 'context/AuthContext'
 import MyAssignments from 'components/my-assignments/myAssignments'
 
-export default function MyAssignmentsPage() {
-  const [selectedFilter, setSelectedFilter] = useState('')
-  const [assignments, setAssignments] = useState([])
-  const [loading, setLoading] = useState(false)
-  const { user } = UserAuth()
+// ... (imports remain unchanged)
 
-  const router = useRouter()
-  const userId = router.query.id?.toString()
+export default function MyAssignmentsPage() {
+  const [selectedFilter, setSelectedFilter] = useState('');
+  const [assignments, setAssignments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { user } = UserAuth();
+
+  const router = useRouter();
+  const userId = router.query.userId?.toString();
 
   useEffect(() => {
-    setLoading(true)
-    const q = query(collection(db, 'assignments'))
+    if (!userId) {
+      return; // Handle the case when userId is undefined
+    }
+
+    setLoading(true);
+
+    const q = query(collection(db, 'assignments'));
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const updatedAssignments = []
+      const updatedAssignments = [];
 
       querySnapshot.forEach(async (doc) => {
-        const data = doc.data()
+        const data = doc.data();
+        const id = doc.id;
 
-        const id = doc.id
+        const offersCollectionRef = collection(db, 'assignments', id, 'offers');
+        const offersQuerySnapshot = await getDocs(offersCollectionRef);
+        const offers = offersQuerySnapshot.docs.map((offerDoc) => offerDoc.data());
 
-        const offersCollectionRef = collection(db, 'assignments', id, 'offers')
-        const offersQuerySnapshot = await getDocs(offersCollectionRef)
-        const offers = offersQuerySnapshot.docs.map((offerDoc) => {
-          const offerData = offerDoc.data()
+        updatedAssignments.push({ id, ...data, offers });
+      });
 
-          return offerData
-        })
-
-        updatedAssignments.push({ id, ...data, offers })
-      })
-
-      setAssignments(updatedAssignments)
-      setLoading(false)
-    })
+      setAssignments(updatedAssignments);
+      setLoading(false);
+    });
 
     return () => {
-      unsubscribe() // Clean up the listener when the component unmounts
-    }
-  }, [userId])
+      unsubscribe(); // Clean up the listener when the component unmounts
+    };
+  }, [userId]);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push(`/`)
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (!authUser) {
+        router.push(`/`);
       }
-    })
-    return () => unsubscribe()
-  }, [router])
-  const postedAssignments = assignments.filter((assignment) => assignment.student.userId === userId)
+    });
+    return () => unsubscribe();
+  }, [router]);
+
+  const postedAssignments = assignments.filter((assignment) => assignment.student.userId === userId);
   const assignedAssignments = assignments.filter(
     (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
-  )
+  );
   const completedAssignments = assignments.filter(
     (assignment) => assignment.tutor.userId === userId && assignment.status === 'Completed'
-  )
+  );
   const pendingOffers = assignments.filter((assignment) => {
     return (
       assignment.status === 'Open' &&
       assignment.offers.some((offer: any) => offer.userId === userId)
-    )
-  })
+    );
+  });
 
   return (
     <div>
@@ -156,5 +159,5 @@ export default function MyAssignmentsPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
