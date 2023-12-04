@@ -13,8 +13,6 @@ interface CardProps {
   offers: any
   profilePicture: string
   studentId: string
-  tutorProfilePicture: string;
-  tutorId: string; // Add tutorId to the type
 }
 
 const AssignmentCard: React.FC<CardProps> = ({
@@ -26,8 +24,6 @@ const AssignmentCard: React.FC<CardProps> = ({
   offers,
   profilePicture,
   studentId,
-  tutorProfilePicture,
-  tutorId,
 }) => {
   const { user } = UserAuth()
 
