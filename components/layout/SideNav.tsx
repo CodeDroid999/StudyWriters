@@ -8,6 +8,9 @@ const SideNav = () => {
         <Link href="/help" className="text-blue-400 text-right whitespace-nowrap">Help</Link>
       </div>
       <div className="p-2 flex font-bold items-center">
+        <Link href="/home" className="text-blue-400 text-right whitespace-nowrap">Home</Link>
+      </div>
+      <div className="p-2 flex font-bold items-center">
         <Link href="/about" className="text-blue-400 text-right whitespace-nowrap">About</Link>
       </div>
       <div className="p-2 flex font-bold items-center">

@@ -31,6 +31,7 @@ export default function Avatar() {
           className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
         />
       </span>
+      
       {isMainDropdownOpen && (
         <div className="absolute right-0 top-8 mt-2 min-w-[15rem] rounded-lg bg-white p-2  shadow-md ">
           <div className="rounded bg-gray-100 pt-2 pb-2">
