@@ -11,7 +11,7 @@ export default function SetPrice() {
           Set your price
         </h2>
         <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-green-950">
-          Found a job youre up for? Set your price and make an offer. You can
+          Found a job youre up for? Set your price and make a bid. You can
           adjust and discuss it later if you need to.
         </p>
 

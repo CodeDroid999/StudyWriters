@@ -141,7 +141,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
         <div className="mt-16 ">
           <div>
             <h1 className="text-2xl font-medium text-green-950">
-              Before you make an offer
+              Before you make a bid
             </h1>
             <p className="text-sm font-medium text-gray-600">
               Help us keep QualityunitedWriters safe and fun, and fill in a few details

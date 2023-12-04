@@ -106,7 +106,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
       receiverId: posterId,
       senderId: user.userId,
       type: 'MakeOffer',
-      content: 'has made an offer on',
+      content: 'has made a bid on',
       assignmentTitle,
      assignmentId,
       read: false,
@@ -151,7 +151,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
         onClick={openForm}
         className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Make an offer
+        Make a bid
       </button>
 
       {confirmPopup && (
