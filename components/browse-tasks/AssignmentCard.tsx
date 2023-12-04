@@ -14,6 +14,7 @@ interface CardProps {
   profilePicture: string
   posterId: string
   tutorProfilePicture: string;
+  tutorId: string; // Add tutorId to the type
 }
 
 const AssignmentCard: React.FC<CardProps> = ({
