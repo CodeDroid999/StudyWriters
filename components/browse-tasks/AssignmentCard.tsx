@@ -13,6 +13,7 @@ interface CardProps {
   offers: any
   profilePicture: string
   posterId: string
+  tutorProfilePicture: string;
 }
 
 const AssignmentCard: React.FC<CardProps> = ({
