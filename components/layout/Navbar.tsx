@@ -248,7 +248,12 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                      Notifications
+                                       <Image
+                  src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
+                  id="customfontsize"
+                />
                     </Link>
                     {unReadNotifications.length > 0 && <RedDot />}
                   </div>
@@ -259,7 +264,12 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                      Messages
+                                       <Image
+                  src="https://i.postimg.cc/6QR6f94m/question.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
+                  id="customfontsize"
+                />
                     </Link>
                     {unReadMessages.length > 0 && <RedDot />}
                   </div>
@@ -384,7 +394,12 @@ function Navbar() {
                   href={`/notifications/${user.userId}`}
                   className="text-gray-700 hover:text-green-500"
                 >
-                  Notifications
+                                   <Image
+                  src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
+                  id="customfontsize"
+                />
                 </Link>
                 {unReadNotifications.length > 0 && <RedDot />}
               </div>
@@ -393,7 +408,12 @@ function Navbar() {
                   href={`/messages/${user.userId}`}
                   className="text-gray-700 hover:text-green-500"
                 >
-                  Messages
+                                   <Image
+                  src="https://i.postimg.cc/6QR6f94m/question.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
+                  id="customfontsize"
+                />
                 </Link>
                 {unReadMessages.length > 0 && <RedDot />}
               </div>
