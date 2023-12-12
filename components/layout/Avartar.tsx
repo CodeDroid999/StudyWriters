@@ -26,9 +26,9 @@ export default function Avartar() {
         <Image
           src={user?.profilePicture || profile}
           alt="profile"
-          width={25}
-          height={25}
-          className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
+          width={50}
+          height={50}
+          className="h-[2rem] w-[2rem] cursor-pointer rounded-full object-cover"
         />
       </span>
       {isMainDropdownOpen && (

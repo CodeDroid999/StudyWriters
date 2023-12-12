@@ -33,7 +33,7 @@ const Howitworks: React.FC = () => {
             <CustomNavbar />
             <div className="row flex pt-12">
                 <div className="container flex">
-                    <div className="col-md-2 mx-auto hidden md:flex">
+                <div className="col-md-2 mx-auto hidden md:flex flex-col">
                         <SideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-5">
