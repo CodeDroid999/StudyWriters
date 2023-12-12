@@ -151,7 +151,7 @@ function Navbar() {
           {/* Left div */}
           <div className="flex flex-row items-center space-x-1">
             <Link href="/" className="text-gray-700">
-              <div className="mb-1">
+              <div className="ml-2">
                 <Image
                   src={airtaskalogo}
                   alt="assignment"
@@ -200,17 +200,17 @@ function Navbar() {
                   <div className="flex">
                     <Link
                       href="/boost-earnings"
-                      className="text-gray-700 hover:text-green-500"
+                      className="text-gray-700 hover:text-green-500 text-sm"
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                      Boost Earnings
+                      Boost Earnings  |
                     </Link>
                   </div>
                   <div className="flex">
                     {userRole === 'Student' && (
-                      <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500">
-                        Post Assignment     
+                      <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500 text-sm">
+                        Post Assignment |
                       </Link>
                     )}
 
@@ -221,7 +221,7 @@ function Navbar() {
                         style={{ whiteSpace: 'nowrap' }}
                         id="customfontsize"
                       >
-                        Browse
+                        Browse  |
                         {unReadNotifications.length > 0 && <RedDot />}
 
                       </Link>
@@ -230,12 +230,12 @@ function Navbar() {
                   <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                     {userRole === 'Student' && (
                       <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
-                        My Assignments
+                        Assignments |
                       </Link>
                     )}
 
                     {userRole === 'Tutor' && (
-                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 text-sm hover:text-green-500 whitespace-nowrap">
+                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 text-sm hover:text-green-500 whitespace-nowrap ">
                         Answer Questions
                         {unReadNotifications.length > 0 && <RedDot />}
                       </Link>
@@ -383,7 +383,7 @@ function Navbar() {
 
                 {userRole === 'Tutor' && (
                   <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Answer Questions
+                    Assignments
                     {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
