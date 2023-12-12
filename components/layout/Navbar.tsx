@@ -271,9 +271,9 @@ function Navbar() {
                       id="customfontsize"
                     >
                                       <Image
-                  src="public/warning@2x.png"
-                  alt="assignment"width="200" height="200'
-                  className="h-[40px] w-[100%]"
+                  src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
                   id="customfontsize"
                 />
 
@@ -400,9 +400,9 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
                                   <Image
-                  src="public/warning@2x.png"
-                  alt="assignment"width="200" height="200'
-                  className="h-[40px] w-[100%]"
+                  src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                  alt="assignment"width="200" height="200"
+                  className="h-[25px] w-[100%]"
                   id="customfontsize"
                 />
 
