@@ -270,7 +270,13 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                      Alerts
+                                      <Image
+                  src="public/warning@2x.png"
+                  alt="assignment"width="200" height="200'
+                  className="h-[40px] w-[100%]"
+                  id="customfontsize"
+                />
+
                     </Link>
                     {unReadNotifications.length > 0 && <RedDot />}
                   </div>
@@ -393,7 +399,13 @@ function Navbar() {
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
-                  Alerts
+                                  <Image
+                  src="public/warning@2x.png"
+                  alt="assignment"width="200" height="200'
+                  className="h-[40px] w-[100%]"
+                  id="customfontsize"
+                />
+
                 </Link>
               </div>
               <Avartar />
