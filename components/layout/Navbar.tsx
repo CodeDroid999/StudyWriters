@@ -230,15 +230,21 @@ function Navbar() {
                   <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                     {userRole === 'Student' && (
                       <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
-                        Assignments |
+                        Assignments 
                       </Link>
                     )}
 
                     {userRole === 'Tutor' && (
-                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 text-sm hover:text-green-500 whitespace-nowrap ">
-                        Answer Questions
-                        {unReadNotifications.length > 0 && <RedDot />}
-                      </Link>
+                       <Link
+                       href={`/answers/${user.userId}`} 
+                       className="text-gray-700 hover:text-green-500 text-sm"
+                       style={{ whiteSpace: 'nowrap' }}
+                       id="customfontsize"
+                     >
+                       Answers 
+                       {unReadNotifications.length > 0 && <RedDot />}
+
+                     </Link>
                     )}
                   </div>
                   <div className="flex">
