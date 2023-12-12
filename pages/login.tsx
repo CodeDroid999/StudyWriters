@@ -34,12 +34,12 @@ export default function LogIn() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/')
-        toast.success('Logged In')
+        router.push(redirect || '/');
+        toast.success('Logged In');
       }
-    })
-    return () => unsubscribe()
-  }, [router, redirect])
+    });
+    
+  })
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider()
