@@ -1,9 +1,6 @@
 import BeYourOwnBoss from 'components/home/BeYourOwnBoss'
 import BlogSection from 'components/home/BlogSection'
-import Features from 'components/home/Features'
-import Hero from 'components/home/Hero'
 import PostYourTask from 'components/home/PostYourTask'
-import Layout from 'components/layout/Layout'
 import React, { useState } from 'react'
 import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
@@ -53,13 +50,11 @@ export default function Home(props: PageProps) {
       <Navbar />
       <PostAssignment />
       <PostYourTask />
-      <div className="lg:px-6 xl:px-12">
-        <BeYourOwnBoss />
-      </div>
+      <BeYourOwnBoss />
       <div className="my-8 bg-blue-50 md:my-16">
         <BlogSection posts={posts} />
       </div>
-        <FAQAccordion />
+      <FAQAccordion />
     </>
   )
 }

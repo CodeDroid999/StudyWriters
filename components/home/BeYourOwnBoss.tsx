@@ -20,10 +20,10 @@ export default function BeYourOwnBoss() {
     },
   ]
   return (
-    <div className="bg-gray-100 pt-5 pb-5">
+    <div className="bg-gray-100 m-4">
       <div className="container flex flex-1 flex-col items-center justify-center">
 
-        <h1 className="mb-2  font-bold text-center text-4xl text-green-950">
+        <h1 className="mb-2  font-bold text-center text-4xl text-green-950 pt-3">
           Be you own boss          </h1>
         <p className="my-2 text-lg text-yellow-500 font-bold">
           Find your next job on whether you are a brilliant spreadsheet
