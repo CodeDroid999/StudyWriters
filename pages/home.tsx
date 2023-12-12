@@ -12,6 +12,7 @@ import type { SharedPageProps } from 'pages/_app'
 import FAQAccordion from 'components/FAQaccordions'
 import Head from 'next/head'
 import PostAssignment from 'components/Homepage/PostAssignment'
+import Navbar from 'components/layout/Navbar'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -26,8 +27,8 @@ export default function Home(props: PageProps) {
   const { posts, settings, draftMode } = props
 
   return (
-    <Layout>
-       <Head>
+    <>
+      <Head>
         <title>
           QualityunitedWriters | Get More Done | Post any assignment. Pick the best person. Get it done. | Post your assignment for free Earn money as a tutor
         </title>
@@ -49,20 +50,17 @@ export default function Home(props: PageProps) {
         <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
-      <div className="px-3 sm:px-4 lg:px-6 xl:px-12">
+      <Navbar />
       <PostAssignment />
-        <PostYourTask />
-      </div>
+      <PostYourTask />
       <div className="lg:px-6 xl:px-12">
         <BeYourOwnBoss />
       </div>
       <div className="my-8 bg-blue-50 md:my-16">
         <BlogSection posts={posts} />
       </div>
-      <div className="bg-neutral-100 lg:px-6 xl:px-12">
         <FAQAccordion />
-      </div>
-    </Layout>
+    </>
   )
 }
 

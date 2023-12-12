@@ -18,7 +18,7 @@ export default function PostYourTask() {
     },
   ]
   return (
-    <div className="my-4 flex flex-col rounded-3xl bg-white py-8 sm:py-16 md:flex-row xl:my-10  xl:px-36">
+    <div className="m-4 flex flex-col rounded-3xl bg-white py-8 sm:py-16 md:flex-row xl:my-10  xl:px-36 sm:m-4">
       <div className="flex flex-1 flex-col items-start justify-center">
         <h2 className="text-[42px] font-bold leading-[45px] text-green-950 sm:text-[50px] sm:leading-[50px] xl:text-[72px] xl:leading-[75px]">
           Step your work <br className="hidden md:block" />

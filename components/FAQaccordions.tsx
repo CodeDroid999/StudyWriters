@@ -69,7 +69,7 @@ const FAQAccordion: React.FC = () => {
   ]
 
   return (
-    <div className="mx-5 mx-auto my-4 min-h-screen max-w-screen-xl bg-neutral-100">
+    <div className="m-4   bg-neutral-100">
       <div className="items-left flex flex-col">
         <h2 className="mt-5 text-5xl font-bold tracking-tight text-green-950">
           Frequently Asked Questions

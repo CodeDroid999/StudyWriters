@@ -137,78 +137,80 @@ export default function PostAssignment() {
   const currentDate = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="w-full bg-gray-200 pb-4">
-     <div className="container">
-     <p className="pt-3 text-center text-3xl font-bold text-green-950">
-        Get Homework Help
-      </p>
-      <p className="text-gray text-center">
-        Find a tutor to help you with your school!
-      </p>
-      <form className="mt-6 flex justify-between gap-4 md:mt-8">
-        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
-          <label
-            htmlFor="title"
-            className="mb-2 text-lg font-medium text-gray-700"
-          >
-            What do you need done?
-          </label>
-          <input
-            type="text"
-            placeholder="e.g. Dissertation writing for Engineering Paper"
-            onChange={(e) => setTitle(e.target.value)}
-            className="border rounded p-1"
-          />
-          {titleError && (
-            <span className="text-red-500">{titleError}</span>
-          )}
-        </div>
-        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
-          <label
-            htmlFor="dueDate"
-            className="mb-2 text-lg font-medium text-gray-700"
-          >
-            When do you need this done?
-          </label>
-          <input
-            type="date"
-            id="dueDate"
-            required
-            placeholder="Enter date"
-            min={currentDate}
-            onChange={(e) => setDueDate(e.target.value)}
-            className="border rounded p-1"
-          />
-          {dueDateError && (
-            <span className="text-red-500">{dueDateError}</span>
-          )}
-        </div>
-        <div className="col-md-3 col-sm-6 pb-2 flex flex-col ">
-          <label
-            htmlFor="budget"
-            className="mb-2 text-lg font-medium text-gray-700"
-          >
-            Willing to pay
-          </label>
-          <input
-            placeholder="$ Enter budget"
-            onChange={(e) => setBudget(e.target.value)}
-            className="border rounded p-1"
-          />
-          {budgetError && (
-            <span className="text-red-500">{budgetError}</span>
-          )}
-        </div>
-        <div className="col-md-3 col-sm-6 pb-2 flex justify-start align-right items-center">
-          <div
-            className="btn-1 bg-yellow-500 p-2 rounded text-white"
-            onClick={handleSave}
-          >
-            Post Assignment     
+    <div className="w-full bg-gray-200 pb-4 mt-20">
+      <div className="container">
+        <p className="pt-3 text-center text-3xl font-bold text-green-950">
+          Get Homework Help
+        </p>
+        <p className="text-gray text-center">
+          Find a tutor to help you with your school!
+        </p>
+        <form className="mt-6 flex justify-between gap-4 md:mt-8">
+          <div className="row">
+            <div className="flex flex-col col-md-3 col-sm-6 pb-2">
+              <label
+                htmlFor="title"
+                className="mb-2 text-lg font-medium text-gray-700"
+              >
+                What do you need done?
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. Dissertation writing for Engineering Paper"
+                onChange={(e) => setTitle(e.target.value)}
+                className="border rounded p-1"
+              />
+              {titleError && (
+                <span className="text-red-500">{titleError}</span>
+              )}
+            </div>
+            <div className="flex flex-col col-md-3 col-sm-6 pb-2">
+              <label
+                htmlFor="dueDate"
+                className="mb-2 text-lg font-medium text-gray-700"
+              >
+                When do you need this done?
+              </label>
+              <input
+                type="date"
+                id="dueDate"
+                required
+                placeholder="Enter date"
+                min={currentDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                className="border rounded p-1"
+              />
+              {dueDateError && (
+                <span className="text-red-500">{dueDateError}</span>
+              )}
+            </div>
+            <div className="col-md-3 col-sm-6 pb-2 flex flex-col ">
+              <label
+                htmlFor="budget"
+                className="mb-2 text-lg font-medium text-gray-700"
+              >
+                Willing to pay
+              </label>
+              <input
+                placeholder="$ Enter budget"
+                onChange={(e) => setBudget(e.target.value)}
+                className="border rounded p-1"
+              />
+              {budgetError && (
+                <span className="text-red-500">{budgetError}</span>
+              )}
+            </div>
+            <div className="col-md-3 col-sm-6 pb-2 flex justify-start align-right items-center">
+              <div
+                className="btn-1 bg-yellow-500 p-2 rounded text-white"
+                onClick={handleSave}
+              >
+                Post Assignment
+              </div>
+            </div>
           </div>
-        </div>
-      </form>
-     </div>
+        </form>
+      </div>
     </div>
   );
 }
