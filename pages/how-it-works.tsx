@@ -36,7 +36,7 @@ const boostEarnings
             <CustomNavbar />
             <div className="row flex pt-12">
                 <div className="container flex">
-                    <div className="col-md-2 mx-auto">
+                    <div className="col-md-2 mx-auto hidden md:flex">
                         <SideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-5">

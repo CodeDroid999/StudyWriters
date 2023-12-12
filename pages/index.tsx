@@ -7,7 +7,6 @@ import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
 import BeYourOwnBoss from 'components/home/BeYourOwnBoss'
 import Features from 'components/home/Features'
-import Footer from 'components/unAuthed/Footer'
 import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
@@ -18,6 +17,7 @@ import React, { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import toast from 'react-hot-toast'
+import Footer from 'components/layout/Footer'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -74,10 +74,8 @@ export default function Home(props: PageProps) {
       <Features />
       <BeYourOwnBoss />
       <HowItWorksSection />
-      <div className="bg-neutral-100 lg:px-6 xl:px-12">
         <FAQAccordion />
-      </div>
-      <Footer />
+      <Footer/>
     </>
   )
 }

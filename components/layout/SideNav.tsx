@@ -4,7 +4,7 @@ import React from 'react';
 const SideNav = () => {
   return (
     <>
-      <div className="p-2 flex font-bold items-center">
+      <div className="p-2 flex font-bold items-center hidden">
         <Link href="/help" className="text-blue-400 text-right whitespace-nowrap">Help</Link>
       </div>
       <div className="p-2 flex font-bold items-center">

@@ -2,9 +2,7 @@ import Steps from 'components/howitworks/Steps';
 import SideNav from 'components/layout/SideNav';
 import Footer from 'components/unAuthed/Footer';
 import CustomNavbar from 'components/unAuthed/Navbar';
-import Layout from 'components/unAuthed/layout';
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 
 const Howitworks: React.FC = () => {
@@ -35,7 +33,7 @@ const Howitworks: React.FC = () => {
             <CustomNavbar />
             <div className="row flex pt-12">
                 <div className="container flex">
-                    <div className="col-md-2 mx-auto">
+                    <div className="col-md-2 mx-auto hidden md:flex">
                         <SideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-5">

@@ -145,12 +145,12 @@ export default function PostAssignment() {
         <p className="text-gray text-center">
           Find a tutor to help you with your school!
         </p>
-        <form className="mt-6 flex justify-between gap-4 md:mt-8">
-          <div className="row">
+        <form className="mt-6 flex justify-center gap-4">
+          <div className="row flex justify-between">
             <div className="flex flex-col col-md-3 col-sm-6 pb-2">
               <label
                 htmlFor="title"
-                className="mb-2 text-lg font-medium text-gray-700"
+                className="mb-2 text-lg font-medium text-gray-700 whitespace-nowrap"
               >
                 What do you need done?
               </label>
@@ -167,7 +167,7 @@ export default function PostAssignment() {
             <div className="flex flex-col col-md-3 col-sm-6 pb-2">
               <label
                 htmlFor="dueDate"
-                className="mb-2 text-lg font-medium text-gray-700"
+                className="mb-2 text-lg font-medium text-gray-700 whitespace-nowrap"
               >
                 When do you need this done?
               </label>
@@ -178,7 +178,7 @@ export default function PostAssignment() {
                 placeholder="Enter date"
                 min={currentDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="border rounded p-1"
+                className="border rounded p-1 sm:w-full"
               />
               {dueDateError && (
                 <span className="text-red-500">{dueDateError}</span>
