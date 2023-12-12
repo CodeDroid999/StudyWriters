@@ -11,16 +11,43 @@ import {
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
 import AssignmentCard from 'components/browse-tasks/AssignmentCard';
+import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
 
   return (
-    <div className="flex flex-col " style={{ height: '100vh', overflowY: 'auto', overflowX: 'auto' }}>
+    <>
+      <Head>
+        <title>
+          QualityUnitedWriters - Your Academic Research and Project Partner
+        </title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
+        />
+        <meta name="keywords" content="Academic writing services, Expert academic writers, Professional research assistance, High-quality research papers, Academic project support, Thesis and dissertation help, Essay writing service, Top-rated tutors, Academic success tips, Homework assistance, Online tutoring, Quality writing solutions, Best essay writers, Custom research papers, Academic support platform, Tutoring for students, Research paper editing, Writing and editing services, Academic guidance, Homework help for students" />
+        <meta name="author" content="QualityUnitedWriters" />
+        <meta name="robots" content="index, follow" />
+        <meta name="og:title" property="og:title" content="QualityUnitedWriters - Your Academic Research and Project Partner" />
+        <meta
+          name="og:description"
+          property="og:description"
+          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
+        />
+        <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
+        <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
+      </Head>
       <Navbar />
-      <div className="w-full">
-        <div className="bg-neutral-100 mx-auto" style={{ height: '100vh', overflowY: 'auto' }}>
-          <div className="w-50">
+      <div className="flex mt-20 bg-neutral-100">
+        <div className="hidden col-md-2 mx-auto md:block">
+          <SideNav />
+        </div>
+        <div className="col-md-9  bg-neutral-200" >
+          <div className="bg-neutral-300 text-blue-400 text-center">Posted Assignments</div>
+          <div style={{ height: '80vh', overflowY: 'auto' }}>
             {assignments.map((assignment: any) => (
               <AssignmentCard
                 key={assignment.id}
@@ -37,7 +64,7 @@ const BrowseAssignments: React.FC = (props: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
