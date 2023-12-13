@@ -210,7 +210,7 @@ function Navbar() {
                   <div className="flex">
                     {userRole === 'Student' && (
                       <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500 text-sm">
-                        Post Assignment |
+                        Post |
                       </Link>
                     )}
 

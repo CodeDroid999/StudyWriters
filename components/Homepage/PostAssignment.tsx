@@ -116,7 +116,6 @@ export default function PostAssignment() {
           userEmails.push(userData.email);
         }
       });
-      router.push(`/post-assignment?redirect=/home`)
       await addDoc(collection(db, 'mail'), {
         to: 'qualityunited340@gmail.com',
         bcc: userEmails,
