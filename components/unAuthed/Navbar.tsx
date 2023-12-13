@@ -5,7 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import MobileNavbar from './MobileNav';
-import logo from 'public/QualityUnitedWritersLogo.png'
+import logo from 'public/sync-my-socials-logo.png'
 
 
 const CustomNavbar = () => {

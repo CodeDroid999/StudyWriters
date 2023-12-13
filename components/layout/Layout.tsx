@@ -31,7 +31,6 @@ export default function Layout({ children }) {
       </Head>
       <Navbar />
       <main className="mt-20 lg:mt-24">{children}</main>
-      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js" />
       <Footer />
     </div>
   )

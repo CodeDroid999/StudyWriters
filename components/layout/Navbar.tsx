@@ -144,10 +144,10 @@ function Navbar() {
   }
 
   return (
-    <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-white duration-300 ease-in">
-      <div className="m-auto flex max-w-[1100px] items-center justify-between p-2 lg:p-3">
+    <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-gray-100 duration-300 ease-in">
+      <div className="m-auto flex  items-center justify-between p-2 lg:p-3">
         {/**Mobile Nav */}
-        <div className=" flex min-w-full items-center justify-between  lg:hidden">
+        <div className=" flex items-center justify-between  lg:hidden">
           {/* Left div */}
           <div className="flex flex-row items-center space-x-1">
             <Link href="/" className="text-gray-700">

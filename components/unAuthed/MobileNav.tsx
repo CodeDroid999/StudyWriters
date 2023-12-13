@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import NavigationMenu from './NavMenu';
-import logo from 'public/QualityUnitedWritersLogo.png'
+import logo from 'public/sync-my-socials-logo.png'
 
 
 const MobileNavbar = () => {
