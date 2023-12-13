@@ -43,7 +43,7 @@ export default function PostYourAssignment() {
             <h1 className="text-center  font-bold text-white text-3xl md:mt-10 md:mb-5 ">
                 Find a tutor to help you with your school!
             </h1>
-            <form onSubmit={handleSubmit} className="flex justify-center w-full flex-col md:flex-row md:space-x-6">
+            <form onSubmit={handleSubmit} className="justify-center w-full flex-col md:flex-row md:space-x-6">
                 {/* Other form fields can be added here */}
                 <input
                     type="text"

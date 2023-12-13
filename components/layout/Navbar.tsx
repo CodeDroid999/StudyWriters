@@ -144,7 +144,7 @@ function Navbar() {
   }
 
   return (
-    <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-gray-100 duration-300 ease-in">
+    <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-white duration-300 ease-in">
       <div className="m-auto flex  items-center justify-between p-2 lg:p-3">
         {/**Mobile Nav */}
         <div className=" flex items-center justify-between  lg:hidden">
@@ -222,29 +222,26 @@ function Navbar() {
                         id="customfontsize"
                       >
                         Browse  |
-                        {unReadNotifications.length > 0 && <RedDot />}
-
                       </Link>
                     )}
                   </div>
                   <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                     {userRole === 'Student' && (
                       <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
-                        Assignments 
+                        Assignments
                       </Link>
                     )}
 
                     {userRole === 'Tutor' && (
-                       <Link
-                       href={`/answers/${user.userId}`} 
-                       className="text-gray-700 hover:text-green-500 text-sm"
-                       style={{ whiteSpace: 'nowrap' }}
-                       id="customfontsize"
-                     >
-                       Answers 
-                       {unReadNotifications.length > 0 && <RedDot />}
+                      <Link
+                        href={`/answers/${user.userId}`}
+                        className="text-gray-700 hover:text-green-500 text-sm"
+                        style={{ whiteSpace: 'nowrap' }}
+                        id="customfontsize"
+                      >
+                        Answers
 
-                     </Link>
+                      </Link>
                     )}
                   </div>
                   <div className="flex">
@@ -254,12 +251,12 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                                       <Image
-                  src="https://i.postimg.cc/cJc2SjpJ/explain.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                      <Image
+                        src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                        alt="assignment" width="200" height="200"
+                        className="h-[25px] w-[100%]"
+                        id="customfontsize"
+                      />
                     </Link>
                     {unReadNotifications.length > 0 && <RedDot />}
                   </div>
@@ -270,12 +267,12 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                                       <Image
-                  src="https://i.postimg.cc/6QR6f94m/question.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                      <Image
+                        src="https://i.postimg.cc/6QR6f94m/question.png"
+                        alt="assignment" width="200" height="200"
+                        className="h-[25px] w-[100%]"
+                        id="customfontsize"
+                      />
                     </Link>
                     {unReadMessages.length > 0 && <RedDot />}
                   </div>
@@ -286,18 +283,18 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                                      <Image
-                  src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                      <Image
+                        src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                        alt="assignment" width="200" height="200"
+                        className="h-[25px] w-[100%]"
+                        id="customfontsize"
+                      />
 
                     </Link>
                     {unReadNotifications.length > 0 && <RedDot />}
                   </div>
 
-                  <div className="pr-5">
+                  <div className="pr-1">
                     <Avatar />
                   </div>
                 </div>
@@ -369,14 +366,13 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
                   <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
-                    Post Assignment     
+                    Post Assignment
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
                   <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Browse
-                    {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
               </div>
@@ -390,7 +386,6 @@ function Navbar() {
                 {userRole === 'Tutor' && (
                   <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Assignments
-                    {unReadNotifications.length > 0 && <RedDot />}
                   </Link>
                 )}
               </div>
@@ -400,12 +395,12 @@ function Navbar() {
                   href={`/notifications/${user.userId}`}
                   className="text-gray-700 hover:text-green-500"
                 >
-                                   <Image
-                  src="https://i.postimg.cc/cJc2SjpJ/explain.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                  <Image
+                    src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                    alt="assignment" width="200" height="200"
+                    className="h-[25px] w-[100%]"
+                    id="customfontsize"
+                  />
                 </Link>
                 {unReadNotifications.length > 0 && <RedDot />}
               </div>
@@ -414,23 +409,23 @@ function Navbar() {
                   href={`/messages/${user.userId}`}
                   className="text-gray-700 hover:text-green-500"
                 >
-                                   <Image
-                  src="https://i.postimg.cc/6QR6f94m/question.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                  <Image
+                    src="https://i.postimg.cc/6QR6f94m/question.png"
+                    alt="assignment" width="200" height="200"
+                    className="h-[25px] w-[100%]"
+                    id="customfontsize"
+                  />
                 </Link>
                 {unReadMessages.length > 0 && <RedDot />}
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
-                                  <Image
-                  src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
-                  alt="assignment"width="200" height="200"
-                  className="h-[25px] w-[100%]"
-                  id="customfontsize"
-                />
+                  <Image
+                    src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                    alt="assignment" width="200" height="200"
+                    className="h-[25px] w-[100%]"
+                    id="customfontsize"
+                  />
 
                 </Link>
               </div>

@@ -145,8 +145,8 @@ export default function PostAssignment() {
         <p className="text-gray text-center">
           Find a tutor to help you with your school!
         </p>
-        <form className="mt-6 flex justify-center gap-4">
-          <div className="row flex justify-between">
+        <form className="mt-6 flex justify-center">
+          <div className="row flex justify-between w-full">
             <div className="flex flex-col col-md-3 col-sm-6 pb-2">
               <label
                 htmlFor="title"
@@ -200,7 +200,7 @@ export default function PostAssignment() {
                 <span className="text-red-500">{budgetError}</span>
               )}
             </div>
-            <div className="col-md-3 col-sm-6 pb-2 flex justify-start align-right items-center">
+            <div className="col-md-3 col-sm-6 pb-2 flex flex-col flex-end justify-end align-center ">
               <div
                 className="btn-1 bg-yellow-500 p-2 rounded text-white"
                 onClick={handleSave}

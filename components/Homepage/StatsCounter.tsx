@@ -15,32 +15,36 @@ const StatsCounter = () => {
   }
 
   return (
-    <div ref={ref} className={`flex justify-center items-center space-x-4 p-4 ${startAnimation ? 'animate' : ''}`}>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
-          <CountUp end={48777} duration={2} start={startAnimation ? null : undefined} /> +
-        </h2>
-        <p className="text-sm">Visitors</p>
+    <>
+      <div ref={ref} className={`row justify-center items-center space-x-4 p-4 ${startAnimation ? 'animate' : ''}`}>
+        <div className="flex w-100 space-x-4">
+          <div className="text-center p-2">
+            <h2 className="text-3xl font-bold">
+              <CountUp end={48777} duration={2} start={startAnimation ? null : undefined} /> +
+            </h2>
+            <p className="text-sm">Visitors</p>
+          </div>
+          <div className="text-center p-2">
+            <h2 className="text-3xl font-bold">
+              <CountUp end={136050} duration={2} start={startAnimation ? null : undefined} /> +
+            </h2>
+            <p className="text-sm">CompletedAssignments</p>
+          </div>
+          <div className="text-center p-2">
+            <h2 className="text-3xl font-bold">
+              <CountUp end={9.37} duration={2} decimals={2} start={startAnimation ? null : undefined} /> +
+            </h2>
+            <p className="text-sm">Current Quality Score</p>
+          </div>
+          <div className="text-center p-2">
+            <h2 className="text-3xl font-bold">
+              <CountUp end={2674} duration={2} start={startAnimation ? null : undefined} /> +
+            </h2>
+            <p className="text-sm">Writers Active</p>
+          </div>
+        </div>
       </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
-          <CountUp end={136050} duration={2} start={startAnimation ? null : undefined} /> +
-        </h2>
-        <p className="text-sm">CompletedAssignments</p>
-      </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
-          <CountUp end={9.37} duration={2} decimals={2} start={startAnimation ? null : undefined} /> +
-        </h2>
-        <p className="text-sm">Current Quality Score</p>
-      </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
-          <CountUp end={2674} duration={2} start={startAnimation ? null : undefined} /> +
-        </h2>
-        <p className="text-sm">Writers Active</p>
-      </div>
-    </div>
+    </>
   );
 };
 
