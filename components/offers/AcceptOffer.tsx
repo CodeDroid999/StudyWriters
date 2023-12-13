@@ -69,7 +69,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
   }
 
   const assignTutor = async () => {
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
 
     const newDoc: any = await updateDoc(taskRef, {
       status: 'Assigned',
@@ -94,14 +94,14 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
       type: 'AcceptOffer',
       content: 'has accepted your offer on',
       assignmentTitle: assignmentData.title,
-     assignmentId,
+      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'mail'), {
       to: offer?.customer.email,
       message: {
-        subject: 'Offer Accepted',
+        subject: 'Bid Accepted',
         html: `${user?.firstName} has accepted your offer on ${assignmentData?.title}. You can now start working on it!`,
       },
     })
@@ -110,7 +110,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
       tutorId: offer.userId,
       posterId: user.userId,
       assignmentTitle: assignmentData.title,
-     assignmentId,
+      assignmentId,
       createdAt: serverTimestamp(),
       tutorAmount: {
         price: offer.amount,

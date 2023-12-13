@@ -89,7 +89,7 @@ export default function MakeOffer({
 
   const SubmitForm = async (event: any) => {
     event.preventDefault()
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
     const offerRef = doc(collection(taskRef, 'offers'), offerId)
     await updateDoc(offerRef, {
       amount: newOffer,
@@ -104,14 +104,14 @@ export default function MakeOffer({
       type: 'UpdateOffer',
       content: 'has updated offer made on',
       assignmentTitle,
-     assignmentId,
+      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'mail'), {
       to: student?.email,
       message: {
-        subject: 'Offer Updated',
+        subject: 'Bid Updated',
         html: `${user?.userId} has updated offer made on ${assignmentTitle}`,
       },
     })
@@ -153,9 +153,8 @@ export default function MakeOffer({
         <div className="fixed inset-0 z-50 flex items-center justify-center px-3 ">
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div
-              className={`${
-                step === 1 ? 'justify-end' : 'justify-between'
-              } flex cursor-pointer flex-row`}
+              className={`${step === 1 ? 'justify-end' : 'justify-between'
+                } flex cursor-pointer flex-row`}
             >
               <BiArrowBack
                 size={20}

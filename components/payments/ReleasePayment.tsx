@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-hot-toast'
 
 export default function ReleasePayment({
- assignmentId,
+  assignmentId,
   student,
   assignmentData,
   tutorDetails,
@@ -22,7 +22,7 @@ export default function ReleasePayment({
   const router = useRouter()
 
   const handleReleasePayment = async () => {
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
 
     await updateDoc(taskRef, {
       paymentReleased: true,
@@ -34,7 +34,7 @@ export default function ReleasePayment({
       type: 'ReleasePayment',
       content: 'has released payment on',
       assignmentTitle: assignmentData.title,
-     assignmentId,
+      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
@@ -93,7 +93,7 @@ export default function ReleasePayment({
               </p>
             </div>
             <div className="mt-3 flex flex-row items-center justify-between text-sm font-medium text-gray-700">
-              <span>Offer</span>
+              <span>Bid</span>
               <span>${assignmentData.tutor.price}</span>
             </div>
             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-700">

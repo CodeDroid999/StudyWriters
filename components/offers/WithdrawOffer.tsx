@@ -20,7 +20,7 @@ export default function WithdrawOffer({ cancelOffer }) {
                flex-row justify-between`}
             >
               <div className="flex-1 text-center text-base font-medium text-gray-800">
-                Cancel Offer
+                Cancel Bid
               </div>
               <AiOutlineClose
                 size={20}
@@ -42,7 +42,7 @@ export default function WithdrawOffer({ cancelOffer }) {
                 onClick={() => cancelOffer()}
                 className="flex-1 rounded-full bg-orange-600 px-2 py-1.5 text-center font-medium text-white"
               >
-                Cancel Offer
+                Cancel Bid
               </button>
             </div>
           </div>

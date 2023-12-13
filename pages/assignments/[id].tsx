@@ -55,7 +55,7 @@ export default function TaskDetails(props: any) {
 
   useEffect(() => {
     setLoading(true)
-    const offersCollectionRef = collection(db, 'assignments',assignmentId, 'offers')
+    const offersCollectionRef = collection(db, 'assignments', assignmentId, 'offers')
     const unsubscribe = onSnapshot(offersCollectionRef, async (snapshot) => {
       const updatedOffers: any = await Promise.all(
         snapshot.docs.map(async (doc) => {
@@ -89,25 +89,25 @@ export default function TaskDetails(props: any) {
 
   const withdrawOffer = async (offerId: string) => {
     try {
-      await deleteDoc(doc(db, 'assignments',assignmentId, 'offers', offerId))
+      await deleteDoc(doc(db, 'assignments', assignmentId, 'offers', offerId))
       await addDoc(collection(db, 'notifications'), {
         receiverId: assignmentData.student.userId,
         senderId: user.userId,
         type: 'WithdrawOffer',
         content: 'has withdrawn offer on',
         assignmentTitle: assignmentData.title,
-       assignmentId,
+        assignmentId,
         read: false,
         createdAt: serverTimestamp(),
       })
       await addDoc(collection(db, 'mail'), {
         to: student?.email,
         message: {
-          subject: 'Offer Withdrawn',
+          subject: 'Bid Withdrawn',
           html: `${user?.firstName} has withdrawn offer made on ${assignmentData.title}`,
         },
       })
-      toast.success('Offer has been withdrawn')
+      toast.success('Bid has been withdrawn')
     } catch (error) {
       console.error('Error withdrawing offer:', error)
     }
@@ -156,7 +156,7 @@ export default function TaskDetails(props: any) {
               </div>
             </div>
 
-            {/**Offer */}
+            {/**Bid */}
             <div className="mt-4 w-full max-w-screen-sm md:ml-6 md:mt-0 md:max-w-[300px] ">
               <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-100 p-3 ">
                 <div className="flex flex-col items-center justify-center pb-4">
@@ -175,12 +175,12 @@ export default function TaskDetails(props: any) {
                     )}
                     {(assignmentData.status === 'Open' ||
                       assignmentData.status === 'Assigned') && (
-                      <CancelTask
-                       assignmentId={assignmentId}
-                        assignmentData={assignmentData}
-                        tutor={tutorDetails}
-                      />
-                    )}
+                        <CancelTask
+                          assignmentId={assignmentId}
+                          assignmentData={assignmentData}
+                          tutor={tutorDetails}
+                        />
+                      )}
                     {assignmentData.status === 'Cancelled' && (
                       <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
                         {assignmentData.status}
@@ -190,7 +190,7 @@ export default function TaskDetails(props: any) {
                       !assignmentData.posterReview ? (
                         <AddReview
                           tutorDetails={tutorDetails}
-                         assignmentId={assignmentId}
+                          assignmentId={assignmentId}
                           student={student}
                           assignmentData={assignmentData}
                         />
@@ -206,7 +206,7 @@ export default function TaskDetails(props: any) {
                           assignmentData={assignmentData}
                           tutorDetails={tutorDetails}
                           student={student}
-                         assignmentId={assignmentId}
+                          assignmentId={assignmentId}
                         />
                       )
                     )}
@@ -258,8 +258,8 @@ export default function TaskDetails(props: any) {
                     ) : assignmentData.tutor.userId === user?.userId ? (
                       <div>
                         {assignmentData.paymentRequested &&
-                        (assignmentData.status === 'Assigned' ||
-                          assignmentData.status === 'Completed') ? (
+                          (assignmentData.status === 'Assigned' ||
+                            assignmentData.status === 'Completed') ? (
                           <div>
                             <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
                               <span>Your Bid</span>
@@ -304,7 +304,7 @@ export default function TaskDetails(props: any) {
                                 <RequestPayment
                                   assignmentData={assignmentData}
                                   student={student}
-                                 assignmentId={assignmentId}
+                                  assignmentId={assignmentId}
                                 />
                               </div>
                             )}
@@ -329,7 +329,7 @@ export default function TaskDetails(props: any) {
                             <div className="mt-5">
                               <AddReview
                                 tutorDetails={tutorDetails}
-                               assignmentId={assignmentId}
+                                assignmentId={assignmentId}
                                 student={student}
                                 assignmentData={assignmentData}
                               />
@@ -348,7 +348,7 @@ export default function TaskDetails(props: any) {
                 <MoreOptions
                   assignmentData={assignmentData}
                   student={student}
-                 assignmentId={assignmentId}
+                  assignmentId={assignmentId}
                 />
               )}
             </div>
@@ -373,7 +373,7 @@ export default function TaskDetails(props: any) {
               </div>
             ) : offers.length > 0 ? (
               assignmentData.status === 'Assigned' ||
-              assignmentData.status === 'Completed' ? (
+                assignmentData.status === 'Completed' ? (
                 <div className="my-3">
                   {tutorDetails && (
                     <div>
@@ -418,7 +418,7 @@ export default function TaskDetails(props: any) {
                               customerId={tutorDetails?.userId}
                               posterId={student.userId}
                               assignmentData={assignmentData}
-                             assignmentId={assignmentId}
+                              assignmentId={assignmentId}
                               tutor={tutorDetails}
                               student={student}
                             />
@@ -503,7 +503,7 @@ export default function TaskDetails(props: any) {
                               customerId={offer.userId}
                               posterId={student.userId}
                               assignmentData={assignmentData}
-                             assignmentId={assignmentId}
+                              assignmentId={assignmentId}
                               offerId={offer.offerId}
                               student={student}
                               customer={offer.customer}
@@ -534,7 +534,7 @@ export default function TaskDetails(props: any) {
 export async function getServerSideProps({ params }) {
   const assignmentId = params.id
 
-  const docRef = doc(db, 'assignments',assignmentId)
+  const docRef = doc(db, 'assignments', assignmentId)
   const docSnap = await getDoc(docRef)
 
   const assignmentData = docSnap.data()

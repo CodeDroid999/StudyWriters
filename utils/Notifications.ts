@@ -31,7 +31,7 @@ const newOfferEmail = async ({ email, assignmentTitle }) => {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
-      subject: 'New Offer',
+      subject: 'New Bid',
       text: `You have received a new bid on ${assignmentTitle}`,
     }
 
@@ -47,7 +47,7 @@ const acceptOfferEmail = async ({ email, assignmentTitle, name }) => {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
-      subject: 'Offer Accepted',
+      subject: 'Bid Accepted',
       text: `${name} has accepted your offer on ${assignmentTitle}. You can now start working on it!`,
     }
 
@@ -62,7 +62,7 @@ const withdrawOfferEmail = async ({ email, assignmentTitle, name }) => {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
-      subject: 'Offer Withdrawal',
+      subject: 'Bid Withdrawal',
       text: `${name} has withdrawn offer made on ${assignmentTitle}`,
     }
 
@@ -107,7 +107,7 @@ const updateOfferEmail = async ({ email, assignmentTitle, name }) => {
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: email,
-      subject: 'Offer Update',
+      subject: 'Bid Update',
       text: `${name} has updated offer made on ${assignmentTitle}`,
     }
 
