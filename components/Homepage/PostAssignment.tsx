@@ -9,6 +9,7 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import router from 'next/router';
 
 interface Props {
   handleNextStep: () => void;
@@ -115,7 +116,7 @@ export default function PostAssignment() {
           userEmails.push(userData.email);
         }
       });
-
+      router.push(`/post-assignment?redirect=/home`)
       await addDoc(collection(db, 'mail'), {
         to: 'qualityunited340@gmail.com',
         bcc: userEmails,
@@ -127,7 +128,7 @@ export default function PostAssignment() {
 
       toast.success('Assignment      has been posted');
       // You can redirect to the assignment page or do any other necessary action
-      // router.push(`/assignments/${assignmentId}`);
+      router.push(`/assignments/${assignmentId}`);
     } catch (error) {
       console.error('Error posting assignment:', error.message);
       toast.error('Error posting assignment. Please try again.');
