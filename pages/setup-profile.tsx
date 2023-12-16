@@ -99,7 +99,7 @@ export default function CompleteAccount() {
   return (
 
     <div className="mx-auto mt-10 h-screen w-full max-w-[1200px] px-3 md:mt-20">
-     <Head>
+      <Head>
         <title>
           QualityUnitedWriters - Your Academic Research and Project Partner
         </title>
@@ -118,7 +118,8 @@ export default function CompleteAccount() {
           property="og:description"
           content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
         />
-        <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
+        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
+
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <div className="mx-auto max-w-[500px]">

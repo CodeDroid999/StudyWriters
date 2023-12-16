@@ -62,7 +62,8 @@ export default function ForgotPassword() {
           property="og:description"
           content="QualityunitedWriters is your one-stop destination for finding the right assignments and talented taskers. Post any assignment, pick the best person, and get it done. Join now to earn money as a tutor or post your assignments for free."
         />
-        <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
+        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
+
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
 

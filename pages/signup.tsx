@@ -150,9 +150,9 @@ export default function Signup() {
 
       // Make the HTTP request to the api/welcomeuser route
       await axios.post('/api/welcomeuser', userData);
-    
-    
-      
+
+
+
 
     } catch (error) {
       const errorCode = error.code
@@ -186,7 +186,8 @@ export default function Signup() {
           property="og:description"
           content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
         />
-        <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
+        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
+
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <div>
