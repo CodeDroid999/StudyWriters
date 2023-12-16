@@ -18,6 +18,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
+import { UserAuth } from 'context/AuthContext'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -33,17 +34,24 @@ export default function Home(props: PageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect');
+  const { userRole } = UserAuth(); // Access userRole from the AuthContext
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/home');
+        // Check userRole and redirect accordingly
+        if (userRole === 'tutor') {
+          router.push('/browse-assignments');
+        } else if (userRole === 'student') {
+          router.push('/home');
+        }
+
         toast.success('Logged In');
       }
     });
     return () => unsubscribe();
-  }, [router, redirect]);
-
+  }, [router, userRole]);
   return (
     <>
       <Head>
@@ -74,8 +82,8 @@ export default function Home(props: PageProps) {
       <Features />
       <BeYourOwnBoss />
       <HowItWorksSection />
-        <FAQAccordion />
-      <Footer/>
+      <FAQAccordion />
+      <Footer />
     </>
   )
 }
