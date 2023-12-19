@@ -18,7 +18,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
-import { UserAuth } from 'context/AuthContext'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -34,24 +33,17 @@ export default function Home(props: PageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect');
-  const { userRole } = UserAuth(); // Access userRole from the AuthContext
-
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Check userRole and redirect accordingly
-        if (userRole === 'tutor') {
-          router.push('/browse-assignments');
-        } else if (userRole === 'student') {
-          router.push('/home');
-        }
-
+        router.push(redirect || '/home');
         toast.success('Logged In');
       }
     });
     return () => unsubscribe();
-  }, [router, userRole]);
+  }, [router, redirect]);
+
   return (
     <>
       <Head>
@@ -73,7 +65,7 @@ export default function Home(props: PageProps) {
           property="og:description"
           content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
         />
-        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
+        <meta name="og:image" property="og:image" content="public/QualityUnitedWritersLogo.png" />
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <HeroArea />
