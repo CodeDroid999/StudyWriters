@@ -18,7 +18,7 @@ export default function Step1() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push(`/login?redirect=/tutor-application`)
+                router.push(`/login`)
             }
         })
         return () => unsubscribe()
@@ -57,7 +57,7 @@ export default function Step1() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <Form1/>
+                    <Form1 />
                 </div>
             </div>
         </div>
