@@ -42,12 +42,10 @@ const BrowseAssignments: React.FC = (props: any) => {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <Navbar />
-      <div className="flex mt-20 bg-neutral-100">
-        <div className="hidden col-md-2 mx-auto md:block">
-          <SideNav />
-        </div>
-        <div className="col-md-9  bg-neutral-200" >
-          <div className="bg-neutral-300 text-blue-400 text-center">Posted Assignments</div>
+      <div className="flex mt-20 ">
+        <SideNav />
+        <div className="col-md-9 px-0 mx-0 bg-gray-100" >
+          <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
           <div style={{ height: '80vh', overflowY: 'auto' }}>
             {assignments.map((assignment: any) => (
               <AssignmentCard
@@ -64,7 +62,7 @@ const BrowseAssignments: React.FC = (props: any) => {
             ))}
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

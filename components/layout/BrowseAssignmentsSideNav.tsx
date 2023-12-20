@@ -3,13 +3,13 @@ import React from 'react';
 
 const SideNav = () => {
   return (
-    <>
+    <div className="hidden col-md-4 mx-auto md:block ">
       <div className="p-2 flex font-bold items-center">
         <Link href="/help" className="text-blue-400 text-right whitespace-nowrap">Help</Link>
       </div>
       <div className="p-2 flex font-bold items-center">
-      <Link href="/how-it-works" className="text-blue-400 text-right whitespace-nowrap">How It Works</Link>
-              </div>
+        <Link href="/how-it-works" className="text-blue-400 text-right whitespace-nowrap">How It Works</Link>
+      </div>
       <div className="p-2 flex font-bold items-center">
         <Link href="/about" className="text-blue-400 text-right whitespace-nowrap">About</Link>
       </div>
@@ -29,12 +29,12 @@ const SideNav = () => {
         <Link href="/blog" className="text-blue-400 text-right whitespace-nowrap">Blog</Link>
       </div>
       <div className="p-2 flex font-bold items-center">
-      <Link href="/how-it-works" className="text-blue-400 text-right whitespace-nowrap">How It Works</Link>
+        <Link href="/how-it-works" className="text-blue-400 text-right whitespace-nowrap">How It Works</Link>
       </div>
       <div className="p-2 flex font-bold items-center">
         <Link href="/contact-us" className="text-blue-400 text-right whitespace-nowrap">Contact Us</Link>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import React from 'react';
 const SideNav = () => {
   return (
     <>
-      <div className="p-2 flex font-bold items-center hidden">
+      <div className="p-2 flex font-bold items-center">
         <Link href="/help" className="text-blue-400 text-right whitespace-nowrap">Help</Link>
       </div>
       <div className="p-2 flex font-bold items-center">
@@ -34,7 +34,7 @@ const SideNav = () => {
       <div className="p-2 flex font-bold items-center">
         <Link href="/contact-us" className="text-blue-400 text-right whitespace-nowrap">Contact Us</Link>
       </div>
-    </>
+    </ >
   );
 };
 

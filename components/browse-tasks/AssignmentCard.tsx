@@ -71,7 +71,7 @@ const AssignmentCard: React.FC<CardProps> = ({
               {offers.some(
                 (offer: any) => user && offer.userId === user?.userId
               ) ? (
-                <span className="text-blue-900">Offered</span>
+                <span className="text-blue-900">Bidded</span>
               ) : (
                 <span>{status}</span>
               )}
