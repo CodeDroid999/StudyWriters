@@ -111,36 +111,36 @@ export default function MyAssignmentsPage() {
           </div>
         </div>
       ) : (
-        <div className=" mt-28 px-3">
-          <div className="flex flex-row justify-end mb-5">
+        <div className=" md:mt-20 mt-23  bg-gray-100 md:pt-0 pt-24 h-screen">
+          <div className="sticky top-0 flex flex-row justify-end mb-5 pt-2 pb-2 w-100 shadow-md">
             <button
               onClick={() => handleTabClick('posted')}
-              className={`mr-4 px-4 py-2 rounded-md ${selectedTab === 'posted' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
+              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'posted' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
                 }`}
             >
 
-              Posted<div className="sm:hidden"> Assignments</div>
+              Posted
             </button>
             <button
               onClick={() => handleTabClick('assigned')}
-              className={`mr-4 px-4 py-2 rounded-md ${selectedTab === 'assigned' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
+              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'assigned' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
                 }`}
             >
-              Assigned Assignments
+              Assigned
             </button>
             <button
               onClick={() => handleTabClick('offers-pending')}
-              className={`mr-4 px-4 py-2 rounded-md ${selectedTab === 'offers-pending' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
+              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'offers-pending' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
                 }`}
             >
-              Pending Offers
+              Pending
             </button>
             <button
               onClick={() => handleTabClick('completed')}
-              className={`px-4 py-2 rounded-md ${selectedTab === 'completed' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
+              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'completed' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
                 }`}
             >
-              Completed Assignments
+              Completed
             </button>
           </div>
           <div>
