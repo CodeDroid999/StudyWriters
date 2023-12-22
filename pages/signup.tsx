@@ -192,7 +192,7 @@ export default function Signup() {
       </Head>
       <div>
         <p className="mb-10 text-center text-2xl font-medium text-green-950">
-          Sign Up to Airtaska
+          Sign Up to Quality UnitedWritters
         </p>
       </div>
       <form onSubmit={handleSignUp} className="flex flex-col gap-4">
