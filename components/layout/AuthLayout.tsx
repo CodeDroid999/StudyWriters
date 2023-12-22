@@ -13,7 +13,7 @@ export default function AuthLayout({
           <Link href="/">QualityUnitedWriters</Link>
         </h1>
       </header>
-      <main className="mx-auto mt-12 w-full max-w-[400px]  md:mt-32">
+      <main className="mx-auto mt-6 w-full max-w-[400px]  md:mt-10">
         {children}
       </main>
     </div>
