@@ -12,13 +12,13 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { UserAuth } from 'context/AuthContext'
 
-export default function WithdrawFromTask({assignmentId, assignmentData, student }) {
+export default function WithdrawFromTask({ assignmentId, assignmentData, student }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const { user } = UserAuth()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'assignments',assignmentId)
+      const taskRef = doc(db, 'assignments', assignmentId)
 
       await updateDoc(taskRef, {
         tutor: {
@@ -36,7 +36,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
         type: 'CancelTask',
         content: 'has withdrawn from',
         assignmentTitle: assignmentData.title,
-       assignmentId,
+        assignmentId,
         read: false,
         createdAt: serverTimestamp(),
       })
@@ -59,9 +59,9 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="mt-2 w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="mt-2 w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
-        Withdraw From Assignment    
+        Withdraw From Assignment
       </button>
 
       {isFormOpen && (
@@ -72,7 +72,7 @@ export default function WithdrawFromTask({assignmentId, assignmentData, student 
                flex-row justify-between`}
             >
               <div className="flex-1 text-center text-base font-medium text-gray-800">
-                Withdraw From Assignment    
+                Withdraw From Assignment
               </div>
               <AiOutlineClose
                 size={20}

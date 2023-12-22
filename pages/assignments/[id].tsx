@@ -120,7 +120,7 @@ export default function TaskDetails(props: any) {
       <div className="mx-auto mt-28 max-w-[900px] px-3 md:px-8">
         <div className="w-full">
           {/**Status */}
-          <div className="flex max-w-[130px] justify-center rounded-full bg-green-500  p-1  text-xs font-bold uppercase text-green-950">
+          <div className="flex max-w-[130px] justify-center rounded-full bg-green-600  p-1  text-xs font-bold uppercase text-green-950">
             {assignmentData.status}
           </div>
 
@@ -315,7 +315,7 @@ export default function TaskDetails(props: any) {
                                 </div>
                                 <button
                                   onClick={() => router.push('/contact-us')}
-                                  className="mt-2 w-full rounded-full bg-green-500 px-4 py-2 text-center font-semibold uppercase text-white"
+                                  className="mt-2 w-full rounded-full bg-green-600 px-4 py-2 text-center font-semibold uppercase text-white"
                                 >
                                   Contact Support
                                 </button>

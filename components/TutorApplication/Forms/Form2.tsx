@@ -110,7 +110,7 @@ export default function Form2() {
           </button>
           <button
             type="button"
-            className="flex-1 cursor-pointer rounded-xl bg-green-500 py-2 text-center text-white"
+            className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
             onClick={handleSave}
           >
             Save and Continue

@@ -26,7 +26,7 @@ export default function PostTaskCTA() {
         </h2>
         <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-amber-400">
           The best marketplace to hire freelancers        </p>
-        <div className="my-8 w-full max-w-sm rounded-full bg-green-500 px-4 py-3 sm:max-w-[200px] ">
+        <div className="my-8 w-full max-w-sm rounded-full bg-green-600 px-4 py-3 sm:max-w-[200px] ">
           <Link
             href="/post-assignment"
             className="flex w-full justify-center text-lg font-semibold text-white"

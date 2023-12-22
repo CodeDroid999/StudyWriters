@@ -144,7 +144,7 @@ export default function MakeOffer({
     <div className="relative">
       <button
         onClick={openForm}
-        className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
         Update Bid
       </button>
@@ -204,7 +204,7 @@ export default function MakeOffer({
                 </div>
                 <button
                   onClick={goToStep2}
-                  className="mt-16 w-full rounded-full bg-green-500 py-2 font-semibold text-white"
+                  className="mt-16 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
                 >
                   Next
                 </button>
@@ -234,7 +234,7 @@ export default function MakeOffer({
                 )}
                 <button
                   onClick={goToStep3}
-                  className="mt-2 w-full rounded-full bg-green-500 py-2 font-semibold text-white"
+                  className="mt-2 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
                 >
                   Next
                 </button>
@@ -290,7 +290,7 @@ export default function MakeOffer({
                 </div>
                 <button
                   onClick={SubmitForm}
-                  className="mt-10 w-full rounded-full bg-green-500 py-2 font-semibold text-white"
+                  className="mt-10 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
                 >
                   Submit new bid
                 </button>

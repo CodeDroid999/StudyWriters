@@ -67,7 +67,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
                   checked={selectedOptions.includes(options[2])}
                   onChange={() => handleSelectOption(options[2])}
                 />
-               Assignments with no offers only
+                Assignments with no offers only
                 <div className="mb-4 text-left  text-neutral-500">
                   Hide assignments that have offers
                 </div>
@@ -76,7 +76,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
                 <button className="rounded-3xl bg-blue-100 px-4 py-2 text-blue-600 hover:bg-blue-300 focus:outline-none">
                   Cancel
                 </button>
-                <button className="rounded-3xl bg-green-500 px-4 py-2 text-white hover:bg-blue-400 focus:outline-none">
+                <button className="rounded-3xl bg-green-600 px-4 py-2 text-white hover:bg-blue-400 focus:outline-none">
                   Apply
                 </button>
               </div>

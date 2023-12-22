@@ -62,7 +62,7 @@ const CategoryDropdown: React.FC<DropdownProps> = ({ options }) => {
                   placeholder="Search..."
                   className="w-full rounded border px-2 py-1 focus:outline-none"
                 />
-                <button className="ml-2 rounded bg-green-500 px-4 py-1 text-white hover:bg-blue-600 focus:outline-none">
+                <button className="ml-2 rounded bg-green-600 px-4 py-1 text-white hover:bg-blue-600 focus:outline-none">
                   Search
                 </button>
               </div>

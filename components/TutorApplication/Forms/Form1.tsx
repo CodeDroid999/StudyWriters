@@ -57,28 +57,28 @@ export default function Form1() {
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
     const [error, setError] = useState('');
-    
+
 
     const handleSave = async (e) => {
         e.preventDefault();
-    
+
         try {
             const auth = getAuth();
             const user = auth.currentUser;
-    
+
             if (!user) {
                 // User is not logged in
                 // Handle the case where the user is not logged in
                 return;
             }
-    
+
             const q = query(
                 collection(db, 'users'),
                 where('userId', '==', user?.uid)
             );
-    
+
             const querySnapshot = await getDocs(q);
-    
+
             if (!querySnapshot.empty) {
                 const docSnapshot = querySnapshot.docs[0];
                 const userDocRef = doc(db, 'users', docSnapshot.id);
@@ -93,9 +93,9 @@ export default function Form1() {
             } else {
                 // Handle the case where the user document is not found
             }
-    
+
             const applicationDocRef = await addDoc(collection(db, 'applications'), {
-                               firstName,
+                firstName,
                 lastName,
                 country,
                 address,
@@ -115,7 +115,7 @@ export default function Form1() {
                 read: false,
                 // Add other details specific to applications here
             });
-    
+
             toast.success('Personal info has been updated');
             toast.success('Application has been saved');
             router.push('/tutor-application/step2');
@@ -124,7 +124,7 @@ export default function Form1() {
             toast.error('Error updating. Please try again.');
         }
     };
-    
+
 
 
 
@@ -436,7 +436,7 @@ export default function Form1() {
                 </div>
 
                 <div
-                    className="mt-4 cursor-pointer rounded-xl bg-green-500 py-2 text-center text-white"
+                    className="mt-4 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
                     onClick={handleSave}
                 >
                     Save and continue                </div>

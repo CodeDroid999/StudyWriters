@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaStar } from 'react-icons/fa'
 
-export default function AddReview({ tutorDetails,assignmentId, student, assignmentData }) {
+export default function AddReview({ tutorDetails, assignmentId, student, assignmentData }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
@@ -62,12 +62,12 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       timestamp: serverTimestamp(),
       posterId,
       tutorId,
-     assignmentId,
+      assignmentId,
       senderId: userId,
       receiverId,
     })
 
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
 
     if (posterId === userId) {
       await updateDoc(taskRef, {
@@ -85,7 +85,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
       type: 'Review',
       content: 'has reviewed you on',
       assignmentTitle: assignmentData.title,
-     assignmentId,
+      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
@@ -114,7 +114,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="w-full rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="w-full rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
         Leave review
       </button>
@@ -155,9 +155,8 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
                   <FaStar
                     key={value}
                     size={32}
-                    className={`cursor-pointer ${
-                      rating >= value ? 'text-yellow-500' : 'text-gray-300'
-                    }`}
+                    className={`cursor-pointer ${rating >= value ? 'text-yellow-500' : 'text-gray-300'
+                      }`}
                     onClick={() => handleRatingClick(value)}
                   />
                 ))}
@@ -180,7 +179,7 @@ export default function AddReview({ tutorDetails,assignmentId, student, assignme
             <div className="mt-5">
               <button
                 onClick={handleSubmit}
-                className="w-full rounded-full bg-green-500 p-3 text-center  font-medium text-white "
+                className="w-full rounded-full bg-green-600 p-3 text-center  font-medium text-white "
               >
                 Submit Review
               </button>

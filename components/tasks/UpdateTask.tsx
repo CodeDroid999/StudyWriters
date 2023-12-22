@@ -8,7 +8,7 @@ import { db } from '../../firebase'
 import { UserAuth } from 'context/AuthContext'
 import { toast } from 'react-hot-toast'
 
-export default function UpdateTask({assignmentId, assignmentData }) {
+export default function UpdateTask({ assignmentId, assignmentData }) {
   const [title, setTitle] = useState(assignmentData?.title)
   const [titleError, setTitleError] = useState('')
   const [dueDate, setDueDate] = useState(assignmentData?.dueDate)
@@ -75,7 +75,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
     if (hasError) {
       return
     }
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
     await updateDoc(taskRef, {
       dueDate,
       budget,
@@ -94,9 +94,9 @@ export default function UpdateTask({assignmentId, assignmentData }) {
     <div className="relative">
       <button
         onClick={openForm}
-        className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
-        Update   
+        Update
       </button>
 
       {isFormOpen && (
@@ -104,7 +104,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div className={`flex flex-row items-center justify-between`}>
               <span className="flex-1 text-center text-xl font-medium text-gray-700">
-                Update Assignment    
+                Update Assignment
               </span>
               <AiOutlineClose
                 size={20}
@@ -205,7 +205,7 @@ export default function UpdateTask({assignmentId, assignmentData }) {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-green-500 py-2 text-center text-white"
+                    className="flex-1 rounded-xl bg-green-600 py-2 text-center text-white"
                   >
                     Update assignment
                   </button>

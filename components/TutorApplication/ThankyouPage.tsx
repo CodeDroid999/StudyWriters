@@ -22,7 +22,7 @@ const ThankYouPage = () => {
       <div className="flex gap-4">
         <button
           type="button"
-          className="flex-1 cursor-pointer rounded-xl bg-green-500 py-2 text-center text-white"
+          className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
           onClick={handleGoToHome}
         >
           Go to Home Page

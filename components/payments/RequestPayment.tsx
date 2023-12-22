@@ -12,14 +12,14 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function RequestPayment({ assignmentData, student,assignmentId }) {
+export default function RequestPayment({ assignmentData, student, assignmentId }) {
   const [step, setStep] = useState(1)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const { user } = UserAuth()
   const router = useRouter()
 
   const handleRequestPayment = async () => {
-    const taskRef = doc(db, 'assignments',assignmentId)
+    const taskRef = doc(db, 'assignments', assignmentId)
 
     await updateDoc(taskRef, {
       paymentRequested: true,
@@ -31,7 +31,7 @@ export default function RequestPayment({ assignmentData, student,assignmentId })
       type: 'RequestPayment',
       content: 'has requested payment on',
       assignmentTitle: assignmentData.title,
-     assignmentId,
+      assignmentId,
       read: false,
       createdAt: serverTimestamp(),
     })
@@ -55,7 +55,7 @@ export default function RequestPayment({ assignmentData, student,assignmentId })
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="w-full rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="w-full rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
         Request Payment
       </button>
@@ -94,7 +94,7 @@ export default function RequestPayment({ assignmentData, student,assignmentId })
                 </div>
                 <div className="pt-16">
                   {!user?.bankAccount.accountHolderName ||
-                  !user?.bankAccount.accountNumber ? (
+                    !user?.bankAccount.accountNumber ? (
                     <div className="flex w-full flex-col">
                       <p className="mb-2 text-center text-base font-medium text-blue-950">
                         Add your bank account details, where you are to receive

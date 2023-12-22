@@ -63,7 +63,7 @@ export default function AddBillingAddress() {
       </div>
       <button
         type="submit"
-        className="my-2 rounded-full bg-green-500 px-3 py-2 font-semibold text-white "
+        className="my-2 rounded-full bg-green-600 px-3 py-2 font-semibold text-white "
       >
         Add Billing Address
       </button>

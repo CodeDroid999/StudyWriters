@@ -121,9 +121,8 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
   return (
     <div>
       <div
-        className={`${
-          step === 1 ? 'justify-end' : 'justify-between'
-        } flex cursor-pointer flex-row`}
+        className={`${step === 1 ? 'justify-end' : 'justify-between'
+          } flex cursor-pointer flex-row`}
       >
         <BiArrowBack
           size={20}
@@ -224,11 +223,11 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
 
           <div className="mt-20">
             {user.profilePicture !== '' &&
-            user.dateOfBirth !== '' &&
-            user.billingAddress !== '' &&
-            user.phoneNumber !== '' ? (
+              user.dateOfBirth !== '' &&
+              user.billingAddress !== '' &&
+              user.phoneNumber !== '' ? (
               <button
-                className="w-full rounded-full bg-green-500 p-2 font-medium text-white"
+                className="w-full rounded-full bg-green-600 p-2 font-medium text-white"
                 onClick={goToForms}
               >
                 Continue
@@ -262,7 +261,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
           </div>
           <div className="mt-8">
             <button
-              className="rounded-2xl bg-green-500 px-6 py-1 font-semibold text-white"
+              className="rounded-2xl bg-green-600 px-6 py-1 font-semibold text-white"
               onClick={dateHandler}
             >
               Set Date
@@ -292,7 +291,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
           </div>
           <div className="mt-8">
             <button
-              className="rounded-2xl bg-green-500 px-6 py-1 font-semibold text-white"
+              className="rounded-2xl bg-green-600 px-6 py-1 font-semibold text-white"
               onClick={phoneNumberHandler}
             >
               Set Number
@@ -332,7 +331,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
           </div>
           <div className="mt-8">
             <button
-              className="rounded-2xl bg-green-500 px-6 py-2 font-semibold text-white"
+              className="rounded-2xl bg-green-600 px-6 py-2 font-semibold text-white"
               onClick={billingAddressHandler}
             >
               Add billing address

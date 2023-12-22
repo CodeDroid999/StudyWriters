@@ -144,9 +144,9 @@ export default function PostSimilarTask({ assignmentData }) {
     <div className="relative">
       <button
         onClick={openForm}
-        className="w-full cursor-pointer rounded-full bg-green-500 px-4 py-2 text-center font-semibold text-white"
+        className="w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
       >
-        Post Similar Assignment    
+        Post Similar Assignment
       </button>
 
       {isFormOpen && (
@@ -154,7 +154,7 @@ export default function PostSimilarTask({ assignmentData }) {
           <div className="min-h-[400px] w-full max-w-[400px] rounded-lg bg-white p-4 shadow-2xl">
             <div className={`flex flex-row items-center justify-between`}>
               <span className="flex-1 text-center text-xl font-medium text-gray-700">
-                Post Assignment    
+                Post Assignment
               </span>
               <AiOutlineClose
                 size={20}
@@ -255,7 +255,7 @@ export default function PostSimilarTask({ assignmentData }) {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-green-500 py-2 text-center text-white"
+                    className="flex-1 rounded-xl bg-green-600 py-2 text-center text-white"
                   >
                     Post assignment
                   </button>
