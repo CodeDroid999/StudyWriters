@@ -190,11 +190,18 @@ export default function Signup() {
 
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
-      <div>
-        <p className="mb-10 text-center text-2xl font-medium text-green-950">
-          Sign Up to Quality UnitedWritters
-        </p>
+      <div className="flex items-center justify-center">
+        <button
+          type="button"
+          className="flex flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-500"
+          onClick={handleGoogleSignIn}
+        >
+          <FcGoogle className="mr-2" size={20} />
+          Continue with Google
+        </button>
       </div>
+      <div className="text-center text-xs font-medium text-gray-700 pt-2 pb-2">OR</div>
+
       <form onSubmit={handleSignUp} className="flex flex-col gap-4">
         <div className="flex flex-col">
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
@@ -202,7 +209,9 @@ export default function Signup() {
           </label>
 
           <input
-            type="text"
+            type="email"
+            id="email"
+            name="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             className={`h-full w-full rounded-lg border bg-gray-50 p-2
@@ -218,6 +227,8 @@ export default function Signup() {
 
           <div className="flex items-center">
             <input
+              id="password"
+              name="password"
               placeholder="Password"
               type={passwordVisible ? 'text' : 'password'}
               onChange={(e) => setPassword(e.target.value)}
@@ -243,26 +254,18 @@ export default function Signup() {
 
         <button
           type="submit"
-          className="rounded-2xl bg-green-600 px-4 py-2 text-white hover:bg-blue-600"
+          className="rounded-2xl bg-green-500 hover:bg-green-600 px-4 py-2 text-white"
         >
           Sign Up
         </button>
 
-        <div className="flex flex-row space-x-3 text-base font-normal">
+        <div className="flex flex-row space-x-3 text-base font-normal justify-items-center items-center">
           <p className="pt-1 pb-2 text-lg">Already have an account?</p>
-          <p className="font-medium text-blue-700">
+          <p className="font-medium text-green-500 hover:text-green-950 items-center">
             <Link href="/login">Log in</Link>
           </p>
         </div>
-        <div className="text-center text-xs font-medium text-gray-700">OR</div>
-        <button
-          type="button"
-          className="flex flex-row items-center justify-center rounded-2xl border border-gray-400 bg-white px-8 py-2 text-lg font-medium text-green-950 hover:bg-blue-100"
-          onClick={handleGoogleSignIn}
-        >
-          <FcGoogle className="mr-2" size={20} />
-          Continue with Google
-        </button>
+
       </form>
     </AuthLayout>
   )
