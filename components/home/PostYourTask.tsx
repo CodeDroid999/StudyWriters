@@ -18,11 +18,10 @@ export default function PostYourTask() {
     },
   ]
   return (
-    <div className="m-4 flex flex-col rounded-3xl bg-gray-100 py-8 sm:py-16 md:flex-row xl:my-10  xl:px-36 sm:m-4">
-      <div className="flex flex-1 flex-col items-start justify-center">
+    <div className="flex flex-col bg-gray-100 pt-4">
+      <div className="flex flex-1 flex-col items-center justify-center">
         <h2 className="text-[42px] font-bold leading-[45px] text-green-950 sm:text-[50px] sm:leading-[50px] xl:text-[72px] xl:leading-[75px]">
-          Step your work <br className="hidden md:block" />
-          Its simple.
+          Step your work.Its simple.
         </h2>
         <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-amber-400">
           Find freelancers and manage projects your way.
@@ -39,13 +38,27 @@ export default function PostYourTask() {
             )
           })}
         </ul>
-        <div className="my-8 w-full max-w-sm rounded-full bg-green-600 px-4 py-3 sm:max-w-[200px] ">
-          <Link
-            href="/post-assignment"
-            className="flex w-full justify-center text-lg font-semibold text-white whitespace-nowrap"
-          >
-            Post your assignment
-          </Link>
+        <div className="w-full flex px-4 py-3 ">
+          <div className="container flex justify-center space-x-2">
+            <Link
+              href="/post-assignment"
+              className=" text-white whitespace-nowrap"
+            >   <button
+              className="rounded-2xl bg-green-500 px-4 py-2 text-white hover:bg-green-600 hover:shadow"
+            >
+                Post Assignment        </button>
+
+            </Link>
+            <Link
+              href="/post-assignment"
+              className=" text-white whitespace-nowrap"
+            >   <button
+              className="rounded-2xl bg-green-500 px-4 py-2 text-white hover:bg-green-600 hover:shadow"
+            >
+                How it works?   </button>
+
+            </Link>
+          </div>
         </div>
       </div>
 
