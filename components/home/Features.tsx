@@ -28,10 +28,10 @@ export default function Features() {
   ];
 
   return (
-    <div className="w-full mt-5 mb-5 flex flex-1 items-start justify-start 0">
+    <div className="w-full pt-5 pb-5 flex flex-1 items-start justify-start bg-gray-100">
       <div className="container">
-        <div>
-          <h1 className="mb-2  font-bold text-center text-4xl text-green-950 ">
+        <div className="pb-4">
+          <h1 className="font-bold text-center text-4xl text-green-950 ">
             Why use our platform?
           </h1>
         </div>
@@ -40,10 +40,10 @@ export default function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`w-full md:w-[47%] xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card`}
+              className={`w-full md:w-[47%] xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card border border-green-100 rounded p-2 shadow`}
             >
               <div className="flex justify-center">
-              <div className="pt-1 text-blue-600 text-4xl">{feature.icon}</div>
+                <div className="pt-1 text-blue-600 text-4xl">{feature.icon}</div>
               </div>
               <div className="ml-3 flex flex-col">
                 <h4 className="text-2xl text-center font-semibold text-amber-400">
