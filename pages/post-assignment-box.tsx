@@ -35,7 +35,7 @@ export default function PostAssignmentBox() {
     router.push('/')
   }
   return (
-    <div className="mx-auto w-full max-w-[1200px]  bg-green-400 ">
+    <div className="mx-auto w-full  bg-green-400 ">
       <div className="mx-auto mt-20 p-5 ">
         {step === 1 && <Step1 handleNextStep={handleNextStep} />}
         {step === 2 && (

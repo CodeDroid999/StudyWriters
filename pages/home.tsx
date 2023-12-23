@@ -52,9 +52,7 @@ export default function Home(props: PageProps) {
       <PostAssignmentBox />
       <PostYourTask />
       <BeYourOwnBoss />
-      <div className="my-8 bg-blue-50 md:my-16">
-        <BlogSection posts={posts} />
-      </div>
+      <BlogSection posts={posts} />
       <FAQAccordion />
     </>
   )
