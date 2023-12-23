@@ -8,7 +8,7 @@ import useFormStore from 'store/store'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 
-export default function PostAssignment() {
+export default function PostAssignmentBox() {
   const [step, setStep] = useState(1)
   const clearData = useFormStore((state) => state.clearStore)
   const router = useRouter()
@@ -35,13 +35,8 @@ export default function PostAssignment() {
     router.push('/')
   }
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-3">
-      <header className="flex flex-row  justify-end bg-white  py-2 ">
-        <div className="cursor-pointer " onClick={handleExit}>
-          <TfiClose size={22} className="font-semibold text-blue-800" />
-        </div>
-      </header>
-      <div className="mx-auto mt-10 max-w-[600px]">
+    <div className="mx-auto w-full max-w-[1200px]  bg-green-400 ">
+      <div className="mx-auto mt-20 p-5 ">
         {step === 1 && <Step1 handleNextStep={handleNextStep} />}
         {step === 2 && (
           <Step2

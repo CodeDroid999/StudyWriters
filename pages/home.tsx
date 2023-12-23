@@ -8,8 +8,8 @@ import { Post, Settings } from 'lib/sanity.queries'
 import type { SharedPageProps } from 'pages/_app'
 import FAQAccordion from 'components/FAQaccordions'
 import Head from 'next/head'
-import PostAssignment from 'components/Homepage/PostAssignment'
 import Navbar from 'components/layout/Navbar'
+import PostAssignmentBox from './post-assignment-box'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -49,7 +49,7 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
       <Navbar />
-      <PostAssignment />
+      <PostAssignmentBox />
       <PostYourTask />
       <BeYourOwnBoss />
       <div className="my-8 bg-blue-50 md:my-16">

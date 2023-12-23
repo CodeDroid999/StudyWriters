@@ -74,7 +74,7 @@ export default function PostYourAssignment() {
                     className="my-2 w-full max-w-sm rounded bg-yellow-400 px-4 py-2 sm:w-[150px] xl:my-3 xl:py-4"
                 >
                     <MdArrowForward className="text-md font-semibold text-black" />
-                    Post Homework
+                    Post Assignment
                 </button>
             </form>
         </div>
