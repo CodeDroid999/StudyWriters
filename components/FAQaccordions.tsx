@@ -69,13 +69,13 @@ const FAQAccordion: React.FC = () => {
   ]
 
   return (
-    <div className="p-4   bg-neutral-100">
+    <div className="p-4   bg-green-500">
       <div className="items-left flex flex-col">
-        <h2 className="mt-5 text-5xl font-bold tracking-tight text-green-950">
+        <h2 className="mt-5 text-5xl font-bold tracking-tight text-gray-100">
           Frequently Asked Questions
         </h2>
       </div>
-      <div className="mx-auto mt-8 grid w-full divide-y divide-neutral-200">
+      <div className="mx-auto mt-8 grid w-full divide-y divide-neutral-200 ">
         {faqData.map((faqItem, index) => (
           <FAQItem
             key={index}
@@ -84,7 +84,7 @@ const FAQAccordion: React.FC = () => {
           />
         ))}
       </div>
-      
+
     </div>
   )
 }

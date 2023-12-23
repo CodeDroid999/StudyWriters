@@ -39,7 +39,7 @@ export default function BeYourOwnBoss() {
                   <li key={title}>
                     <div className="flex items-center gap-2 md:text-2xl p-2">
                       <MdCheck className=" text-xl text-white bg-yellow-400 font-bold rounded border shadow" />
-                      <h4 className="font-medium text-black">{title}</h4>
+                      <h4 className="font-medium text-green-950">{title}</h4>
                     </div>
                   </li>
                 )
