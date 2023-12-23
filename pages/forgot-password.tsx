@@ -67,27 +67,30 @@ export default function ForgotPassword() {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
 
-      <div className="align-center flex flex-col justify-center">
+      <div className="align-center flex flex-col justify-center md:bg-white bg-gray-100 sm:h-screen w-100">
         <div>
-          <p className="p-5 text-center">
-            We will send you a link to chnage your password. Enter your email.
+          <p className="pb-3 text-center text-green-950">
+            We will send you a link to change your password. Enter your email.
           </p>
         </div>
         <div className="align-center flex justify-center space-x-2">
           <div className="border p-1">
             <input
               type="email"
+              id="email"
+              name="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
+
             <button
-              className="rounded bg-blue-400 p-1 text-white"
               onClick={handleResetPassword}
+              className="rounded-2xl bg-green-500 px-4 py-2 text-white hover:bg-green-600"
             >
-              Reset Password
+              Continue
             </button>
           </div>
         </div>

@@ -71,99 +71,52 @@ export default function Signup() {
   }
 
   const handleSignUp = async (event: any) => {
-    event.preventDefault()
-    let hasError = false
-    if (!email) {
-      setEmailError('Email is required')
-      hasError = true
-    } else if (!email.includes('@')) {
-      setEmailError('Email entered is not valid')
-      hasError = true
-    } else {
-      setEmailError('')
-    }
+    event.preventDefault();
+    console.log('Handle SignUp function called'); // Add this line
 
-    if (!password) {
-      setPasswordError('Password is required')
-      hasError = true
-    } else if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters')
-      hasError = true
-    } else {
-      setPasswordError('')
-    }
+    // Reset error messages
+    setEmailError('');
+    setPasswordError('');
 
-    if (hasError) {
-      return
-    }
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      const user = userCredential.user
-      const userRef = await addDoc(collection(db, 'users'), {
-        userId: user.uid,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        profilePicture: '',
-        mainRole: '',
-        role: '',
-        email: user.email,
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
-        createdAt: serverTimestamp(),
-      })
+      if (!email || !email.includes('@')) {
+        throw new Error('Email is not valid');
+      }
+
+      if (!password || password.length < 6) {
+        throw new Error('Password must be at least 6 characters');
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Your existing code for adding user data to Firestore
+
       // Send verification email
-      await sendEmailVerification(user)
+      await sendEmailVerification(user);
+
       // Display success message to user
-      toast.success(
-        'Verification email has been sent. Please check your inbox.'
-      )
-      //send welcome message to user
-      // Create user data for the HTTP request
-      const userData = {
-        userId: user.uid,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
-        phoneNumber: '',
-        profilePicture: '',
-        mainRole: '',
-        role: '',
-        email: user.email,
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
-        createdAt: serverTimestamp(),
-      };
+      toast.success('Verification email has been sent. Please check your inbox.');
 
-      // Make the HTTP request to the api/welcomeuser route
-      await axios.post('/api/welcomeuser', userData);
-
-
-
+      // Your existing code for making HTTP request to '/api/welcomeuser'
 
     } catch (error) {
-      const errorCode = error.code
-      const errorMessage = error.message
-      if (errorCode === 'auth/email-already-in-use') {
-        toast.error('User already exists. Please log in.')
+      console.error('Error during sign-up:', error);
+
+      if (error instanceof Error) {
+        const errorMessage = error.message;
+
+        if (errorMessage === 'auth/email-already-in-use') {
+          toast.error('User already exists. Please log in.');
+        } else {
+          toast.error(`Error occurred: ${errorMessage}`);
+        }
       } else {
-        toast.error('Error occurred:', errorMessage)
+        toast.error('An unexpected error occurred. Please try again.');
       }
     }
-  }
+  };
+
 
   return (
     <AuthLayout>
