@@ -6,13 +6,13 @@ import React from 'react';
 const HowItWorksSection = () => {
     return (
         <div className="container mx-auto pl-5">
-            <h1 className="text-blue-500 text-center text-3xl font-bold pt-3">How it works</h1>
+            <h1 className="text-green-950 text-center text-3xl font-bold pt-3">How it works</h1>
             <p className=" text-center text-lg">
                 Thousands of college students have used QualityUnitedWriters as their secret weapon to make their life easier.
-           <br></br>Now it is your turn.                        </p>
-            <StudentSteps/>
+                <br></br>Now it is your turn.                        </p>
+            <StudentSteps />
         </div>
     );
 };
 
-export default HowItWorksSection ;
+export default HowItWorksSection;

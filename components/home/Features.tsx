@@ -36,11 +36,11 @@ export default function Features() {
           </h1>
         </div>
 
-        <div className="flex flex-row flex-wrap justify-between">
+        <div className="row flex flex-row flex-wrap justify-between">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`w-full md:w-[47%] xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card border border-green-100 rounded p-2 shadow`}
+              className={`w-full col-md-3 xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card border border-green-100 rounded p-2 shadow`}
             >
               <div className="flex justify-center">
                 <div className="pt-1 text-blue-600 text-4xl">{feature.icon}</div>

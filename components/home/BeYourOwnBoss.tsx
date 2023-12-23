@@ -21,29 +21,32 @@ export default function BeYourOwnBoss() {
   ]
   return (
     <div className="bg-green-600 p-4">
-      <div className="container flex flex-1 flex-col items-center justify-center">
+      <div className="container flex flex-1 flex-col items-center justify-center pb-4">
 
-        <h1 className="mb-2  font-bold text-center text-4xl text-green-950 pt-3">
-          Be you own boss          </h1>
-        <p className="my-2 text-lg text-yellow-500 font-bold">
-          Find your next job on whether you are a brilliant spreadsheet
-          or a conscientious math whiz. Earn money as a tutor.
-        </p>
-
-
-        <ul className="flex flex-col gap-2">
-          {list.map(({ title }) => {
-            return (
-              <li key={title}>
-                <div className="flex items-center gap-2 text-lg">
-                  <MdCheck className=" text-xl text-blue-400" />
-                  <h4 className="font-medium text-black">{title}</h4>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-
+        <h1 className="font-bold text-center md:text-6xl text-4xl text-blue-300 md:pt-3 whitespace-nowrap">
+          Be your own boss
+        </h1>
+        <div className="row mx-auto flex justify-center align-center pt-4">
+          <div className="col-md-4">
+            <p className="md:text-5xl md:block text-gray-100 font-bold ">
+              Find your next job. Earn money as a tutor.
+            </p>
+          </div>
+          <div className="col-md-6">
+            <ul className="flex flex-col justify-items-center gap-2">
+              {list.map(({ title }) => {
+                return (
+                  <li key={title}>
+                    <div className="flex items-center gap-2 md:text-2xl p-2">
+                      <MdCheck className=" text-xl text-white bg-yellow-400 font-bold rounded border shadow" />
+                      <h4 className="font-medium text-black">{title}</h4>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
