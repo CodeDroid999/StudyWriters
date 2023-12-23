@@ -137,9 +137,9 @@ export default function PostAssignment() {
   const currentDate = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="w-full bg-green-600 pb-4 mt-20">
+    <div className="w-full bg-green-600 pb-4 pt-4">
       <div className="container">
-        <p className="pt-3 text-center text-3xl font-bold text-green-950">
+        <p className="pt-3 text-center text-3xl font-bold text-gray-100">
           Get Homework Help
         </p>
         <p className="text-gray text-center">

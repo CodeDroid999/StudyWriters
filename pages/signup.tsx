@@ -146,7 +146,7 @@ export default function Signup() {
       <div className="flex items-center justify-center">
         <button
           type="button"
-          className="flex flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-500"
+          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-500"
           onClick={handleGoogleSignIn}
         >
           <FcGoogle className="mr-2" size={20} />

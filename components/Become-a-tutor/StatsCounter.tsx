@@ -16,29 +16,29 @@ const StatsCounter = () => {
 
   return (
     <div ref={ref} className={`flex justify-center items-center space-x-4 p-4 ${startAnimation ? 'animate' : ''}`}>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
+      <div className="rounded text-center p-2 shadow">
+        <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">
           <CountUp end={48777} duration={2} start={startAnimation ? null : undefined} /> +
         </h2>
-        <p className="text-sm">Visitors</p>
+        <p className="text-xl font-bold pt-2 pb-2">Visitors</p>
       </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
+      <div className="rounded text-center p-2 shadow">
+        <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">
           <CountUp end={136050} duration={2} start={startAnimation ? null : undefined} /> +
         </h2>
-        <p className="text-sm">CompletedAssignments</p>
+        <p className="text-xl font-bold pt-2 pb-2">CompletedAssignments</p>
       </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
+      <div className="rounded text-center p-2 shadow">
+        <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">
           <CountUp end={9.37} duration={2} decimals={2} start={startAnimation ? null : undefined} /> +
         </h2>
-        <p className="text-sm">Current Quality Score</p>
+        <p className="text-xl font-bold pt-2 pb-2">Current Quality Score</p>
       </div>
-      <div className="text-center p-2">
-        <h2 className="text-3xl font-bold">
+      <div className="rounded text-center p-2 shadow">
+        <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">
           <CountUp end={2674} duration={2} start={startAnimation ? null : undefined} /> +
         </h2>
-        <p className="text-sm">Writers Active</p>
+        <p className="text-xl font-bold pt-2 pb-2">Writers Active</p>
       </div>
     </div>
   );
