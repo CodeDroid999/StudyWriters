@@ -187,7 +187,7 @@ export default function LogIn() {
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             className={`h-full w-full rounded-lg border bg-gray-50 p-2
-                  outline-none focus:border-blue-500`}
+                  outline-none focus:border-green-500`}
           />
           {emailError && <span className="text-red-500">{emailError}</span>}
         </div>
@@ -206,7 +206,7 @@ export default function LogIn() {
               type={passwordVisible ? 'text' : 'password'}
               onChange={(e) => setPassword(e.target.value)}
               className="h-full w-full rounded-lg border bg-gray-50 p-2
-                  outline-none focus:border-blue-500 "
+                  outline-none focus:border-green-500 "
             />
             <button
               type="button"
