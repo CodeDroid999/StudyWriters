@@ -139,10 +139,10 @@ export default function PostAssignment() {
   return (
     <div className="w-full bg-green-600 pb-4 pt-4">
       <div className="container">
-        <p className="pt-3 text-center text-3xl font-bold text-gray-100">
+        <p className="pt-3 text-center text-3xl font-bold text-white">
           Get Homework Help
         </p>
-        <p className="text-gray text-center">
+        <p className="text-gray text-center text-gray-200">
           Find a tutor to help you with your school!
         </p>
         <form className="mt-6 flex justify-center">
@@ -150,7 +150,7 @@ export default function PostAssignment() {
             <div className="flex flex-col col-md-3 col-sm-6 pb-2">
               <label
                 htmlFor="title"
-                className="mb-2 text-lg font-medium text-gray-700 whitespace-nowrap"
+                className="mb-2 text-lg font-medium text-gray-100 whitespace-nowrap"
               >
                 What do you need done?
               </label>
@@ -167,7 +167,7 @@ export default function PostAssignment() {
             <div className="flex flex-col col-md-3 col-sm-6 pb-2">
               <label
                 htmlFor="dueDate"
-                className="mb-2 text-lg font-medium text-gray-700 whitespace-nowrap"
+                className="mb-2 text-lg font-medium text-gray-100 whitespace-nowrap"
               >
                 When do you need this done?
               </label>
@@ -187,7 +187,7 @@ export default function PostAssignment() {
             <div className="col-md-3 col-sm-6 pb-2 flex flex-col ">
               <label
                 htmlFor="budget"
-                className="mb-2 text-lg font-medium text-gray-700"
+                className="mb-2 text-lg font-medium text-gray-100"
               >
                 Willing to pay
               </label>
