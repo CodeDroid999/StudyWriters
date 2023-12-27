@@ -125,9 +125,9 @@ export default function PostAssignment() {
         },
       });
 
-      toast.success('Assignment      has been posted');
+      //toast.success('Assignment      has been posted');
       // You can redirect to the assignment page or do any other necessary action
-      router.push(`/assignments/${assignmentId}`);
+      router.push(`/post-assignment`);
     } catch (error) {
       console.error('Error posting assignment:', error.message);
       toast.error('Error posting assignment. Please try again.');

@@ -86,6 +86,8 @@ export default function LogIn() {
 
   const handleSignIn = async (event: any) => {
     event.preventDefault()
+    console.log('Email:', email);
+    console.log('Password:', password);
     let hasError = false
     if (!email) {
       setEmailError('Email is required')

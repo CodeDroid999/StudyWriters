@@ -18,7 +18,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
-import PostAssignmentBox from 'components/Homepage/PostAssignmentBox'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -71,7 +70,7 @@ export default function Home(props: PageProps) {
       </Head>
       <HeroArea />
       <StatsCounter />
-      <PostAssignmentBox />
+      <PostAssignment />
       <Features />
       <BeYourOwnBoss />
       <HowItWorksSection />
