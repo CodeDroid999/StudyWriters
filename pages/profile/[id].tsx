@@ -144,10 +144,10 @@ export default function ProfilePage({
           </div>
         </div>
       ) : (
-        <div className="mt-20 bg-gray-100 pt-10 antialiased">
+        <div className="mt-20 bg-green-100 pt-10 antialiased">
           <div className="container mx-auto">
             <div className="flex flex-row p-3 ">
-              <div className="flex w-full rounded bg-blue-200 p-3 ">
+              <div className="flex w-full rounded bg-blue-100 p-3 ">
                 <div
                   className="flex flex-col justify-center "
                   style={{ width: '20vw' }}
@@ -179,7 +179,7 @@ export default function ProfilePage({
             <div className="mt-1">
               <div className="my-1">
                 <div className="flex items-center justify-center">
-                  <div className="mx-3  mb-2 w-full justify-center rounded-lg bg-blue-200 text-white">
+                  <div className="mx-3  mb-2 w-full justify-center rounded-lg bg-blue-100 text-white">
                     <h3 className="p-3 text-lg text-gray-900 md:text-2xl lg:text-2xl">
                       Stats
                     </h3>
@@ -191,7 +191,7 @@ export default function ProfilePage({
                             {completedAssignments.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
-                           Assignments completed
+                            Assignments completed
                           </h3>
                         </div>
                       </div>
@@ -201,7 +201,7 @@ export default function ProfilePage({
                             {assignments.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
-                          Homeworks Assigned
+                            Homeworks Assigned
                           </h3>
                         </div>
                       </div>
