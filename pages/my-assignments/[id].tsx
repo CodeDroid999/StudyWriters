@@ -14,8 +14,6 @@ import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 import MyAssignments from 'components/my-assignments/myAssignments';
 
-// ... (imports remain unchanged)
-
 export default function MyAssignmentsPage() {
   const [selectedTab, setSelectedTab] = useState('posted');
   const [assignments, setAssignments] = useState([]);
@@ -89,12 +87,27 @@ export default function MyAssignmentsPage() {
   const pendingOffers = assignments.filter((assignment) => {
     return (
       assignment.status === 'Open' &&
-      assignment.offers.some((offer: any) => offer.userId === userId)
+      assignment.offers.some((offer) => offer.userId === userId)
     );
   });
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
+  };
+
+  const getFilteredAssignments = () => {
+    switch (selectedTab) {
+      case 'posted':
+        return postedAssignments;
+      case 'assigned':
+        return assignedAssignments;
+      case 'offers-pending':
+        return pendingOffers;
+      case 'completed':
+        return completedAssignments;
+      default:
+        return [];
+    }
   };
 
   return (
@@ -118,7 +131,6 @@ export default function MyAssignmentsPage() {
               className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'posted' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
                 }`}
             >
-
               Posted
             </button>
             <button
@@ -144,38 +156,14 @@ export default function MyAssignmentsPage() {
             </button>
           </div>
           <div>
-            {selectedTab === 'posted' && (
-              <MyAssignments
-                heading="Posted Assignments"
-                assignments={postedAssignments}
-                warning="You have not posted any assignments!"
-              />
-            )}
-            {selectedTab === 'assigned' && (
-              <MyAssignments
-                heading="Assignments I have been assigned"
-                assignments={assignedAssignments}
-                warning="You have not been assigned any assignments!"
-              />
-            )}
-            {selectedTab === 'offers-pending' && (
-              <MyAssignments
-                heading="My active offers"
-                assignments={pendingOffers}
-                warning="You have no pending offers!"
-              />
-            )}
-            {selectedTab === 'completed' && (
-              <MyAssignments
-                heading="Assignments I have completed"
-                assignments={completedAssignments}
-                warning="You have not completed any assignments!"
-              />
-            )}
+            <MyAssignments
+              heading={selectedTab === 'posted' ? "Posted Assignments" : selectedTab === 'assigned' ? "Assignments I have been assigned" : selectedTab === 'offers-pending' ? "My active offers" : "Assignments I have completed"}
+              assignments={getFilteredAssignments()}
+              warning={selectedTab === 'posted' ? "You have not posted any assignments!" : selectedTab === 'assigned' ? "You have not been assigned any assignments!" : selectedTab === 'offers-pending' ? "You have no pending offers!" : "You have not completed any assignments!"}
+            />
           </div>
         </div>
       )}
     </div>
   );
 }
-
