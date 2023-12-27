@@ -12,54 +12,42 @@ import { formatDate } from 'pages/profile/[id]';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
-import MyAssignments from 'components/my-assignments/myAssignments';
+import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
 
-export default function MyAssignmentsPage() {
-  const [selectedTab, setSelectedTab] = useState('posted');
+export default function MyAssignmentsDetailsPage() {
+  const [selectedFilter, setSelectedFilter] = useState('posted');
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = UserAuth();
 
   const router = useRouter();
-  const userId = router.query.userId?.toString();
+  const userId = router.query.id?.toString();
 
   useEffect(() => {
-    if (!userId) {
-      return; // Handle the case when userId is undefined
-    }
-
     setLoading(true);
 
-    const q = query(
-      collection(db, 'assignments'),
-      where('student.userId', '==', userId)
-    );
+    const q = query(collection(db, 'assignments'));
 
-    const unsubscribe = onSnapshot(q, async (querySnapshot) => {
-      const promises = [];
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const updatedAssignments = [];
 
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(async (doc) => {
         const data = doc.data();
+
         const id = doc.id;
 
         const offersCollectionRef = collection(db, 'assignments', id, 'offers');
-        const offersPromise = getDocs(offersCollectionRef)
-          .then((offersQuerySnapshot) => {
-            const offers = offersQuerySnapshot.docs.map((offerDoc) => offerDoc.data());
-            return { id, ...data, offers };
-          });
+        const offersQuerySnapshot = await getDocs(offersCollectionRef);
+        const offers = offersQuerySnapshot.docs.map((offerDoc) => {
+          const offerData = offerDoc.data();
 
-        promises.push(offersPromise);
+          return offerData;
+        });
+
+        updatedAssignments.push({ id, ...data, offers });
       });
 
-      try {
-        const updatedAssignments = await Promise.all(promises);
-        setAssignments(updatedAssignments);
-      } catch (error) {
-        console.error('Error fetching assignments:', error);
-        // Handle the error
-      }
-
+      setAssignments(updatedAssignments);
       setLoading(false);
     });
 
@@ -77,7 +65,9 @@ export default function MyAssignmentsPage() {
     return () => unsubscribe();
   }, [router]);
 
-  const postedAssignments = assignments;
+  const postedAssignments = assignments.filter(
+    (assignment) => assignment.student.userId === userId
+  );
   const assignedAssignments = assignments.filter(
     (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
   );
@@ -90,25 +80,6 @@ export default function MyAssignmentsPage() {
       assignment.offers.some((offer) => offer.userId === userId)
     );
   });
-
-  const handleTabClick = (tab) => {
-    setSelectedTab(tab);
-  };
-
-  const getFilteredAssignments = () => {
-    switch (selectedTab) {
-      case 'posted':
-        return postedAssignments;
-      case 'assigned':
-        return assignedAssignments;
-      case 'offers-pending':
-        return pendingOffers;
-      case 'completed':
-        return completedAssignments;
-      default:
-        return [];
-    }
-  };
 
   return (
     <div>
@@ -124,43 +95,66 @@ export default function MyAssignmentsPage() {
           </div>
         </div>
       ) : (
-        <div className=" md:mt-20 mt-23  bg-gray-100 md:pt-0 pt-24 h-screen">
-          <div className="sticky top-0 flex flex-row justify-end mb-5 pt-2 pb-2 w-100 shadow-md">
-            <button
-              onClick={() => handleTabClick('posted')}
-              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'posted' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
-                }`}
-            >
-              Posted
-            </button>
-            <button
-              onClick={() => handleTabClick('assigned')}
-              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'assigned' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
-                }`}
-            >
-              Assigned
-            </button>
-            <button
-              onClick={() => handleTabClick('offers-pending')}
-              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'offers-pending' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
-                }`}
-            >
-              Pending
-            </button>
-            <button
-              onClick={() => handleTabClick('completed')}
-              className={`mr-4 px-2 md:px-4 py-2 rounded-md text-xs md:text-md border border-blue-500 ${selectedTab === 'completed' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600'
-                }`}
-            >
-              Completed
-            </button>
+        <div className=" mt-28 px-3">
+          <div className="flex flex-row justify-end">
+            <div>
+              <label
+                htmlFor="filter"
+                className="mr-1 text-xl font-medium text-green-950"
+              >
+                Category:
+              </label>
+              <select
+                id="filter"
+                value={selectedFilter}
+                onChange={(e) => setSelectedFilter(e.target.value)}
+                className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
+              >
+                <option value="">Select Filter</option>
+                <option value="posted">Posted Assignments</option>
+                <option value="assigned">Assignments Assigned</option>
+                <option value="offers-pending">Offers Pending</option>
+                <option value="completed">Assignments Completed</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <MyAssignments
-              heading={selectedTab === 'posted' ? "Posted Assignments" : selectedTab === 'assigned' ? "Assignments I have been assigned" : selectedTab === 'offers-pending' ? "My active offers" : "Assignments I have completed"}
-              assignments={getFilteredAssignments()}
-              warning={selectedTab === 'posted' ? "You have not posted any assignments!" : selectedTab === 'assigned' ? "You have not been assigned any assignments!" : selectedTab === 'offers-pending' ? "You have no pending offers!" : "You have not completed any assignments!"}
-            />
+          <div className="mt-5">
+            {!selectedFilter && (
+              <div className="mt-28 flex flex-col items-center justify-center">
+                <h1 className="text-xl font-medium text-gray-700">
+                  Hello {user?.firstName}, select a category to display your
+                  assignments
+                </h1>
+              </div>
+            )}
+            {selectedFilter === 'posted' && (
+              <MyAssignmentsDetails
+                heading="Posted Assignments"
+                assignments={postedAssignments}
+                warning="You have not posted any assignments!"
+              />
+            )}
+            {selectedFilter === 'assigned' && (
+              <MyAssignmentsDetails
+                heading="Assignments I have been assigned"
+                assignments={assignedAssignments}
+                warning="You have not been assigned any assignments!"
+              />
+            )}
+            {selectedFilter === 'offers-pending' && (
+              <MyAssignmentsDetails
+                heading="My active offers"
+                assignments={pendingOffers}
+                warning="You have no pending offers!"
+              />
+            )}
+            {selectedFilter === 'completed' && (
+              <MyAssignmentsDetails
+                heading="Assignments I have completed"
+                assignments={completedAssignments}
+                warning="You have not completed any assignments!"
+              />
+            )}
           </div>
         </div>
       )}

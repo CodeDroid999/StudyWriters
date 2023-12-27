@@ -1,7 +1,7 @@
 import React from 'react'
 import Assignment from './assignment'
 
-export default function MyAssignments ({ heading, assignments, warning }) {
+export default function MyAssignmentsDetails({ heading, assignments, warning }) {
   return (
     <div>
       {assignments.length === 0 ? (
