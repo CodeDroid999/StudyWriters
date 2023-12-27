@@ -1,3 +1,6 @@
+// Import necessary modules and components
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Navbar from 'components/layout/Navbar';
 import { db, auth } from '../../firebase';
 import {
@@ -5,42 +8,33 @@ import {
   getDocs,
   onSnapshot,
   query,
-  where,
 } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
-import { formatDate } from 'pages/profile/[id]';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
-import MyAssignments from 'components/my-assignments/myAssignments';
-
-export default function MyAssignmentsPage() {
+import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
+export default function MyAssignmentsDetailsPage() { // Updated component name
   const [selectedFilter, setSelectedFilter] = useState('');
-  const [assignments, setAssignments] = useState([]);
+  const [assignments, setAssignments] = useState([]); // Updated state name
   const [loading, setLoading] = useState(false);
   const { user } = UserAuth();
-
   const router = useRouter();
   const userId = router.query.id?.toString();
 
   useEffect(() => {
     setLoading(true);
-
-    const q = query(collection(db, 'assignments'));
+    const q = query(collection(db, 'assignments')); // Updated collection name
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const updatedAssignments = [];
 
       querySnapshot.forEach(async (doc) => {
         const data = doc.data();
-
         const id = doc.id;
 
-        const offersCollectionRef = collection(db, 'assignments', id, 'offers');
+        const offersCollectionRef = collection(db, 'assignments', id, 'offers'); // Updated collection name
         const offersQuerySnapshot = await getDocs(offersCollectionRef);
         const offers = offersQuerySnapshot.docs.map((offerDoc) => {
           const offerData = offerDoc.data();
-
           return offerData;
         });
 
@@ -57,17 +51,15 @@ export default function MyAssignmentsPage() {
   }, [userId]);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      if (!authUser) {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
         router.push(`/`);
       }
     });
     return () => unsubscribe();
   }, [router]);
 
-  const postedAssignments = assignments.filter(
-    (assignment) => assignment.student.userId === userId
-  );
+  const postedAssignments = assignments.filter((assignment) => assignment.student.userId === userId); // Updated property names
   const assignedAssignments = assignments.filter(
     (assignment) => assignment.tutor.userId === userId && assignment.status === 'Assigned'
   );
@@ -111,10 +103,10 @@ export default function MyAssignmentsPage() {
                 className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
               >
                 <option value="">Select Filter</option>
-                <option value="posted">Posted Assignments</option>
-                <option value="assigned">Assignments Assigned</option>
+                <option value="posted">Posted Assignments</option> {/* Updated option label */}
+                <option value="assigned">Assignments Assigned</option> {/* Updated option label */}
                 <option value="offers-pending">Offers Pending</option>
-                <option value="completed">Assignments Completed</option>
+                <option value="completed">Assignments Completed</option> {/* Updated option label */}
               </select>
             </div>
           </div>
@@ -128,28 +120,28 @@ export default function MyAssignmentsPage() {
               </div>
             )}
             {selectedFilter === 'posted' && (
-              <MyAssignments
+              <MyAssignmentsDetails
                 heading="Posted Assignments"
                 assignments={postedAssignments}
                 warning="You have not posted any assignments!"
               />
             )}
             {selectedFilter === 'assigned' && (
-              <MyAssignments
+              <MyAssignmentsDetails
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
                 warning="You have not been assigned any assignments!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
-              <MyAssignments
+              <MyAssignmentsDetails
                 heading="My active offers"
                 assignments={pendingOffers}
                 warning="You have no pending offers!"
               />
             )}
             {selectedFilter === 'completed' && (
-              <MyAssignments
+              <MyAssignmentsDetails
                 heading="Assignments I have completed"
                 assignments={completedAssignments}
                 warning="You have not completed any assignments!"

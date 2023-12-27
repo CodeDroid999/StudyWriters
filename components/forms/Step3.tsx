@@ -99,8 +99,7 @@ export default function Step3({ handlePreviousStep }: Props) {
 
     toast.success('Assignmenthas been posted')
 
-    // Redirect to the my-assignments/[id].tsx page
-    router.push(`/my-assignments/${userId}`);
+    router.push(`/assignments/${assignmentId}`)
   }
 
   const handlePrevious = () => {
