@@ -83,55 +83,46 @@ export default function LogIn() {
       const errorMessage = error.message
     }
   }
-
   const handleSignIn = async (event: any) => {
-    event.preventDefault()
-    console.log('Email:', email);
-    console.log('Password:', password);
-    let hasError = false
-    if (!email) {
-      setEmailError('Email is required')
-      hasError = true
-    } else if (!email.includes('@')) {
-      setEmailError('Email entered is not valid')
-      hasError = true
-    } else {
-      setEmailError('')
-    }
+    event.preventDefault();
 
-    if (!password) {
-      setPasswordError('Password is required')
-      hasError = true
-    } else if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters')
-      hasError = true
-    } else {
-      setPasswordError('')
-    }
-
-    if (hasError) {
-      return
-    }
+    // Reset error messages
+    setEmailError('');
+    setPasswordError('');
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      const user = userCredential.user
+      if (!email || !email.includes('@')) {
+        throw new Error('Email is not valid');
+      }
+
+      if (!password || password.length < 6) {
+        throw new Error('Password must be at least 6 characters');
+      }
+
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Display success message to user
+      toast.success('Logged In');
+
+      // Your existing code for making HTTP request to '/api/welcomeuser'
     } catch (error) {
-      const errorCode = error.code
-      const errorMessage = error.message
-      if (errorCode === 'auth/user-not-found') {
-        toast.error('User does not exist. Please sign up.')
-      } else if (errorCode === 'auth/wrong-password') {
-        toast.error('Invalid password. Please try again.')
+      console.error('Error during sign-in:', error);
+
+      if (error instanceof Error) {
+        const errorMessage = error.message;
+
+        if (errorMessage === 'auth/user-not-found' || errorMessage === 'auth/wrong-password') {
+          toast.error('Invalid email or password. Please try again.');
+        } else {
+          toast.error(`Error occurred: ${errorMessage}`);
+        }
       } else {
-        toast.error('Error occurred:', errorMessage)
+        toast.error('An unexpected error occurred. Please try again.');
       }
     }
-  }
+  };
+
   return (
     <AuthLayout>
       <Head>
