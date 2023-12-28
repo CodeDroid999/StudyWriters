@@ -358,34 +358,43 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-1">
-              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                <Link href="/boost-earnings" className="text-gray-700 hover:text-green-500">
-                  Boost Earnings
-                </Link>
-              </div>
+
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
-                  <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
-                    Post Assignment
+                  <Link href="browse-assignments" className="text-gray-700 hover:text-green-500">
+                    Browse
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
                   <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Browse
+                    Bid
+                  </Link>
+                )}
+              </div>
+              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                {userRole === 'Student' && (
+                  <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
+                    Post
+                  </Link>
+                )}
+
+                {userRole === 'Tutor' && (
+                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                    Bid
                   </Link>
                 )}
               </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
                   <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500">
-                    My Assignments
+                    Assignments
                   </Link>
                 )}
 
                 {userRole === 'Tutor' && (
                   <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Assignments
+                    Orders
                   </Link>
                 )}
               </div>
