@@ -368,7 +368,7 @@ function Navbar() {
 
                 {userRole === 'Tutor' && (
                   <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Bid
+                    Boost Earnings
                   </Link>
                 )}
               </div>
@@ -380,7 +380,7 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href="/bid" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Bid
                   </Link>
                 )}
