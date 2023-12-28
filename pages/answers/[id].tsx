@@ -111,10 +111,10 @@ export default function MyAssignmentsPage() {
                 className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
               >
                 <option value="">Select Filter</option>
-                <option value="posted">Posted Assignments</option>
-                <option value="assigned">Assignments Assigned</option>
+                <option value="posted">Posted</option>
+                <option value="assigned">Assigned</option>
                 <option value="offers-pending">Bids Pending</option>
-                <option value="completed">Assignments Completed</option>
+                <option value="completed">Completed</option>
               </select>
             </div>
           </div>
@@ -128,21 +128,21 @@ export default function MyAssignmentsPage() {
             )}
             {selectedFilter === 'posted' && (
               <MyAssignments
-                heading="Posted Assignments"
+                heading="Posted"
                 assignments={postedAssignments}
-                warning="You have not posted any assignments!"
+                warning="You have not posted any orders!"
               />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignments
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
-                warning="You have not been assigned any assignments!"
+                warning="You have not been assigned any orders!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
               <MyAssignments
-                heading="My active offers"
+                heading="Pending Bids"
                 assignments={pendingOffers}
                 warning="You have no pending offers!"
               />
@@ -151,7 +151,7 @@ export default function MyAssignmentsPage() {
               <MyAssignments
                 heading="Assignments I have completed"
                 assignments={completedAssignments}
-                warning="You have not completed any assignments!"
+                warning="You have not completed any orders!"
               />
             )}
           </div>

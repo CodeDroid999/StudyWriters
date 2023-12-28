@@ -103,10 +103,10 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
                 className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
               >
                 <option value="">Select Filter</option>
-                <option value="posted">Posted Assignments</option> {/* Updated option label */}
-                <option value="assigned">Assignments Assigned</option> {/* Updated option label */}
-                <option value="offers-pending">Offers Pending</option>
-                <option value="completed">Assignments Completed</option> {/* Updated option label */}
+                <option value="posted">Posted</option> {/* Updated option label */}
+                <option value="assigned">Assigned</option> {/* Updated option label */}
+                <option value="offers-pending">Pending Bids</option>
+                <option value="completed">Completed</option> {/* Updated option label */}
               </select>
             </div>
           </div>
@@ -121,21 +121,21 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
             )}
             {selectedFilter === 'posted' && (
               <MyAssignmentsDetails
-                heading="Posted Assignments"
+                heading="Posted"
                 assignments={postedAssignments}
-                warning="You have not posted any assignments!"
+                warning="You have not posted any orders!"
               />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignmentsDetails
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
-                warning="You have not been assigned any assignments!"
+                warning="You have not been assigned any orders!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
               <MyAssignmentsDetails
-                heading="My active offers"
+                heading="Pending Bids"
                 assignments={pendingOffers}
                 warning="You have no pending offers!"
               />
@@ -144,7 +144,7 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
               <MyAssignmentsDetails
                 heading="Assignments I have completed"
                 assignments={completedAssignments}
-                warning="You have not completed any assignments!"
+                warning="You have not completed any orders!"
               />
             )}
           </div>

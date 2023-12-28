@@ -204,13 +204,13 @@ function Navbar() {
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
                     >
-                      Boost Earnings  |
+                      Boost Earnings
                     </Link>
                   </div>
                   <div className="flex">
                     {userRole === 'Student' && (
                       <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500 text-sm">
-                        Post |
+                        Post
                       </Link>
                     )}
 
@@ -221,7 +221,7 @@ function Navbar() {
                         style={{ whiteSpace: 'nowrap' }}
                         id="customfontsize"
                       >
-                        Browse  |
+                        Browse
                       </Link>
                     )}
                   </div>d
@@ -234,13 +234,12 @@ function Navbar() {
 
                     {userRole === 'Tutor' && (
                       <Link
-                        href={`/answers/${user.userId}`}
+                        href={`/orders/${user.userId}`}
                         className="text-gray-700 hover:text-green-500 text-sm"
                         style={{ whiteSpace: 'nowrap' }}
                         id="customfontsize"
                       >
-                        Answers
-
+                        Orders
                       </Link>
                     )}
                   </div>
@@ -393,7 +392,7 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href={`/orders/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Orders
                   </Link>
                 )}

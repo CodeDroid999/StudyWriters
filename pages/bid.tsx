@@ -43,7 +43,6 @@ const BidAssignments: React.FC = (props: any) => {
       </Head>
       <Navbar />
       <div className="flex mt-20 ">
-        <SideNav />
         <div className="col-md-9 px-0 mx-0 bg-gray-100" >
           <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
           <div style={{ height: '80vh', overflowY: 'auto' }}>
