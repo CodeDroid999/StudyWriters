@@ -99,7 +99,7 @@ export default function Step3({ handlePreviousStep }: Props) {
 
     toast.success('Assignmenthas been posted')
 
-    router.push(`/assignments/${assignmentId}`)
+    router.push(`/assignment/${assignmentId}`)
   }
 
   const handlePrevious = () => {
