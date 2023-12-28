@@ -10,6 +10,9 @@ import FAQAccordion from 'components/FAQaccordions'
 import Head from 'next/head'
 import Navbar from 'components/layout/Navbar'
 import PostAssignmentBox from './post-assignment-box'
+import Link from 'next/link'
+import { UserAuth } from 'context/AuthContext'
+import BrowseAssignmentsBox from './BrowseAssignmentsBox'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -22,6 +25,9 @@ interface Query {
 
 export default function Home(props: PageProps) {
   const { posts, settings, draftMode } = props
+  const { user } = UserAuth();
+  const userRole = user?.role;
+
 
   return (
     <>
@@ -49,7 +55,15 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
       <Navbar />
-      <PostAssignmentBox />
+      {userRole === 'Student' && (
+        <PostAssignmentBox />
+
+      )}
+
+      {userRole === 'Tutor' && (
+        <BrowseAssignmentsBox />
+
+      )}
       <PostYourTask />
       <BeYourOwnBoss />
       <BlogSection posts={posts} />

@@ -13,7 +13,7 @@ import { formatDate } from './profile/[id]';
 import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 
-const BrowseAssignments: React.FC = (props: any) => {
+const BrowseAssignmentsBox: React.FC = (props: any) => {
   const { assignments } = props;
 
   return (
@@ -66,7 +66,7 @@ const BrowseAssignments: React.FC = (props: any) => {
   );
 };
 
-export default BrowseAssignments;
+export default BrowseAssignmentsBox;
 
 export async function getServerSideProps() {
   try {

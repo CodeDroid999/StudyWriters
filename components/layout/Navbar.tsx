@@ -361,7 +361,7 @@ function Navbar() {
 
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 {userRole === 'Student' && (
-                  <Link href="browse-assignments" className="text-gray-700 hover:text-green-500">
+                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500">
                     Browse
                   </Link>
                 )}
