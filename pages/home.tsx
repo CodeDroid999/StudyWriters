@@ -12,8 +12,7 @@ import Navbar from 'components/layout/Navbar'
 import PostAssignmentBox from './post-assignment-box'
 import Link from 'next/link'
 import { UserAuth } from 'context/AuthContext'
-import BrowseAssignmentsBox from './BrowseAssignmentsBox'
-
+import BrowseAssignmentsBox from 'components/home/BrowseAssignmentsBox'
 interface PageProps extends SharedPageProps {
   posts: Post[]
   settings: Settings
@@ -55,15 +54,18 @@ export default function Home(props: PageProps) {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
       <Navbar />
-      {userRole === 'Student' && (
-        <PostAssignmentBox />
+      <div className="mx-auto w-full  bg-green-400 ">
+        {userRole === 'Student' && (
+          <PostAssignmentBox />
 
-      )}
+        )}
 
-      {userRole === 'Tutor' && (
-        <BrowseAssignmentsBox />
+        {userRole === 'Tutor' && (
+          <BrowseAssignmentsBox />
 
-      )}
+        )}
+      </div>
+
       <PostYourTask />
       <BeYourOwnBoss />
       <BlogSection posts={posts} />

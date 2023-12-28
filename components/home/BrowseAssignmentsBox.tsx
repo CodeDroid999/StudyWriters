@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/layout/Navbar';
 import Head from 'next/head';
 import {
   collection,
@@ -8,12 +7,13 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { db } from '../firebase';
-import { formatDate } from './profile/[id]';
 import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
+import { formatDate } from 'pages/profile/[id]';
+import { db } from 'firebase';
+import Navbar from 'components/layout/Navbar';
 
-const BrowseAssignmentsBox: React.FC = (props: any) => {
+const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
 
   return (
@@ -66,7 +66,7 @@ const BrowseAssignmentsBox: React.FC = (props: any) => {
   );
 };
 
-export default BrowseAssignmentsBox;
+export default BrowseAssignments;
 
 export async function getServerSideProps() {
   try {
