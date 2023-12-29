@@ -308,7 +308,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
                   onClick={SubmitForm}
                   className="mt-10 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
                 >
-                  Submit offer
+                  Submit bid
                 </button>
               </div>
             )}
