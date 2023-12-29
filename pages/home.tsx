@@ -103,9 +103,17 @@ const Home: React.FC = (props: any) => {
 
         )}
       </div>
+      <div className="mx-auto w-full">
+        {userRole === 'Student' && (
+          <PostYourTask />
+        )}
 
-      <PostYourTask />
-      <BeYourOwnBoss />
+        {userRole === 'Tutor' && (
+          <BeYourOwnBoss />
+        )}
+      </div>
+
+
       <FAQAccordion />
     </>
 
