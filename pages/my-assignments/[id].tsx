@@ -132,7 +132,7 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
               <MyAssignmentsDetails
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
-                warning="You have not assigned any assignmnets to a tutor!"
+                warning="You have not assigned any assignments to a tutor!"
               />
             )}
             {selectedFilter === 'offers-pending' && (

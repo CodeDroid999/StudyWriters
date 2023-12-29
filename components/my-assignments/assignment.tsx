@@ -4,7 +4,7 @@ import React from 'react'
 export default function assignment({ assignment }) {
   return (
     <Link
-      href={`/assignments/${assignment.id}`}
+      href={`/assignment/${assignment.id}`}
       className="flex h-[100px] w-full flex-1 flex-col justify-between rounded-md bg-gray-50 p-2"
     >
       <div className="flex flex-row justify-between text-lg font-semibold text-green-950">
@@ -13,9 +13,8 @@ export default function assignment({ assignment }) {
       </div>
       <div>
         <span
-          className={`${
-            assignment.status === 'Completed' ? 'text-blue-500' : 'text-blue-600'
-          } font-semibold`}
+          className={`${assignment.status === 'Completed' ? 'text-blue-500' : 'text-blue-600'
+            } font-semibold`}
         >
           {assignment.status}
         </span>
