@@ -11,7 +11,7 @@ export default function PostTaskCTA() {
       title: 'Create an account to access professionals',
     },
     {
-      title: 'Browse for offers and hire',
+      title: 'Browse for bids and hire',
     },
     {
       title: 'Get work done and release payments',

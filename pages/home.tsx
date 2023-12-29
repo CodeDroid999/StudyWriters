@@ -33,8 +33,14 @@ import { formatDate } from './profile/[id]';
 import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import PostAssignmentBox from './post-assignment-box'
+import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
 
 const Home: React.FC = (props: any) => {
+  const { posts, settings, draftMode } = props
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get('redirect');
   const { assignments } = props;
   const { user } = UserAuth();
   const userRole = user?.role;
@@ -65,7 +71,7 @@ const Home: React.FC = (props: any) => {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
       <Navbar />
-      <div className="mx-auto w-full  bg-green-400 ">
+      <div className="mx-auto w-full">
         {userRole === 'Student' && (
           <PostAssignmentBox />
 
@@ -73,9 +79,10 @@ const Home: React.FC = (props: any) => {
 
         {userRole === 'Tutor' && (
           <div className="flex mt-20 ">
-            <div className="col-md-9 px-0 mx-0 bg-gray-100" >
-              <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
-              <div style={{ height: '80vh', overflowY: 'auto' }}>
+            <div className="col-md-2 bg-gray-100"></div>
+            <div className="col-md-8 px-0 mx-0 bg-gray-100" >
+              <p className=" text-blue-400 text-center w-100">Posted Assignments</p>
+              <div className="shadow-inner" style={{ height: '80vh', overflowY: 'auto' }}>
                 {assignments.map((assignment: any) => (
                   <AssignmentCard
                     key={assignment.id}
@@ -91,12 +98,21 @@ const Home: React.FC = (props: any) => {
                 ))}
               </div>
             </div>
+            <div className="col-md-2 bg-gray-100"></div>
           </div >
 
         )}
       </div>
+      <div>
 
-      <PostYourTask />
+        {userRole === 'Student' && (
+          <PostYourTask />
+        )}
+        {userRole === 'Tutor' && (
+          <PostYourTask />
+        )}
+      </div>
+
       <BeYourOwnBoss />
       <FAQAccordion />
     </>
@@ -165,3 +181,4 @@ export async function getServerSideProps() {
     };
   }
 }
+
