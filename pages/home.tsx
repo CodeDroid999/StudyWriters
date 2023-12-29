@@ -35,6 +35,7 @@ import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import PostAssignmentBox from './post-assignment-box'
 import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
+import Footer from 'components/layout/Footer'
 
 const Home: React.FC = (props: any) => {
   const { posts, settings, draftMode } = props
@@ -115,6 +116,7 @@ const Home: React.FC = (props: any) => {
 
 
       <FAQAccordion />
+      <Footer />
     </>
 
   );
