@@ -125,14 +125,14 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
               <MyAssignmentsDetails
                 heading="Posted"
                 assignments={postedAssignments}
-                warning="You have not posted any orders!"
+                warning="You have not posted any assignments!"
               />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignmentsDetails
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
-                warning="You have not been assigned any orders!"
+                warning="You have not assigned any assignmnets to a tutor!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
@@ -146,7 +146,7 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
               <MyAssignmentsDetails
                 heading="Assignments I have completed"
                 assignments={completedAssignments}
-                warning="You have not completed any orders!"
+                warning="You dont have any completed assignments!"
               />
             )}
           </div>
