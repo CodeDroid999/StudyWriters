@@ -1,4 +1,3 @@
-// Import necessary modules and components
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from 'components/layout/Navbar';
@@ -12,8 +11,11 @@ import {
 import { onAuthStateChanged } from 'firebase/auth';
 import { UserAuth } from 'context/AuthContext';
 import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
+
+
+
 export default function MyAssignmentsDetailsPage() { // Updated component name
-  const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('posted');
   const [assignments, setAssignments] = useState([]); // Updated state name
   const [loading, setLoading] = useState(false);
   const { user } = UserAuth();
