@@ -103,16 +103,8 @@ const Home: React.FC = (props: any) => {
 
         )}
       </div>
-      <div>
 
-        {userRole === 'Student' && (
-          <PostYourTask />
-        )}
-        {userRole === 'Tutor' && (
-          <PostYourTask />
-        )}
-      </div>
-
+      <PostYourTask />
       <BeYourOwnBoss />
       <FAQAccordion />
     </>
@@ -181,4 +173,3 @@ export async function getServerSideProps() {
     };
   }
 }
-
