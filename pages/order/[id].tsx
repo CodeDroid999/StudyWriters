@@ -217,7 +217,7 @@ export default function TaskDetails(props: any) {
                             return (
                               <div key={offer.offerId}>
                                 <div className="rounded-full bg-white p-2 text-center font-medium text-blue-400 ">
-                                  You offered ${offer.amount}
+                                  You bidded ${offer.amount}
                                 </div>
                                 <div className="my-3 w-full text-sm">
                                   <div className="flex flex-row items-center justify-between font-medium text-gray-500">
