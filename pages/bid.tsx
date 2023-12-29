@@ -10,8 +10,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import AssignmentCard from 'components/browse-tasks/AssignmentCard';
-import SideNav from 'components/layout/BrowseAssignmentsSideNav';
+import AssignmentCard from 'components/bid/AssignmentCard';
 
 const BidAssignments: React.FC = (props: any) => {
   const { assignments } = props;

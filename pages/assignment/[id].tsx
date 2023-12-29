@@ -349,7 +349,7 @@ export default function TaskDetails(props: any) {
 
           <div className="mt-4">
             <h1 className="text-xl font-semibold text-green-950">Details</h1>
-            <p className="flex-1 text-base font-medium text-gray-700">
+            <p className="flex-1 text-base font-medium text-gray-700 p-2">
               {assignmentData.description}
             </p>
           </div>
