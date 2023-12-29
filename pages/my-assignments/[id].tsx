@@ -15,7 +15,7 @@ import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
 
 
 export default function MyAssignmentsDetailsPage() { // Updated component name
-  const [selectedFilter, setSelectedFilter] = useState('posted');
+  const [selectedFilter, setSelectedFilter] = useState('');
   const [assignments, setAssignments] = useState([]); // Updated state name
   const [loading, setLoading] = useState(false);
   const { user } = UserAuth();
