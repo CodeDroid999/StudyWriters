@@ -11,12 +11,12 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { UserAuth } from 'context/AuthContext';
-import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
+import MyAssignmentsDetails from 'components/my-orders/myAssignments';
 
 
 
 export default function MyAssignmentsDetailsPage() { // Updated component name
-  const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('assigned');
   const [assignments, setAssignments] = useState([]); // Updated state name
   const [loading, setLoading] = useState(false);
   const { user } = UserAuth();
@@ -106,9 +106,8 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
                 className="rounded-md border-2 border-blue-950 font-medium text-blue-900 outline-blue-900 "
               >
                 <option value="">Select Filter</option>
-                <option value="posted">Posted</option> {/* Updated option label */}
-                <option value="assigned">Assigned</option> {/* Updated option label */}
                 <option value="offers-pending">Pending Bids</option>
+                <option value="assigned">Assigned</option> {/* Updated option label */}
                 <option value="completed">Completed</option> {/* Updated option label */}
               </select>
             </div>
@@ -121,13 +120,6 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
                   assignments
                 </h1>
               </div>
-            )}
-            {selectedFilter === 'posted' && (
-              <MyAssignmentsDetails
-                heading="Posted"
-                assignments={postedAssignments}
-                warning="You have not posted any orders!"
-              />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignmentsDetails
