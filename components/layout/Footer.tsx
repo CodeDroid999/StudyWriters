@@ -219,34 +219,12 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-md-1 sm:display-none whitespace-nowrap flex flex-col justify-center Items-center align-center ">
-              <div className="flex flex-row items-center">
-                <div className="mr-10">
-                  <h1 className="text-4xl font-bold">
-                    <Link href="/" className="text-gray-700">
-                      <div className="mb-1">
-                        <Image
-                          src={logo}
-                          alt="assignment"
-                          className="h-[50px] w-[100%] md:h-[50px] lg:h-[60px] lg:w-[50px] "
-                        />
-                      </div>
-                    </Link>
-                  </h1>
-                </div>
-              </div>
-              <div className="text-center">
-                <p className="text-center text-gray-400 pt-2">
-                  QualityUnitedWriters Ltd.
-                </p>
-              </div>
-            </div>
           </div>
           <hr className="text-gray-100" />
 
-          <div className="mt-2 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
+          <div className="grid  sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-100">
+              <p className="text-md text-gray-100">
                 © 2023 QualityUnitedWriters. All rights reserved.
               </p>
             </div>
