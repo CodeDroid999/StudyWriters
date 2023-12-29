@@ -42,7 +42,8 @@ const BidAssignments: React.FC = (props: any) => {
       </Head>
       <Navbar />
       <div className="flex mt-20 ">
-        <div className="col-md-9 px-0 mx-0 bg-gray-100" >
+
+        <div className="col-md-7 px-0 mx-0 bg-gray-100" >
           <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
           <div style={{ height: '80vh', overflowY: 'auto' }}>
             {assignments.map((assignment: any) => (
@@ -59,6 +60,10 @@ const BidAssignments: React.FC = (props: any) => {
               />
             ))}
           </div>
+
+        </div>
+
+        <div className="col-md-5 hidden md:block bg-gray-100">
         </div>
       </div >
     </>
