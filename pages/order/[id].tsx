@@ -337,13 +337,6 @@ export default function TaskDetails(props: any) {
                   </div>
                 )}
               </div>
-              {user && (
-                <MoreOptions
-                  assignmentData={assignmentData}
-                  student={student}
-                  assignmentId={assignmentId}
-                />
-              )}
             </div>
           </div>
 

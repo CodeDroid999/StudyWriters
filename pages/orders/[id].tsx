@@ -12,6 +12,9 @@ import {
 import { onAuthStateChanged } from 'firebase/auth';
 import { UserAuth } from 'context/AuthContext';
 import MyAssignmentsDetails from 'components/my-assignments/myAssignments';
+
+
+
 export default function MyAssignmentsDetailsPage() { // Updated component name
   const [selectedFilter, setSelectedFilter] = useState('');
   const [assignments, setAssignments] = useState([]); // Updated state name
