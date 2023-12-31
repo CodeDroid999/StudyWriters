@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import router from 'next/router';
+import Link from 'next/link';
 
 interface Props {
   handleNextStep: () => void;
@@ -201,12 +202,12 @@ export default function PostAssignment() {
               )}
             </div>
             <div className="col-md-3 col-sm-6 pb-2 flex flex-col flex-end justify-end align-center ">
-              <div
+              <Link
                 className="btn-1 bg-yellow-500 p-2 rounded text-white"
-                onClick={handleSave}
+                href="/post-assignment"
               >
                 Post Assignment
-              </div>
+              </Link>
             </div>
           </div>
         </form>
