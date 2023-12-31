@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div>
       <footer className=" bg-green-700 px-2 py-2">
-        <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
+        <div className="mx-auto px-4 pt-5">
           <h4 className="font-semibold text-gray-100">SUBJECTS WE COVER</h4>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
             <div className="md:col-md-1 sm:display-none whitespace-nowrap">
@@ -218,11 +218,109 @@ export default function Footer() {
                 </p>
               </div>
             </div>
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <h4 className="font-semibold text-gray-100">Popular Locations</h4>
+              <div className="mt-3 grid space-y-1">
+                {/* Africa */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Kenya
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    South Africa
+                  </Link>
+                </p>
+
+                {/* Antarctica */}
+                {/* No permanent countries */}
+
+                {/* Asia */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    China
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    India
+                  </Link>
+                </p>
+
+                {/* Europe */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    France
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Germany
+                  </Link>
+                </p>
+
+                {/* North America */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    United States
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Canada
+                  </Link>
+                </p>
+
+
+                {/* South America */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Brazil
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Argentina
+                  </Link>
+                </p>
+              </div>
+            </div>
+
 
           </div>
-          <hr className="text-gray-100" />
 
-          <div className="grid  sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
+          <div className="grid sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex items-center justify-between">
               <p className="text-md text-gray-100">
                 © 2023 QualityUnitedWriters. All rights reserved.
