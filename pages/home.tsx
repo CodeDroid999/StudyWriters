@@ -36,6 +36,7 @@ import PostAssignmentBox from './post-assignment-box'
 import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 import Footer from 'components/layout/Footer'
+import PostAssignment from 'components/Homepage/PostAssignment'
 
 const Home: React.FC = (props: any) => {
   const { posts, settings, draftMode } = props
@@ -74,7 +75,7 @@ const Home: React.FC = (props: any) => {
       <Navbar />
       <div className="mx-auto w-full">
         {userRole === 'Student' && (
-          <PostAssignmentBox />
+          <PostAssignment />
 
         )}
 
