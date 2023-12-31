@@ -49,7 +49,7 @@ export default function Signup() {
         dateOfBirth: '',
         phoneNumber: '',
         profilePicture: '',
-        mainRole: '',
+
         role: '',
         email: user.email,
         aboutDescription: '',
@@ -81,7 +81,7 @@ export default function Signup() {
         phoneNumber: '',
         profilePicture: '',
         billingAddress: '',
-        mainRole: '',
+
         role: '',
         email: user.email,
         userId: user.uid,
@@ -161,7 +161,6 @@ export default function Signup() {
         phoneNumber: '',
         profilePicture: '',
         billingAddress: '',
-        mainRole: '',
         role: '',
         email: user.email,
         userId: user.uid,
