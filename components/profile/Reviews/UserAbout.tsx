@@ -13,7 +13,7 @@ const UserAbout = ({ about }) => {
 
       {showDetails ? (
         <div>
-          <p className="pt-1 pb-2 text-lg">{about}</p>
+          <p className="pt-1 pb-2 text-md whitespace-wrap">{about}</p>
           <button
             className="mt-1 text-xs text-blue-500 underline"
             onClick={toggleDetails}

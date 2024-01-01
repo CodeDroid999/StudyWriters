@@ -114,6 +114,8 @@ export async function getServerSideProps() {
         return { id, ...data, offers, studentDetails: studentData };
       })
     );
+    console.log("oyaah")
+    console.log('Assignments Array:', assignments); // Log the assignments array
 
     return {
       props: {
