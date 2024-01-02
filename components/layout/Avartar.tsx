@@ -34,7 +34,7 @@ export default function Avartar() {
       </span>
       {isMainDropdownOpen && (
         <div className="absolute right-0 top-8 mt-2 min-w-[15rem] rounded-lg bg-white p-2  shadow-md ">
-          <div className="rounded bg-gray-100 pt-2 pb-2">
+          <div className="rounded bg-gray-100 pt-2 pb-2 border">
             <Link href={`/public-profile/${user?.userId}`}>
               <span className="flex items-center gap-x-3.5 px-3 pt-1 text-sm text-blue-900 hover:bg-neutral-100 ">
                 <Image
