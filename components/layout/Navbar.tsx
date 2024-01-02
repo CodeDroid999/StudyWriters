@@ -147,7 +147,7 @@ function Navbar() {
     <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-white duration-300 ease-in">
       <div className="m-auto flex  items-center justify-between p-2 lg:p-3">
         {/**Mobile Nav */}
-        <div className=" flex items-center justify-between  lg:hidden">
+        <div className=" flex items-center justify-between  lg:hidden w-100">
           {/* Left div */}
           <div className="flex flex-row items-center space-x-1">
             <Link href="/" className="text-gray-700">
@@ -199,12 +199,11 @@ function Navbar() {
                 <div className="flex flex-row items-center space-x-1">
                   <div className="flex">
                     <Link
-                      href="/boost-earnings"
-                      className="text-gray-700 hover:text-green-500 text-sm"
-                      style={{ whiteSpace: 'nowrap' }}
+                      href="/browse-assignments"
+                      className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
                       id="customfontsize"
                     >
-                      Boost Earnings
+                      Browse
                     </Link>
                   </div>
                   <div className="flex">
@@ -213,7 +212,6 @@ function Navbar() {
                         Post
                       </Link>
                     )}
-
                     {userRole === 'Tutor' && (
                       <Link
                         href="/browse-assignments"
@@ -224,8 +222,8 @@ function Navbar() {
                         Browse
                       </Link>
                     )}
-                  </div>d
-                  <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                  </div>
+                  <div className="flex">
                     {userRole === 'Student' && (
                       <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
                         Assignments
@@ -238,8 +236,7 @@ function Navbar() {
                         className="text-gray-700 hover:text-green-500 text-sm"
                         style={{ whiteSpace: 'nowrap' }}
                         id="customfontsize"
-                      >
-                        Orders
+                      >My Orders
                       </Link>
                     )}
                   </div>
@@ -292,8 +289,7 @@ function Navbar() {
                     </Link>
                     {unReadNotifications.length > 0 && <RedDot />}
                   </div>
-
-                  <div className="pr-1">
+                  <div className="flex justify-center align-middle">
                     <Avatar />
                   </div>
                 </div>
@@ -442,7 +438,7 @@ function Navbar() {
           )}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
