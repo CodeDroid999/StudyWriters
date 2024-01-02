@@ -17,6 +17,7 @@ import { auth } from '../firebase'
 import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
+import ReferFriends from 'components/Homepage/ReferFriendsSection.tsx'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -73,6 +74,7 @@ export default function Home(props: PageProps) {
       <Features />
       <BeYourOwnBoss />
       <HowItWorksSection />
+      <ReferFriends />
       <FAQAccordion />
       <Footer />
     </>
