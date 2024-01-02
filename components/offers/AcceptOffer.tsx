@@ -108,7 +108,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
 
     await addDoc(collection(db, 'payments'), {
       tutorId: offer.userId,
-      posterId: user.userId,
+      studentId: user.userId,
       assignmentTitle: assignmentData.title,
       assignmentId,
       createdAt: serverTimestamp(),

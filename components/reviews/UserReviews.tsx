@@ -53,7 +53,7 @@ export default function UserReviews({ userId }) {
     (review) => review.receiverId === review.tutorId
   )
   const studentReviews = reviews.filter(
-    (review) => review.receiverId === review.posterId
+    (review) => review.receiverId === review.studentId
   )
 
   return (
@@ -61,21 +61,19 @@ export default function UserReviews({ userId }) {
       <h1 className="mt-1 text-xl font-medium text-green-950">Reviews</h1>
       <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
         <span
-          className={`${
-            activeTab === 'Tutor'
+          className={`${activeTab === 'Tutor'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
-          } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+            } cursor-pointer border border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Tutor')}
         >
           As A Tutor
         </span>
         <span
-          className={`${
-            activeTab === 'Student'
+          className={`${activeTab === 'Student'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
-          } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+            } cursor-pointer border border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Student')}
         >
           As A Student
