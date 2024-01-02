@@ -94,11 +94,7 @@ export default function Avartar() {
           >
             My Profile
           </Link>
-          <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100  "
-            href="/how-it-works"      >
-            How it Works
-          </Link>
+
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100  border w-100 "
             href={`/payment-history/${user?.userId}`}
@@ -115,7 +111,7 @@ export default function Avartar() {
 
             <div
               onClick={toggleDropdown}
-              className="mt-1 flex cursor-pointer items-center px-3  text-sm text-gray-800 hover:bg-gray-100 "
+              className="mt-1 flex cursor-pointer items-center text-sm text-gray-800 hover:bg-gray-100 "
             >
               Settings
             </div>
