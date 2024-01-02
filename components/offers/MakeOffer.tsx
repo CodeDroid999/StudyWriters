@@ -9,7 +9,7 @@ import { UserAuth } from 'context/AuthContext'
 import { toast } from 'react-hot-toast'
 import ConfirmProfile from './ConfirmProfile'
 
-export default function MakeOffer({ posterId, assignmentTitle, student }) {
+export default function MakeOffer({ studentId, assignmentTitle, student }) {
   const [step, setStep] = useState(1)
   const [offer, setOffer] = useState('')
   const [proposal, setProposal] = useState('')
@@ -103,7 +103,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
     })
 
     await addDoc(collection(db, 'notifications'), {
-      receiverId: posterId,
+      receiverId: studentId,
       senderId: user.userId,
       type: 'MakeOffer',
       content: 'has made a bid on',
@@ -120,7 +120,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
       },
     })
 
-    toast.success('Your offer has been sent')
+    toast.success('Your bid has been sent')
 
     closeForm()
   }
@@ -265,7 +265,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
                 <div className="flex w-full items-center justify-center rounded-xl bg-gray-200 p-3">
                   <div className="flex flex-col items-center">
                     <h1 className="text-base font-medium text-gray-500">
-                      Your offer
+                      Your bid
                     </h1>
                     <p className="text-2xl font-semibold text-green-950">
                       ${offer}
@@ -308,7 +308,7 @@ export default function MakeOffer({ posterId, assignmentTitle, student }) {
                   onClick={SubmitForm}
                   className="mt-10 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
                 >
-                  Submit offer
+                  Submit bid
                 </button>
               </div>
             )}

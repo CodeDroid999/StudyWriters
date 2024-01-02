@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import router from 'next/router';
+import Link from 'next/link';
 
 interface Props {
   handleNextStep: () => void;
@@ -137,7 +138,7 @@ export default function PostAssignment() {
   const currentDate = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="w-full bg-green-600 pb-4 pt-4">
+    <div className="w-full bg-green-600 pb-4 pt-4 mt-20">
       <div className="container">
         <p className="pt-3 text-center text-3xl font-bold text-white">
           Get Homework Help
@@ -201,12 +202,12 @@ export default function PostAssignment() {
               )}
             </div>
             <div className="col-md-3 col-sm-6 pb-2 flex flex-col flex-end justify-end align-center ">
-              <div
+              <Link
                 className="btn-1 bg-yellow-500 p-2 rounded text-white"
-                onClick={handleSave}
+                href="/post-assignment"
               >
                 Post Assignment
-              </div>
+              </Link>
             </div>
           </div>
         </form>

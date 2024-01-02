@@ -1,83 +1,83 @@
 import React from 'react'
-import airtaskalogo from 'public/QualityUnitedWritersLogo.png'
+import logo from 'public/QualityUnitedWritersLogo.png'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
   return (
     <div>
-      <footer className=" bg-gray-950 px-2 py-2">
-        <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-20">
+      <footer className=" bg-green-700 px-2 py-2">
+        <div className="mx-auto px-4 pt-5">
           <h4 className="font-semibold text-gray-100">SUBJECTS WE COVER</h4>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
             <div className="md:col-md-1 sm:display-none whitespace-nowrap">
               <div className="mt-3 grid space-y-1">
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href=""
                   >
                     Accounting
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href=""
                   >
                     Algebra
                   </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/become-a-tutor"
                   >
                     Art & Design
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Article Writing                  </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     Biology
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Business & Finance
                   </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/faq"
                   >
                     Calculus
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Chemistry
                   </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/faq"
                   >
                     Statistics
@@ -88,78 +88,78 @@ export default function Footer() {
 
             <div className="md:col-md-1 sm:display-none whitespace-nowrap">
               <div className="mt-3 grid space-y-1">
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/how-it-works"
                   >
                     Communications
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Computer Science
                   </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/faq"
                   >
-                    onomics
+                    Economics
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/faq"
                   >
                     Engineering
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Excel                  </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Environmental Science                  </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/blog"
                   >
                     Film
                   </Link>{' '}
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/contact-us"
                   >
                     Foreign Languages
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Science                  </a>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="#"
                   >
                     Investors
@@ -171,46 +171,46 @@ export default function Footer() {
 
             <div className="col-md-1 sm:display-none whitespace-nowrap">
               <div className="mt-3 grid space-y-1">
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     Dissertation writing
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     Research paper writing                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     College essay writing                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     Resume and Cover letter writing                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     Coursework help
                   </Link>
                 </p>
-                <p className="pt-1 text-lg">
+                <p className="pt-1">
                   <Link
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
                     href="/browse-assignments"
                   >
                     All Services
@@ -218,136 +218,111 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-
-            <div className="col-md-1 sm:display-none whitespace-nowrap ">
+            <div className="col-md-1 sm:display-none whitespace-nowrap">
+              <h4 className="font-semibold text-gray-100">Popular Locations</h4>
               <div className="mt-3 grid space-y-1">
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+                {/* Africa */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    New Zealand                  </a>
+                    Kenya
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    Australia                  </a>
+                    South Africa
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+
+                {/* Antarctica */}
+                {/* No permanent countries */}
+
+                {/* Asia */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    United Kingdom                  </a>
+                    China
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    United States                  </a>
+                    India
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+
+                {/* Europe */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    Singapore                  </a>
+                    France
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    Canada                  </a>
+                    Germany
+                  </Link>
                 </p>
-                <p className="pt-1 text-lg">
-                  <a
-                    className="inline-flex text-sm gap-x-2 text-gray-400 hover:text-gray-200"
-                    href="#"
+
+                {/* North America */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
                   >
-                    England                  </a>
+                    United States
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Canada
+                  </Link>
+                </p>
+
+
+                {/* South America */}
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Brazil
+                  </Link>
+                </p>
+                <p className="pt-1">
+                  <Link
+                    className="inline-flex text-md gap-x-2 text-gray-100 hover:text-yellow-400"
+                    href="/browse-assignments"
+                  >
+                    Argentina
+                  </Link>
                 </p>
               </div>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap flex flex-col justify-center Items-center align-center ">
-              <div className="mb-1 flex justify-center Items-center align-center">
-                <Link href="/" className="text-gray-700">
-                  <Image
-                    src={airtaskalogo}
-                    alt="assignment"
-                    className="h-[80px] w-[100%] mt-8"
-                    id="customfontsize"
-                  />
-                </Link>
-              </div>
-              <div className="text-center">
-                <p className="text-center text-gray-400 pt-2">
-                  QualityUnitedWriters Ltd.
-                </p>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="row md:flex display-none pt-1 pb-3 mt-2 justify-between">
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2 underlined">
-                How it works 
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Honor Code 
-                              </Link>
             </div>
 
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Terms of Service
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Homework Help 
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Documents
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Become a Tutor
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                DMcA Policy
-              </Link>
-            </div>
 
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Media & Press
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Blog
-              </Link>
-            </div>
-            <div className="col-md-1 sm:display-none whitespace-nowrap">
-              <Link href="/how-it-works" className="text-gray-400 pt-2">
-                Our Mission              </Link>
-            </div>
-           
           </div>
-          <div className="mt-5 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
+
+          <div className="grid sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-400">
+              <p className="text-md text-gray-100">
                 © 2023 QualityUnitedWriters. All rights reserved.
               </p>
             </div>

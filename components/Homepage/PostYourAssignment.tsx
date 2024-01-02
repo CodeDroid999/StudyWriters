@@ -1,82 +1,217 @@
 import React, { useState } from 'react';
-import { MdArrowForward } from 'react-icons/md';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../firebase'; // Make sure to import your Firebase configuration
+import toast from 'react-hot-toast';
+import { UserAuth } from 'context/AuthContext';
+import { db } from '../../firebase';
+import {
+    addDoc,
+    collection,
+    getDocs,
+    serverTimestamp,
+} from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import router from 'next/router';
+import Link from 'next/link';
+
+interface Props {
+    handleNextStep: () => void;
+}
 
 export default function PostYourAssignment() {
-    // State to manage form data
-    const [assignmentDetails, setAssignmentDetails] = useState({
-        summary: '',
-        deadline: '',
-        payment: '',
-    });
+    const { user } = UserAuth();
+    const userId = user?.userId;
 
-    // Function to handle form submission
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const [title, setTitle] = useState('');
+    const [titleError, setTitleError] = useState('');
+    const [dueDate, setDueDate] = useState('');
+    const [dueDateError, setDueDateError] = useState('');
+    const [budget, setBudget] = useState('');
+    const [budgetError, setBudgetError] = useState('');
+
+    const handleSave = async (event: React.FormEvent) => {
+        event.preventDefault();
+
+        // Check if the user is logged in
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        if (!user) {
+            // User is not logged in, show toast error
+            toast.error('You are not logged in. Signup and log in to post your assignment');
+            return;
+        }
+
+        let hasError = false;
+
+        // Validate title
+        if (!title) {
+            setTitleError('This field is required');
+            hasError = true;
+        } else if (title.length < 10) {
+            setTitleError('Must be at least 10 characters');
+            hasError = true;
+        } else {
+            setTitleError('');
+        }
+
+        // Validate dueDate
+        if (!dueDate) {
+            setDueDateError('This field is required');
+            hasError = true;
+        } else {
+            setDueDateError('');
+        }
+
+        // Validate budget
+        if (!budget) {
+            setBudgetError('This field is required');
+            hasError = true;
+        } else {
+            const budgetValue = Number(budget);
+            if (isNaN(budgetValue) || budgetValue < 5 || budgetValue > 9999) {
+                setBudgetError('The price must be between $5 and $9999');
+                hasError = true;
+            } else {
+                setBudgetError('');
+            }
+        }
+
+        if (hasError) {
+            return;
+        }
 
         try {
-            // Add the form data to the Firebase collection
-            const docRef = await addDoc(collection(db, 'assignments'), assignmentDetails);
+            const docRef = await addDoc(collection(db, 'assignments'), {
+                title: title,
+                dueDate: dueDate,
+                budget: budget,
+                status: 'Open',
+                createdAt: serverTimestamp(),
+                student: {
+                    userId: userId,
+                    price: '',
+                    bookingFee: '',
+                    finalPrice: '',
+                },
+                tutor: {
+                    userId: '',
+                    price: '',
+                    serviceFee: '',
+                    finalPrice: '',
+                    proposal: '',
+                },
+                paymentRequested: false,
+                paymentReleased: false,
+                studentReview: false,
+                tutorReview: false,
+            });
 
-            // Log the document ID for reference
-            console.log('Document written with ID: ', docRef.id);
+            const assignmentId = docRef.id;
+            const usersCollection = collection(db, 'users');
+            const querySnapshot = await getDocs(usersCollection);
 
-            // You can redirect the user to another page or show a success message here
+            const userEmails: string[] = [];
+
+            querySnapshot.forEach((doc) => {
+                const userData = doc.data();
+                if (userData.email) {
+                    userEmails.push(userData.email);
+                }
+            });
+            await addDoc(collection(db, 'mail'), {
+                to: 'qualityunited340@gmail.com',
+                bcc: userEmails,
+                message: {
+                    subject: 'New Assignment     ',
+                    html: `A new assignment has been posted`,
+                },
+            });
+
+            //toast.success('Assignment      has been posted');
+            // You can redirect to the assignment page or do any other necessary action
+            router.push(`/post-assignment`);
         } catch (error) {
-            console.error('Error adding document: ', error);
-            // Handle error, show error message, etc.
+            console.error('Error posting assignment:', error.message);
+            toast.error('Error posting assignment. Please try again.');
         }
     };
 
-    // Function to update form data based on input changes
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setAssignmentDetails((prevDetails) => ({
-            ...prevDetails,
-            [name]: value,
-        }));
-    };
+    const currentDate = new Date().toISOString().split('T')[0];
 
     return (
-        <div className="flex flex-1 flex-col items-center justify-center bg-gray-200">
-            <h1 className="text-center  font-bold text-white text-3xl md:mt-10 md:mb-5 ">
-                Find a tutor to help you with your school!
-            </h1>
-            <form onSubmit={handleSubmit} className="justify-center w-full flex-col md:flex-row md:space-x-6">
-                {/* Other form fields can be added here */}
-                <input
-                    type="text"
-                    name="summary"
-                    placeholder="Summary"
-                    value={assignmentDetails.summary}
-                    onChange={handleInputChange}
-                    className="my-2 w-full max-w-sm rounded bg-white  sm:w-[150px] xl:my-3 xl:py-4"
-                />
-                <input
-                    type="text"
-                    name="deadline"
-                    placeholder="Deadline"
-                    value={assignmentDetails.deadline}
-                    onChange={handleInputChange}
-                    className="my-2 w-full max-w-sm rounded bg-white px-4 py-2 sm:w-[150px] xl:my-3 xl:py-4"
-                />
-                <input
-                    type="text"
-                    name="payment"
-                    placeholder="Willing to pay"
-                    value={assignmentDetails.payment}
-                    onChange={handleInputChange}
-                    className="my-2 w-full max-w-sm rounded bg-white px-4 py-2 sm:w-[150px] xl:my-3 xl:py-4"
-                />
-                <button
-                    type="submit"
-                    className="my-2 w-full max-w-sm rounded bg-yellow-400 px-4 py-2 sm:w-[150px] xl:my-3 xl:py-4"
-                >
-                    <MdArrowForward className="text-md font-semibold text-black" />
-                    Post Assignment
-                </button>
-            </form>
+        <div className="w-full bg-green-600 pb-4 pt-4">
+            <div className="container">
+                <p className="pt-3 text-center text-3xl font-bold text-white">
+                    Get Homework Help
+                </p>
+                <p className="text-gray text-center text-gray-200">
+                    Find a tutor to help you with your school!
+                </p>
+                <form className="mt-6 flex justify-center">
+                    <div className="row flex justify-between w-full">
+                        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
+                            <label
+                                htmlFor="title"
+                                className="mb-2 text-lg font-medium text-gray-100 whitespace-nowrap"
+                            >
+                                What do you need done?
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="e.g. Dissertation writing for Engineering Paper"
+                                onChange={(e) => setTitle(e.target.value)}
+                                className="border rounded p-1"
+                            />
+                            {titleError && (
+                                <span className="text-red-500">{titleError}</span>
+                            )}
+                        </div>
+                        <div className="flex flex-col col-md-3 col-sm-6 pb-2">
+                            <label
+                                htmlFor="dueDate"
+                                className="mb-2 text-lg font-medium text-gray-100 whitespace-nowrap"
+                            >
+                                When do you need this done?
+                            </label>
+                            <input
+                                type="date"
+                                id="dueDate"
+                                required
+                                placeholder="Enter date"
+                                min={currentDate}
+                                onChange={(e) => setDueDate(e.target.value)}
+                                className="border rounded p-1 sm:w-full"
+                            />
+                            {dueDateError && (
+                                <span className="text-red-500">{dueDateError}</span>
+                            )}
+                        </div>
+                        <div className="col-md-3 col-sm-6 pb-2 flex flex-col ">
+                            <label
+                                htmlFor="budget"
+                                className="mb-2 text-lg font-medium text-gray-100"
+                            >
+                                Willing to pay
+                            </label>
+                            <input
+                                placeholder="$ Enter budget"
+                                onChange={(e) => setBudget(e.target.value)}
+                                className="border rounded p-1"
+                            />
+                            {budgetError && (
+                                <span className="text-red-500">{budgetError}</span>
+                            )}
+                        </div>
+                        <div className="col-md-3 col-sm-6 pb-2 flex flex-col flex-end justify-end align-center ">
+                            <Link
+                                className="btn-1 bg-yellow-500 p-2 rounded text-white"
+                                href="/post-assignment"
+                            >
+                                Post Assignment
+                            </Link>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

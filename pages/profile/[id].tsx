@@ -191,7 +191,7 @@ export default function ProfilePage({
                             {completedAssignments.length}
                           </h2>
                           <h3 className="text-center  text-sm  text-gray-400">
-                            Assignments completed
+                            completed
                           </h3>
                         </div>
                       </div>

@@ -31,7 +31,7 @@ export default function Avatar() {
           className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
         />
       </span>
-      
+
       {isMainDropdownOpen && (
         <div className="absolute right-0 top-8 mt-2 min-w-[15rem] rounded-lg bg-white p-2  shadow-md ">
           <div className="rounded bg-gray-100 pt-2 pb-2">
@@ -49,41 +49,41 @@ export default function Avatar() {
             </Link>
           </div>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/become-a-tutor"
           >
             Answer Questions
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/my-assignments"      >
             My Answers
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/profile/${user?.userId}`}
           >
             My Profile
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/how-it-works"      >
             How it Works
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/payment-history/${user?.userId}`}
           >
             Payment History
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/payment-methods/${user?.userId}`}
           >
             Payment Methods
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/how-it-works"      >
             Honor Code          </Link>
           <div className="">
@@ -106,13 +106,13 @@ export default function Avatar() {
 
           <div
             onClick={handleLogOut}
-            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-gray-100  "
           >
             Log out
           </div>
           <div
             onClick={handleLogOut}
-            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-gray-100  "
           >
             Swap to Student Mode
           </div>

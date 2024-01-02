@@ -60,7 +60,7 @@ export default function LogIn() {
           phoneNumber: '',
           profilePicture: '',
           billingAddress: '',
-          mainRole: '',
+
           role: '',
           email: user.email,
           userId: user.uid,

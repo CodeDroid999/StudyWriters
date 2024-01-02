@@ -2,8 +2,6 @@ import FAQAccordion from 'components/FAQaccordions'
 import HeroArea from 'components/Homepage/HeroSection'
 import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 import PostAssignment from 'components/Homepage/PostAssignment'
-import PostYourAssignment from 'components/Homepage/PostYourAssignment'
-import ReferFriends from 'components/Homepage/ReferFriensSection.tsx'
 import StatsCounter from 'components/Homepage/StatsCounter'
 import BeYourOwnBoss from 'components/home/BeYourOwnBoss'
 import Features from 'components/home/Features'
@@ -18,6 +16,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
+import PostYourAssignment from 'components/Homepage/PostYourAssignment'
+import ReferFriends from 'components/Homepage/ReferFriendsSection.tsx'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -70,10 +70,11 @@ export default function Home(props: PageProps) {
       </Head>
       <HeroArea />
       <StatsCounter />
-      <PostAssignment />
+      <PostYourAssignment />
       <Features />
       <BeYourOwnBoss />
       <HowItWorksSection />
+      <ReferFriends />
       <FAQAccordion />
       <Footer />
     </>

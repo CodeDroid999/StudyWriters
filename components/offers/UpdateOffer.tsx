@@ -19,7 +19,7 @@ export default function MakeOffer({
   offerId,
   student,
   assignmentTitle,
-  posterId,
+  studentId,
 }) {
   const [step, setStep] = useState(1)
   const [newOffer, setNewOffer] = useState('')
@@ -99,7 +99,7 @@ export default function MakeOffer({
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'notifications'), {
-      receiverId: posterId,
+      receiverId: studentId,
       senderId: user.userId,
       type: 'UpdateOffer',
       content: 'has updated offer made on',
@@ -115,7 +115,7 @@ export default function MakeOffer({
         html: `${user?.userId} has updated offer made on ${assignmentTitle}`,
       },
     })
-    toast.success('Your offer has been updated')
+    toast.success('Your bid has been updated')
 
     closeForm()
   }
@@ -249,7 +249,7 @@ export default function MakeOffer({
                 <div className="flex w-full items-center justify-center rounded-xl bg-gray-200 p-3">
                   <div className="flex flex-col items-center">
                     <h1 className="text-base font-medium text-gray-500">
-                      Your offer
+                      Your bid
                     </h1>
                     <p className="text-2xl font-semibold text-green-950">
                       ${newOffer}

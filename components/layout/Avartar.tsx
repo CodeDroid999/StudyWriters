@@ -48,41 +48,41 @@ export default function Avartar() {
             </Link>
           </div>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/become-a-tutor"
           >
             Answer Questions
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/my-assignments"      >
             My Answers
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/profile/${user?.userId}`}
           >
             My Profile
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/how-it-works"      >
             How it Works
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/payment-history/${user?.userId}`}
           >
             Payment History
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href={`/payment-methods/${user?.userId}`}
           >
             Payment Methods
           </Link>
           <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
+            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100   "
             href="/how-it-works"      >
             Honor Code          </Link>
           <div className="">
@@ -105,13 +105,13 @@ export default function Avartar() {
 
           <div
             onClick={handleLogOut}
-            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-gray-100  "
           >
             Log out
           </div>
           <div
             onClick={handleLogOut}
-            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 py-2 text-sm text-gray-800 hover:bg-gray-100  "
+            className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 mt-1 mb-1 py-2 text-sm text-gray-800 hover:bg-gray-100  "
           >
             Swap to Student Mode
           </div>

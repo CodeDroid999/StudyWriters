@@ -49,7 +49,7 @@ export default function Signup() {
         dateOfBirth: '',
         phoneNumber: '',
         profilePicture: '',
-        mainRole: '',
+
         role: '',
         email: user.email,
         aboutDescription: '',
@@ -62,6 +62,7 @@ export default function Signup() {
       });
       // Add additional fields or data as needed
       console.log('User object updated successfully:', userRef.id);
+      router.push(`/setup-profile`)
     } catch (error) {
       console.error('Error updating user object:', error);
       // Handle error, show toast, or log it as needed
@@ -80,7 +81,7 @@ export default function Signup() {
         phoneNumber: '',
         profilePicture: '',
         billingAddress: '',
-        mainRole: '',
+
         role: '',
         email: user.email,
         userId: user.uid,
@@ -97,6 +98,7 @@ export default function Signup() {
         education: [],
         createdAt: serverTimestamp(),
       })
+      router.push(`/setup-profile`)
     } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message
@@ -159,7 +161,6 @@ export default function Signup() {
         phoneNumber: '',
         profilePicture: '',
         billingAddress: '',
-        mainRole: '',
         role: '',
         email: user.email,
         userId: user.uid,
@@ -176,8 +177,7 @@ export default function Signup() {
         education: [],
         createdAt: serverTimestamp(),
       })
-
-
+      router.push(`/setup-profile`)
     } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message
