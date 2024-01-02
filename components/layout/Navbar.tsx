@@ -197,14 +197,22 @@ function Navbar() {
                 </div>
               ) : (
                 <div className="flex flex-row items-center space-x-1">
+
                   <div className="flex">
-                    <Link
-                      href="/browse-assignments"
-                      className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
-                      id="customfontsize"
-                    >
-                      Browse
-                    </Link>
+                    {userRole === 'Student' && (
+                      <Link href="/browse-assignments" className=" text-gray-700 hover:text-green-500 text-sm">
+                        Browse
+                      </Link>
+                    )}
+                    {userRole === 'Tutor' && (
+                      <Link
+                        href="/boost-earnings"
+                        className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
+                        id="customfontsize"
+                      >
+                        Boost Earnings
+                      </Link>
+                    )}
                   </div>
                   <div className="flex">
                     {userRole === 'Student' && (
@@ -214,12 +222,11 @@ function Navbar() {
                     )}
                     {userRole === 'Tutor' && (
                       <Link
-                        href="/browse-assignments"
-                        className="text-gray-700 hover:text-green-500 text-sm"
-                        style={{ whiteSpace: 'nowrap' }}
+                        href="/bid-assignments"
+                        className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
                         id="customfontsize"
                       >
-                        Browse
+                        Bid
                       </Link>
                     )}
                   </div>
@@ -362,7 +369,7 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href="/boost-earnings" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Boost Earnings
                   </Link>
                 )}
@@ -375,7 +382,7 @@ function Navbar() {
                 )}
 
                 {userRole === 'Tutor' && (
-                  <Link href="/bid" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
+                  <Link href="/bid-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
                     Bid
                   </Link>
                 )}
@@ -389,7 +396,7 @@ function Navbar() {
 
                 {userRole === 'Tutor' && (
                   <Link href={`/orders/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Orders
+                    My Orders
                   </Link>
                 )}
               </div>
