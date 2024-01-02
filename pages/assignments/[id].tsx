@@ -232,7 +232,7 @@ export default function TaskDetails(props: any) {
                                   proposal={offer.proposal}
                                   offerId={offer.offerId}
                                   student={studentDetails}
-                                  posterId={student.userId}
+                                  studentId={student.userId}
                                   assignmentTitle={assignmentData.title}
                                 />
                               </div>
@@ -242,7 +242,7 @@ export default function TaskDetails(props: any) {
                         })
                       ) : (
                         <MakeOffer
-                          posterId={assignmentData.student.userId}
+                          studentId={assignmentData.student.userId}
                           assignmentTitle={assignmentData.title}
                           student={studentDetails}
                         />
@@ -408,7 +408,7 @@ export default function TaskDetails(props: any) {
                             </h1>
                             <NewMessage
                               customerId={tutorDetails?.userId}
-                              posterId={student.userId}
+                              studentId={student.userId}
                               assignmentData={assignmentData}
                               assignmentId={assignmentId}
                               tutor={tutorDetails}
@@ -493,7 +493,7 @@ export default function TaskDetails(props: any) {
                           <div>
                             <Replies
                               customerId={offer.userId}
-                              posterId={student.userId}
+                              studentId={student.userId}
                               assignmentData={assignmentData}
                               assignmentId={assignmentId}
                               offerId={offer.offerId}

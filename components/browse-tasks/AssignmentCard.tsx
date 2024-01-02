@@ -28,7 +28,7 @@ const AssignmentCard: React.FC<CardProps> = ({
   const { user } = UserAuth()
 
   return (
-    <Link href={`/assignments/${id}`}>
+    <Link href={`/order/${id}`}>
       <div className="m-2 flex  rounded-lg border bg-white p-2 shadow-sm hover:bg-neutral-100">
         <div className="flex-1">
           <div className="mb-2 flex items-center pr-3">

@@ -12,7 +12,7 @@ import Image from 'next/image'
 import profile from 'public/profile.jpeg'
 import Link from 'next/link'
 
-export default function TaskReviews({assignmentId }) {
+export default function TaskReviews({ assignmentId }) {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('Student')
@@ -23,7 +23,7 @@ export default function TaskReviews({assignmentId }) {
       const reviewsRef = collection(db, 'reviews')
 
       // Fetch assignment's reviews
-      const reviewsQuery = query(reviewsRef, where('assignmentId', '==',assignmentId))
+      const reviewsQuery = query(reviewsRef, where('assignmentId', '==', assignmentId))
 
       const unsubscribe = onSnapshot(reviewsQuery, async (querySnapshot) => {
         const reviewsData = await Promise.all(
@@ -57,7 +57,7 @@ export default function TaskReviews({assignmentId }) {
     (review) => review.senderId === review.tutorId
   )
   const studentReviews = reviews.filter(
-    (review) => review.senderId === review.posterId
+    (review) => review.senderId === review.studentId
   )
 
   return (
@@ -67,21 +67,19 @@ export default function TaskReviews({assignmentId }) {
           <h1 className="text-sm font-bold uppercase text-green-950">Reviews</h1>
           <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
             <span
-              className={`${
-                activeTab === 'Student'
+              className={`${activeTab === 'Student'
                   ? 'border-b-blue-600 text-green-950'
                   : 'border-none'
-              } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+                } cursor-pointer border border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Student')}
             >
               Student
             </span>
             <span
-              className={`${
-                activeTab === 'Tutor'
+              className={`${activeTab === 'Tutor'
                   ? 'border-b-blue-600 text-green-950'
                   : 'border-none'
-              } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+                } cursor-pointer border border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Tutor')}
             >
               Tutor

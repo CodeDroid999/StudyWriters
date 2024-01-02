@@ -19,7 +19,7 @@ export default function MakeOffer({
   offerId,
   student,
   assignmentTitle,
-  posterId,
+  studentId,
 }) {
   const [step, setStep] = useState(1)
   const [newOffer, setNewOffer] = useState('')
@@ -99,7 +99,7 @@ export default function MakeOffer({
       createdAt: serverTimestamp(),
     })
     await addDoc(collection(db, 'notifications'), {
-      receiverId: posterId,
+      receiverId: studentId,
       senderId: user.userId,
       type: 'UpdateOffer',
       content: 'has updated offer made on',
