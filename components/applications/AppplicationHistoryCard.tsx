@@ -5,14 +5,16 @@ import {
     where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { auth, db } from '../../firebase'; // Ensure you have the correct import path
+import { db } from '../../firebase'; // Ensure you have the correct import path
 import Link from 'next/link';
 import { useRouter } from 'next/router'; // Import useRouter from 'next/router'
+import { UserAuth } from 'context/AuthContext';
 
 const UserApplicationHistoryPage = () => {
     const [userApplications, setUserApplications] = useState([]);
     const router = useRouter(); // Use the useRouter hook
-    const { userId } = router.query;
+    const { user } = UserAuth();
+    const userId = user?.userId;
 
     useEffect(() => {
         const fetchUserApplications = async () => {
@@ -23,7 +25,7 @@ const UserApplicationHistoryPage = () => {
                 if (!querySnapshot.empty) {
                     const applicationsData = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        createdAt: doc.data().createdAt, // Replace with the actual field name
+                        createdAt: doc.data().createdAt.toDate().toLocaleString(), // Format date as string
                         status: doc.data().status, // Replace with the actual field name
                     }));
                     setUserApplications(applicationsData);
@@ -47,10 +49,8 @@ const UserApplicationHistoryPage = () => {
                 <ul>
                     {userApplications.map((application) => (
                         <li key={application.id} className="mb-2">
-                            <Link href={`/application/${application.id}`}>
-                                <a>
-                                    Application ID: {application.id}, Created At: {application.createdAt}, Status: {application.status}
-                                </a>
+                            <Link href={`/application/${application.id}`} className='py-2 bg-gray-300'>
+                                Application ID: {application.id}, Created At: {application.createdAt}, Status: {application.status}
                             </Link>
                         </li>
                     ))}
