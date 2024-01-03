@@ -5,14 +5,29 @@ import {
     where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { db } from '../../firebase'; // Ensure you have the correct import path
+import { db } from '../../firebase';
 import Link from 'next/link';
-import { useRouter } from 'next/router'; // Import useRouter from 'next/router'
 import { UserAuth } from 'context/AuthContext';
+
+const getStatusColor = (status) => {
+    switch (status) {
+        case 'Pending':
+            return 'bg-yellow-500'; // Yellow color for pending
+        case 'ID Verification':
+            return 'bg-blue-500'; // Blue color for ID Verification
+        case 'Reviewing':
+            return 'bg-purple-500'; // Purple color for reviewing
+        case 'Verified':
+            return 'bg-green-500'; // Green color for verified
+        case 'Rejected':
+            return 'bg-red-500'; // Red color for rejected
+        default:
+            return 'bg-gray-500'; // Default to gray color
+    }
+};
 
 const UserApplicationHistoryPage = () => {
     const [userApplications, setUserApplications] = useState([]);
-    const router = useRouter(); // Use the useRouter hook
     const { user } = UserAuth();
     const userId = user?.userId;
 
@@ -25,8 +40,8 @@ const UserApplicationHistoryPage = () => {
                 if (!querySnapshot.empty) {
                     const applicationsData = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        createdAt: doc.data().createdAt.toDate().toLocaleString(), // Format date as string
-                        status: doc.data().status, // Replace with the actual field name
+                        createdAt: doc.data().createdAt.toDate().toLocaleString(),
+                        status: doc.data().applicationStatus,
                     }));
                     setUserApplications(applicationsData);
                 } else {
@@ -49,8 +64,15 @@ const UserApplicationHistoryPage = () => {
                 <ul>
                     {userApplications.map((application) => (
                         <li key={application.id} className="mb-2">
-                            <Link href={`/application/${application.id}`} className='py-2 bg-gray-300'>
-                                Application ID: {application.id}, Created At: {application.createdAt}, Status: {application.status}
+                            <Link href={`/application/${application.id}`}>
+                                <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
+                                    <div className="flex text-green-950">
+                                        Application: <span className="text-blue-500 pl-1"> {application.id}</span>
+                                    </div>
+                                    <div className="flex text-green-950">
+                                        {application.createdAt}, Status: <span className={`flex justify-between px-2 ml-1 text-white bg-gray-300 rounded ${getStatusColor(application.status)}`}>{application.status}</span>
+                                    </div>
+                                </div>
                             </Link>
                         </li>
                     ))}
