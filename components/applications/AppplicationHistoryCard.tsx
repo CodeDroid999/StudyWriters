@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { db } from '../../firebase';
+import {
+    collection,
+    getDocs,
+    query,
+    where,
+} from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { auth, db } from '../../firebase'; // Ensure you have the correct import path
 import Link from 'next/link';
+import { useRouter } from 'next/router'; // Import useRouter from 'next/router'
 
-const ApplicationHistoryCard = () => {
-    const router = useRouter();
+const UserApplicationHistoryPage = () => {
     const [userApplications, setUserApplications] = useState([]);
+    const router = useRouter(); // Use the useRouter hook
+    const { userId } = router.query;
 
     useEffect(() => {
         const fetchUserApplications = async () => {
             try {
-                const userId = router.query.userId as string;
-
-                if (!userId) {
-                    // Redirect or handle the case where userId is not available
-                    return;
-                }
-
-                const applicationsRef = db.collection('applications');
-                const querySnapshot = await applicationsRef.where('userId', '==', userId).get();
+                const q = query(collection(db, 'applications'), where('userId', '==', userId));
+                const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
                     const applicationsData = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        createdAt: doc.data().createdAt.toDate().toLocaleString(), // Assuming createdAt is a timestamp
-                        status: doc.data().status,
+                        createdAt: doc.data().createdAt, // Replace with the actual field name
+                        status: doc.data().status, // Replace with the actual field name
                     }));
                     setUserApplications(applicationsData);
                 } else {
@@ -35,8 +35,10 @@ const ApplicationHistoryCard = () => {
             }
         };
 
-        fetchUserApplications();
-    }, [router.query.userId]);
+        if (userId) {
+            fetchUserApplications();
+        }
+    }, [userId]);
 
     return (
         <div className="p-3 bg-white">
@@ -45,7 +47,7 @@ const ApplicationHistoryCard = () => {
                 <ul>
                     {userApplications.map((application) => (
                         <li key={application.id} className="mb-2">
-                            <Link href={`/application-history/${router.query.userId}/${application.id}`}>
+                            <Link href={`/application/${application.id}`}>
                                 <a>
                                     Application ID: {application.id}, Created At: {application.createdAt}, Status: {application.status}
                                 </a>
@@ -60,4 +62,4 @@ const ApplicationHistoryCard = () => {
     );
 };
 
-export default ApplicationHistoryCard;
+export default UserApplicationHistoryPage;
