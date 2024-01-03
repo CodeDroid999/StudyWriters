@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import ApplicationCard from 'components/TutorApplication/ApplicationCard';
-import { db } from 'firebase';
+import { db } from '../../firebase';
 
 
 
