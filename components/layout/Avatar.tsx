@@ -7,6 +7,7 @@ import profile from 'public/profile.jpeg'
 export default function Avatar() {
   const { user, logOut } = UserAuth()
   const userRole = user?.role
+  const userId = user?.userId
 
   const handleLogOut = () => {
     logOut()
@@ -63,6 +64,13 @@ export default function Avatar() {
             )}
           </div>
           <div className="flex ">
+            {userRole === 'Tutor' && (
+              <Link href={`/applications/${user?.userId}`} className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
+                Tutor Application
+              </Link>
+            )}
+          </div>
+          <div className="flex ">
             {userRole === 'Student' && (
               <Link href="/post-assignments" className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
                 Post assignments
@@ -77,13 +85,13 @@ export default function Avatar() {
           </div>
           <div className="flex ">
             {userRole === 'Student' && (
-              <Link href="/my-assignments/{userId}" className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
+              <Link href={`/my-assignments/${user?.userId}`} className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
                 My assignments
               </Link>
             )}
 
             {userRole === 'Tutor' && (
-              <Link href="/orders/{userId}" className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
+              <Link href={`/orders/${user?.userId}`} className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
                 My Orders
               </Link>
             )}
