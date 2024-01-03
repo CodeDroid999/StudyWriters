@@ -34,6 +34,7 @@ type Notification = {
 function Navbar() {
   const [nav, setNav] = useState(false)
   const { user, logOut } = UserAuth()
+  const userId = user?.userId
 
   {
     /**Handle RedDOt */
@@ -41,7 +42,7 @@ function Navbar() {
   const [unReadNotifications, setUnreadNotifications] = useState([])
   const [unReadMessages, setUnreadMessages] = useState([])
   const [loading, setLoading] = useState(false)
-  const userId = user?.userId
+
   const userRole = user?.role
 
   useEffect(() => {

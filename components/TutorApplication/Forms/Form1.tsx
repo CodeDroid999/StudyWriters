@@ -12,6 +12,9 @@ import {
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
+// Import the `doc` function from 'firebase/firestore'
+import { doc as firestoreDoc } from 'firebase/firestore';
+
 
 import { auth, db } from '../../../firebase';
 import countryList from '../countryList';
@@ -57,6 +60,7 @@ export default function Form1() {
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
     const [error, setError] = useState('');
+    const applicationStatus = useState('pending');
 
 
     const handleSave = async (e) => {
@@ -113,7 +117,15 @@ export default function Form1() {
                 userId: user.uid,
                 createdAt: serverTimestamp(),
                 read: false,
+                applicationStatus,
                 // Add other details specific to applications here
+            });
+            // Get the auto-generated document ID
+            const applicationId = applicationDocRef.id;
+
+            // Update the application document with the applicationId
+            await updateDoc(firestoreDoc(db, 'applications', applicationId), {
+                applicationId,
             });
 
             toast.success('Personal info has been updated');

@@ -64,8 +64,8 @@ export default function Avartar() {
           </div>
           <div className="flex ">
             {userRole === 'Tutor' && (
-              <Link href={`/applications/${user?.userId}`} className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
-                Tutor Application
+              <Link href={`/application-history/${user?.userId}`} className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border w-100">
+                Application History
               </Link>
             )}
           </div>

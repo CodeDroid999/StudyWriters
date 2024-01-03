@@ -43,6 +43,8 @@ type User = {
   };
   skills?: string[];
   education?: string[];
+  identityVerification?: boolean;
+  read?: boolean;
 };
 
 
@@ -104,7 +106,7 @@ export function AuthContextProvider({
 
           setLoading(false);
         });
-       
+
         return () => {
           unsubscribeSnapshot(); // Unsubscribe from the snapshot
         };

@@ -9,7 +9,7 @@ import { TfiClose } from 'react-icons/tfi'
 
 import { auth } from '../../firebase'
 import Navbar from 'components/layout/Navbar'
-import ApplicationCard from 'components/applications/ApplicationCard'
+import ApplicationHistoryCard from 'components/applications/AppplicationHistoryCard'
 
 
 
@@ -34,7 +34,7 @@ export default function Step1() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <ApplicationCard />
+                    <ApplicationHistoryCard />
                 </div>
             </div>
         </div>

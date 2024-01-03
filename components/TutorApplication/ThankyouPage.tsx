@@ -1,15 +1,15 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { UserAuth } from 'context/AuthContext';
 
 const ThankYouPage = () => {
   const router = useRouter();
+  const { user } = UserAuth();
+  const userId = user?.userId;
 
   const handleGoToHome = () => {
     router.push('/home');
-  };
-
-  const handleViewApplication = () => {
-    router.push('/home'); // Update with the actual route for viewing the application
   };
 
   return (
@@ -19,24 +19,20 @@ const ThankYouPage = () => {
         Your application has been successfully submitted. We appreciate your interest in becoming a tutor.
       </p>
 
-      <div className="flex gap-4">
-        <button
-          type="button"
-          className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-          onClick={handleGoToHome}
-        >
-          Go to Home Page
-        </button>
+      <div className="row justify-between px-3">
+        <div className="col-md-4 bg-green-500 rounded py-2">
+          <Link href="/home" className=" text-center text-white w-100">
+            Finish
+          </Link>
+        </div>
 
-        <button
-          type="button"
-          className="flex-1 cursor-pointer rounded-xl bg-blue-500 py-2 text-center text-white"
-          onClick={handleViewApplication}
-        >
-          View Application
-        </button>
+        <div className="col-md-4 bg-blue-500  rounded py-2">
+          <Link href={`/application-history/${user?.userId}`} className=" text-center text-white w-100">
+            View Application history
+          </Link>
+        </div>
       </div>
-    </div>
+    </div >
   );
 };
 
