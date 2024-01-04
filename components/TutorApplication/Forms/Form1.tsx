@@ -10,7 +10,7 @@ import {
     where,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 // Import the `doc` function from 'firebase/firestore'
 import { doc as firestoreDoc } from 'firebase/firestore';
@@ -50,6 +50,7 @@ export default function Form1() {
     const [city, setCity] = useState(user?.city || '');
     const [address, setAddress] = useState(user?.address || '');
     const [countryList, setCountryList] = useState([]);
+    const [country, setCountry] = useState('');
     const [state, setState] = useState(user?.state || '');
     const [startDate, setStartDate] = useState(user?.startDate || '');
     const [endDate, setEndDate] = useState(user?.endDate || '');
@@ -65,23 +66,23 @@ export default function Form1() {
 
     useEffect(() => {
         const fetchCountries = async () => {
-          try {
-            const response = await fetch('https://restcountries.com/v3.1/all');
-            const data = await response.json();
-    
-            const countries = data.map((country) => ({
-              label: country.name.common,
-              value: country.name.common,
-            }));
-    
-            setCountryList(countries);
-          } catch (error) {
-            console.error('Error fetching countries:', error.message);
-          }
+            try {
+                const response = await fetch('https://restcountries.com/v3.1/all');
+                const data = await response.json();
+
+                const countries = data.map((country) => ({
+                    label: country.name.common,
+                    value: country.name.common,
+                }));
+
+                setCountryList(countries);
+            } catch (error) {
+                console.error('Error fetching countries:', error.message);
+            }
         };
-    
+
         fetchCountries();
-      }, []);
+    }, []);
 
     const handleSave = async (e) => {
         e.preventDefault();
@@ -211,32 +212,28 @@ export default function Form1() {
                     </div>
                 </div>
                 <div className="row">
-      <div className="flex col-md-4 flex-col">
-        <label
-          htmlFor="country of Nationality"
-          className="mb-2 text-sm font-medium text-gray-700"
-        >
-          Choose your nationality
-        </label>
-        <select
-          id="countries"
-          className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        >
-          {countryList.map((country, index) => (
-            <option key={index} value={country.value}>
-              {country.label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="flex col-md-7 flex-col items-center justify-center">
-        <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
-          You will need to prove nationality with a valid photo ID at a later step in this application
-        </p>
-      </div>
-    </div>
+                    <div className="flex col-md-4 flex-col">
+                        <label
+                            htmlFor="country of Nationality"
+                            className="mb-2 text-sm font-medium text-gray-700"
+                        >
+                            Choose your nationality
+                        </label>
+                        <select
+                            id="countries"
+                            className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        >
+                            {countryList.map((country, index) => (
+                                <option key={index} value={country.value}>
+                                    {country.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    {/* ... rest of your code */}
+                </div>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label
