@@ -50,7 +50,7 @@ export default function SkillAssessment() {
             // Perform additional validations if needed
 
             // If both conditions are met, navigate to the 'thankyou' page
-            router.push(`/tutor-application/upload-id/${applicationId}`);
+            router.push("/tutor-application/upload-id");
 
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);

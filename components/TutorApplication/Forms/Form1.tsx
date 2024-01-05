@@ -143,7 +143,7 @@ export default function Form1() {
 
             toast.success('Personal info has been updated');
             toast.success('Application has been saved');
-            router.push(`/tutor-application/step2/${applicationId}`);
+            router.push("/tutor-application/step2");
         } catch (error) {
             console.error('Error updating personal info or saving application:', error.message);
             toast.error('Error updating. Please try again.');

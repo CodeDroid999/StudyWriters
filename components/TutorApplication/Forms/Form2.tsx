@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { db } from '../../../firebase';
-import router from 'next/router';
+import router, { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 
 export default function Form2() {
   const { user } = UserAuth();
   const userId = user?.userId;
+  const router = useRouter();
   const { applicationId } = router.query;
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedRate, setSelectedRate] = useState('$10');
@@ -38,7 +39,7 @@ export default function Form2() {
           rate: selectedRate,
         });
         toast.success('Subject preferences and rates saved!');
-        router.push(`/tutor-application/step3/${applicationId}`);
+        router.push("/tutor-application/step3");
       } else {
         toast.error('User document not found');
       }

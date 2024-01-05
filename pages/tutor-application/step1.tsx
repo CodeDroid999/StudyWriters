@@ -7,8 +7,8 @@ import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-import { auth } from '../../firebase'
 import Form1 from 'components/TutorApplication/Forms/Form1'
+import { auth } from '../../firebase'
 
 
 
