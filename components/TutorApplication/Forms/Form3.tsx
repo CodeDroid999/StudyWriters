@@ -7,6 +7,7 @@ export default function SkillAssessment() {
     const { user } = UserAuth();
     const router = useRouter();
     const userId = router.query?.id;
+    const { applicationId } = router.query;
 
     const [selectedTopic, setSelectedTopic] = useState('');
     const [uploadFile, setUploadFile] = useState(null);
@@ -49,7 +50,8 @@ export default function SkillAssessment() {
             // Perform additional validations if needed
 
             // If both conditions are met, navigate to the 'thankyou' page
-            router.push('/tutor-application/upload-id');
+            router.push(`/tutor-application/upload-id/${applicationId}`);
+
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');

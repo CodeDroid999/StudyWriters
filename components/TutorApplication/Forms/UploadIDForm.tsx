@@ -22,27 +22,14 @@ export default function UploadIDForm() {
     const { user } = UserAuth();
     const router = useRouter();
     const userId = user?.userId;
+    const { applicationId } = router.query;
+
 
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });
-    const [applicationId, setApplicationId] = useState(null);
 
 
-    useEffect(() => {
-        // Get applicationId from database
-        const fetchApplicationId = async () => {
-            const applicationDocRef = doc(db, "applications", userId);
-            const applicationDocSnapshot = await getDoc(applicationDocRef);
-
-            if (applicationDocSnapshot.exists()) {
-                setApplicationId(applicationDocSnapshot.data().applicationId);
-            }
-        };
-
-        fetchApplicationId();
-
-    }, [userId]);
 
 
 
@@ -59,46 +46,25 @@ export default function UploadIDForm() {
     const handleSave = async () => {
         setUploading(true);
         try {
-            // Create Storage and Firestore references  
             const storage = getStorage();
-            const db = getFirestore();
-
-            // Get applicationId from database
-            const applicationDocRef = doc(db, "applications", userId);
-            const applicationDocSnapshot = await getDoc(applicationDocRef);
-
-            if (!applicationDocSnapshot.exists()) {
-                toast.error("Application not found");
-                return;
-            }
-
-            const applicationId = applicationDocSnapshot.data().applicationId;
-
-            // File paths
             const frontPath = `${userId}_${applicationId}_front_${new Date().getTime()}`;
             const backPath = `${userId}_${applicationId}_back_${new Date().getTime()}`;
 
-            // Upload files
             const frontRef = ref(storage, frontPath);
             const backRef = ref(storage, backPath);
+
             const frontUploadTask = uploadBytesResumable(frontRef, uploadFiles.front);
             const backUploadTask = uploadBytesResumable(backRef, uploadFiles.back);
 
-            // Get download URLs
+            await Promise.all([frontUploadTask, backUploadTask]);
+
             const frontDownloadURL = await getDownloadURL(frontRef);
             const backDownloadURL = await getDownloadURL(backRef);
 
-            // Update Firestore  
-            await updateDoc(applicationDocRef, {
-                frontIdPhoto: frontDownloadURL,
-                backIdPhoto: backDownloadURL
-            });
-
-            router.push("/success");
-
+            router.push('/success');
         } catch (error) {
-            console.log(error);
-            toast.error("Upload failed, please try again");
+            console.error('Error during file upload:', error);
+            toast.error('Upload failed, please try again');
         } finally {
             setUploading(false);
         }

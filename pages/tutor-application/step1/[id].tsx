@@ -7,18 +7,18 @@ import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-import { auth } from '../../firebase'
-import Form2 from 'components/TutorApplication/Forms/Form2'
+import { auth } from '../../../firebase'
+import Form1 from 'components/TutorApplication/Forms/Form1'
 
 
 
-export default function Step2() {
+export default function Step1() {
     const router = useRouter()
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push(`/login?redirect=/tutor-application`)
+                router.push(`/login`)
             }
         })
         return () => unsubscribe()
@@ -57,7 +57,7 @@ export default function Step2() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <Form2/>
+                    <Form1 />
                 </div>
             </div>
         </div>

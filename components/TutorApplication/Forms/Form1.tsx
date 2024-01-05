@@ -139,17 +139,11 @@ export default function Form1() {
                 applicationStatus,
                 // Add other details specific to applications here
             });
-            // Get the auto-generated document ID
             const applicationId = applicationDocRef.id;
-
-            // Update the application document with the applicationId
-            await updateDoc(firestoreDoc(db, 'applications', applicationId), {
-                applicationId,
-            });
 
             toast.success('Personal info has been updated');
             toast.success('Application has been saved');
-            router.push('/tutor-application/step2');
+            router.push(`/tutor-application/step2/${applicationId}`);
         } catch (error) {
             console.error('Error updating personal info or saving application:', error.message);
             toast.error('Error updating. Please try again.');

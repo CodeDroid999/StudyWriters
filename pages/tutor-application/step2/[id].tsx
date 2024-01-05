@@ -7,12 +7,12 @@ import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-import { auth } from '../../firebase'
-import Form3 from 'components/TutorApplication/Forms/Form3'
+import { auth } from '../../../firebase'
+import Form2 from 'components/TutorApplication/Forms/Form2'
 
 
 
-export default function Step3() {
+export default function Step2() {
     const router = useRouter()
 
     useEffect(() => {
@@ -57,7 +57,7 @@ export default function Step3() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <Form3/>
+                    <Form2 />
                 </div>
             </div>
         </div>

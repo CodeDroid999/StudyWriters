@@ -1,4 +1,6 @@
+import UploadIDForm from 'components/TutorApplication/Forms/UploadIDForm'
 import ImageHeader from 'components/TutorApplication/ImageHeader'
+import { auth } from 'firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,9 +9,6 @@ import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-import { auth } from '../../firebase'
-import Form4 from 'components/TutorApplication/Forms/UploadIDForm'
-import UploadIDForm from 'components/TutorApplication/Forms/UploadIDForm'
 
 
 

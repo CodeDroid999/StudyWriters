@@ -8,6 +8,7 @@ import { UserAuth } from 'context/AuthContext';
 export default function Form2() {
   const { user } = UserAuth();
   const userId = user?.userId;
+  const { applicationId } = router.query;
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedRate, setSelectedRate] = useState('$10');
 
@@ -37,7 +38,7 @@ export default function Form2() {
           rate: selectedRate,
         });
         toast.success('Subject preferences and rates saved!');
-        router.push('/tutor-application/step3');
+        router.push(`/tutor-application/step3/${applicationId}`);
       } else {
         toast.error('User document not found');
       }
