@@ -61,7 +61,7 @@ export default function UploadIDForm() {
             const frontDownloadURL = await getDownloadURL(frontRef);
             const backDownloadURL = await getDownloadURL(backRef);
 
-            router.push('/success');
+            router.push('/tutor-application/thankyou');
         } catch (error) {
             console.error('Error during file upload:', error);
             toast.error('Upload failed, please try again');
