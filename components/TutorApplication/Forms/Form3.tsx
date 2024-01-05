@@ -33,7 +33,7 @@ export default function SkillAssessment() {
             // Perform additional validations if needed
 
             // If both conditions are met, navigate to the 'thankyou' page
-            router.push('/tutor-application/thankyou');
+            router.push('/tutor-application/upload-id');
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');
@@ -169,7 +169,6 @@ export default function SkillAssessment() {
                         type="file"
                         accept=".doc, .docx"
                         onChange={handleFileChange}
-                        style={{ display: 'none' }}
                     />
                     <p>Drag and drop a file here or click to select</p>
                     {file && (
