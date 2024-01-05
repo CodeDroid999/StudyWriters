@@ -8,7 +8,8 @@ import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
 import { auth } from '../../firebase'
-import Form4 from 'components/TutorApplication/Forms/Form4'
+import Form4 from 'components/TutorApplication/Forms/UploadIDForm'
+import UploadIDForm from 'components/TutorApplication/Forms/UploadIDForm'
 
 
 
