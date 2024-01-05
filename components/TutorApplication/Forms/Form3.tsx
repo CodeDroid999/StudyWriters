@@ -11,6 +11,22 @@ export default function SkillAssessment() {
     const [selectedTopic, setSelectedTopic] = useState('');
     const [uploadFile, setUploadFile] = useState(null);
     const [file, setFile] = useState(null);
+    const [problemStatement, setProblemStatement] = useState('');
+
+    const problemStatements = {
+        Business: "Write an essay discussing the impact of digital marketing on modern businesses.",
+        Law: "Discuss the role of precedent in the legal system and its importance in judicial decision-making.",
+        Programming: "Explain the concept of asynchronous programming and its advantages in web development.",
+        Engineering: "Design a sustainable solution for waste management in urban areas, considering environmental impact and resource efficiency.",
+        ForeignLanguages: "Write a short essay on the cultural significance of language preservation in indigenous communities.",
+        Maths: "Explore the applications of differential equations in modeling real-world phenomena, such as population growth or fluid dynamics.",
+        Writing: "Compose a persuasive argument discussing the impact of technology on modern communication and interpersonal relationships.",
+        Humanities: "Analyze a historical event and its implications on contemporary society, highlighting the interconnectedness of historical and cultural developments.",
+        Science: "Investigate the environmental factors contributing to climate change and propose evidence-based solutions for mitigation.",
+        HealthMedical: "Examine the ethical considerations in medical research involving human subjects, addressing issues of informed consent and privacy protection.",
+        // Add more subjects and corresponding problem statements as needed
+    };
+
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -44,7 +60,11 @@ export default function SkillAssessment() {
         const file = e.target.files[0];
         setUploadFile(file);
     };
-
+    const handleSubjectChange = (e) => {
+        const selectedSubject = e.target.value;
+        setSelectedTopic(selectedSubject);
+        setProblemStatement(problemStatements[selectedSubject]);
+    };
     return (
         <div className="bg-white p-3">
             <p className="mb-1 text-right text-xs font-bold uppercase text-orange-400 md:text-sm">
@@ -55,7 +75,7 @@ export default function SkillAssessment() {
                 <p className="text-3xl font-bold text-blue-950">
                     Short Questions 1/3: Writing Skills Assessment
                 </p>
-                <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm">
+                <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm sm:text-sm">
                     Strong written communication skills are essential to succeed as a
                     tutor on Studypool as you will be expected to explain difficult
                     academic questions in writing. To assess your writing skills, we ask
@@ -68,10 +88,10 @@ export default function SkillAssessment() {
                         What would you like to write about?
                     </label>
                 </div>
-                <div className="mb-4">
+                <div className="mb-1">
                     <select
                         value={selectedTopic}
-                        onChange={(e) => setSelectedTopic(e.target.value)}
+                        onChange={handleSubjectChange}
                         className="rounded border p-1"
                     >
                         <option value="">Select a subject</option>
@@ -80,17 +100,23 @@ export default function SkillAssessment() {
                         <option value="Programming">Programming</option>
                         <option value="Economics">Economics</option>
                         <option value="Engineering">Engineering</option>
-                        <option value="Foreign Languages">Foreign Languages</option>
+                        <option value="ForeignLanguages">Foreign Languages</option>
                         <option value="Maths">Maths</option>
                         <option value="Writing">Writing</option>
                         <option value="Humanities">Humanities</option>
                         <option value="Science">Science</option>
-                        <option value="Health & Medical">Health & Medical</option>
+                        <option value="HealthMedical">Health & Medical</option>
 
                         {/* Add more options as needed */}
                     </select>
                 </div>
-
+                {/* Display the problem statement based on the selected subject */}
+                {problemStatement && (
+                    <div className="mb-1">
+                        <p className="text-xl font-bold text-blue-950">Problem Statement:</p>
+                        <p>{problemStatement}</p>
+                    </div>
+                )}
                 <div className="mb-4 ">
                     <p className="text-xl font-bold text-blue-950">Requirements:</p>
                     <div className="p-2">

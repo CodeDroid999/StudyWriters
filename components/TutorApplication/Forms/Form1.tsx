@@ -14,11 +14,9 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 // Import the `doc` function from 'firebase/firestore'
 import { doc as firestoreDoc } from 'firebase/firestore';
-import countries from 'countries';
 
 
-import { auth, db } from '../../../firebase';
-import countryList from '../countryList';
+import { db } from '../../../firebase';
 import { getAuth } from 'firebase/auth';
 
 export const formatDate = (dateString) => {
@@ -42,7 +40,7 @@ export const formatDate = (dateString) => {
 export default function Form1() {
     const { user } = UserAuth();
     const router = useRouter();
-    const userId = router.query?.id;
+    const userId = user?.userId;
 
     // Define constants for state variables using useState
     const [firstName, setFirstName] = useState(user?.firstName || '');
@@ -129,8 +127,8 @@ export default function Form1() {
                 howHeard,
                 lastSchoolName,
                 major,
-                isSchoolTeacher,
-                hasAffiliation,
+                isSchoolTeacher: isSchoolTeacher === 'true', // Convert to boolean
+                hasAffiliation: hasAffiliation === 'true', // Convert to boolean
                 jobTitle,
                 employer,
                 startDate,
@@ -162,6 +160,7 @@ export default function Form1() {
 
 
 
+
     return (
         <div className="p-3 bg-white">
             <p className="mb-1 text-xs font-bold uppercase text-orange-400 text-right md:text-sm">
@@ -185,7 +184,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="e.g John"
+                            placeholder="e.g Albert"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -202,7 +201,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="e.g Doe"
+                            placeholder="e.g Einsten"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -221,9 +220,10 @@ export default function Form1() {
                         </label>
                         <select
                             id="countries"
-                            className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
+                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                  font-medium outline-none focus:border-blue-500`}
                         >
                             {countryList.map((country, index) => (
                                 <option key={index} value={country.value}>
@@ -232,7 +232,6 @@ export default function Form1() {
                             ))}
                         </select>
                     </div>
-                    {/* ... rest of your code */}
                 </div>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
@@ -244,7 +243,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="address"
+                            placeholder="Address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -261,7 +260,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="city"
+                            placeholder="City"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -278,7 +277,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="state"
+                            placeholder="State"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -297,7 +296,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder=""
+                            placeholder="e,g Social media, Video Advert, Fair, Friends"
                             value={howHeard}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
@@ -320,7 +319,7 @@ export default function Form1() {
                         </label>
                         <input
                             type="text"
-                            placeholder="Search your school"
+                            placeholder="Enter name of the last school you attended"
                             value={lastSchoolName}
                             onChange={(e) => setLastSchoolName(e.target.value)}
                             className={`rounded-lg border bg-gray-50 px-1 py-2
@@ -329,26 +328,26 @@ export default function Form1() {
 
                     </div>
                 </div>
-                <div className="row ">
-                    <div className="flex flex-col col-md-4  ">
+                <div className="row">
+                    <div className="flex flex-col col-md-4">
                         <label
-                            htmlFor="firstName"
+                            htmlFor="major"
                             className="mb-2 text-sm font-medium text-gray-700"
                         >
-                            What is/was your field  of study?
+                            What is/was your field of study?
                         </label>
                         <input
                             type="text"
-                            placeholder="major"
+                            id="major"
+                            placeholder="Enter your major"
                             onChange={(e) => setMajor(e.target.value)}
-                            value="major"
+                            value={major} // Bind the input value to the 'major' state
                             className={`rounded-lg border bg-gray-50 px-1 py-2
-                  font-medium outline-none focus:border-blue-500`}
+          font-medium outline-none focus:border-blue-500`}
                         />
-
                     </div>
-
                 </div>
+
                 <p className="text-3xl font-bold text-blue-950">
                     Academic Experience
                 </p>
@@ -360,34 +359,59 @@ export default function Form1() {
                         <div className="question col-md-8">
                             Have you ever been a school teacher?
                         </div>
-                        <div className="flex items-right space-x-4">
-                            <input
-                                type="text"
-                                placeholder="Yes or No"
-                                value={isSchoolTeacher}
-                                onChange={(e) => setIsSchoolTeacher(e.target.value)}
-                                className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium outline-none focus:border-blue-500"
-                            />
+                        <div className="flex items-right space-x-4 justify-items-center mt-1">
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="true"
+                                    checked={isSchoolTeacher === "true"}
+                                    onChange={() => setIsSchoolTeacher("true")}
+                                    className="mr-2"
+                                />
+                                Yes
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="false"
+                                    checked={isSchoolTeacher === "false"}
+                                    onChange={() => setIsSchoolTeacher("false")}
+                                    className="mr-2"
+                                />
+                                No
+                            </label>
                         </div>
-
                     </div>
 
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">
                             Do you have other professional affiliation with an academic institution?
                         </div>
-                        <div className="flex items-right space-x-4">
-                            <input
-                                type="text"
-                                placeholder="Yes or No"
-                                value={hasAffiliation}
-                                onChange={(e) => setHasAffiliation(e.target.value)}
-                                className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium outline-none focus:border-blue-500"
-                            />
+                        <div className="flex items-right space-x-4 mt-1">
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="true"
+                                    checked={hasAffiliation === "true"}
+                                    onChange={() => setHasAffiliation("true")}
+                                    className="mr-2"
+                                />
+                                Yes
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="false"
+                                    checked={hasAffiliation === "false"}
+                                    onChange={() => setHasAffiliation("false")}
+                                    className="mr-2"
+                                />
+                                No
+                            </label>
                         </div>
-
                     </div>
                 </div>
+
 
 
                 <p className="text-3xl font-bold text-blue-950">

@@ -62,7 +62,7 @@ export default function Form2() {
           </label>
           <div className="flex flex-wrap gap-4 mt-2">
             {['Business', 'Computer Science', 'Economics', 'Engineering', 'Foreign Languages', 'Health & Medical', 'Humanities', 'Law', 'Mathematics', 'Programming', 'Science', 'Writing', 'Other'].map(subject => (
-              <div key={subject} className="flex items-center space-x-2">
+              <div key={subject} className="flex items-center justify-items-center align-items-center space-x-2">
                 <input
                   type="checkbox"
                   id={subject}
@@ -75,7 +75,7 @@ export default function Form2() {
                     }
                   }}
                 />
-                <label htmlFor={subject}>{subject}</label>
+                <label className="mt-2" htmlFor={subject}>{subject}</label>
               </div>
             ))}
           </div>
