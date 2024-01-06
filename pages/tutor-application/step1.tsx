@@ -25,7 +25,7 @@ export default function Step1() {
     }, [router])
 
     const handleExit = () => {
-        router.push('/')
+        router.push('/dashboard')
     }
     return (
         <div>
@@ -47,7 +47,7 @@ export default function Step1() {
                 </div>
                 <div className="flex space-x-2">
                     <div className="px-2 py-1 border border-gray-900 rounded-md shadow-md">
-                        Switch to Student Mode
+                        <Link href={'/setup-profile'}>        Switch to Student Mode</Link>
                     </div>
                     <div className="cursor-pointer " onClick={handleExit}>
                         <TfiClose size={32} className="font-bold shadow-md p-1 text-blue-900" />
