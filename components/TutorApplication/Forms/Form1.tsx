@@ -137,6 +137,7 @@ export default function Form1() {
                 createdAt: serverTimestamp(),
                 read: false,
                 applicationStatus,
+                idVerificationStatus: false,
                 // Add other details specific to applications here
             });
             const applicationId = applicationDocRef.id;

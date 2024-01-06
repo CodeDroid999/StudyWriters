@@ -256,7 +256,7 @@ function Navbar() {
                       id="customfontsize"
                     >
                       <Image
-                        src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                        src="https://i.postimg.cc/Z5RLK0WK/notification-bell.png"
                         alt="assignment" width="200" height="200"
                         className="h-[25px] w-[100%]"
                         id="customfontsize"
@@ -270,9 +270,9 @@ function Navbar() {
                       className="text-gray-700 hover:text-green-500"
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
-                    >
+                    >Inbox
                       <Image
-                        src="https://i.postimg.cc/6QR6f94m/question.png"
+                        src="https://i.postimg.cc/0NGGVS3n/messages-icon.png"
                         alt="assignment" width="200" height="200"
                         className="h-[25px] w-[100%]"
                         id="customfontsize"
@@ -288,7 +288,7 @@ function Navbar() {
                       id="customfontsize"
                     >
                       <Image
-                        src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                        src="https://i.postimg.cc/25LMy016/alert-icon-removebg-preview.png"
                         alt="assignment" width="200" height="200"
                         className="h-[25px] w-[100%]"
                         id="customfontsize"
@@ -408,7 +408,7 @@ function Navbar() {
                   className="text-gray-700 hover:text-green-500"
                 >
                   <Image
-                    src="https://i.postimg.cc/cJc2SjpJ/explain.png"
+                    src="https://i.postimg.cc/Z5RLK0WK/notification-bell.png"
                     alt="assignment" width="200" height="200"
                     className="h-[25px] w-[100%]"
                     id="customfontsize"
@@ -422,7 +422,7 @@ function Navbar() {
                   className="text-gray-700 hover:text-green-500"
                 >
                   <Image
-                    src="https://i.postimg.cc/6QR6f94m/question.png"
+                    src="https://i.postimg.cc/0NGGVS3n/messages-icon.png"
                     alt="assignment" width="200" height="200"
                     className="h-[25px] w-[100%]"
                     id="customfontsize"
@@ -433,7 +433,7 @@ function Navbar() {
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
                   <Image
-                    src="https://i.postimg.cc/9FS9QQd4/warning-2x.png"
+                    src="https://i.postimg.cc/25LMy016/alert-icon-removebg-preview.png"
                     alt="assignment" width="200" height="200"
                     className="h-[25px] w-[100%]"
                     id="customfontsize"

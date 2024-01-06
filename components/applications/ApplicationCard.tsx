@@ -116,7 +116,7 @@ export default function ApplicationCard() {
                 userId: user.uid,
                 createdAt: serverTimestamp(),
                 read: false,
-                identityVerification: false,
+                idVerificationStatus: false,
                 // Add other details specific to applications here
             });
 
