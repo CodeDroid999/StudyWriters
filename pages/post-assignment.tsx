@@ -37,8 +37,8 @@ export default function PostAssignment() {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-3">
       <header className="flex flex-row  justify-end bg-white  py-2 ">
-        <div className="cursor-pointer " onClick={handleExit}>
-          <TfiClose size={22} className="font-semibold text-blue-800" />
+        <div className="cursor-pointer bg-red-400 flex rounded shadow p-2" onClick={handleExit}>
+          <span className="text-gray-100 px-2">Cancel</span><TfiClose size={18} className="mt-1 font-semibold text-gray-100" />
         </div>
       </header>
       <div className="mx-auto mt-10 max-w-[600px]">
