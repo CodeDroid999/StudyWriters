@@ -37,6 +37,8 @@ import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 import Footer from 'components/layout/Footer'
 import PostAssignment from 'components/Homepage/PostAssignment'
+import TasksTable from 'components/BrowseTasks/TasksTable'
+import AssignmentTable from 'components/BrowseAssignmentsTable/AssignmentTable'
 
 const Home: React.FC = (props: any) => {
   const { posts, settings, draftMode } = props
@@ -80,28 +82,13 @@ const Home: React.FC = (props: any) => {
         )}
 
         {userRole === 'Tutor' && (
-          <div className="flex mt-20 ">
-            <div className="col-md-2 bg-gray-100"></div>
-            <div className="col-md-8 px-0 mx-0 bg-gray-100" >
-              <p className=" text-blue-400 text-center w-100">Posted Assignments</p>
-              <div className="shadow-inner" style={{ height: '80vh', overflowY: 'auto' }}>
-                {assignments.map((assignment: any) => (
-                  <AssignmentCard
-                    key={assignment.id}
-                    id={assignment.id}
-                    title={assignment.title}
-                    date={assignment.dueDate}
-                    status={assignment.status}
-                    price={assignment.budget}
-                    offers={assignment.offers}
-                    profilePicture={assignment.studentDetails.profilePicture}
-                    studentId={assignment.studentDetails.userId}
-                  />
-                ))}
+          <>
+            <div className="mt-20">
+              <div className="container pb-3">
+                <AssignmentTable />
               </div>
             </div>
-            <div className="col-md-2 bg-gray-100"></div>
-          </div >
+          </>
 
         )}
       </div>
