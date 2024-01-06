@@ -37,7 +37,7 @@ export default function Home(props: PageProps) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/home');
+        router.push(redirect || '/dashboard');
         toast.success('Logged In');
       }
     });
