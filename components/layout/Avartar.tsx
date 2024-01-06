@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import profile from 'public/profile.jpeg'
+import router from 'next/router'
 
 export default function Avartar() {
   const { user, logOut } = UserAuth()
@@ -21,6 +22,10 @@ export default function Avartar() {
   const toggleMainDropdown = () => {
     setIsMainDropdownOpen(!isMainDropdownOpen)
   }
+  const handleSwitchMode = () => {
+    router.push('/setup-profile')
+  }
+
 
   return (
     <div className=" relative inline-flex justify-end ">
@@ -143,7 +148,7 @@ export default function Avartar() {
             Log out
           </div>
           <div
-            onClick={handleLogOut}
+            onClick={handleSwitchMode}
             className="flex cursor-pointer items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-gray-100  border w-100 "
           >
             Swap to Student Mode
