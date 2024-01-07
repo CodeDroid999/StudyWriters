@@ -15,7 +15,7 @@ import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/
 
 export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
   const [description, setDescription] = useState('')
-  const [AssignmentFilePath] = useState('')
+  const [AssignmentFilePath, setAssignmentFilePath] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
   const { user } = UserAuth();
   const userId = user?.userId;
@@ -70,21 +70,22 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
   }
 
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
   const handleDrop = (e, side) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
     setFiles((prevFiles) => ({ ...prevFiles, [side]: droppedFile }));
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
+    setAssignmentFilePath(`assignmentFiles/${userId}_${new Date().getTime()}`);
   };
 
   const handleFileChange = (e, side) => {
     const file = e.target.files[0];
     setUploadFiles((prevUploadFiles) => ({ ...prevUploadFiles, [side]: file }));
+    setAssignmentFilePath(`assignmentFiles/${userId}_${new Date().getTime()}`);
   };
-
 
   return (
     <div className="w-full">
