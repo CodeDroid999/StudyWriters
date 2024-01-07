@@ -10,7 +10,6 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import AssignmentCounter from 'components/BrowseAssignmentsTable/AssignmentCounter';
 
@@ -66,7 +65,7 @@ const BrowseAssignments: React.FC = (props: any) => {
                     <td className="text-center">{assignment.dueDate}</td>
                     <td className="text-center">{assignment.status}</td>
                     <td className="text-center">{assignment.budget}</td>
-                    <td className="text-center">{assignment.offers}</td>
+                    <td className="text-center">{assignment.offers.length}</td>
                     <td className="text-center">{assignment.studentDetails.profilePicture}</td>
                     <td className="text-center">{assignment.studentDetails.userId}</td>
                   </tr>
@@ -76,7 +75,6 @@ const BrowseAssignments: React.FC = (props: any) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
@@ -84,68 +82,46 @@ const BrowseAssignments: React.FC = (props: any) => {
 export default BrowseAssignments;
 
 export async function getServerSideProps() {
-  try {
-    const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'));
-    const querySnapshot = await getDocs(q);
+  const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'))
 
-    const assignments = await Promise.all(
-      querySnapshot.docs.map(async (doc) => {
-        const data = doc.data();
-        data.createdAt = formatDate(data.createdAt.toDate());
-        const id = doc.id;
+  const querySnapshot = await getDocs(q)
 
-        const userQuery = query(collection(db, 'users'), where('userId', '==', data.student.userId));
-        const usersSnapshot = await getDocs(userQuery);
+  const assignments = await Promise.all(
+    querySnapshot.docs.map(async (doc) => {
+      const data = doc.data()
+      data.createdAt = formatDate(data.createdAt.toDate())
+      const id = doc.id
 
-        const studentDoc = usersSnapshot.docs[0];
-        const studentData = studentDoc.data();
-        studentData.createdAt = formatDate(studentData.createdAt.toDate());
+      const q = query(
+        collection(db, 'users'),
+        where('userId', '==', data.student.userId)
+      )
 
-        const offersCollectionRef = collection(db, 'assignments', id, 'offers');
-        const offersQuerySnapshot = await getDocs(offersCollectionRef);
+      const usersSnapshot = await getDocs(q)
 
-        const offers = await Promise.all(
-          offersQuerySnapshot.docs.map(async (offerDoc) => {
-            const offerData = offerDoc.data();
-            offerData.createdAt = formatDate(offerData.createdAt.toDate());
+      const studentDoc = usersSnapshot.docs[0]
+      const studentData = studentDoc.data()
+      studentData.createdAt = formatDate(studentData.createdAt.toDate())
 
-            const customerQuery = query(collection(db, 'users'), where('userId', '==', offerData.userId));
-            const customerSnapshot = await getDocs(customerQuery);
+      const offersCollectionRef = collection(db, 'assignments', id, 'offers')
+      const offersQuerySnapshot = await getDocs(offersCollectionRef)
 
-            const customerDoc = customerSnapshot.docs[0];
-            const customerData = customerDoc.data();
-            customerData.createdAt = formatDate(customerData.createdAt.toDate());
-
-            return {
-              offerId: offerDoc.id,
-              ...offerData,
-              customer: customerData,
-            };
-          })
-        );
-
-        // Attach offers array to each assignment
-        const assignmentWithOffers = {
-          id,
-          ...data,
-          offers,
-          studentDetails: studentData,
+      const offers = offersQuerySnapshot.docs.map((offerDoc) => {
+        const offerData = offerDoc.data()
+        offerData.createdAt = formatDate(offerData.createdAt.toDate())
+        return {
+          offerId: offerDoc.id,
+          ...offerData,
         };
+      });
 
-        return assignmentWithOffers;
-      })
-    );
-    return {
-      props: {
-        assignments,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return {
-      props: {
-        assignments: [],
-      },
-    };
+      return { id, ...data, offers, studentDetails: studentData }
+    })
+  )
+
+  return {
+    props: {
+      assignments,
+    },
   }
 }
