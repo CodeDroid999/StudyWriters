@@ -1,9 +1,7 @@
 import HeroArea from 'components/Become-a-tutor/HeroSection'
 import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import HowItWorksSection from 'components/Become-a-tutor/HowITWorksSection'
-import PostYourAssignment from 'components/Become-a-tutor/PostYourAssignment'
 import StatsCounter from 'components/Become-a-tutor/StatsCounter'
-import AssignmentTable from 'components/BrowseAssignments/AssignmentTable'
 import TasksTable from 'components/BrowseTasks/TasksTable'
 import Footer from 'components/layout/Footer'
 import { readToken } from 'lib/sanity.api'
@@ -11,8 +9,9 @@ import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import type { SharedPageProps } from 'pages/_app'
-import React, { useState } from 'react'
+import React from 'react'
 import PopularCountries from 'components/Become-a-tutor/PopularCountriesSection'
+import Features from 'components/home/Features'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -53,7 +52,7 @@ export default function BecomeATutor(props: PageProps) {
       </Head>
       <HeroArea />
       <StatsCounter />
-      <PostYourAssignment />
+      <Features />
       <div className="container pb-3">
         <TasksTable />
       </div>

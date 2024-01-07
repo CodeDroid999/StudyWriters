@@ -38,7 +38,7 @@ const TasksTable = () => {
 
   return (
     <div className='border border-blue-800 rounded-xl  pb-3'>
-      <p className="bg-blue-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
+      <p className="bg-green-500 w-full p-3 text-white">Make Money by Helping with Homework</p>
       <div className="flex flex-col flex-grow w-full bg-white p-2">
         <table className="w-full">
           <thead>
@@ -52,17 +52,17 @@ const TasksTable = () => {
           <tbody className="pt-2 pb-2">
             {currentRows.map((row, index) => (
               <tr key={row.id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
-              <td className="pl-2 pt-1 pb-1">{row.summary}</td>
-              <td className="text-center">{row.price}</td>
-              <td className="text-center">{row.dueDate}</td>
-              <td className="text-center">{row.bids}</td>
+                <td className="pl-2 pt-1 pb-1">{row.summary}</td>
+                <td className="text-center">{row.price}</td>
+                <td className="text-center">{row.dueDate}</td>
+                <td className="text-center">{row.bids}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="flex w-full flex-col justify-center">
           <div className="assignment-counter text-blue-900">
-          <TaskCounter assignments={filteredData} />
+            <TaskCounter assignments={filteredData} />
           </div>
           <div className="pagination space-x-2 flex justify-center">
             {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, index) => (
