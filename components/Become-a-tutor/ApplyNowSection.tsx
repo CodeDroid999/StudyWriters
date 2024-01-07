@@ -5,7 +5,7 @@ import HeroBackground from 'public/bg/Become-a-Tutor-cover.jpg';
 
 const AppplyNowHero = () => {
   return (
-    <div className="relative h-[80vh]">
+    <div className="relative h-[60vh]">
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image

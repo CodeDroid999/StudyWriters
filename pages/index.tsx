@@ -20,6 +20,7 @@ import PostYourAssignment from 'components/Homepage/PostYourAssignment'
 import ReferFriends from 'components/Homepage/ReferFriendsSection.tsx'
 import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import AppplyNowHero from 'components/Become-a-tutor/ApplyNowSection'
+import TasksTable from 'components/BrowseTasks/TasksTable'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -78,6 +79,9 @@ export default function Home(props: PageProps) {
       <BeYourOwnBoss />
       <AppplyNowHero />
       <HighestEarners />
+      <div className="container pb-3">
+        <TasksTable />
+      </div>
       <FAQAccordion />
       <Footer />
     </>
