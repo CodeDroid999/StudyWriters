@@ -154,7 +154,7 @@ export default function TaskDetails(props: any) {
               <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-100 p-3 ">
                 <div className="flex flex-col items-center justify-center pb-4">
                   <h1 className="text-xs font-bold uppercase text-green-950">
-                    Task Budget
+                    Order Budget
                   </h1>
                   <p className="text-5xl font-bold text-green-950">
                     ${assignmentData.budget}

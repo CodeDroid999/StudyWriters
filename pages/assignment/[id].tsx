@@ -131,9 +131,11 @@ export default function TaskDetails(props: any) {
                   <h4 className="text-sm font-bold uppercase text-green-950">
                     Posted
                   </h4>
+                  {/**
                   <p className="text-lg font-medium text-white">
                     {student.firstName} {student.lastName}
                   </p>
+  **/}
                   <p className="text-sm font-medium text-green-950">
                     On {assignmentData.createdAt}
                   </p>
@@ -154,7 +156,7 @@ export default function TaskDetails(props: any) {
               <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-100 p-3 ">
                 <div className="flex flex-col items-center justify-center pb-4">
                   <h1 className="text-xs font-bold uppercase text-green-950">
-                    Task Budget
+                    Assignment Budget
                   </h1>
                   <p className="text-5xl font-bold text-green-950">
                     ${assignmentData.budget}
