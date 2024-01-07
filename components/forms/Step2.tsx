@@ -15,49 +15,59 @@ import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/
 
 export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
   const [description, setDescription] = useState('')
+  const [AssignmentFilePath] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
-
-  const setData = useFormStore((state) => state.setStep2Data)
-
-  const handleNext = (event: any) => {
-    event.preventDefault()
-    let hasError = false
-    if (!description) {
-      setDescriptionError('This field is required')
-      hasError = true
-    } else if (description.length < 25) {
-      setDescriptionError('Must be at least 25 characters')
-      hasError = true
-    } else {
-      setDescriptionError('')
-    }
-
-    if (hasError) {
-      return
-    }
-    setData(description)
-    handleNextStep()
-  }
-
-  const handlePrevious = () => {
-    handlePreviousStep()
-  }
-
-
-
-
   const { user } = UserAuth();
-  const router = useRouter();
   const userId = user?.userId;
-  const { applicationId } = router.query;
-
-
   const [uploadFiles, setUploadFiles] = useState({ AssignmentFile: null, back: null });
   const [uploading, setUploading] = useState(false);
   const [files, setFiles] = useState({ AssignmentFile: null, back: null });
 
+  const setData = useFormStore((state) => state.setStep2Data)
 
+  const handleNext = async (event: any) => {
+    event.preventDefault();
+    let hasError = false;
+    setUploading(true);
 
+    try {
+      const storage = getStorage();
+      const AssignmentFilePath = `assignmentFiles/${userId}_${new Date().getTime()}`;
+      const AssignmentFileRef = ref(storage, AssignmentFilePath);
+
+      // Upload the file directly without using Promise.all
+      await uploadBytesResumable(AssignmentFileRef, uploadFiles.AssignmentFile);
+
+      const AssignmentFileDownloadURL = await getDownloadURL(AssignmentFileRef);
+      toast.success('File uploaded successfully.');
+    } catch (error) {
+      console.error('Error during file upload:', error);
+      toast.error('Upload failed, please try again.');
+    } finally {
+      setUploading(false);
+    }
+
+    if (!description) {
+      setDescriptionError('This field is required');
+      hasError = true;
+    } else if (description.length < 25) {
+      setDescriptionError('Must be at least 25 characters');
+      hasError = true;
+    } else {
+      setDescriptionError('');
+    }
+
+    if (hasError) {
+      return;
+    }
+
+    setData(description, AssignmentFilePath);
+    handleNextStep();
+  };
+
+  const handlePrevious = () => {
+    handlePreviousStep()
+  }
 
 
   const handleDrop = (e, side) => {
@@ -70,37 +80,10 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
     e.preventDefault();
   };
 
-  const handleSave = async () => {
-    setUploading(true);
-    try {
-      const storage = getStorage();
-      const AssignmentFilePath = `${userId}_${applicationId}_AssignmentFile_${new Date().getTime()}`;
-
-      const AssignmentFileRef = ref(storage, AssignmentFilePath);
-
-      const AssignmentFileUploadTask = uploadBytesResumable(AssignmentFileRef, uploadFiles.AssignmentFile);
-
-      await Promise.all([AssignmentFileUploadTask]);
-
-      const AssignmentFileDownloadURL = await getDownloadURL(AssignmentFileRef);
-      toast.success('File uploaded successfully.')
-
-    } catch (error) {
-      console.error('Error during file upload:', error);
-      toast.error('Upload failed, please try again');
-    } finally {
-      setUploading(false);
-    }
-  };
-
   const handleFileChange = (e, side) => {
     const file = e.target.files[0];
     setUploadFiles((prevUploadFiles) => ({ ...prevUploadFiles, [side]: file }));
   };
-
-
-
-
 
 
   return (

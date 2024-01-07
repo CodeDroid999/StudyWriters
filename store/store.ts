@@ -8,6 +8,7 @@ type Step1 = {
 
 type Step2 = {
   description: string
+  assignmentFilePath: string
 }
 
 interface Store {
@@ -26,6 +27,7 @@ const useFormStore = create<Store>()(
       },
       step2: {
         description: '',
+        assignmentFilePath: '',
       },
       step3: {
         budget: '',
@@ -56,7 +58,7 @@ const useFormStore = create<Store>()(
           },
           step2: {
             description: '',
-          },
+            assignmentFilePath: '',
         }),
     }),
     {
