@@ -12,6 +12,7 @@ import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
 import AssignmentCard from 'components/browse-tasks/AssignmentCard';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
+import AssignmentCounter from 'components/BrowseAssignmentsTable/AssignmentCounter';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
@@ -42,28 +43,40 @@ const BrowseAssignments: React.FC = (props: any) => {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <Navbar />
-      <div className="flex mt-20 ">
-        <div className="col-md-7 px-0 mx-0 bg-gray-100" >
-          <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
-          <div style={{ height: '80vh', overflowY: 'auto' }}>
-            {assignments.map((assignment: any) => (
-              <AssignmentCard
-                key={assignment.id}
-                id={assignment.id}
-                title={assignment.title}
-                date={assignment.dueDate}
-                status={assignment.status}
-                price={assignment.budget}
-                offers={assignment.offers}
-                profilePicture={assignment.studentDetails.profilePicture}
-                studentId={assignment.studentDetails.userId}
-              />
-            ))}
-          </div>
-          <div className="col-md-5 hidden md:block bg-gray-100">
+      <div className="mt-20 ">
+        <div className="border border-green-800 rounded-xl pb-3">
+          <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
+          <div className="flex flex-col flex-grow w-full bg-white p-2">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                  <th>Offers</th>
+                  <th>Profile Picture</th>
+                  <th>Student ID</th>
+                </tr>
+              </thead>
+              <tbody className="pt-2 pb-2">
+                {assignments.map((assignment, index) => (
+                  <tr key={assignment.id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
+                    <td className="pl-2 pt-1">{assignment.title}</td>
+                    <td className="text-center">{assignment.dueDate}</td>
+                    <td className="text-center">{assignment.status}</td>
+                    <td className="text-center">{assignment.budget}</td>
+                    <td className="text-center">{assignment.offers}</td>
+                    <td className="text-center">{assignment.studentDetails.profilePicture}</td>
+                    <td className="text-center">{assignment.studentDetails.userId}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </div >
+      </div>
+
     </>
   );
 };
@@ -111,7 +124,15 @@ export async function getServerSideProps() {
           })
         );
 
-        return { id, ...data, offers, studentDetails: studentData };
+        // Attach offers array to each assignment
+        const assignmentWithOffers = {
+          id,
+          ...data,
+          offers,
+          studentDetails: studentData,
+        };
+
+        return assignmentWithOffers;
       })
     );
     return {

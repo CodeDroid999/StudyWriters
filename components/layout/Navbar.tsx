@@ -270,7 +270,7 @@ function Navbar() {
                       className="text-gray-700 hover:text-green-500"
                       style={{ whiteSpace: 'nowrap' }}
                       id="customfontsize"
-                    >Inbox
+                    >
                       <Image
                         src="https://i.postimg.cc/0NGGVS3n/messages-icon.png"
                         alt="assignment" width="200" height="200"
