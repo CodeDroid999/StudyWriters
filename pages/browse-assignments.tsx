@@ -54,8 +54,6 @@ const BrowseAssignments: React.FC = (props: any) => {
                   <th>Status</th>
                   <th>Price</th>
                   <th>Offers</th>
-                  <th>Profile Picture</th>
-                  <th>Student ID</th>
                 </tr>
               </thead>
               <tbody className="pt-2 pb-2">
@@ -66,8 +64,6 @@ const BrowseAssignments: React.FC = (props: any) => {
                     <td className="text-center">{assignment.status}</td>
                     <td className="text-center">{assignment.budget}</td>
                     <td className="text-center">{assignment.offers.length}</td>
-                    <td className="text-center">{assignment.studentDetails.profilePicture}</td>
-                    <td className="text-center">{assignment.studentDetails.userId}</td>
                   </tr>
                 ))}
               </tbody>
