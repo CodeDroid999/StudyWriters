@@ -12,9 +12,14 @@ import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
 import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import AssignmentCounter from 'components/BrowseAssignmentsTable/AssignmentCounter';
+import Link from 'next/link';
+import router from 'next/router';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
+  const handleNavigation = (assignmentId: string) => {
+    router.push(`/assignment/${assignmentId}`);
+  };
 
   return (
     <>
@@ -49,28 +54,34 @@ const BrowseAssignments: React.FC = (props: any) => {
             <table className="w-full">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Due Date</th>
-                  <th>Status</th>
-                  <th>Price</th>
-                  <th>Offers</th>
+                  <th className="">Title</th>
+                  <th className="text-center">Due Date</th>
+                  <th className="text-center">Status</th>
+                  <th className="text-center">Price</th>
+                  <th className="text-center">Offers</th>
                 </tr>
               </thead>
               <tbody className="pt-2 pb-2">
                 {assignments.map((assignment, index) => (
-                  <tr key={assignment.id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
+                  <tr
+                    key={assignment.id}
+                    className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
+                    onClick={() => handleNavigation(assignment.id)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <td className="pl-2 pt-1">{assignment.title}</td>
                     <td className="text-center">{assignment.dueDate}</td>
                     <td className="text-center">{assignment.status}</td>
                     <td className="text-center">{assignment.budget}</td>
                     <td className="text-center">{assignment.offers.length}</td>
+
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };
