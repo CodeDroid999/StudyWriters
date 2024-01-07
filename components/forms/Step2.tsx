@@ -61,7 +61,7 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
       return;
     }
 
-    setData(description, AssignmentFilePath);
+    setData(description);
     handleNextStep();
   };
 

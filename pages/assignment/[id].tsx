@@ -129,9 +129,9 @@ export default function TaskDetails(props: any) {
               <div className="mt-4 flex flex-col gap-3">
                 <div className="flex flex-col">
                   <h4 className="text-sm font-bold uppercase text-green-950">
-                    Posted By
+                    Posted
                   </h4>
-                  <p className="text-lg font-medium text-green-950">
+                  <p className="text-lg font-medium text-white">
                     {student.firstName} {student.lastName}
                   </p>
                   <p className="text-sm font-medium text-green-950">

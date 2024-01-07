@@ -25,7 +25,7 @@ export default function Step3({ handlePreviousStep }: Props) {
   const step2 = useFormStore((state) => state.step2)
 
   const { title, dueDate } = step1
-  const { description, assignmentFilePath } = step2
+  const { description } = step2
   const userId = user.userId
 
   const router = useRouter()
@@ -70,7 +70,6 @@ export default function Step3({ handlePreviousStep }: Props) {
         finalPrice: '',
         proposal: '',
       },
-      assignmentFilePath: assignmentFilePath,
       paymentRequested: false,
       paymentReleased: false,
       studentReview: false,
