@@ -113,7 +113,7 @@ export default function TaskDetails(props: any) {
         <div className="w-full">
           {/**Status */}
           <div className="flex max-w-[130px] justify-center rounded-full bg-green-700  p-1  text-xs font-bold uppercase text-green-950">
-            {assignmentData.status}
+            Bidding: {assignmentData.status}
           </div>
 
           <div className="mt-3 flex flex-col md:flex-row md:justify-between">
