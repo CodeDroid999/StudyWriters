@@ -59,6 +59,7 @@ const useFormStore = create<Store>()(
           step2: {
             description: '',
             assignmentFilePath: '',
+          },
         }),
     }),
     {
