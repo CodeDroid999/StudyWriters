@@ -33,6 +33,7 @@ import TaskReviews from 'components/reviews/TaskReviews'
 import Link from 'next/link'
 import UpdateTask from 'components/tasks/UpdateTask'
 import CancelTask from 'components/tasks/CancelTask'
+import TaskerRating from 'components/reviews/TaskerRating'
 
 export default function TaskDetails(props: any) {
   const [offers, setOffers] = useState([])
