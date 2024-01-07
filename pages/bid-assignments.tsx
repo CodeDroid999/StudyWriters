@@ -10,10 +10,13 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { formatDate } from './profile/[id]';
-import AssignmentCard from 'components/bid/AssignmentCard';
+import router from 'next/router';
 
 const BidAssignments: React.FC = (props: any) => {
   const { assignments } = props;
+  const handleNavigation = (assignmentId: string) => {
+    router.push(`/order/${assignmentId}`);
+  };
 
   return (
     <>
@@ -41,30 +44,39 @@ const BidAssignments: React.FC = (props: any) => {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <Navbar />
-      <div className="flex mt-20 ">
-        <div className="col-md-2 bg-gray-100 hidden md:flex"></div>
-        <div className="col-md-8 px-0 mx-0 bg-gray-100" >
-          <p className="shadow text-blue-400 text-center w-100">Posted Assignments</p>
-          <div style={{ height: '80vh', overflowY: 'auto' }}>
-            {assignments.map((assignment: any) => (
-              <AssignmentCard
-                key={assignment.id}
-                id={assignment.id}
-                title={assignment.title}
-                date={assignment.dueDate}
-                status={assignment.status}
-                price={assignment.budget}
-                offers={assignment.offers}
-                profilePicture={assignment.studentDetails.profilePicture}
-                studentId={assignment.studentDetails.userId}
-              />
-            ))}
+      <div className="mt-20 ">
+        <div className="border border-green-800 rounded-xl pb-3">
+          <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
+          <div className="flex flex-col flex-grow w-full bg-white p-2">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="">Title</th>
+                  <th className="text-center">Due Date</th>
+                  <th className="text-center">Status</th>
+                  <th className="text-center">Price</th>
+                  <th className="text-center">Offers</th>
+                </tr>
+              </thead>
+              <tbody className="pt-2 pb-2">
+                {assignments.map((assignment, index) => (
+                  <tr
+                    key={assignment.id}
+                    className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
+                    onClick={() => handleNavigation(assignment.id)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <td className="pl-2 pt-1">{assignment.title}</td>
+                    <td className="text-center">{assignment.dueDate}</td>
+                    <td className="text-center">{assignment.status}</td>
+                    <td className="text-center">{assignment.budget}</td>
+                    <td className="text-center">{assignment.offers.length}</td>
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="col-md-2 bg-gray-100 hidden md:flex"></div>
-
-        </div>
-
-        <div className="col-md-5 hidden md:block bg-gray-100">
         </div>
       </div >
     </>
@@ -74,61 +86,46 @@ const BidAssignments: React.FC = (props: any) => {
 export default BidAssignments;
 
 export async function getServerSideProps() {
-  try {
-    const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'));
-    const querySnapshot = await getDocs(q);
+  const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'))
 
-    const assignments = await Promise.all(
-      querySnapshot.docs.map(async (doc) => {
-        const data = doc.data();
-        data.createdAt = formatDate(data.createdAt.toDate());
-        const id = doc.id;
+  const querySnapshot = await getDocs(q)
 
-        const userQuery = query(collection(db, 'users'), where('userId', '==', data.student.userId));
-        const usersSnapshot = await getDocs(userQuery);
+  const assignments = await Promise.all(
+    querySnapshot.docs.map(async (doc) => {
+      const data = doc.data()
+      data.createdAt = formatDate(data.createdAt.toDate())
+      const id = doc.id
 
-        const studentDoc = usersSnapshot.docs[0];
-        const studentData = studentDoc.data();
-        studentData.createdAt = formatDate(studentData.createdAt.toDate());
+      const q = query(
+        collection(db, 'users'),
+        where('userId', '==', data.student.userId)
+      )
 
-        const offersCollectionRef = collection(db, 'assignments', id, 'offers');
-        const offersQuerySnapshot = await getDocs(offersCollectionRef);
+      const usersSnapshot = await getDocs(q)
 
-        const offers = await Promise.all(
-          offersQuerySnapshot.docs.map(async (offerDoc) => {
-            const offerData = offerDoc.data();
-            offerData.createdAt = formatDate(offerData.createdAt.toDate());
+      const studentDoc = usersSnapshot.docs[0]
+      const studentData = studentDoc.data()
+      studentData.createdAt = formatDate(studentData.createdAt.toDate())
 
-            const customerQuery = query(collection(db, 'users'), where('userId', '==', offerData.userId));
-            const customerSnapshot = await getDocs(customerQuery);
+      const offersCollectionRef = collection(db, 'assignments', id, 'offers')
+      const offersQuerySnapshot = await getDocs(offersCollectionRef)
 
-            const customerDoc = customerSnapshot.docs[0];
-            const customerData = customerDoc.data();
-            customerData.createdAt = formatDate(customerData.createdAt.toDate());
+      const offers = offersQuerySnapshot.docs.map((offerDoc) => {
+        const offerData = offerDoc.data()
+        offerData.createdAt = formatDate(offerData.createdAt.toDate())
+        return {
+          offerId: offerDoc.id,
+          ...offerData,
+        };
+      });
 
-            return {
-              offerId: offerDoc.id,
-              ...offerData,
-              customer: customerData,
-            };
-          })
-        );
+      return { id, ...data, offers, studentDetails: studentData }
+    })
+  )
 
-        return { id, ...data, offers, studentDetails: studentData };
-      })
-    );
-
-    return {
-      props: {
-        assignments,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return {
-      props: {
-        assignments: [],
-      },
-    };
+  return {
+    props: {
+      assignments,
+    },
   }
 }

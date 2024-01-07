@@ -31,12 +31,8 @@ import ReleasePayment from 'components/payments/ReleasePayment'
 import AddReview from 'components/reviews/AddReview'
 import TaskReviews from 'components/reviews/TaskReviews'
 import Link from 'next/link'
-import TaskerRating from 'components/reviews/TaskerRating'
 import UpdateTask from 'components/tasks/UpdateTask'
 import CancelTask from 'components/tasks/CancelTask'
-import WithdrawFromTask from 'components/tasks/WithdrawFromTask'
-import MoreOptions from 'components/tasks/MoreOptions'
-import PostSimilarTask from 'components/tasks/PostSimilarTask'
 
 export default function TaskDetails(props: any) {
   const [offers, setOffers] = useState([])
@@ -129,11 +125,12 @@ export default function TaskDetails(props: any) {
               <div className="mt-4 flex flex-col gap-3">
                 <div className="flex flex-col">
                   <h4 className="text-sm font-bold uppercase text-green-950">
-                    Posted By
+                    Posted
                   </h4>
+                  {/**
                   <p className="text-lg font-medium text-green-950">
                     {student.firstName} {student.lastName}
-                  </p>
+  </p>**/}
                   <p className="text-sm font-medium text-green-950">
                     On {assignmentData.createdAt}
                   </p>
@@ -180,7 +177,7 @@ export default function TaskDetails(props: any) {
                       </div>
                     )}
                     {assignmentData.paymentReleased ? (
-                      !assignmentData.posterReview ? (
+                      !assignmentData.studentReview ? (
                         <AddReview
                           tutorDetails={tutorDetails}
                           assignmentId={assignmentId}
@@ -317,7 +314,7 @@ export default function TaskDetails(props: any) {
                           </div>
                         )}
 
-                        {!assignmentData.taskerReview &&
+                        {!assignmentData.tutorReview &&
                           assignmentData.status === 'Completed' && (
                             <div className="mt-5">
                               <AddReview
@@ -526,24 +523,24 @@ export async function getServerSideProps({ params }) {
   const assignmentData = docSnap.data()
   assignmentData.createdAt = formatDate(assignmentData.createdAt.toDate())
 
-  const posterSnapshot = await getDocs(
+  const studentSnapshot = await getDocs(
     query(
       collection(db, 'users'),
       where('userId', '==', assignmentData.student.userId)
     )
   )
 
-  const studentDetails = posterSnapshot.docs[0].data()
+  const studentDetails = studentSnapshot.docs[0].data()
   studentDetails.createdAt = formatDate(studentDetails.createdAt.toDate())
 
-  const taskerSnapshot = await getDocs(
+  const tutorSnapshot = await getDocs(
     query(
       collection(db, 'users'),
       where('userId', '==', assignmentData.tutor.userId)
     )
   )
 
-  const tutorDetails = taskerSnapshot.docs[0]?.data() || null
+  const tutorDetails = tutorSnapshot.docs[0]?.data() || null
   if (tutorDetails) {
     tutorDetails.createdAt = formatDate(tutorDetails.createdAt.toDate())
   }
