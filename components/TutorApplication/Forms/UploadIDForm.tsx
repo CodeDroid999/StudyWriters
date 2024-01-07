@@ -5,18 +5,6 @@ import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/storage';
 import { db, storage } from '../../../firebase';
-import {
-    addDoc,
-    collection,
-    doc,
-    getDoc,
-    getDocs,
-    getFirestore,
-    query,
-    serverTimestamp,
-    updateDoc,
-    where,
-} from 'firebase/firestore';
 
 export default function UploadIDForm() {
     const { user } = UserAuth();

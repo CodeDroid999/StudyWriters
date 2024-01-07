@@ -5,6 +5,14 @@ interface Props {
   handleNextStep: () => void
   handlePreviousStep: () => void
 }
+
+
+
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/router';
+import { UserAuth } from 'context/AuthContext';
+import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/storage';
+
 export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
   const [description, setDescription] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
@@ -34,6 +42,67 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
   const handlePrevious = () => {
     handlePreviousStep()
   }
+
+
+
+
+  const { user } = UserAuth();
+  const router = useRouter();
+  const userId = user?.userId;
+  const { applicationId } = router.query;
+
+
+  const [uploadFiles, setUploadFiles] = useState({ AssignmentFile: null, back: null });
+  const [uploading, setUploading] = useState(false);
+  const [files, setFiles] = useState({ AssignmentFile: null, back: null });
+
+
+
+
+
+  const handleDrop = (e, side) => {
+    e.preventDefault();
+    const droppedFile = e.dataTransfer.files[0];
+    setFiles((prevFiles) => ({ ...prevFiles, [side]: droppedFile }));
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleSave = async () => {
+    setUploading(true);
+    try {
+      const storage = getStorage();
+      const AssignmentFilePath = `${userId}_${applicationId}_AssignmentFile_${new Date().getTime()}`;
+
+      const AssignmentFileRef = ref(storage, AssignmentFilePath);
+
+      const AssignmentFileUploadTask = uploadBytesResumable(AssignmentFileRef, uploadFiles.AssignmentFile);
+
+      await Promise.all([AssignmentFileUploadTask]);
+
+      const AssignmentFileDownloadURL = await getDownloadURL(AssignmentFileRef);
+      toast.success('File uploaded successfully.')
+
+    } catch (error) {
+      console.error('Error during file upload:', error);
+      toast.error('Upload failed, please try again');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleFileChange = (e, side) => {
+    const file = e.target.files[0];
+    setUploadFiles((prevUploadFiles) => ({ ...prevUploadFiles, [side]: file }));
+  };
+
+
+
+
+
+
   return (
     <div className="w-full">
       <div className="p-3 shadow-lg rounded-lg">
@@ -57,6 +126,30 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
             />
             {descriptionError && (
               <span className="text-red-500">{descriptionError}</span>
+            )}
+          </div>
+          <label
+            htmlFor="description"
+            className="mb-2 text-lg font-medium text-gray-700"
+          >
+            Assignment Files
+          </label>
+          <div
+            className="drop-container h-40 flex align-center items-center justify-center rounded-md bg-gray-100 border-dashed border-2 border-sky-500 "
+            onDrop={(e) => handleDrop(e, 'AssignmentFile')}
+            onDragOver={handleDragOver}
+          >
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png, .pdf"
+              onChange={(e) => handleFileChange(e, 'AssignmentFile')}
+            />
+            <p>Drag and drop a file here or click to select</p>
+            {files.AssignmentFile && (
+              <div>
+                <p>Selected File: {files.AssignmentFile.name}</p>
+                <p>File Type: {files.AssignmentFile.type}</p>
+              </div>
             )}
           </div>
           <div className="mt-10 flex flex-row space-x-3 font-semibold">
