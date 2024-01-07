@@ -155,7 +155,7 @@ export default function LogIn() {
       <div className="flex justify-center align-center pt-1 pb-2">
         <button
           type="button"
-          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-500 hover:text-white"
+          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-700 hover:text-white"
           onClick={handleGoogleSignIn}
         >
           <FcGoogle className="mr-2" size={20} />
@@ -215,7 +215,7 @@ export default function LogIn() {
         {/* Continue button */}
         <button
           type="submit"
-          className="rounded-2xl bg-green-500 px-4 py-2 text-white hover:bg-green-600"
+          className="rounded-2xl bg-green-700 px-4 py-2 text-white hover:bg-green-600"
         >
           Continue
         </button>
@@ -229,7 +229,7 @@ export default function LogIn() {
         </div>
 
         {/* Forgot password button */}
-        <button className="rounded-2xl bg-green-500 px-4 py-2 text-white hover:bg-green-600">
+        <button className="rounded-2xl bg-green-700 px-4 py-2 text-white hover:bg-green-600">
           <Link href="/forgot-password">Forgot password?</Link>
         </button>
       </form>

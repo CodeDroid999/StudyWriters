@@ -18,6 +18,8 @@ import toast from 'react-hot-toast'
 import Footer from 'components/layout/Footer'
 import PostYourAssignment from 'components/Homepage/PostYourAssignment'
 import ReferFriends from 'components/Homepage/ReferFriendsSection.tsx'
+import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
+import AppplyNowHero from 'components/Become-a-tutor/ApplyNowSection'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -71,10 +73,11 @@ export default function Home(props: PageProps) {
       <HeroArea />
       <StatsCounter />
       <PostYourAssignment />
+      <HowItWorksSection />
       <Features />
       <BeYourOwnBoss />
-      <HowItWorksSection />
-      <ReferFriends />
+      <AppplyNowHero />
+      <HighestEarners />
       <FAQAccordion />
       <Footer />
     </>

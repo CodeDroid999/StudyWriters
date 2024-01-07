@@ -15,8 +15,8 @@ const StatsCounter = () => {
   }
 
   return (
-    <div className="hidden md:block">
-      <div ref={ref} className={`row justify-center items-center space-x-4 pt-4 pb-4 bg-gray-100 ${startAnimation ? 'animate' : ''}`}>
+    <div className="hidden md:block w-screen">
+      <div ref={ref} className={`row justify-center items-center space-x-2 pt-4 pb-4 bg-gray-100 ${startAnimation ? 'animate' : ''}`}>
         <div className="flex w-100 space-x-4 justify-center align-center">
           <div className="rounded text-center p-2 shadow">
             <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">

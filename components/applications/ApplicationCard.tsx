@@ -167,7 +167,7 @@ export default function ApplicationCard() {
                     <div className="flex col-md-3 flex-col items-center justify-center">
                         <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
                             ID Verification Status:
-                            <p className={`rounded-lg px-2 py-1 ${isIdentityVerified ? 'bg-green-500' : 'bg-yellow-500'} text-white`}>
+                            <p className={`rounded-lg px-2 py-1 ${isIdentityVerified ? 'bg-green-700' : 'bg-yellow-500'} text-white`}>
                                 {isIdentityVerified ? 'Verified' : 'Pending'}
                             </p>
                         </p>

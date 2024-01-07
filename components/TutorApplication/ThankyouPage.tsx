@@ -20,7 +20,7 @@ const ThankYouPage = () => {
       </p>
 
       <div className="row justify-between px-3">
-        <div className="col-md-4 bg-green-500 rounded py-2">
+        <div className="col-md-4 bg-green-700 rounded py-2">
           <Link href="/dashboard" className=" text-center text-white w-100">
             Finish
           </Link>
