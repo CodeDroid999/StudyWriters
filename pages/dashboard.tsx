@@ -86,8 +86,8 @@ const Dashboard: React.FC = (props: any) => {
             <div className="mx-auto w-full">
               {userRole === 'Tutor' && (
                 <>
-                  <div className="mt-20 ">
-                    <div className="border border-green-800 rounded-xl pb-3">
+                  <div className="mt-20 h-screen overflow-hidden">
+                    <div className="border border-green-800 rounded-xl pb-3 h-80">
                       <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
                       <div className="flex flex-col flex-grow w-full bg-white p-2">
                         <table className="w-full">
@@ -113,32 +113,12 @@ const Dashboard: React.FC = (props: any) => {
                                 <td className="text-center">{assignment.status}</td>
                                 <td className="text-center">{assignment.budget}</td>
                                 <td className="text-center">{assignment.offers.length}</td>
-
                               </tr>
                             ))}
                           </tbody>
                         </table>
                       </div>
                     </div>
-                  </div>
-                  {/* Pagination controls */}
-                  <div className="flex justify-center mt-4">
-                    {page > 1 && (
-                      <button
-                        className="px-4 py-2 mr-2 border rounded"
-                        onClick={() => router.push(`/dashboard?page=${page - 1}`)}
-                      >
-                        Previous Page
-                      </button>
-                    )}
-                    {assignments.length === 10 && (
-                      <button
-                        className="px-4 py-2 ml-2 border rounded"
-                        onClick={() => router.push(`/dashboard?page=${page + 1}`)}
-                      >
-                        Next Page
-                      </button>
-                    )}
                   </div>
                 </>
               )}

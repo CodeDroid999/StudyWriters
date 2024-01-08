@@ -47,10 +47,10 @@ const BrowseAssignments: React.FC = (props: any) => {
         <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
       </Head>
       <Navbar />
-      <div className="mt-20 ">
-        <div className="border border-green-800 rounded-xl pb-3">
+      <div className="mt-20 h-screen overflow-hidden">
+        <div className="border border-green-800 rounded-xl pb-3 h-80">
           <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
-          <div className="flex flex-col flex-grow w-full bg-white p-2">
+          <div className="flex flex-col flex-grow w-full bg-white p-2 overflow-auto">
             <table className="w-full">
               <thead>
                 <tr>
@@ -74,14 +74,13 @@ const BrowseAssignments: React.FC = (props: any) => {
                     <td className="text-center">{assignment.status}</td>
                     <td className="text-center">{assignment.budget}</td>
                     <td className="text-center">{assignment.offers.length}</td>
-
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 };
