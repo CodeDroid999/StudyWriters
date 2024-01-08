@@ -8,15 +8,26 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { auth, db } from '../firebase';
 import { formatDate } from './profile/[id]';
 import router from 'next/router';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const BidAssignments: React.FC = (props: any) => {
   const { assignments } = props;
   const handleNavigation = (assignmentId: string) => {
     router.push(`/order/${assignmentId}`);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        router.push(`/login?redirect=/bid-assignment`)
+      }
+    })
+    return () => unsubscribe()
+  },)
+
 
   return (
     <>
