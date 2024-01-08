@@ -70,6 +70,7 @@ export default function Step3({ handlePreviousStep }: Props) {
         finalPrice: '',
         proposal: '',
       },
+      userId: userId,
       paymentRequested: false,
       paymentReleased: false,
       studentReview: false,
