@@ -65,7 +65,6 @@ export default function LogIn() {
           phoneNumber: '',
           profilePicture: '',
           billingAddress: '',
-
           role: '',
           email: user.email,
           userId: user.uid,

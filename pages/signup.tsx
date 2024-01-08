@@ -69,8 +69,10 @@ export default function Signup() {
     }
   };
 
+
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider()
+
     // Set the prompt option to force account selection
     provider.setCustomParameters({
       prompt: 'select_account',
@@ -86,7 +88,6 @@ export default function Signup() {
         phoneNumber: '',
         profilePicture: '',
         billingAddress: '',
-
         role: '',
         email: user.email,
         userId: user.uid,
@@ -103,13 +104,11 @@ export default function Signup() {
         education: [],
         createdAt: serverTimestamp(),
       })
-      router.push(`/setup-profile`)
     } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message
     }
   }
-
   const handleSignUp = async (event: any) => {
     event.preventDefault()
     let hasError = false
@@ -203,7 +202,7 @@ export default function Signup() {
           onClick={handleGoogleSignIn}
         >
           <FcGoogle className="mr-2" size={20} />
-          Sign up with Google
+          Continue with Google
         </button>
       </div>
 
