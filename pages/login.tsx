@@ -43,6 +43,11 @@ export default function LogIn() {
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider()
+    // Set the prompt option to force account selection
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    });
+
     try {
       const result = await signInWithPopup(auth, provider)
       const user = result.user

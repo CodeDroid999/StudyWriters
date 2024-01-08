@@ -77,17 +77,6 @@ export default function Step3({ handlePreviousStep }: Props) {
     })
 
     const assignmentId = docRef.id
-
-    // Create a new document in the "offers" subcollection
-    const offerDocRef = await addDoc(collection(db, 'assignments', assignmentId, 'offers'), {
-      amount: '',  // Add other fields as needed
-      offerId: '',
-      proposal: '',
-      userId: '',
-      createdAt: '',
-    });
-
-
     await addDoc(collection(db, 'mail'), {
       to: 'airtaska1@gmail.com',
       message: {

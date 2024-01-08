@@ -71,6 +71,11 @@ export default function Signup() {
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider()
+    // Set the prompt option to force account selection
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    });
+
     try {
       const result = await signInWithPopup(auth, provider)
       const user = result.user
@@ -190,6 +195,20 @@ export default function Signup() {
   }
   return (
     <AuthLayout>
+      {/* Google Sign In button */}
+      <div className="flex justify-center align-center pt-1 pb-2">
+        <button
+          type="button"
+          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-green-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-700 hover:text-white"
+          onClick={handleGoogleSignIn}
+        >
+          <FcGoogle className="mr-2" size={20} />
+          Sign up with Google
+        </button>
+      </div>
+
+      {/* OR separator */}
+      <div className="text-center text-xs font-medium text-gray-700 pt-2 pb-2">OR</div>
 
 
       <form onSubmit={handleSignUp} className="flex flex-col gap-4">
