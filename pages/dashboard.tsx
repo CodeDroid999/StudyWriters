@@ -95,7 +95,7 @@ const Dashboard: React.FC = (props: any) => {
                             <tr>
                               <th className="">Title</th>
                               <th className="text-center">Due Date</th>
-                              <th className="text-center">Status</th>
+                              <th className="text-center">Bidding</th>
                               <th className="text-center">Price</th>
                               <th className="text-center">Offers</th>
                             </tr>
@@ -167,29 +167,65 @@ const Dashboard: React.FC = (props: any) => {
 
 export default Dashboard;
 
-export async function getServerSideProps({ query }) {
-  try {
-    const page = parseInt(query.page || '1', 10);
-    const perPage = 10;
-    const startIndex = (page - 1) * perPage;
-    const endIndex = startIndex + perPage;
 
+export async function getServerSideProps() {
+  try {
     const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'));
+
     const querySnapshot = await getDocs(q);
 
     const assignments = await Promise.all(
-      querySnapshot.docs.slice(startIndex, endIndex).map(async (doc) => {
-        // ... (rest of the assignment data fetching code)
+      querySnapshot.docs.map(async (doc) => {
+        const data = doc.data();
+        data.createdAt = formatDate(data.createdAt.toDate());
+        const id = doc.id;
+
+        // Check if userId is available directly in the assignment data
+        if (data.userId) {
+          const q = query(collection(db, 'users'), where('userId', '==', data.userId));
+          const usersSnapshot = await getDocs(q);
+
+          // Check if there is at least one user document
+          if (usersSnapshot.docs.length > 0) {
+            const studentDoc = usersSnapshot.docs[0];
+            const studentData = studentDoc.data();
+            studentData.createdAt = formatDate(studentData.createdAt.toDate());
+
+            const offersCollectionRef = collection(db, 'assignments', id, 'offers');
+            const offersQuerySnapshot = await getDocs(offersCollectionRef);
+
+            const offers = offersQuerySnapshot.docs.map((offerDoc) => {
+              const offerData = offerDoc.data();
+              offerData.createdAt = formatDate(offerData.createdAt.toDate());
+              return {
+                offerId: offerDoc.id,
+                ...offerData,
+              };
+            });
+
+            return { id, ...data, offers, studentDetails: studentData };
+          } else {
+            console.error(`No user document found for userId: ${data.userId}`);
+          }
+        } else {
+          console.error(`No userId field available for assignment with id: ${id}`);
+        }
+
+        return null; // Return null for assignments without proper user information
       })
     );
 
+    // Filter out null values from the assignments array
+    const validAssignments = assignments.filter((assignment) => assignment !== null);
+
     return {
       props: {
-        assignments,
+        assignments: validAssignments,
       },
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error in getServerSideProps:', error);
+
     return {
       props: {
         assignments: [],
