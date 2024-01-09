@@ -12,8 +12,12 @@ import { auth, db } from '../firebase';
 import { formatDate } from './profile/[id]';
 import router from 'next/router';
 
+
+const PAGE_SIZE = 10; // Number of assignments per page 
+
+
 const BidAssignments: React.FC = (props: any) => {
-  const { assignments } = props;
+  const { assignments, currentPage, totalPages } = props;
   const handleNavigation = (assignmentId: string) => {
     router.push(`/order/${assignmentId}`);
   };
@@ -79,6 +83,19 @@ const BidAssignments: React.FC = (props: any) => {
               </tbody>
             </table>
           </div>
+          {/* Pagination */}
+          <div className="flex justify-center mt-4">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+                  }`}
+                onClick={() => router.push(`/?page=${index + 1}`)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </>
@@ -87,12 +104,17 @@ const BidAssignments: React.FC = (props: any) => {
 
 export default BidAssignments;
 
-
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   try {
-    const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'));
+    const page = parseInt(context.query.page, 10) || 1;
+    const startIndex = (page - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
 
+    const q = query(collection(db, 'assignments'), orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(q);
+
+    const totalAssignments = querySnapshot.docs.length;
+    const totalPages = Math.ceil(totalAssignments / PAGE_SIZE);
 
     const assignments = await Promise.all(
       querySnapshot.docs.map(async (doc) => {
@@ -141,6 +163,8 @@ export async function getServerSideProps() {
     return {
       props: {
         assignments: validAssignments,
+        currentPage: page,
+        totalPages: totalPages,
       },
     };
   } catch (error) {
@@ -149,6 +173,8 @@ export async function getServerSideProps() {
     return {
       props: {
         assignments: [],
+        currentPage: 1,
+        totalPages: 1,
       },
     };
   }
