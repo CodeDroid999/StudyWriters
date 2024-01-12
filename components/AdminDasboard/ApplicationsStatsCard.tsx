@@ -56,14 +56,14 @@ const ApplicationsStatsCard = () => {
         <div className="bg-white p-4 shadow rounded-md">
             <h2 className="text-2xl font-semibold mb-4">Applications</h2>
             <div className="grid grid-cols-5 gap-4">
-                <div>
+                <div className="border">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{totalApplications}</p>
-                    <p className="text-blue-900 font-bold">Received</p>
+                    <p className="text-center text-blue-900 font-bold border">Received</p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Pending')}</p>
-                    <p className="text-blue-900 font-bold">Pending</p>
+                    <p className="text-center text-blue-900 font-bold border">Pending</p>
                 </div>
 
                 <div>
@@ -72,11 +72,11 @@ const ApplicationsStatsCard = () => {
                 </div>
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Verified')}</p>
-                    <p className="text-blue-900 font-bold">Verified</p>
+                    <p className="text-center text-blue-900 font-bold border">Verified</p>
                 </div>
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Rejected')}</p>
-                    <p className="text-blue-900 font-bold">Rejected</p>
+                    <p className="text-center text-blue-900 font-bold border">Rejected</p>
                 </div>
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>

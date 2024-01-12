@@ -52,25 +52,25 @@ const AssignmentsStatsCard = () => {
             <div className="grid grid-cols-5 gap-4">
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.biddingOpen}</p>
-                    <p className="text-blue-900 font-bold">Bidding</p>
+                    <p className="text-center text-blue-900 font-bold border">Bidding</p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.assignedAssignments}</p>
-                    <p className="text-blue-900 font-bold">Assigned </p>
+                    <p className="text-center text-blue-900 font-bold border">Assigned </p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.completedAssignments}</p>
-                    <p className="text-blue-900 font-bold">Completed </p>
+                    <p className="text-center text-blue-900 font-bold border">Completed </p>
                 </div>
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.cancelledAssignments}</p>
-                    <p className="text-blue-900 font-bold">Cancelled </p>
+                    <p className="text-center text-blue-900 font-bold border">Cancelled </p>
                 </div>
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.totalAssignments}</p>
-                    <p className="text-blue-900 font-bold">Total </p>
+                    <p className="text-center text-blue-900 font-bold border">Total </p>
                 </div>
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>

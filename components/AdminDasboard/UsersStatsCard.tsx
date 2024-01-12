@@ -51,22 +51,22 @@ const UsersStatsCard = () => {
             <div className="grid grid-cols-5 gap-4">
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.students}</p>
-                    <p className="text-blue-900 font-bold">Student</p>
+                    <p className="text-center text-blue-900 font-bold border">Student</p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.tutors}</p>
-                    <p className="text-blue-900 font-bold">Tutor </p>
+                    <p className="text-center text-blue-900 font-bold border">Tutor </p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
-                    <p className="text-blue-900 font-bold">Verified</p>
+                    <p className="text-center text-blue-900 font-bold border">Verified</p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.totalUsers}</p>
-                    <p className="text-blue-900 font-bold">Total </p>
+                    <p className="text-center text-blue-900 font-bold border">Total </p>
                 </div>
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>
