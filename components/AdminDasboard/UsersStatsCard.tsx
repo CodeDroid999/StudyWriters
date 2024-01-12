@@ -1,79 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import {
-    collection,
-    getDocs,
-    query,
-} from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const AssignmentsStatsCard = () => {
-    const [stats, setStats] = useState({
-        totalAssignments: 0,
-        assignedAssignments: 0,
-        biddingOpen: 0,
-        completedAssignments: 0,
-        cancelledAssignments: 0,
+const UsersStatsCard = () => {
+    const [userStats, setUserStats] = useState({
+        totalUsers: 0,
+        students: 0,
+        tutors: 0,
+        emailVerified: 0,
     });
 
     useEffect(() => {
-        const fetchAssignmentStats = async () => {
+        const fetchUserStats = async () => {
             try {
-                const assignmentsSnapshot = await getDocs(collection(db, 'assignments'));
+                const q = query(collection(db, 'users'));
+                const querySnapshot = await getDocs(q);
 
-                const totalAssignments = assignmentsSnapshot.docs.length;
-                const assignedAssignments = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Assigned').length;
-                const biddingOpen = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Bidding').length;
-                const completedAssignments = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Completed').length;
-                const cancelledAssignments = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Cancelled').length;
+                if (!querySnapshot.empty) {
+                    const usersData = querySnapshot.docs.map((doc) => ({
+                        ...doc.data(),
+                    }));
 
-                setStats({
-                    totalAssignments,
-                    assignedAssignments,
-                    biddingOpen,
-                    completedAssignments,
-                    cancelledAssignments,
-                });
+                    const totalUsers = usersData.length;
+                    const students = usersData.filter((user) => user.role === 'student').length;
+                    const tutors = usersData.filter((user) => user.role === 'tutor').length;
+                    const emailVerified = usersData.filter((user) => user.emailVerified).length;
+
+                    setUserStats({
+                        totalUsers,
+                        students,
+                        tutors,
+                        emailVerified,
+                    });
+                } else {
+                    console.error('No users found in the database');
+                }
             } catch (error) {
-                console.error('Error fetching assignment stats:', error.message);
+                console.error('Error fetching user stats:', error.message);
             }
         };
 
-        fetchAssignmentStats();
+        fetchUserStats();
     }, []);
 
     return (
-        <div className="bg-white p-4 shadow rounded-md">
-            <h2 className="text-2xl font-semibold mb-4">Assignments</h2>
-            <div className="grid grid-cols-5 gap-4">
-                <div>
-                    <p className="text-xl font-semibold text-blue-800 text-blue-800">{stats.biddingOpen}</p>
-                    <p className="text-green-800 font-bold">Bidding</p>
+        <div className="p-3 bg-white">
+            <p className="text-3xl font-bold text-blue-950 mb-4">User Stats</p>
+            <div className="flex justify-between px-2 py-2 bg-gray-300 rounded">
+                <div className="flex text-green-950">
+                    Total Users: <span className="text-blue-500 pl-1">{userStats.totalUsers}</span>
                 </div>
-
-                <div>
-                    <p className="text-xl font-semibold text-blue-800">{stats.assignedAssignments}</p>
-                    <p className="text-green-800 font-bold">Assigned </p>
+                <div className="flex text-green-950">
+                    Students: <span className="text-blue-500 pl-1">{userStats.students}</span>
                 </div>
-
-                <div>
-                    <p className="text-xl font-semibold text-blue-800">{stats.completedAssignments}</p>
-                    <p className="text-green-800 font-bold">Completed </p>
+                <div className="flex text-green-950">
+                    Tutors: <span className="text-blue-500 pl-1">{userStats.tutors}</span>
                 </div>
-                <div>
-                    <p className="text-xl font-semibold text-blue-800">{stats.cancelledAssignments}</p>
-                    <p className="text-green-800 font-bold">Cancelled </p>
-                </div>
-                <div>
-                    <p className="text-xl font-semibold text-blue-800">{stats.totalAssignments}</p>
-                    <p className="text-green-800 font-bold">Total </p>
+                <div className="flex text-green-950">
+                    Email Verified: <span className="text-blue-500 pl-1">{userStats.emailVerified}</span>
                 </div>
             </div>
         </div>
     );
 };
 
-export default AssignmentsStatsCard;
+export default UsersStatsCard;

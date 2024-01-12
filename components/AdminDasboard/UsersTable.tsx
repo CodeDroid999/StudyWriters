@@ -23,9 +23,10 @@ const UsersPage = () => {
                     const usersData = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
                         firstName: doc.data().firstName,
-                        secondName: doc.data().secondName,
+                        lastName: doc.data().lastName,
                         profilePicture: doc.data().profilePicture,
                         email: doc.data().email,
+                        role: doc.data().role,
                         // Add more user details as needed
                     }));
                     setUsers(usersData);
@@ -49,7 +50,7 @@ const UsersPage = () => {
                         <li key={user.id} className="mb-2">
                             <Link href={`/profile/${user.id}`}>
                                 <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
-                                    <div className="flex text-green-950">
+                                    <div className="flex text-green-950 space-x-1">
                                         <Image
                                             src={user?.profilePicture || profile}
                                             alt="profile"
@@ -57,13 +58,17 @@ const UsersPage = () => {
                                             height={25}
                                             className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
                                         />
-                                        <div className="row">
-                                            <div className="col-md-2 flex text-green-800 pl-1"><span className="px-1">{user.firstName} </span><span>{user.firstName}</span></div>
-                                            <div className="col-md-2 text-blue-800 pl-1">{user.email}</div>
+                                        <div className="grid grid-cols-2 w-[300px] gap-1">
+                                            <div className="flex"><span className="pr-1 text-green-900">{user.firstName} </span><span className="pr-1 text-green-900">{user.lastName}</span></div>
+                                            <div className="">
+                                                <div className="text-blue-800 text-center rounded shadow-inner border-2  ">{user.role}</div>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    <div className="flex text-green-950">
-                                        Email:
+
+                                    <div className="grid grid-cols-3 max-w-[200px] gap-1">
+                                        <div className="text-blue-800 pl-1">{user.email}</div>
                                     </div>
                                     {/* Add more user details as needed */}
                                 </div>
@@ -73,8 +78,9 @@ const UsersPage = () => {
                 </ul>
             ) : (
                 <p>No users found in the database.</p>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 
