@@ -8,6 +8,7 @@ import ApplicationHistoryCard from 'components/AdminDasboard/AppplicationHistory
 import UsersPage from '../../components/AdminDasboard/UsersTable';
 import SideNav from 'components/AdminDasboard/AdminSideNav'
 import Navbar from 'components/AdminLayout/Navbar'
+import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard'
 
 
 
@@ -42,8 +43,22 @@ export default function AdminDashboard() {
                     <div className="row min-w-100 shadow-2xl">
                         <div className="col-md-2"></div>
                         <div className="col-md-10 rounded-xl">
-                            <UsersPage />
-                            <ApplicationHistoryCard />
+                            <div className="row w-full mx-auto">
+                                <div className="col-md-6 p-2">
+                                    <UsersStatsCard />
+                                </div>
+                                <div className="col-md-6 p-2">
+                                    <UsersStatsCard />
+                                </div>
+                            </div>
+                            <div className="row w-full mx-auto">
+                                <div className="col-md-6 p-2">
+                                    <UsersStatsCard />
+                                </div>
+                                <div className="col-md-6 p-2">
+                                    <UsersStatsCard />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
