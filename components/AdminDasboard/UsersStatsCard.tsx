@@ -46,29 +46,26 @@ const UsersStatsCard = () => {
     return (
 
         <div className="bg-white p-4 shadow rounded-md">
-            <h2 className="text-2xl font-semibold mb-4">Users</h2>
+            <h2 className="text-2xl font-semibold mb-4">Accounts</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
-                    <p className="text-xl font-semibold text-blue-800">{userStats.students}</p>
-                    <p className="text-green-800 font-bold">Students</p>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{userStats.students}</p>
+                    <p className="text-blue-900 font-bold">Student</p>
                 </div>
 
                 <div>
-                    <p className="text-xl font-semibold text-blue-800">{userStats.tutors}</p>
-                    <p className="text-green-800 font-bold">Tutors </p>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{userStats.tutors}</p>
+                    <p className="text-blue-900 font-bold">Tutor </p>
                 </div>
 
                 <div>
-                    <p className="text-xl font-semibold text-blue-800">{userStats.emailVerified}</p>
-                    <p className="text-green-800 font-bold">Email</p>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{userStats.emailVerified}</p>
+                    <p className="text-blue-900 font-bold">Verified</p>
                 </div>
+
                 <div>
-                    <p className="text-xl font-semibold text-blue-800">{userStats.emailVerified}</p>
-                    <p className="text-green-800 font-bold"></p>
-                </div>
-                <div>
-                    <p className="text-xl font-semibold text-blue-800">{userStats.totalUsers}</p>
-                    <p className="text-green-800 font-bold">Total </p>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{userStats.totalUsers}</p>
+                    <p className="text-blue-900 font-bold">Total </p>
                 </div>
             </div>
         </div>

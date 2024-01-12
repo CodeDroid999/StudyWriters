@@ -30,7 +30,7 @@ export default function AdminDashboard() {
 
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-28">
+            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-20">
                 <SideNav />
             </div>
 

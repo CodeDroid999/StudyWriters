@@ -50,29 +50,32 @@ const ApplicationsStatsCard = () => {
     };
 
     const totalApplications = applications.length;
-    const unopenedApplications = totalApplications - getStatusCount('Pending') - getStatusCount('ID Verification') - getStatusCount('Rejected') - getStatusCount('Verified');
 
     return (
-        <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">Applications Stats</p>
-            <div className="flex justify-between px-2 py-2 bg-gray-300 rounded">
-                <div className="flex text-green-950">
-                    Total Applications: <span className="text-blue-500 pl-1">{totalApplications}</span>
+        <div className="bg-white p-4 shadow rounded-md">
+            <h2 className="text-2xl font-semibold mb-4">Applications</h2>
+            <div className="grid grid-cols-5 gap-4">
+                <div>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{totalApplications}</p>
+                    <p className="text-blue-900 font-bold">Received</p>
                 </div>
-                <div className="flex text-green-950">
-                    Unopened: <span className="text-blue-500 pl-1">{unopenedApplications}</span>
+
+                <div>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Pending')}</p>
+                    <p className="text-blue-900 font-bold">Pending</p>
                 </div>
-                <div className="flex text-green-950">
-                    Pending: <span className="text-blue-500 pl-1">{getStatusCount('Pending')}</span>
+
+                <div>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('ID Verification')}</p>
+                    <p className="text-blue-800 font-bold whitespace-nowrap">Verification</p>
                 </div>
-                <div className="flex text-green-950">
-                    ID Verification: <span className="text-blue-500 pl-1">{getStatusCount('ID Verification')}</span>
+                <div>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Verified')}</p>
+                    <p className="text-blue-900 font-bold">Verified</p>
                 </div>
-                <div className="flex text-green-950">
-                    Rejected: <span className="text-blue-500 pl-1">{getStatusCount('Rejected')}</span>
-                </div>
-                <div className="flex text-green-950">
-                    Accepted: <span className="text-blue-500 pl-1">{getStatusCount('Verified')}</span>
+                <div>
+                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Rejected')}</p>
+                    <p className="text-blue-900 font-bold">Rejected</p>
                 </div>
             </div>
         </div>
