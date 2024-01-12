@@ -38,7 +38,7 @@ export default function UpdateBillingAddress({ userId, billingAddress }) {
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="mt-1 font-semibold text-blue-500"
+        className="mt-1 font-semibold text-blue-800"
       >
         Edit Billing Address
       </button>

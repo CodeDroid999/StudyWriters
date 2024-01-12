@@ -13,7 +13,7 @@ export default function assignment({ assignment }) {
       </div>
       <div>
         <span
-          className={`${assignment.status === 'Completed' ? 'text-blue-500' : 'text-blue-600'
+          className={`${assignment.status === 'Completed' ? 'text-blue-800' : 'text-blue-600'
             } font-semibold`}
         >
           {assignment.status}

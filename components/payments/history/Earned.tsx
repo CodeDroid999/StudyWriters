@@ -97,7 +97,7 @@ export default function Earned() {
                       className="flex flex-row justify-between"
                     >
                       <span
-                        className="cursor-pointer text-blue-500"
+                        className="cursor-pointer text-blue-800"
                         onClick={() => router.push(`/assignments/${payment.assignmentId}`)}
                       >
                         {payment.assignmentTitle}

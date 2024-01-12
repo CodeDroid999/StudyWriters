@@ -67,7 +67,7 @@ const UserApplicationHistoryPage = () => {
                             <Link href={`/application/${application.id}`}>
                                 <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
                                     <div className="flex text-green-950">
-                                        Application: <span className="text-blue-500 pl-1"> {application.id}</span>
+                                        Application: <span className="text-blue-800 pl-1"> {application.id}</span>
                                     </div>
                                     <div className="flex text-green-950">
                                         {application.createdAt}, Status: <span className={`flex justify-between px-2 ml-1 text-white bg-gray-300 rounded ${getStatusColor(application.status)}`}>{application.status}</span>

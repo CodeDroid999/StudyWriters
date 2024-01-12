@@ -41,7 +41,7 @@ const boostEarnings
                             <SideNav />
                         </div>
                         <div className="col-md-10 mx-auto h-full pl-5">
-                            <h1 className="text-blue-500 text-xl ">How it works</h1>
+                            <h1 className="text-blue-800 text-xl ">How it works</h1>
                             <h2 className="text-orange-400 font-semibold">QualityUnitedWriters - How it works</h2>
 
                             <p className="pt-1 pb-2 text-lg">
@@ -50,7 +50,7 @@ const boostEarnings
 
                             <p className="pt-1 pb-2 text-lg">Now it is your turn.                        </p>
 
-                            <h1 className="text-blue-500 text-xl">How to Get Started</h1>
+                            <h1 className="text-blue-800 text-xl">How to Get Started</h1>
                             <Steps />
                             <div className="pt-1 pb-2 text-lg">
                                 Embarking on your academic journey with QualityUnitedWriters is a seamless process designed to empower students and make their educational endeavors more manageable. Joining the ranks of thousands of college students who have already discovered the benefits, our platform acts as your secret weapon for academic success. The process is simple yet effective – students connect with skilled writers who excel in their respective fields. Whether it is a challenging assignment, research paper, or any academic assignment, QualityUnitedWriters is your go-to destination. Step by step, you post your assignment, select the best-suited writer, and watch as your academic workload becomes more manageable. Experience the convenience and excellence that QualityUnitedWriters brings to your educational journey.

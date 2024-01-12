@@ -190,7 +190,7 @@ export default function TaskDetails(props: any) {
                           assignmentData={assignmentData}
                         />
                       ) : (
-                        <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-500">
+                        <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-800">
                           {assignmentData.status}
                         </div>
                       )
@@ -269,7 +269,7 @@ export default function TaskDetails(props: any) {
                               <span>${assignmentData.tutor.finalPrice}</span>
                             </div>
                             {assignmentData.status === 'Completed' ? (
-                              <div className="mt-3 rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-500">
+                              <div className="mt-3 rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-800">
                                 {assignmentData.status}
                               </div>
                             ) : (

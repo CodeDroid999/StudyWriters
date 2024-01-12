@@ -50,7 +50,7 @@ export default function UpdateBankAccount({
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="mt-2 font-semibold text-blue-500"
+        className="mt-2 font-semibold text-blue-800"
       >
         Edit Bank Account
       </button>

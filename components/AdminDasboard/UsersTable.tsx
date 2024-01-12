@@ -6,6 +6,9 @@ import {
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase';
 import Link from 'next/link';
+import Image from 'next/image'
+import profile from 'public/profile.jpeg'
+
 
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
@@ -19,7 +22,9 @@ const UsersPage = () => {
                 if (!querySnapshot.empty) {
                     const usersData = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        name: doc.data().name,
+                        firstName: doc.data().firstName,
+                        secondName: doc.data().secondName,
+                        profilePicture: doc.data().profilePicture,
                         email: doc.data().email,
                         // Add more user details as needed
                     }));
@@ -45,10 +50,16 @@ const UsersPage = () => {
                             <Link href={`/profile/${user.id}`}>
                                 <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
                                     <div className="flex text-green-950">
-                                        Name: <span className="text-blue-500 pl-1">{user.name}</span>
+                                        <Image
+                                            src={user?.profilePicture || profile}
+                                            alt="profile"
+                                            width={25}
+                                            height={25}
+                                            className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
+                                        /> <span className="text-greeen-800 pl-1">{user.firstName} {user.firstName}</span>
                                     </div>
                                     <div className="flex text-green-950">
-                                        Email: <span className="text-blue-500 pl-1">{user.email}</span>
+                                        Email: <span className="text-blue-800 pl-1">{user.email}</span>
                                     </div>
                                     {/* Add more user details as needed */}
                                 </div>

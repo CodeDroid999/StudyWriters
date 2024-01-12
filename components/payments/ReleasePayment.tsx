@@ -85,7 +85,7 @@ export default function ReleasePayment({
             <div className="mt-5 text-base font-medium text-gray-700">
               <p className="pt-1 pb-2 text-lg">
                 You are releasing payment for{' '}
-                <span className="text-blue-500">{assignmentData.title}</span>.{' '}
+                <span className="text-blue-800">{assignmentData.title}</span>.{' '}
                 <span className="text-green-950">
                   {tutorDetails.firstName} {tutorDetails.lastName}
                 </span>{' '}

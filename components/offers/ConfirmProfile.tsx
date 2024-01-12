@@ -161,7 +161,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
                 </span>
               ) : (
                 <span>
-                  <BsFillCheckCircleFill className="text-blue-500" size={22} />
+                  <BsFillCheckCircleFill className="text-blue-800" size={22} />
                 </span>
               )}
             </div>
@@ -179,7 +179,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
                 </span>
               ) : (
                 <span>
-                  <BsFillCheckCircleFill className="text-blue-500" size={22} />
+                  <BsFillCheckCircleFill className="text-blue-800" size={22} />
                 </span>
               )}
             </div>
@@ -197,7 +197,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
                 </span>
               ) : (
                 <span>
-                  <BsFillCheckCircleFill className="text-blue-500" size={22} />
+                  <BsFillCheckCircleFill className="text-blue-800" size={22} />
                 </span>
               )}
             </div>
@@ -215,7 +215,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
                 </span>
               ) : (
                 <span>
-                  <BsFillCheckCircleFill className="text-blue-500" size={22} />
+                  <BsFillCheckCircleFill className="text-blue-800" size={22} />
                 </span>
               )}
             </div>

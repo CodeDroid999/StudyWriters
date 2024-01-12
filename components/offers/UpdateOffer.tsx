@@ -274,7 +274,7 @@ export default function MakeOffer({
                   <div className="mt-4 max-w-[280px] rounded-xl border border-gray-400 px-3 py-2">
                     <div className="flex flex-row items-center">
                       <div className="flex flex-col items-center justify-center rounded-full bg-blue-100 p-3">
-                        <BiLock className="text-blue-500" size={22} />
+                        <BiLock className="text-blue-800" size={22} />
                       </div>
                       <div className="ml-3 flex-1">
                         <h1 className="text-sm font-medium text-green-950">

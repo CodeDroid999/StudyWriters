@@ -15,7 +15,7 @@ const UserAbout = ({ about }) => {
         <div>
           <p className="pt-1 pb-2 text-md whitespace-wrap">{about}</p>
           <button
-            className="mt-1 text-xs text-blue-500 underline"
+            className="mt-1 text-xs text-blue-800 underline"
             onClick={toggleDetails}
           >
             Show Less
@@ -25,7 +25,7 @@ const UserAbout = ({ about }) => {
         <div>
           <p className="pt-1 pb-2 text-lg">{about?.slice(0, 500)}...</p>
           <button
-            className="mt-1 text-xs text-blue-500 underline"
+            className="mt-1 text-xs text-blue-800 underline"
             onClick={toggleDetails}
           >
             Show More

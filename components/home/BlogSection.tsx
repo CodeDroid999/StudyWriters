@@ -57,7 +57,7 @@ export default function BlogSection(posts: BlogPageProps) {
                 <p className="mt-1 text-gray-800">{post.excerpt}</p>
                 <Link
                   href={`/blog/posts/${post.slug}`}
-                  className="mt-3 inline-flex items-center justify-center gap-2 text-base font-medium text-blue-500"
+                  className="mt-3 inline-flex items-center justify-center gap-2 text-base font-medium text-blue-800"
                 >
                   Read more
                 </Link>

@@ -13,7 +13,7 @@ const ReferAFriend: React.FC = () => {
                         <SideNav />
                     </div>
                     <div className="mx-auto h-full pl-5">
-                        <h1 className="text-blue-500 text-xl ">Refer a Friend</h1>
+                        <h1 className="text-blue-800 text-xl ">Refer a Friend</h1>
                         <h2>QualityUnitedWriters - Refer a Friend - Terms and Conditions</h2>
 
                         <p>

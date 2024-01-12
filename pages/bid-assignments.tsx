@@ -88,7 +88,7 @@ const BidAssignments: React.FC = (props: any) => {
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index}
-                className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+                className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
                   }`}
                 onClick={() => router.push(`/?page=${index + 1}`)}
               >

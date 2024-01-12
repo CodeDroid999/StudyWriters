@@ -14,7 +14,7 @@ const About: React.FC = () => {
                         <SideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-5">
-                        <h1 className="text-blue-500 text-xl">About Us</h1>
+                        <h1 className="text-blue-800 text-xl">About Us</h1>
 
                         <p className="pt-1 pb-2 text-lg">
                             Welcome to QualityUnitedWriters, where academic excellence meets professional writing services.
