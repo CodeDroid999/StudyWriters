@@ -56,10 +56,14 @@ const UsersPage = () => {
                                             width={25}
                                             height={25}
                                             className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
-                                        /> <span className="text-greeen-800 pl-1">{user.firstName} {user.firstName}</span>
+                                        />
+                                        <div className="row">
+                                            <div className="col-md-2 flex text-green-800 pl-1"><span className="px-1">{user.firstName} </span><span>{user.firstName}</span></div>
+                                            <div className="col-md-2 text-blue-800 pl-1">{user.email}</div>
+                                        </div>
                                     </div>
                                     <div className="flex text-green-950">
-                                        Email: <span className="text-blue-800 pl-1">{user.email}</span>
+                                        Email:
                                     </div>
                                     {/* Add more user details as needed */}
                                 </div>
