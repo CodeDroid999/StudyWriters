@@ -31,24 +31,25 @@ export default function AdminDashboard() {
         router.push('/')
     }
     return (
-        <div>
-            <Navbar />
-            <div className="mx-auto w-full px-3">
-                <ImageHeader />
-                <div className="row flex">
-                    <div className="container flex">
-                        <div className="col-md-2 mx-auto w-full  pt-28 flex-col bg-gray-100">
-                            <SideNav />
-                        </div>
-                        <div className="col-md-10 mx-auto mt-28 h-full pl-5 shadow-2xl">
+
+        <div className="flex h-screen overflow-hidden">
+            {/* Sidebar */}
+            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto">
+                <SideNav />
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-grow mt-28 h-full overflow-y-auto">
+                <Navbar />
+                <div className=" mx-auto w-full ">
+                    <ImageHeader />
+                    <div className="row min-w-100 shadow-2xl">
+                        <div className="col-md-2"></div>
+                        <div className="col-md-10 rounded-xl">
                             <UsersPage />
                             <ApplicationHistoryCard />
                         </div>
                     </div>
-                </div>
-                <div className="mx-auto mt-28 min-w-100 shadow-2xl">
-                    <UsersPage />
-                    <ApplicationHistoryCard />
                 </div>
             </div>
         </div>
