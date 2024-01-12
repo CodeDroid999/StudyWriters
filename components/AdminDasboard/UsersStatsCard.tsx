@@ -70,7 +70,7 @@ const UsersStatsCard = () => {
                 </div>
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>
-            <Link href="admin/manage-users" className="flex align-items-right w-100">
+            <Link href="/admin/manage-users" className="flex align-items-right w-100">
                 <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage</span>
             </Link>
         </div>
