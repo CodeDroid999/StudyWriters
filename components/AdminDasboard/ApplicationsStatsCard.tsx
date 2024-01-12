@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query } from 'firebase/firestore';
 import { db } from '../../firebase';
+import Link from 'next/link';
 
 const getStatusColor = (status) => {
     switch (status) {
@@ -56,28 +57,32 @@ const ApplicationsStatsCard = () => {
             <h2 className="text-2xl font-semibold mb-4">Applications</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{totalApplications}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{totalApplications}</p>
                     <p className="text-blue-900 font-bold">Received</p>
                 </div>
 
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Pending')}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Pending')}</p>
                     <p className="text-blue-900 font-bold">Pending</p>
                 </div>
 
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('ID Verification')}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('ID Verification')}</p>
                     <p className="text-blue-800 font-bold whitespace-nowrap">Verification</p>
                 </div>
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Verified')}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Verified')}</p>
                     <p className="text-blue-900 font-bold">Verified</p>
                 </div>
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{getStatusCount('Rejected')}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{getStatusCount('Rejected')}</p>
                     <p className="text-blue-900 font-bold">Rejected</p>
                 </div>
             </div>
+            <div className="divide border-2 w-full mt-2 mb-2"></div>
+            <Link href="admin/manage-applications" className="flex align-items-right w-100">
+                <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage</span>
+            </Link>
         </div>
     );
 };

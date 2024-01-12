@@ -51,31 +51,31 @@ const AssignmentsStatsCard = () => {
             <h2 className="text-2xl font-semibold mb-4">Assignments</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{stats.biddingOpen}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.biddingOpen}</p>
                     <p className="text-blue-900 font-bold">Bidding</p>
                 </div>
 
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{stats.assignedAssignments}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.assignedAssignments}</p>
                     <p className="text-blue-900 font-bold">Assigned </p>
                 </div>
 
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{stats.completedAssignments}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.completedAssignments}</p>
                     <p className="text-blue-900 font-bold">Completed </p>
                 </div>
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{stats.cancelledAssignments}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.cancelledAssignments}</p>
                     <p className="text-blue-900 font-bold">Cancelled </p>
                 </div>
                 <div>
-                    <p className="text-green-800 font-bold whitespace-nowrap">{stats.totalAssignments}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.totalAssignments}</p>
                     <p className="text-blue-900 font-bold">Total </p>
                 </div>
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>
             <Link href="admin/manage-assignments" className="flex align-items-right w-100">
-                <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage Assignments</span>
+                <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage</span>
             </Link>
         </div>
     );
