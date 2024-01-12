@@ -1,11 +1,24 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const SideNav = () => {
+    const router = useRouter();
+
+    const navigateTo = (path) => {
+        router.push(path);
+    };
     return (
-        <div className="hidden mx-auto md:block bg-white ">
+        <div className="hidden mx-auto md:block bg-gray-100 ">
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap">Applications</Link>
+                <div className="text-blue-800 text-right whitespace-nowrap hover:bg-gray-300" onClick={() => navigateTo('/admin/manage-applications')}>
+                    Applications
+                </div>
+            </div>
+            <div className="p-2 flex font-bold items-center w-full border border-green-700">
+                <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap">
+                    Applications
+                </Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
                 <Link href="/admin/manage-users" className="text-blue-800 text-right whitespace-nowrap">My Users</Link>

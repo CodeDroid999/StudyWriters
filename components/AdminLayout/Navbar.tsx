@@ -205,7 +205,7 @@ function Navbar() {
           </div>
 
           {!user ? (
-            <div className="flex flex-row items-center space-x-5">
+            <div className="flex flex-row items-center space-x-5 mr-4 bg-gray-100 py-2 rounded">
               <Link
                 href="/login"
                 className="text-gray-700 hover:text-green-500"

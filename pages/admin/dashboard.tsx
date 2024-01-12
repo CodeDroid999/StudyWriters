@@ -6,9 +6,9 @@ import React, { useEffect } from 'react'
 import { auth } from '../../firebase'
 import ApplicationHistoryCard from 'components/AdminDasboard/AppplicationHistoryCard'
 import UsersPage from '../../components/AdminDasboard/UsersTable';
-import SideNav from 'components/AdminDasboard/AdminSideNav'
 import Navbar from 'components/AdminLayout/Navbar'
 import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard'
+import SideNav from 'components/AdminDasboard/AdminSideNav'
 
 
 
