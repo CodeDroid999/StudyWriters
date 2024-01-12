@@ -1,16 +1,13 @@
 import ImageHeader from 'components/TutorApplication/ImageHeader'
 import { onAuthStateChanged } from 'firebase/auth'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import Logo from 'public/QualityUnitedWritersLogo.png'
-import React, { useEffect, useState } from 'react'
-import { TfiClose } from 'react-icons/tfi'
+import React, { useEffect } from 'react'
 
 import { auth } from '../../firebase'
-import Navbar from 'components/layout/Navbar'
 import ApplicationHistoryCard from 'components/AdminDasboard/AppplicationHistoryCard'
 import UsersPage from '../../components/AdminDasboard/UsersTable';
+import SideNav from 'components/AdminDasboard/AdminSideNav'
+import Navbar from 'components/AdminLayout/Navbar'
 
 
 
@@ -30,13 +27,24 @@ export default function AdminDashboard() {
         router.push('/')
     }
     return (
-        <div>
-            <Navbar />
-            <div className="mx-auto w-full max-w-[1200px] px-3">
-                <ImageHeader />
-                <div className="mx-auto mt-28 min-w-100 shadow-2xl">
-                    <UsersPage />
-                    <ApplicationHistoryCard />
+
+        <div className="flex h-screen overflow-hidden">
+            {/* Sidebar */}
+            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-28">
+                <SideNav />
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-grow mt-28 h-full overflow-y-auto">
+                <Navbar />
+                <div className=" mx-auto w-full ">
+                    <ImageHeader />
+                    <div className="row min-w-100 shadow-2xl">
+                        <div className="col-md-2"></div>
+                        <div className="col-md-10 rounded-xl">
+                            <UsersPage />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

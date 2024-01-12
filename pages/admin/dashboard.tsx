@@ -1,17 +1,13 @@
 import ImageHeader from 'components/TutorApplication/ImageHeader'
 import { onAuthStateChanged } from 'firebase/auth'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import Logo from 'public/QualityUnitedWritersLogo.png'
-import React, { useEffect, useState } from 'react'
-import { TfiClose } from 'react-icons/tfi'
+import React, { useEffect } from 'react'
 
 import { auth } from '../../firebase'
-import Navbar from 'components/layout/Navbar'
 import ApplicationHistoryCard from 'components/AdminDasboard/AppplicationHistoryCard'
 import UsersPage from '../../components/AdminDasboard/UsersTable';
 import SideNav from 'components/AdminDasboard/AdminSideNav'
+import Navbar from 'components/AdminLayout/Navbar'
 
 
 
@@ -34,7 +30,7 @@ export default function AdminDashboard() {
 
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto">
+            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-28">
                 <SideNav />
             </div>
 

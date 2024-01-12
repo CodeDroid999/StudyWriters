@@ -169,139 +169,19 @@ function Navbar() {
           {/* Right div */}
           <div className="flex justify-end lg:hidden">
             <div className="rounded-full p-3 text-white ">
-              {!user ? (
-                <div className="flex flex-row items-center space-x-1">
-                  <Link
-                    href="/signup"
-                    className="text-gray-700 hover:text-green-500"
-                    style={{ whiteSpace: 'nowrap' }}
-                    id="customfontsize"
-                  >
-                    Sign Up
-                  </Link>
-                  <Link
-                    href="/login"
-                    className="text-gray-700 hover:text-green-500"
-                    style={{ whiteSpace: 'nowrap' }}
-                    id="customfontsize"
-                  >
-                    Log In
-                  </Link>
-                  <Link
-                    href="/become-a-tutor"
-                    className="rounded-2xl bg-blue-50 px-2 py-[3px] text-blue-700 hover:bg-blue-100 hover:text-green-700"
-                    style={{ whiteSpace: 'nowrap' }}
-                    id="customfontsize"
-                  >
-                    Become a Tutor
-                  </Link>
-                </div>
-              ) : (
-                <div className="flex flex-row items-center space-x-1">
+              <div className="flex flex-row items-center space-x-1">
 
-                  <div className="flex">
-                    {userRole === 'Student' && (
-                      <Link href="/browse-assignments" className=" text-gray-700 hover:text-green-500 text-sm">
-                        Browse
-                      </Link>
-                    )}
-                    {userRole === 'Tutor' && (
-                      <Link
-                        href="/boost-earnings"
-                        className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
-                        id="customfontsize"
-                      >
-                        Boost Earnings
-                      </Link>
-                    )}
-                  </div>
-                  <div className="flex">
-                    {userRole === 'Student' && (
-                      <Link href="/post-assignment" className=" text-gray-700 hover:text-green-500 text-sm">
-                        Post
-                      </Link>
-                    )}
-                    {userRole === 'Tutor' && (
-                      <Link
-                        href="/bid-assignments"
-                        className="text-gray-700 hover:text-green-500 text-sm whitespace-nowrap"
-                        id="customfontsize"
-                      >
-                        Bid
-                      </Link>
-                    )}
-                  </div>
-                  <div className="flex">
-                    {userRole === 'Student' && (
-                      <Link href={`/my-assignments/${user.userId}`} className="text-gray-700  hover:text-green-500 text-sm">
-                        Assignments
-                      </Link>
-                    )}
+                <Link
+                  href="/login"
+                  className="text-gray-700 hover:text-green-500"
+                  style={{ whiteSpace: 'nowrap' }}
+                  id="customfontsize"
+                >
+                  Log In
+                </Link>
 
-                    {userRole === 'Tutor' && (
-                      <Link
-                        href={`/orders/${user.userId}`}
-                        className="text-gray-700 hover:text-green-500 text-sm"
-                        style={{ whiteSpace: 'nowrap' }}
-                        id="customfontsize"
-                      >My Orders
-                      </Link>
-                    )}
-                  </div>
-                  <div className="flex">
-                    <Link
-                      href={`/notifications/${user.userId}`}
-                      className="text-gray-700 hover:text-green-500"
-                      style={{ whiteSpace: 'nowrap' }}
-                      id="customfontsize"
-                    >
-                      <Image
-                        src="https://i.postimg.cc/Z5RLK0WK/notification-bell.png"
-                        alt="assignment" width="200" height="200"
-                        className="h-[25px] w-[100%]"
-                        id="customfontsize"
-                      />
-                    </Link>
-                    {unReadNotifications.length > 0 && <RedDot />}
-                  </div>
-                  <div className="flex">
-                    <Link
-                      href={`/messages/${user.userId}`}
-                      className="text-gray-700 hover:text-green-500"
-                      style={{ whiteSpace: 'nowrap' }}
-                      id="customfontsize"
-                    >
-                      <Image
-                        src="https://i.postimg.cc/0NGGVS3n/messages-icon.png"
-                        alt="assignment" width="200" height="200"
-                        className="h-[25px] w-[100%]"
-                        id="customfontsize"
-                      />
-                    </Link>
-                    {unReadMessages.length > 0 && <RedDot />}
-                  </div>
-                  <div className="flex">
-                    <Link
-                      href={`/alerts/${user.userId}`}
-                      className="text-gray-700 hover:text-green-500"
-                      style={{ whiteSpace: 'nowrap' }}
-                      id="customfontsize"
-                    >
-                      <Image
-                        src="https://i.postimg.cc/25LMy016/alert-icon-removebg-preview.png"
-                        alt="assignment" width="200" height="200"
-                        className="h-[25px] w-[100%]"
-                        id="customfontsize"
-                      />
-
-                    </Link>
-                    {unReadNotifications.length > 0 && <RedDot />}
-                  </div>
-                  <div className="flex justify-center align-middle">
-                    <Avatar />
-                  </div>
-                </div>
-              )}
+              </div>
+              )
             </div>
           </div>
         </div>
@@ -327,80 +207,17 @@ function Navbar() {
           {!user ? (
             <div className="flex flex-row items-center space-x-5">
               <Link
-                href="/"
-                className="text-gray-700 hover:text-green-500"
-              >
-                Home
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="text-gray-700 hover:text-green-500"
-              >
-                How it works
-              </Link>
-
-              <Link
-                href="/signup"
-                className="text-gray-700 hover:text-green-500"
-              >
-                Sign Up
-              </Link>
-
-              <Link
                 href="/login"
                 className="text-gray-700 hover:text-green-500"
               >
                 Log In
               </Link>
-              <Link
-                href="/become-a-tutor"
-                className="rounded-3xl bg-blue-50 px-4 py-[6px] text-blue-600 hover:bg-blue-100 hover:text-green-700"
-              >
-                Become a tutor
-              </Link>
+
             </div>
           ) : (
             <div className="flex flex-row items-center space-x-1">
 
-              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                {userRole === 'Student' && (
-                  <Link href="/browse-assignments" className="text-gray-700 hover:text-green-500">
-                    Browse
-                  </Link>
-                )}
 
-                {userRole === 'Tutor' && (
-                  <Link href="/boost-earnings" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Boost Earnings
-                  </Link>
-                )}
-              </div>
-              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                {userRole === 'Student' && (
-                  <Link href="/post-assignment" className="text-gray-700 hover:text-green-500">
-                    Post
-                  </Link>
-                )}
-
-                {userRole === 'Tutor' && (
-                  <Link href="/bid-assignments" className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    Bid
-                  </Link>
-                )}
-              </div>
-              <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
-                {userRole === 'Student' && (
-                  <Link href={`/my-assignments/${user.userId}`} className="text-gray-700 hover:text-green-500">
-                    Assignments
-                  </Link>
-                )}
-
-                {userRole === 'Tutor' && (
-                  <Link href={`/orders/${user.userId}`} className="text-gray-700 hover:text-green-500 whitespace-nowrap">
-                    My Orders
-                  </Link>
-                )}
-              </div>
 
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
@@ -441,7 +258,12 @@ function Navbar() {
 
                 </Link>
               </div>
-              <Avartar />
+              <div className="flex flex-row align-center justify-center bg-gray-100 p-1 rounded-3xl">
+                <div className="font-bold px-2 pt-1 text-center text-blue-800">
+                  Admin
+                </div>
+                <Avartar />
+              </div>
             </div>
           )}
         </div>
