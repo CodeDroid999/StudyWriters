@@ -67,10 +67,9 @@ export default function AdminDashboard() {
             </div>
 
             {/* Main Content */}
-            <div className="flex-grow mt-28 h-full overflow-y-auto">
+            <div className="flex-grow mt-20 h-full overflow-y-auto">
                 <Navbar />
-                <div className=" mx-auto w-full ">
-                    <ImageHeader />
+                <div className=" mx-auto w-full bg-gray-100 ">
                     <div className="row min-w-100 shadow-2xl">
                         <div className="col-md-2"></div>
                         <div className="col-md-10 rounded-xl">
@@ -86,9 +85,7 @@ export default function AdminDashboard() {
                                 <div className="col-md-6 p-2">
                                     <ApplicationsStatsCard />
                                 </div>
-                                <div className="col-md-6 p-2">
-                                    <AssignmentsStatsCard />
-                                </div>
+
                             </div>
                         </div>
                     </div>
