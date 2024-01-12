@@ -4,13 +4,10 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 import { auth } from '../../firebase'
-import ApplicationHistoryCard from 'components/AdminDasboard/AppplicationHistoryCard'
-import UsersPage from '../../components/AdminDasboard/UsersTable';
 import Navbar from 'components/AdminLayout/Navbar'
-import UsersStatsCard from 'components/AdminDasboard/AsssignmentsStatsCard'
-import SideNav from 'components/AdminDasboard/AdminSideNav'
 import Link from 'next/link'
 import AssignmentsStatsCard from 'components/AdminDasboard/AsssignmentsStatsCard'
+import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard'
 
 
 
@@ -89,15 +86,15 @@ export default function AdminDashboard() {
                                     <UsersStatsCard />
                                 </div>
                                 <div className="col-md-6 p-2">
-                                    <UsersStatsCard />
+                                    <AssignmentsStatsCard />
                                 </div>
                             </div>
                             <div className="row w-full mx-auto">
                                 <div className="col-md-6 p-2">
-                                    <AssignmentsStatsCard />
+                                    <UsersStatsCard />
                                 </div>
                                 <div className="col-md-6 p-2">
-                                    <UsersStatsCard />
+                                    <AssignmentsStatsCard />
                                 </div>
                             </div>
                         </div>

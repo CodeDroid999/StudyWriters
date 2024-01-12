@@ -44,20 +44,31 @@ const UsersStatsCard = () => {
     }, []);
 
     return (
-        <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">User Stats</p>
-            <div className="flex justify-between px-2 py-2 bg-gray-300 rounded">
-                <div className="flex text-green-950">
-                    Total Users: <span className="text-blue-500 pl-1">{userStats.totalUsers}</span>
+
+        <div className="bg-white p-4 shadow rounded-md">
+            <h2 className="text-2xl font-semibold mb-4">Users</h2>
+            <div className="grid grid-cols-5 gap-4">
+                <div>
+                    <p className="text-xl font-semibold text-blue-800">{userStats.students}</p>
+                    <p className="text-green-800 font-bold">Students</p>
                 </div>
-                <div className="flex text-green-950">
-                    Students: <span className="text-blue-500 pl-1">{userStats.students}</span>
+
+                <div>
+                    <p className="text-xl font-semibold text-blue-800">{userStats.tutors}</p>
+                    <p className="text-green-800 font-bold">Tutors </p>
                 </div>
-                <div className="flex text-green-950">
-                    Tutors: <span className="text-blue-500 pl-1">{userStats.tutors}</span>
+
+                <div>
+                    <p className="text-xl font-semibold text-blue-800">{userStats.emailVerified}</p>
+                    <p className="text-green-800 font-bold">Email</p>
                 </div>
-                <div className="flex text-green-950">
-                    Email Verified: <span className="text-blue-500 pl-1">{userStats.emailVerified}</span>
+                <div>
+                    <p className="text-xl font-semibold text-blue-800">{userStats.emailVerified}</p>
+                    <p className="text-green-800 font-bold"></p>
+                </div>
+                <div>
+                    <p className="text-xl font-semibold text-blue-800">{userStats.totalUsers}</p>
+                    <p className="text-green-800 font-bold">Total </p>
                 </div>
             </div>
         </div>
