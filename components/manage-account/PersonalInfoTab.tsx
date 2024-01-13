@@ -22,15 +22,14 @@ export const formatDate = (dateString) => {
     day === 1 || day === 21 || day === 31
       ? 'st'
       : day === 2 || day === 22
-      ? 'nd'
-      : day === 3 || day === 23
-      ? 'rd'
-      : 'th'
+        ? 'nd'
+        : day === 3 || day === 23
+          ? 'rd'
+          : 'th'
   return `${day}${suffix} ${month} ${year}`
 }
 
-export default function PersonalInfoTab() {
-  const { user } = UserAuth()
+export default function PersonalInfoTab({ user }) {
   const router = useRouter()
   const userId = router.query?.id
   const [firstName, setFirstName] = useState(user?.firstName)

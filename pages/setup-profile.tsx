@@ -85,7 +85,6 @@ export default function CompleteAccount() {
         await updateDoc(userDocRef, {
           firstName: firstName,
           lastName: lastName,
-          mainRole: role,
           role: role,
         })
       }

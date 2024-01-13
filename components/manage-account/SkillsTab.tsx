@@ -14,8 +14,8 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 
 
-const SkillsAndEducation = () => {
-  const { user } = UserAuth()
+const SkillsAndEducation = ({ user }) => {
+
 
   const [newSkill, setNewSkill] = useState('')
   const [newEducation, setNewEducation] = useState('')

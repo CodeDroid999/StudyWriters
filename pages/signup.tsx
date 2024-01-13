@@ -49,7 +49,7 @@ export default function Signup() {
         dateOfBirth: '',
         phoneNumber: '',
         profilePicture: '',
-
+        accountStatus: '',
         role: '',
         email: user.email,
         aboutDescription: '',

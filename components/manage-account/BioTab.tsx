@@ -13,8 +13,8 @@ import {
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 
-const Bio = () => {
-  const { user } = UserAuth()
+const Bio = ({ user }) => {
+
   const [bio, setBio] = useState(user?.aboutDescription)
   const [bioError, setBioError] = useState('')
 

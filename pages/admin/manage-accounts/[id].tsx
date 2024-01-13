@@ -1,21 +1,19 @@
 import Navbar from 'components/layout/Navbar'
 import { auth, db } from '../../../firebase'
-import {
-    collection,
-    getDocs,
-    query,
-    where,
-} from 'firebase/firestore'
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import profile from 'public/profile.jpeg'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
-import { UserAuth } from 'context/AuthContext'
-import PersonalInfoTab from 'components/manage-account/PersonalInfoTab'
-import SkillsAndEducation from 'components/manage-account/SkillsTab'
-import Bio from 'components/manage-account/BioTab'
+import UserAbout from 'components/profile/Reviews/UserAbout'
+import UserReviews from 'components/reviews/UserReviews'
 import ReviewsTab from 'components/manage-account/Reviews/ReviewTab'
+import Bio from 'components/manage-account/BioTab'
+import SkillsAndEducation from 'components/manage-account/SkillsTab'
+import PersonalInfoTab from 'components/manage-account/PersonalInfoTab'
+import UserApplicationHistoryPage from 'components/applications/AppplicationHistoryCard'
+import AssignmentsTab from 'components/manage-account/UserAssignmentsTab'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -33,24 +31,40 @@ export const formatDate = (dateString) => {
     return `${day}${suffix} ${month} ${year}`
 }
 
-export default function ProfilePage({
-    children,
-    hasNewNotifications,
-}: {
-    children: React.ReactNode
-    hasNewNotifications: boolean
-}) {
+export default function ManageAccount() {
     const [assignments, setAssignments] = useState([])
     const [reviews, setReviews] = useState([])
-    const [loading, setLoading] = useState(false)
     const [activeTab, setActiveTab] = useState('basic') // Default tab is 'Personal Info tab'
-
-    const { user } = UserAuth()
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
-    const userId = router.query.id?.toString()
+    const userId = router.query?.id
+    const [userRole, setUserRole] = useState(null);
+
     useEffect(() => {
         if (userId) {
             setLoading(true)
+
+            // Fetch user data including role
+            const q = query(collection(db, 'users'), where('userId', '==', userId));
+            const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                if (!querySnapshot.empty) {
+                    const doc = querySnapshot.docs[0];
+                    const userData = doc.data();
+                    userData.createdAt = formatDate(userData.createdAt.toDate());
+                    userData.UserId = doc.data().userId;
+
+                    setUser(userData);
+                    setUserRole(userData.role); // Set the user role
+
+                    setLoading(false);
+                } else {
+                    setUser(null);
+                    setUserRole(null);
+                    setLoading(false);
+                }
+            });
+
 
             const assignmentsQuery = query(
                 collection(db, 'users'),
@@ -108,6 +122,10 @@ export default function ProfilePage({
                 .catch((error) => {
                     console.error('Error fetching data:', error)
                 })
+
+            return () => {
+                unsubscribe()
+            }
         }
     }, [userId])
 
@@ -128,6 +146,7 @@ export default function ProfilePage({
     const myTutorReviews = reviews.filter(
         (review) => review.senderId !== review.tutorId
     )
+
     return (
         <div>
             <Navbar />
@@ -142,43 +161,48 @@ export default function ProfilePage({
                     </div>
                 </div>
             ) : (
-                <div className="mt-20 bg-gray-100 pt-10 antialiased">
-                    <div className="container flex justify-center">
-                        <div className="grid grid-cols-4 w-[1200px] gap-1">
-                            <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
-                            <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
-                            <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
-                            <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
-                        </div>
-                    </div>
-                    <div className="container mx-auto">
-                        <div className="flex flex-row p-3 ">
-                            <div className="flex w-full rounded bg-blue-100 p-3 ">
-                                <div
-                                    className="flex flex-col justify-center "
-                                    style={{ width: '20vw' }}
-                                >
-                                    <div className="flex justify-center">
-                                        <Image
-                                            src={user?.profilePicture || profile}
-                                            alt="profile picture"
-                                            height={200}
-                                            width={200}
-                                            className="mr-2 h-[120px] w-[120px] rounded-full object-cover"
-                                        />
-                                    </div>
-
-                                </div>
-                                <div className="justify-right flex min-h-full w-full flex-col p-3">
-                                    <p className="text-left text-xl font-bold text-blue-900">
-                                        {user?.firstName} {user?.lastName}
+                <div className="min-w-100  min-h-screen  bg-gray-100">
+                    <div className="bg-gray-100 mx-auto mt-20 min-h-screen max-w-[1000px]  px-3 pt-10 antialiased">
+                        <div className=" flex space-x-2">
+                            <div className="">
+                                <Image
+                                    src={user?.profilePicture || profile}
+                                    alt="profile picture"
+                                    height={100}
+                                    width={100}
+                                    className="h-[100px] w-[100px] rounded-full object-cover"
+                                />
+                            </div>
+                            <div className="flex flex-col justify-center align-center items-center">
+                                <p className="text-2xl font-semibold text-green-950">
+                                    {user?.firstName} {user?.lastName}
+                                </p>
+                                {user?.createdAt && (
+                                    <p className="text-sm font-medium text-green-950">
+                                        Member since {user?.createdAt}
                                     </p>
-                                    <p className="mt-2 rounded  p-1 text-left text-sm font-medium text-gray-400">
-                                        {user?.email}
-                                    </p>
-                                </div>
+                                )}
                             </div>
                         </div>
+                        <div className="container flex justify-center mt-2">
+                            <div className="grid grid-cols-4 w-[1200px] gap-1">
+                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {userRole}</div>
+                                <div className="border shadow rounded py-1 px-1 text-center">Account status: {user?.role}</div>
+                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
+                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
+                            </div>
+                        </div>
+                        <div className="mt-3 bg-gray-100 p-3">
+                            {user?.aboutDescription && (
+                                <div className="mb-2 w-full justify-center text-white">
+                                    <p className="text-base font-medium text-gray-700">
+                                        <UserAbout about={user?.aboutDescription} />
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+
+
 
                         <div className="mt-1">
                             <div className="my-1">
@@ -273,39 +297,57 @@ export default function ProfilePage({
                                             </button>
                                         )}
                                     </>
+
                                 </div>
 
                                 {activeTab === 'basic' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Personal Info tab */}
-                                        <PersonalInfoTab />
+                                        <PersonalInfoTab user={user} />
                                     </div>
                                 )}
 
                                 {activeTab === 'skills' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Skills & Education tab */}
-                                        <SkillsAndEducation />
+                                        <SkillsAndEducation user={user} />
                                     </div>
                                 )}
 
                                 {activeTab === 'bio' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Languages tab */}
-                                        <Bio />
+                                        <Bio user={user} />
                                     </div>
                                 )}
 
                                 {activeTab === 'reviews' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Reviews tab */}
-                                        <ReviewsTab reviews={myTutorReviews} />
+                                        <ReviewsTab />
                                     </div>
                                 )}
+                                {activeTab === 'applications' && (
+                                    <div className="w-full p-4">
+                                        {/* Content for the Personal Info tab */}
+                                        <UserApplicationHistoryPage />
+                                    </div>
+                                )}
+                                {activeTab === '' && (
+                                    <div className="w-full p-4">
+                                        {/* Content for the Personal Info tab */}
+                                        <AssignmentsTab />
+                                    </div>
+                                )}
+
 
                                 {/* ... (other code) */}
                             </div>
                         </div>
+
+
+
+                        <div>{user && <UserReviews userId={user?.userId} />}</div>
                     </div>
                 </div>
             )}

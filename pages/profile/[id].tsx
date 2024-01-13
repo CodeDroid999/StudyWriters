@@ -46,13 +46,30 @@ export default function ProfilePage({
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('basic') // Default tab is 'Personal Info tab'
+  const [user, setUser] = useState(null)
 
-  const { user } = UserAuth()
   const router = useRouter()
   const userId = router.query.id?.toString()
   useEffect(() => {
     if (userId) {
       setLoading(true)
+      setLoading(true)
+      const q = query(collection(db, 'users'), where('userId', '==', userId))
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0]
+          const userData = doc.data()
+          userData.createdAt = formatDate(userData.createdAt.toDate())
+          setUser(userData)
+        } else {
+          setUser(null)
+        }
+        setLoading(false)
+      })
+
+      return () => {
+        unsubscribe()
+      }
 
       const assignmentsQuery = query(
         collection(db, 'users'),
