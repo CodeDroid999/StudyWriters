@@ -58,21 +58,25 @@ const ApplicationHistoryCard = () => {
                 <ul>
                     {userApplications.map((application) => (
                         <li key={application.id} className="mb-2">
-                            <Link href={`/manage-application/${application.id}`}>
+                            <Link href={`/admin/manage-application/${application.id}`}>
                                 <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
                                     <div className="flex text-green-950">
                                         Application: <span className="text-blue-800 pl-1"> {application.id}</span>
                                     </div>
                                     <div className="flex text-green-950">
-                                        {application.createdAt}, Status: <span className={`flex justify-between px-2 ml-1 text-white bg-gray-300 rounded ${getStatusColor(application.status)}`}>{application.status}</span>
+                                        <span className={`flex justify-between px-2 ml-1 text-white bg-gray-300 rounded ${getStatusColor(application.status)}`}>{application.status}</span>
+                                        <div className="rounded text-white bg-blue-800 px-2 mx-2 shadow">
+                                            View
+                                        </div>
                                     </div>
+
                                 </div>
                             </Link>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>Loading....</p>
+                <p>Loading...</p>
             )}
 
         </div>

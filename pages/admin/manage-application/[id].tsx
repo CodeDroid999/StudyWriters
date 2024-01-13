@@ -3,8 +3,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import Navbar from 'components/layout/Navbar'
-import { auth } from 'firebase'
-import ApplicationCard from 'components/ManageApplication/ApplicationCard'
+import { auth } from '../../../firebase'
+import ApplicationCard from 'components/applications/ApplicationCard'
 
 
 
