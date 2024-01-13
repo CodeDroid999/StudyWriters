@@ -60,7 +60,7 @@ const UsersPage = () => {
                                             className="h-[1.6rem] w-[1.6rem] cursor-pointer rounded-full object-cover"
                                         />
                                         <div className="grid grid-cols-2  gap-1">
-                                            <div className="flex justify-items-center align-items-center">
+                                            <div className="flex justify-items-center w-[170px] align-items-center">
                                                 <span className="pr-1 text-green-900">{user.firstName} </span>
                                                 <span className="pr-1 text-green-900">{user.lastName}</span>
                                             </div>
