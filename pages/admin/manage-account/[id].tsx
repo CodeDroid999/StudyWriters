@@ -1,4 +1,3 @@
-import Navbar from 'components/layout/Navbar'
 import { auth, db } from '../../../firebase'
 import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
@@ -14,6 +13,7 @@ import SkillsAndEducation from 'components/manage-account/SkillsTab'
 import PersonalInfoTab from 'components/manage-account/PersonalInfoTab'
 import UserApplicationHistoryPage from 'components/applications/AppplicationHistoryCard'
 import AssignmentsTab from 'components/manage-account/UserAssignmentsTab'
+import Navbar from 'components/AdminLayout/Navbar'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
