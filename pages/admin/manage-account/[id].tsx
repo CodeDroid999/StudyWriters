@@ -12,6 +12,10 @@ import profile from 'public/profile.jpeg'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import { UserAuth } from 'context/AuthContext'
+import PersonalInfoTab from 'components/manage-account/PersonalInfoTab'
+import SkillsAndEducation from 'components/manage-account/SkillsTab'
+import Bio from 'components/manage-account/BioTab'
+import ReviewsTab from 'components/manage-account/Reviews/ReviewTab'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
