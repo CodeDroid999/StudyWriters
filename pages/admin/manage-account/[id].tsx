@@ -3,7 +3,6 @@ import { auth, db } from '../../../firebase'
 import {
     collection,
     getDocs,
-    onSnapshot,
     query,
     where,
 } from 'firebase/firestore'
@@ -13,11 +12,6 @@ import profile from 'public/profile.jpeg'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import { UserAuth } from 'context/AuthContext'
-import PersonalInfoTab from 'components/profile/PersonalInfoTab'
-import ReviewsTab from 'components/profile/Reviews/ReviewTab'
-import EditProfilePicture from 'components/profile/EditProfilePicture'
-import Bio from 'components/profile/BioTab'
-import SkillsAndEducation from 'components/profile/SkillsTab'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -161,9 +155,7 @@ export default function ProfilePage({
                                             className="mr-2 h-[120px] w-[120px] rounded-full object-cover"
                                         />
                                     </div>
-                                    <div>
-                                        <EditProfilePicture />
-                                    </div>
+
                                 </div>
                                 <div className="justify-right flex min-h-full w-full flex-col p-3">
                                     <p className="text-left text-xl font-bold text-blue-900">
