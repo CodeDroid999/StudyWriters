@@ -49,7 +49,7 @@ const UsersPage = () => {
                 <ul>
                     {users.map((user) => (
                         <li key={user.id} className="mb-2">
-                            <Link href={`/admin/manage-accounts/${user.id}`}>
+                            <Link href={`/admin/manage-account/${user.id}`}>
                                 <div className={`flex justify-between px-2 py-2 bg-gray-300 rounded`}>
                                     <div className="flex text-green-950 space-x-1  justify-items-center align-items-center">
                                         <Image
