@@ -218,7 +218,15 @@ function Navbar() {
             <div className="flex flex-row items-center space-x-1">
 
 
+              <div className="flex flex-row items-center space-x-5 mr-4 bg-gray-100 py-2 rounded">
+                <Link
+                  href="/admin/dashboard"
+                  className="text-blue-800 hover:text-green-500 px-2"
+                >
+                  Dashboard
+                </Link>
 
+              </div>
               <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
                 <Link
                   href={`/notifications/${user.userId}`}

@@ -1,11 +1,11 @@
-// components/UserAssignmentTab.js
+// components/UserAssignmentCard.js
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { formatDate } from 'pages/public-profile/[id]';
+import { db } from 'firebase';
 import router from 'next/router';
-import { db } from '../../firebase';
 
-const UserAssignmentTab = () => {
+const UserAssignmentCard = () => {
     const userId = router.query.id
     const [userAssignments, setUserAssignments] = useState([]);
 
@@ -66,4 +66,4 @@ const UserAssignmentTab = () => {
     );
 };
 
-export default UserAssignmentTab;
+export default UserAssignmentCard;

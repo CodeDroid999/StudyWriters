@@ -201,9 +201,6 @@ export default function ManageAccount() {
                                 </div>
                             )}
                         </div>
-
-
-
                         <div className="mt-1">
                             <div className="my-1">
                                 <div className="flex items-center justify-center">
@@ -333,7 +330,7 @@ export default function ManageAccount() {
                                         <UserApplicationHistoryPage />
                                     </div>
                                 )}
-                                {activeTab === '' && (
+                                {activeTab === 'assignments' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Personal Info tab */}
                                         <AssignmentsTab />
