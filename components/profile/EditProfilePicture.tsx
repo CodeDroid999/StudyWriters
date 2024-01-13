@@ -49,7 +49,7 @@ export default function EditProfilePicture() {
         {uploading ? (
           'Uploading...'
         ) : (
-          <div className="w-42 h-42 flex flex-auto flex-row items-center space-x-2 rounded bg-gradient-to-r from-gray-800  to-gray-700 p-2  text-blue-800 shadow-lg    hover:text-green-400 ">
+          <div className="w-42 h-42 flex flex-auto flex-row items-center space-x-2 rounded bg-gradient-to-r from-gray-800  to-gray-700 p-2  text-gray-100 shadow-lg    hover:text-green-400 ">
             <FiEdit2 />
             <span className="whitespace-nowrap text-xs ">Edit Profile Pic</span>
           </div>
