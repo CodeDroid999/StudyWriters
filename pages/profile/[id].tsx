@@ -144,7 +144,7 @@ export default function ProfilePage({
           </div>
         </div>
       ) : (
-        <div className="mt-20 bg-green-100 pt-10 antialiased">
+        <div className="mt-20 bg-gray-100 pt-10 antialiased">
           <div className="container mx-auto">
             <div className="flex flex-row p-3 ">
               <div className="flex w-full rounded bg-blue-100 p-3 ">
