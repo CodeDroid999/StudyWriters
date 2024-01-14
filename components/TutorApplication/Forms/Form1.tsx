@@ -60,7 +60,7 @@ export default function Form1() {
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
     const [error, setError] = useState('');
-    const applicationStatus = 'pending';
+    const applicationStatus = 'Pending';
 
     useEffect(() => {
         const fetchCountries = async () => {
