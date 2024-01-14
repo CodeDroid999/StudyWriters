@@ -6,9 +6,7 @@ import FAQAccordion from 'components/FAQaccordions'
 import { UserAuth } from 'context/AuthContext'
 
 
-import { auth } from '../firebase';
 
-import router from 'next/router';
 interface PageProps extends SharedPageProps {
   posts: Post[]
   settings: Settings
@@ -35,7 +33,6 @@ import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 import Footer from 'components/layout/Footer'
 import PostAssignment from 'components/Homepage/PostAssignment'
-import AssignmentTable from 'components/BrowseAssignmentsTable/AssignmentTable'
 
 const Dashboard: React.FC = (props: any) => {
   const router = useRouter();
@@ -97,7 +94,7 @@ const Dashboard: React.FC = (props: any) => {
                               <th className="text-center">Due Date</th>
                               <th className="text-center">Bidding</th>
                               <th className="text-center">Price</th>
-                              <th className="text-center">Offers</th>
+                              <th className="text-center">Bids</th>
                             </tr>
                           </thead>
                           <tbody className="pt-2 pb-2">

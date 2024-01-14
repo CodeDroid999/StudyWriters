@@ -29,7 +29,7 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({
       <p>Due Date: {date}</p>
       <p>Status: {status}</p>
       <p>Price: ${price}</p>
-      <p>Offers: {offers}</p>
+      <p>Bids: {offers}</p>
       <div style={{ width: '100px', height: '100px' }}>
         <Image
           src={profilePicture}

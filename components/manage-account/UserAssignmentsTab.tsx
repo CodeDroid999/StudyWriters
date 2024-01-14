@@ -42,7 +42,7 @@ const UserAssignmentTab = () => {
                                 <th className="text-center">Due Date</th>
                                 <th className="text-center">Status</th>
                                 <th className="text-center">Budget</th>
-                                <th className="text-center">Offers</th>
+                                <th className="text-center">Bids</th>
                             </tr>
                         </thead>
                         <tbody className="pt-2 pb-2">

@@ -62,7 +62,7 @@ const BidAssignments: React.FC = (props: any) => {
                   <th className="text-center">Due Date</th>
                   <th className="text-center">Bidding</th>
                   <th className="text-center">Price</th>
-                  <th className="text-center">Offers</th>
+                  <th className="text-center">Bids</th>
                 </tr>
               </thead>
               <tbody className="pt-2 pb-2">
