@@ -3,6 +3,7 @@ import {
     addDoc,
     collection,
     doc,
+    getDoc,
     getDocs,
     query,
     serverTimestamp,
@@ -10,7 +11,7 @@ import {
     where,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 import { getAuth } from 'firebase/auth';
@@ -38,105 +39,73 @@ export const formatDate = (dateString) => {
 export default function ApplicationCard() {
     const { user } = UserAuth();
     const router = useRouter();
-    const userId = router.query?.id;
+    const applicationId = router.query?.id;
 
-    // Define constants for state variables using useState
-    const [firstName, setFirstName] = useState(user?.firstName || '');
-    const [lastName, setLastName] = useState(user?.lastName || '');
-    const [city, setCity] = useState(user?.city || '');
-    const [address, setAddress] = useState(user?.address || '');
-    const [country, setCountry] = useState(user?.country || '');
-    const [state, setState] = useState(user?.state || '');
-    const [startDate, setStartDate] = useState(user?.startDate || '');
-    const [endDate, setEndDate] = useState(user?.endDate || '');
-    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
-    const [howHeard, setHowHeard] = useState(user?.howHeard || '');
-    const [major, setMajor] = useState(user?.major || '');
-    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolTeacher || '');
-    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation || '');
-    const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
-    const [employer, setEmployer] = useState(user?.employer || '');
-    const [error, setError] = useState('');
-    const [isIdentityVerified, setIsIdentityVerified] = useState(user?.identityVerification || '');
-    const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [selectedRate, setSelectedRate] = useState('$10');
+    // Define state variables
+    const [applicationData, setApplicationData] = useState(null);
 
+    useEffect(() => {
+        const fetchApplicationData = async () => {
+            try {
+                // Fetch application data from Firestore based on applicationId
+                const applicationDocRef = doc(db, 'applications', applicationId);
+                const applicationDocSnap = await getDoc(applicationDocRef);
 
-    const handleSave = async (e) => {
-        e.preventDefault();
-
-        try {
-            const auth = getAuth();
-            const user = auth.currentUser;
-
-            if (!user) {
-                // User is not logged in
-                // Handle the case where the user is not logged in
-                return;
+                if (applicationDocSnap.exists()) {
+                    const application = applicationDocSnap.data();
+                    setApplicationData(application);
+                } else {
+                    toast.error('Application not found');
+                    // Redirect to a 404 page or handle accordingly
+                }
+            } catch (error) {
+                console.error('Error fetching application data', error);
+                toast.error('Error fetching application data');
             }
+        };
 
-            const q = query(
-                collection(db, 'users'),
-                where('userId', '==', user?.uid)
-            );
-
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const docSnapshot = querySnapshot.docs[0];
-                const userDocRef = doc(db, 'users', docSnapshot.id);
-                await updateDoc(userDocRef, {
-                    firstName,
-                    lastName,
-                    country,
-                    address,
-                    city,
-                    state,
-                });
-            } else {
-                // Handle the case where the user document is not found
-            }
-
-            const applicationDocRef = await addDoc(collection(db, 'applications'), {
-                firstName,
-                lastName,
-                country,
-                address,
-                city,
-                state,
-                howHeard,
-                lastSchoolName,
-                major,
-                isSchoolTeacher,
-                hasAffiliation,
-                jobTitle,
-                employer,
-                startDate,
-                endDate,
-                userId: user.uid,
-                createdAt: serverTimestamp(),
-                read: false,
-                idVerificationStatus: false,
-                // Add other details specific to applications here
-            });
-
-            toast.success('Personal info has been updated');
-            toast.success('Application has been saved');
-            router.push('/tutor-application/step2');
-        } catch (error) {
-            console.error('Error updating personal info or saving application:', error.message);
-            toast.error('Error updating. Please try again.');
+        if (applicationId) {
+            fetchApplicationData();
         }
-    };
+    }, [applicationId]);
+
+    if (!applicationData) {
+        // You can render a loading state or redirect to an error page
+        return <p>Loading...</p>;
+    }
+
+    // Destructure applicationData and use it to render the UI
+    const {
+        firstName,
+        lastName,
+        city,
+        address,
+        country,
+        state,
+        startDate,
+        endDate,
+        lastSchoolName,
+        howHeard,
+        major,
+        isSchoolTeacher,
+        hasAffiliation,
+        jobTitle,
+        employer,
+        isIdentityVerified,
+        selectedSubjects,
+        selectedRate,
+    } = applicationData;
+
+
 
 
 
 
 
     return (
-        <div className="p-3 bg-white">
+        <div className="p-3 bg-gray-100 shadow-2xl">
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4 pb-8">
-                <p className="text-3xl font-bold text-blue-950">Personal Information</p>
+                <p className="text-2xl font-bold text-blue-950">Personal Information</p>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">

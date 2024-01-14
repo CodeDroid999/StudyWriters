@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import Navbar from 'components/layout/Navbar'
 import { auth } from '../../../firebase'
-import ApplicationCard from 'components/applications/ApplicationCard'
+import ApplicationCard from 'components/AdminDasboard/ApplicationCard'
 
 
 
