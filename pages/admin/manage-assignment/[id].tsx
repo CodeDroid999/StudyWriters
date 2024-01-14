@@ -131,11 +131,9 @@ export default function TaskDetails(props: any) {
                                     <h4 className="text-sm font-bold uppercase text-green-950">
                                         Posted
                                     </h4>
-                                    {/**
-                  <p className="text-lg font-medium text-white">
-                    {student.firstName} {student.lastName}
-                  </p>
-  **/}
+                                    <p className="text-lg font-medium text-green-950">
+                                        {student.firstName} {student.lastName}
+                                    </p>
                                     <p className="text-sm font-medium text-green-950">
                                         On {assignmentData.createdAt}
                                     </p>
@@ -514,7 +512,7 @@ export default function TaskDetails(props: any) {
                             <div>
                                 {assignmentData.status === 'Open' && (
                                     <p className="mt-12 text-center text-lg font-semibold text-green-950 ">
-                                        No offers yet!
+                                        No bids yet!
                                     </p>
                                 )}
                             </div>
