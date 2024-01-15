@@ -27,7 +27,7 @@ const ReviewCard = ({ review }) => {
               {reviewer.firstName} {reviewer.lastName}
             </span>
           </Link>
-          <p className="ml-1 mr-1 text-xs text-gray-500">
+          <p className="ml-1 mr-1 text-xs text-green-950">
             {new Date(review.timestamp?.toMillis()).toLocaleDateString(
               'en-GB',
               {

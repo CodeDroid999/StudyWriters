@@ -168,21 +168,76 @@ function Navbar() {
 
           {/* Right div */}
           <div className="flex justify-end lg:hidden">
-            <div className="rounded-full p-3 text-white ">
-              <div className="flex flex-row items-center space-x-1">
-
+            {!user ? (
+              <div className="flex flex-row items-center space-x-5 mr-4 bg-gray-100 py-2 rounded">
                 <Link
                   href="/login"
                   className="text-gray-700 hover:text-green-500"
-                  style={{ whiteSpace: 'nowrap' }}
-                  id="customfontsize"
                 >
                   Log In
                 </Link>
 
               </div>
-              )
-            </div>
+            ) : (
+              <div className="flex flex-row items-center space-x-1">
+
+
+                <div className="flex flex-row items-center space-x-5 mr-4 bg-gray-100 py-2 rounded">
+                  <Link
+                    href="/admin/dashboard"
+                    className="text-blue-800 hover:text-green-500 px-2"
+                  >
+                    Dashboard
+                  </Link>
+
+                </div>
+                <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                  <Link
+                    href={`/notifications/${user.userId}`}
+                    className="text-gray-700 hover:text-green-500"
+                  >
+                    <Image
+                      src="https://i.postimg.cc/Z5RLK0WK/notification-bell.png"
+                      alt="assignment" width="200" height="200"
+                      className="h-[25px] w-[100%]"
+                      id="customfontsize"
+                    />
+                  </Link>
+                  {unReadNotifications.length > 0 && <RedDot />}
+                </div>
+                <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                  <Link
+                    href={`/messages/${user.userId}`}
+                    className="text-gray-700 hover:text-green-500"
+                  >
+                    <Image
+                      src="https://i.postimg.cc/0NGGVS3n/messages-icon.png"
+                      alt="assignment" width="200" height="200"
+                      className="h-[25px] w-[100%]"
+                      id="customfontsize"
+                    />
+                  </Link>
+                  {unReadMessages.length > 0 && <RedDot />}
+                </div>
+                <div className="flex flex-row hover:bg-gray-100 p-1 rounded">
+                  <Link href={`/alerts/${user.userId}`} className="text-gray-700 hover:text-green-500">
+                    <Image
+                      src="https://i.postimg.cc/25LMy016/alert-icon-removebg-preview.png"
+                      alt="assignment" width="200" height="200"
+                      className="h-[25px] w-[100%]"
+                      id="customfontsize"
+                    />
+
+                  </Link>
+                </div>
+                <div className="flex flex-row align-center justify-center bg-gray-100 p-1 rounded-3xl">
+                  <div className="font-bold px-2 pt-1 text-center text-blue-800">
+                    Admin
+                  </div>
+                  <Avartar />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

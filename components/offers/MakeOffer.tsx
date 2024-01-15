@@ -209,7 +209,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
                   <span className="py-1 text-red-500">{offerError}</span>
                 )}
                 <div className="mt-3 w-full">
-                  <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                  <div className="flex flex-row items-center justify-between font-medium text-green-950">
                     <span>Service fee</span>
                     <span>-${serviceFee}</span>
                   </div>
@@ -264,7 +264,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
 
                 <div className="flex w-full items-center justify-center rounded-xl bg-gray-200 p-3">
                   <div className="flex flex-col items-center">
-                    <h1 className="text-base font-medium text-gray-500">
+                    <h1 className="text-base font-medium text-green-950">
                       Your bid
                     </h1>
                     <p className="text-2xl font-semibold text-green-950">
@@ -273,7 +273,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
                   </div>
                 </div>
                 <div className="mt-3 w-full">
-                  <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                  <div className="flex flex-row items-center justify-between font-medium text-green-950">
                     <span>Service fee</span>
                     <span>-${serviceFee}</span>
                   </div>
@@ -283,7 +283,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <p className="mt-1 text-sm font-medium text-gray-500">
+                  <p className="mt-1 text-sm font-medium text-green-950">
                     * QualityunitedWriters automatically includes a Service Fee to cover
                     insurance and transaction costs.
                   </p>

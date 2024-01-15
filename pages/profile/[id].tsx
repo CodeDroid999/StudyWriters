@@ -239,28 +239,28 @@ export default function ProfilePage({
                 <div className="my-5 flex items-center justify-between space-x-1 px-6">
                   <button
                     className={`${activeTab === 'basic' ? 'bg-gray-200' : ''
-                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                     onClick={() => handleTabClick('basic')}
                   >
                     Personal Info
                   </button>
                   <button
                     className={`${activeTab === 'skills' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                     onClick={() => handleTabClick('skills')}
                   >
                     Skills & Education
                   </button>
                   <button
                     className={`${activeTab === 'bio' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                     onClick={() => handleTabClick('bio')}
                   >
                     Bio
                   </button>
                   <button
                     className={`${activeTab === 'reviews' ? 'bg-gray-100' : ''
-                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                      } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                     onClick={() => handleTabClick('reviews')}
                   >
                     Reviews

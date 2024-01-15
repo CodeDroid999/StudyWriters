@@ -83,7 +83,7 @@ export default function RequestPayment({ assignmentData, student, assignmentId }
                   release payment.
                 </p>
                 <div className="pt-3">
-                  <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                  <div className="flex flex-row items-center justify-between font-medium text-green-950">
                     <span>Service fee</span>
                     <span>-${assignmentData.tutor.serviceFee}</span>
                   </div>

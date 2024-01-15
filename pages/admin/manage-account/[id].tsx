@@ -186,8 +186,8 @@ export default function ManageAccount() {
                         </div>
                         <div className="container flex justify-center mt-2">
                             <div className="grid grid-cols-4 w-[1200px] gap-1">
-                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {userRole}</div>
-                                <div className="border shadow rounded py-1 px-1 text-center">Account status: {user?.role}</div>
+                                <div className="border shadow rounded py-1 px-1 text-center">Type: {userRole}</div>
+                                <div className="border shadow rounded py-1 px-1 text-center">Status: {user?.accountStatus}</div>
                                 <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
                                 <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
                             </div>
@@ -247,28 +247,28 @@ export default function ManageAccount() {
                                 <div className="my-5 flex items-center justify-between space-x-1 px-6">
                                     <button
                                         className={`${activeTab === 'basic' ? 'bg-gray-200' : ''
-                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                         onClick={() => handleTabClick('basic')}
                                     >
                                         Personal Info
                                     </button>
                                     <button
                                         className={`${activeTab === 'skills' ? 'bg-gray-100' : ''
-                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                         onClick={() => handleTabClick('skills')}
                                     >
                                         Skills & Education
                                     </button>
                                     <button
                                         className={`${activeTab === 'bio' ? 'bg-gray-100' : ''
-                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                         onClick={() => handleTabClick('bio')}
                                     >
                                         Bio
                                     </button>
                                     <button
                                         className={`${activeTab === 'reviews' ? 'bg-gray-100' : ''
-                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                            } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                         onClick={() => handleTabClick('reviews')}
                                     >
                                         Reviews
@@ -277,7 +277,7 @@ export default function ManageAccount() {
                                         {user?.role === 'Tutor' && (
                                             <button
                                                 className={`${activeTab === 'applications' ? 'bg-gray-100' : ''
-                                                    } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                                    } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                                 onClick={() => handleTabClick('applications')}
                                             >
                                                 Applications
@@ -287,7 +287,7 @@ export default function ManageAccount() {
                                         {user?.role === 'Student' && (
                                             <button
                                                 className={`${activeTab === 'assignments' ? 'bg-gray-100' : ''
-                                                    } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in hover:text-gray-900`}
+                                                    } w-full whitespace-nowrap border-2 rounded hover:shadow-2xl py-3 text-center text-sm font-medium text-green-950 transition duration-150 ease-in hover:text-gray-900`}
                                                 onClick={() => handleTabClick('assignments')}
                                             >
                                                 Assignments

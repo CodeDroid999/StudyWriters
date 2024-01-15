@@ -220,7 +220,7 @@ export default function TaskDetails(props: any) {
                                                                     You bidded ${offer.amount}
                                                                 </div>
                                                                 <div className="my-3 w-full text-sm">
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
                                                                         <span>Service fee</span>
                                                                         <span>-${offer.serviceFee}</span>
                                                                     </div>
@@ -254,11 +254,11 @@ export default function TaskDetails(props: any) {
                                                     (assignmentData.status === 'Assigned' ||
                                                         assignmentData.status === 'Completed') ? (
                                                     <div>
-                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
+                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-green-950">
                                                             <span>Your Bid</span>
                                                             <span>${assignmentData.tutor.price}</span>
                                                         </div>
-                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-gray-500">
+                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-green-950">
                                                             <span>Service fee</span>
                                                             <span>-${assignmentData.tutor.serviceFee}</span>
                                                         </div>
@@ -281,11 +281,11 @@ export default function TaskDetails(props: any) {
                                                         {assignmentData.status === 'Assigned' && (
                                                             <div>
                                                                 <div className="my-3 w-full text-sm">
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
                                                                         <span>Your Bid</span>
                                                                         <span>${assignmentData.tutor.price}</span>
                                                                     </div>
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-gray-500">
+                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
                                                                         <span>Service fee</span>
                                                                         <span>-${assignmentData.tutor.serviceFee}</span>
                                                                     </div>

@@ -10,6 +10,8 @@ import {
 import { auth, db } from '../firebase';
 import Image from 'next/image';
 import HeroBackground from "public/svg/Ripple-1.2s-228px.svg"
+
+
 type User = {
   firstName?: string;
   lastName?: string;
@@ -45,20 +47,24 @@ type User = {
   education?: string[];
   identityVerification?: boolean;
   read?: boolean;
+  accountStatus?: string;
 };
 
 
 interface AuthContextType {
   user: User | null;
   userRole: string | null;
+  accountStatus: string | null;
   logOut: () => void;
   loading: boolean;
   error: string | null;
 }
 
+
 const AuthContext = createContext<AuthContextType>({
   user: null,
   userRole: null,
+  accountStatus: null,
   logOut: () => { },
   loading: false,
   error: null,
@@ -71,6 +77,7 @@ export function AuthContextProvider({
 }) {
   const [user, setUser] = useState<User | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [accountStatus, setAccountStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -96,6 +103,7 @@ export function AuthContextProvider({
 
             setUser(userData);
             setUserRole(userData.role); // Assuming 'role' is a field in your user data
+            setAccountStatus(userData.accountStatus);
             // Update the userId property
 
             setError(null);
@@ -113,6 +121,7 @@ export function AuthContextProvider({
       } else {
         setUser(null);
         setUserRole(null);
+        setAccountStatus(null);
         setLoading(false);
       }
     });
@@ -144,7 +153,7 @@ export function AuthContextProvider({
   }
 
   return (
-    <AuthContext.Provider value={{ user, userRole, logOut, loading, error }}>
+    <AuthContext.Provider value={{ user, userRole, logOut, loading, error, accountStatus }}>
       {children}
     </AuthContext.Provider>
   );

@@ -31,7 +31,7 @@ export default function AdminDashboard() {
 
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-20">
+            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-20 hidden md:block">
                 <div className="mx-auto bg-gray-100 w-full">
                     <div className="p-2 flex font-bold items-center w-full border border-green-700">
                         <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap">

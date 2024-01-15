@@ -21,7 +21,7 @@ const UsersPage = () => {
 
                 if (!querySnapshot.empty) {
                     const usersData = querySnapshot.docs.map((doc) => ({
-                        id: doc.id,
+                        id: doc.data().userId,
                         firstName: doc.data().firstName,
                         lastName: doc.data().lastName,
                         profilePicture: doc.data().profilePicture,
@@ -44,7 +44,7 @@ const UsersPage = () => {
 
     return (
         <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">Users</p>
+            <p className="text-3xl font-bold text-blue-950 mb-4">Accounts</p>
             {users.length > 0 ? (
                 <ul>
                     {users.map((user) => (
@@ -83,7 +83,7 @@ const UsersPage = () => {
                     ))}
                 </ul>
             ) : (
-                <p>No users found in the database.</p>
+                <p>Loading ...</p>
             )
             }
         </div >

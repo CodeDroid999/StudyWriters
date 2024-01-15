@@ -166,7 +166,7 @@ export default function AddReview({ tutorDetails, assignmentId, student, assignm
               <h1 className="text-base font-medium text-green-950">
                 Leave a public review (Optional)
               </h1>
-              <p className="mb-3 text-sm font-medium text-gray-500">
+              <p className="mb-3 text-sm font-medium text-green-950">
                 {firstName} {lastName} will see your name and what you write
               </p>
               <textarea
