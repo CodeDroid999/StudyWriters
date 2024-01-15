@@ -9,11 +9,13 @@ import Link from 'next/link'
 import AssignmentsStatsCard from 'components/AdminDasboard/AsssignmentsStatsCard'
 import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard'
 import ApplicationsStatsCard from 'components/AdminDasboard/ApplicationsStatsCard'
+import useRoleBasedAccess from 'hooks/ActiveAdmin'
 
 
 
 export default function AdminDashboard() {
     const router = useRouter()
+    const { isUserAllowed } = useRoleBasedAccess(['Admin', 'Root'], 'Active');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,6 +28,12 @@ export default function AdminDashboard() {
 
     const handleExit = () => {
         router.push('/')
+    }
+    if (!isUserAllowed()) {
+        return <div className="h-screen w-screen bg-red-200 flex justify-center align-center">
+            <div className="container mx-auto my-auto">
+                <div className="text-3xl text-center font-bold text-red-700">You are not allowed to see this page.</div>
+            </div></div>;
     }
     return (
 

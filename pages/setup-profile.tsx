@@ -12,7 +12,6 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import { UserAuth } from 'context/AuthContext'
-import axios from 'axios'
 import Head from 'next/head'
 
 export default function CompleteAccount() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserAuth } from './AuthContext' // Adjust the import path based on your file structure
+import { UserAuth } from '../context/AuthContext' // Adjust the import path based on your file structure
 
 const useRoleBasedAccess = (allowedRoles, accountStatus) => {
   const { userRole } = UserAuth()

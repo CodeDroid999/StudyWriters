@@ -11,9 +11,9 @@ import ReviewsTab from 'components/manage-account/Reviews/ReviewTab'
 import Bio from 'components/manage-account/BioTab'
 import SkillsAndEducation from 'components/manage-account/SkillsTab'
 import PersonalInfoTab from 'components/manage-account/PersonalInfoTab'
-import UserApplicationHistoryPage from 'components/applications/AppplicationHistoryCard'
 import AssignmentsTab from 'components/manage-account/UserAssignmentsTab'
 import Navbar from 'components/AdminLayout/Navbar'
+import UserApplicationHistory from 'components/manage-account/ApplicationsTab'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -163,33 +163,33 @@ export default function ManageAccount() {
             ) : (
                 <div className="min-w-100  min-h-screen  bg-gray-100">
                     <div className="bg-gray-100 mx-auto mt-20 min-h-screen max-w-[1000px]  px-3 pt-10 antialiased">
-                        <div className=" flex space-x-2">
-                            <div className="">
-                                <Image
-                                    src={user?.profilePicture || profile}
-                                    alt="profile picture"
-                                    height={100}
-                                    width={100}
-                                    className="h-[100px] w-[100px] rounded-full object-cover"
-                                />
-                            </div>
-                            <div className="flex flex-col justify-center align-center items-center">
-                                <p className="text-2xl font-semibold text-green-950">
-                                    {user?.firstName} {user?.lastName}
-                                </p>
-                                {user?.createdAt && (
-                                    <p className="text-sm font-medium text-green-950">
-                                        Member since {user?.createdAt}
+                        <div className="p-2 border-2">
+                            <div className=" flex space-x-2">
+                                <div className="">
+                                    <Image
+                                        src={user?.profilePicture || profile}
+                                        alt="profile picture"
+                                        height={100}
+                                        width={100}
+                                        className="h-[100px] w-[100px] rounded-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex flex-col justify-center align-center items-center">
+                                    <p className="text-2xl font-semibold text-green-950">
+                                        {user?.firstName} {user?.lastName}
                                     </p>
-                                )}
+                                    {user?.createdAt && (
+                                        <p className="text-sm font-medium text-green-950">
+                                            Member since {user?.createdAt}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                        <div className="container flex justify-center mt-2">
-                            <div className="grid grid-cols-4 w-[1200px] gap-1">
-                                <div className="border shadow rounded py-1 px-1 text-center">Type: {userRole}</div>
-                                <div className="border shadow rounded py-1 px-1 text-center">Status: {user?.accountStatus}</div>
-                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
-                                <div className="border shadow rounded py-1 px-1 text-center">Account type: {user?.role}</div>
+                            <div className="container flex justify-center mt-2">
+                                <div className="grid grid-cols-4 w-[1200px] gap-1">
+                                    <div className="border shadow rounded py-1 px-1 text-center">Type: {userRole}</div>
+                                    <div className="border shadow rounded py-1 px-1 text-center">Status: {user?.accountStatus}</div>
+                                </div>
                             </div>
                         </div>
                         <div className="mt-3 bg-gray-100 p-3">
@@ -327,7 +327,7 @@ export default function ManageAccount() {
                                 {activeTab === 'applications' && (
                                     <div className="w-full p-4">
                                         {/* Content for the Personal Info tab */}
-                                        <UserApplicationHistoryPage />
+                                        <UserApplicationHistory />
                                     </div>
                                 )}
                                 {activeTab === 'assignments' && (

@@ -35,8 +35,8 @@ export default function UploadIDForm() {
         setUploading(true);
         try {
             const storage = getStorage();
-            const frontPath = `${userId}_${applicationId}_front_${new Date().getTime()}`;
-            const backPath = `${userId}_${applicationId}_back_${new Date().getTime()}`;
+            const frontPath = `${userId}_${applicationId}_frontId}`;
+            const backPath = `${userId}_${applicationId}_backId`;
 
             const frontRef = ref(storage, frontPath);
             const backRef = ref(storage, backPath);
@@ -84,7 +84,7 @@ export default function UploadIDForm() {
                 >
                     <input
                         type="file"
-                        accept=".jpg, .jpeg, .png, .pdf"
+                        accept=".jpg, .jpeg, .png"
                         onChange={(e) => handleFileChange(e, 'front')}
                     />
                     <p>Drag and drop a file here or click to select</p>
@@ -106,7 +106,7 @@ export default function UploadIDForm() {
                 >
                     <input
                         type="file"
-                        accept=".jpg, .jpeg, .png, .pdf"
+                        accept=".jpg, .jpeg, .png, "
                         onChange={(e) => handleFileChange(e, 'back')}
                     />
                     <p>Drag and drop a file here or click to select</p>
