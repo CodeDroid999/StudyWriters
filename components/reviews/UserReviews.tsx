@@ -62,8 +62,8 @@ export default function UserReviews({ userId }) {
       <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
         <span
           className={`${activeTab === 'Tutor'
-              ? 'border-b-blue-600 text-green-950'
-              : 'border-none'
+            ? 'border-b-blue-600 text-green-950'
+            : 'border-none'
             } cursor-pointer border border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Tutor')}
         >
@@ -71,8 +71,8 @@ export default function UserReviews({ userId }) {
         </span>
         <span
           className={`${activeTab === 'Student'
-              ? 'border-b-blue-600 text-green-950'
-              : 'border-none'
+            ? 'border-b-blue-600 text-green-950'
+            : 'border-none'
             } cursor-pointer border border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Student')}
         >
@@ -84,7 +84,7 @@ export default function UserReviews({ userId }) {
           {tutorReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user has no reviews as a Tutor!
+                This account has no reviews as a Tutor!
               </h1>
             </div>
           ) : (
@@ -97,7 +97,7 @@ export default function UserReviews({ userId }) {
           {studentReviews.length === 0 ? (
             <div>
               <h1 className="mt-10 text-center text-lg font-medium text-green-950">
-                This user no reviews as a Student!
+                This account no reviews as a Student!
               </h1>
             </div>
           ) : (
