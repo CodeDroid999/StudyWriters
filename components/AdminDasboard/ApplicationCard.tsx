@@ -1,21 +1,15 @@
 import { UserAuth } from 'context/AuthContext';
 import {
-    addDoc,
     collection,
-    doc,
     getDocs,
     query,
-    serverTimestamp,
-    updateDoc,
     where,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import React, { useEffect, useState } from 'react';
 
-import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase';
-import countryList from 'components/TutorApplication/countryList';
+import DisplayIDPhotos from 'components/ManageApplication/DisplayIdPhoto';
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -38,7 +32,7 @@ export const formatDate = (dateString) => {
 export default function ApplicationCard() {
     const { user } = UserAuth();
     const router = useRouter();
-    const userId = router.query?.id;
+    const routeId = router.query?.id;
 
     // Define constants for state variables using useState
     const [firstName, setFirstName] = useState(user?.firstName || '');
@@ -60,83 +54,58 @@ export default function ApplicationCard() {
     const [isIdentityVerified, setIsIdentityVerified] = useState(user?.identityVerification || '');
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedRate, setSelectedRate] = useState('$10');
+    const [applicationData, setApplicationData] = useState(null);
 
 
-    const handleSave = async (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        const fetchApplicationData = async () => {
+            try {
+                if (!routeId) {
+                    console.error('Route ID is missing');
+                    return;
+                }
 
-        try {
-            const auth = getAuth();
-            const user = auth.currentUser;
+                const q = query(collection(db, 'applications'), where('applicationId', '==', routeId));
+                const querySnapshot = await getDocs(q);
 
-            if (!user) {
-                // User is not logged in
-                // Handle the case where the user is not logged in
-                return;
+                if (!querySnapshot.empty) {
+                    const applicationData = querySnapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        createdAt: doc.data().createdAt.toDate().toLocaleString(),
+                        status: doc.data().applicationStatus,
+                        userId: doc.data().userId,
+                        // Include all fields from the application document
+                        ...doc.data(),
+                    }));
+
+                    setApplicationData(applicationData);
+
+                    // Log the fetched application data
+                    console.log('Fetched Application Data:', applicationData);
+
+                    // Perform any additional actions with the data, such as setting state
+                    // ...
+
+                } else {
+                    console.error('No data found for the application');
+                }
+            } catch (error) {
+                console.error('Error fetching application data:', error.message);
             }
+        };
 
-            const q = query(
-                collection(db, 'users'),
-                where('userId', '==', user?.uid)
-            );
-
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const docSnapshot = querySnapshot.docs[0];
-                const userDocRef = doc(db, 'users', docSnapshot.id);
-                await updateDoc(userDocRef, {
-                    firstName,
-                    lastName,
-                    country,
-                    address,
-                    city,
-                    state,
-                });
-            } else {
-                // Handle the case where the user document is not found
-            }
-
-            const applicationDocRef = await addDoc(collection(db, 'applications'), {
-                firstName,
-                lastName,
-                country,
-                address,
-                city,
-                state,
-                howHeard,
-                lastSchoolName,
-                major,
-                isSchoolTeacher,
-                hasAffiliation,
-                jobTitle,
-                employer,
-                startDate,
-                endDate,
-                userId: user.uid,
-                createdAt: serverTimestamp(),
-                read: false,
-                idVerificationStatus: false,
-                // Add other details specific to applications here
-            });
-
-            toast.success('Personal info has been updated');
-            toast.success('Application has been saved');
-            router.push('/tutor-application/step2');
-        } catch (error) {
-            console.error('Error updating personal info or saving application:', error.message);
-            toast.error('Error updating. Please try again.');
-        }
-    };
-
-
+        fetchApplicationData(); // Always call the function, whether or not routeId is present
+    }, [routeId, db]); // Include all dependencies in the dependency array
 
 
 
     return (
-        <div className="p-3 bg-white">
+        <div className="p-3 bg-gray-100 shadow-2xl">
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4 pb-8">
-                <p className="text-3xl font-bold text-blue-950">Personal Information</p>
+                <p className="text-xl font-bold text-blue-950">Personal Information</p>
+                <p className="text-blue-950">
+                    <span className="text-green-9">Application Id: </span>{routeId}
+                </p>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
@@ -200,6 +169,7 @@ export default function ApplicationCard() {
                         </p>
                     </div>
                 </div>
+                <DisplayIDPhotos userId={applicationData?.userId} applicationId={routeId} />
                 <div className="row">
                     <div className="flex col-md-8 col-sm-12 flex-col">
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">

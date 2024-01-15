@@ -34,7 +34,7 @@ const UserAssignmentCard = () => {
         <div className="mt-20">
             <div className="border border-green-800 rounded-xl pb-3">
                 <p className="bg-green-700 w-full p-3 text-white">User Assignments</p>
-                <div className="flex flex-col flex-grow w-full bg-white p-2">
+                <div className="flex flex-col flex-grow w-full This account  p-2">
                     <table className="w-full">
                         <thead>
                             <tr>
