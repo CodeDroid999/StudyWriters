@@ -15,7 +15,7 @@ export default function PostYourAssignment() {
                                     Lowest service fees
                                 </h3>
                                 <p>
-                                    Starting at 20%, Studypool charges the lowest service fees in the market. We like to give our tutors what they earn
+                                    Starting at 20%, Qualityunitedwriters charges the lowest service fees in the market. We like to give our tutors what they earn
                                 </p>
                             </div>
                         </div>

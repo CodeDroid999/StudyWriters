@@ -37,6 +37,7 @@ export default function Form2() {
         await updateDoc(userDocRef, {
           subjects: selectedSubjects,
           rate: selectedRate,
+          applicationId: applicationId,
         });
         toast.success('Subject preferences and rates saved!');
         router.push("/tutor-application/step3");

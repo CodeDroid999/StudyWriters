@@ -12,7 +12,6 @@ export default function UploadIDForm() {
     const userId = user?.userId;
     const { applicationId } = router.query;
 
-
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });

@@ -79,7 +79,7 @@ export default function SkillAssessment() {
                 </p>
                 <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm sm:text-sm">
                     Strong written communication skills are essential to succeed as a
-                    tutor on Studypool as you will be expected to explain difficult
+                    tutor on Qualityunitedwriters as you will be expected to explain difficult
                     academic questions in writing. To assess your writing skills, we ask
                     that you provide a short written answer based on the topic of your
                     choice. Make sure to pay attention to the requirements.
