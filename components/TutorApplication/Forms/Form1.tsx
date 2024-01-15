@@ -61,6 +61,8 @@ export default function Form1() {
     const [employer, setEmployer] = useState(user?.employer || '');
     const [error, setError] = useState('');
     const applicationStatus = 'Pending';
+    const IdPhotoBackUrl = '';
+    const IdPhotoFrontUrl = '';
 
     useEffect(() => {
         const fetchCountries = async () => {
@@ -138,6 +140,8 @@ export default function Form1() {
                 read: false,
                 applicationStatus,
                 idVerificationStatus: false,
+                IdPhotoBackUrl,
+                IdPhotoFrontUrl,
                 // Add other details specific to applications here
             });
             const applicationId = applicationDocRef.id;
