@@ -5,11 +5,16 @@ import { db } from '../../../firebase';
 import router, { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 
-export default function Form2() {
+interface Props {
+  handleNextStep: () => void
+  handlePreviousStep: () => void
+}
+
+
+export default function Form2({ handleNextStep, handlePreviousStep }: Props) {
   const { user } = UserAuth();
   const userId = user?.userId;
   const router = useRouter();
-  const { applicationId } = router.query;
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedRate, setSelectedRate] = useState('$10');
 
@@ -37,7 +42,6 @@ export default function Form2() {
         await updateDoc(userDocRef, {
           subjects: selectedSubjects,
           rate: selectedRate,
-          applicationId: applicationId,
         });
         toast.success('Subject preferences and rates saved!');
         router.push("/tutor-application/step3");
@@ -114,7 +118,7 @@ export default function Form2() {
           <button
             type="button"
             className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-            onClick={handleSave}
+            onClick={handleNextStep}
           >
             Save and Continue
           </button>

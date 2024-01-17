@@ -3,11 +3,16 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 
-export default function SkillAssessment() {
+interface Props {
+    handleNextStep: () => void
+    handlePreviousStep: () => void
+}
+
+
+export default function Form3({ handleNextStep, handlePreviousStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
     const userId = router.query?.id;
-    const { applicationId } = router.query;
 
     const [selectedTopic, setSelectedTopic] = useState('');
     const [uploadFile, setUploadFile] = useState(null);
@@ -217,7 +222,7 @@ export default function SkillAssessment() {
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                        onClick={handleSave}
+                        onClick={handleNextStep}
                     >
                         Save and Continue
                     </button>

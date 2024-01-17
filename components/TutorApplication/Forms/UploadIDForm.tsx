@@ -5,8 +5,15 @@ import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/storage';
 import { db, storage } from '../../../firebase';
+import { doc, updateDoc } from 'firebase/firestore';
 
-export default function UploadIDForm() {
+interface Props {
+    handleNextStep: () => void
+    handlePreviousStep: () => void
+}
+
+
+export default function UploadIDForm({ handleNextStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
     const userId = user?.userId;
@@ -34,8 +41,8 @@ export default function UploadIDForm() {
         setUploading(true);
         try {
             const storage = getStorage();
-            const frontPath = `${userId}_${applicationId}_frontId}`;
-            const backPath = `${userId}_${applicationId}_backId`;
+            const frontPath = `${userId}_frontId`;
+            const backPath = `${userId}_backId`;
 
             const frontRef = ref(storage, frontPath);
             const backRef = ref(storage, backPath);
@@ -48,6 +55,12 @@ export default function UploadIDForm() {
             const frontDownloadURL = await getDownloadURL(frontRef);
             const backDownloadURL = await getDownloadURL(backRef);
 
+            // Update the application document with front and back URLs
+            await updateDoc(applicationRef, {
+                IdPhotoFrontUrl: frontDownloadURL,
+                IdPhotoBackUrl: backDownloadURL,
+            });
+
             router.push('/tutor-application/thankyou');
         } catch (error) {
             console.error('Error during file upload:', error);
@@ -56,6 +69,7 @@ export default function UploadIDForm() {
             setUploading(false);
         }
     };
+
 
     const handleFileChange = (e, side) => {
         const file = e.target.files[0];
@@ -128,7 +142,7 @@ export default function UploadIDForm() {
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                        onClick={handleSave}
+                        onClick={handleNextStep}
                     >
                         Save and Continue
                     </button>

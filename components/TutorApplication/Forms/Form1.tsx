@@ -10,10 +10,13 @@ import {
     where,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-// Import the `doc` function from 'firebase/firestore'
-import { doc as firestoreDoc } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
+import useFormStore from 'store/tutorApplication'
+
+interface Props {
+    handleNextStep: () => void
+}
 
 
 import { db } from '../../../firebase';
@@ -37,7 +40,7 @@ export const formatDate = (dateString) => {
 
 
 
-export default function Form1() {
+export default function Form1({ handleNextStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
     const userId = user?.userId;
@@ -64,6 +67,8 @@ export default function Form1() {
     const IdPhotoBackUrl = '';
     const IdPhotoFrontUrl = '';
 
+    const setData = useFormStore((state) => state.setStep1Data)
+
     useEffect(() => {
         const fetchCountries = async () => {
             try {
@@ -84,7 +89,7 @@ export default function Form1() {
         fetchCountries();
     }, []);
 
-    const handleSave = async (e) => {
+    const handleNext = async (e) => {
         e.preventDefault();
 
         try {
@@ -97,10 +102,7 @@ export default function Form1() {
                 return;
             }
 
-            const q = query(
-                collection(db, 'users'),
-                where('userId', '==', user?.uid)
-            );
+            const q = query(collection(db, 'users'), where('userId', '==', user?.uid));
 
             const querySnapshot = await getDocs(q);
 
@@ -144,11 +146,36 @@ export default function Form1() {
                 IdPhotoFrontUrl,
                 // Add other details specific to applications here
             });
+
             const applicationId = applicationDocRef.id;
+            setData({
+                firstName,
+                lastName,
+                country,
+                address,
+                city,
+                state,
+                howHeard,
+                lastSchoolName,
+                major,
+                isSchoolTeacher: isSchoolTeacher === 'true', // Convert to boolean
+                hasAffiliation: hasAffiliation === 'true', // Convert to boolean
+                jobTitle,
+                employer,
+                startDate,
+                endDate,
+                userId: user.uid,
+                createdAt: serverTimestamp(),
+                read: false,
+                applicationStatus,
+                idVerificationStatus: false,
+                IdPhotoBackUrl,
+                IdPhotoFrontUrl,
+            });
 
             toast.success('Personal info has been updated');
             toast.success('Application has been saved');
-            router.push("/tutor-application/step2");
+            handleNextStep();
         } catch (error) {
             console.error('Error updating personal info or saving application:', error.message);
             toast.error('Error updating. Please try again.');
@@ -487,10 +514,16 @@ export default function Form1() {
 
                 <div
                     className="mt-4 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                    onClick={handleSave}
+                    onClick={handleNextStep}
                 >
                     Save and continue                </div>
             </form>
         </div>
     )
 }
+
+
+
+
+
+
