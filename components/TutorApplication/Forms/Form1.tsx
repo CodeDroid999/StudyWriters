@@ -131,8 +131,8 @@ export default function Form1({ handleNextStep }: Props) {
                 howHeard,
                 lastSchoolName,
                 major,
-                isSchoolTeacher: isSchoolTeacher === 'true', // Convert to boolean
-                hasAffiliation: hasAffiliation === 'true', // Convert to boolean
+                isSchoolTeacher: isSchoolTeacher.toString(), // Convert to string
+                hasAffiliation: hasAffiliation.toString(), // Convert to string
                 jobTitle,
                 employer,
                 startDate,
@@ -158,8 +158,8 @@ export default function Form1({ handleNextStep }: Props) {
                 howHeard,
                 lastSchoolName,
                 major,
-                isSchoolTeacher: isSchoolTeacher === 'true', // Convert to boolean
-                hasAffiliation: hasAffiliation === 'true', // Convert to boolean
+                isSchoolTeacher: isSchoolTeacher.toString(), // Convert to string
+                hasAffiliation: hasAffiliation.toString(), // Convert to string
                 jobTitle,
                 employer,
                 startDate,
