@@ -45,7 +45,7 @@ export default function Step1({ handleNextStep }: Props) {
     <div className="w-full">
       <div className="p-3 shadow-lg rounded-lg">
         <p className="mb-1 text-xs font-medium uppercase text-green-950 md:text-sm">
-          Step 1/3
+          Step
         </p>
         <p className="text-3xl font-bold text-green-950">
           Lets start with the basics

@@ -54,8 +54,7 @@ export default function Form3({ handleNextStep, handlePreviousStep }: Props) {
         try {
             // Perform additional validations if needed
 
-            // If both conditions are met, navigate to the 'thankyou' page
-            router.push("/tutor-application/upload-id");
+
 
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);
@@ -80,7 +79,7 @@ export default function Form3({ handleNextStep, handlePreviousStep }: Props) {
 
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
                 <p className="text-3xl font-bold text-blue-950">
-                    Short Questions 1/3: Writing Skills Assessment
+                    Short Questions : Writing Skills Assessment
                 </p>
                 <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm sm:text-sm">
                     Strong written communication skills are essential to succeed as a

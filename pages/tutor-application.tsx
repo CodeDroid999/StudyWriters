@@ -60,7 +60,7 @@ export default function PostAssignment() {
     return (
         <div>
             <header className="flex flex-row  justify-between items-center bg-white  px-4 ">
-                <header className="flex flex-row  justify-between items-center bg-white  px-4 ">
+                <header className="flex flex-row  justify-between items-center bg-white  px-4 w-screen">
                     <div className="flex flex-row items-center">
                         <div className="mr-1">
                             <h1 className="text-4xl font-bold">
