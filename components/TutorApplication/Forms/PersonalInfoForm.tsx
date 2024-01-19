@@ -191,7 +191,7 @@ export default function InfoForm({ handleNextStep }: Props) {
     return (
         <div className="p-3 bg-white">
             <p className="mb-1 text-xs font-bold uppercase text-orange-400 text-right md:text-sm">
-                Step
+                Step 1
             </p>
 
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
