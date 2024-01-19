@@ -24,7 +24,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
 
     const setData = useFormStore((state) => state.setStep2Data)
 
-    const handleNext = (event: any) => {
+    const handleNextStep = (event: any) => {
         event.preventDefault();
         let hasError = false;
 
@@ -53,36 +53,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
 
         handleNextStep();
     };
-    const handleSave = async () => {
-        console.log('User:', user);
 
-        // Validate form data
-        if (!selectedSubjects.length || !selectedRate) {
-            toast.error('Please fill in all required fields');
-            return;
-        }
-
-        try {
-            const q = query(collection(db, 'users'), where('userId', '==', userId));
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const docSnapshot = querySnapshot.docs[0];
-                const userDocRef = doc(db, 'users', docSnapshot.id);
-                await updateDoc(userDocRef, {
-                    subjects: selectedSubjects,
-                    rate: selectedRate,
-                });
-                toast.success('Subject preferences and rates saved!');
-                router.push("/tutor-application/step3");
-            } else {
-                toast.error('User document not found');
-            }
-        } catch (error) {
-            console.error('Error updating personal info:', error.message);
-            toast.error('Error updating personal info. Please try again.');
-        }
-    };
 
     return (
         <div className="p-3 bg-white">

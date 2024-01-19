@@ -12,6 +12,7 @@ import Logo from "../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
 import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
 import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPreferenceForm";
+import SkillAssessmentForm from "components/TutorApplication/Forms/SkillAssessmentForm";
 
 export default function PostAssignment() {
     const [step, setStep] = useState(1);
@@ -52,7 +53,7 @@ export default function PostAssignment() {
                     />
                 );
             case 3:
-                return <Form3 handlePreviousStep={handlePreviousStep} />;
+                return <SkillAssessmentForm handlePreviousStep={handlePreviousStep} />;
             default:
                 return null;
         }

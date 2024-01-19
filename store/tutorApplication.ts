@@ -73,8 +73,8 @@ const useFormStore = create<Store>()(
         userId: '',
       },
       step2: {
-        selectedSubjects: '',
-        selectedRate: ';',
+        selectedSubjects: string[''],
+        selectedRate: '',
       },
       step3: {
         budget: '',
@@ -94,30 +94,33 @@ const useFormStore = create<Store>()(
         jobTitle,
         employer,
         startDate,
-        endDate
+        endDate,
+        userId,
+        d
       ) =>
         set((state) => ({
           ...state,
           step1: {
             ...state.step1,
             firstName,
-            lastName: '',
-            country: '',
-            address: '',
-            city: '',
-            state: '',
-            howHeard: '',
-            lastSchoolName: '',
-            major: '',
-            isSchoolTeacher: '',
-            hasAffiliation: '',
-            jobTitle: '',
-            employer: '',
-            startDate: '',
-            endDate: '',
+            lastName,
+            country,
+            address,
+            city,
+            state,
+            howHeard,
+            lastSchoolName,
+            major,
+            isSchoolTeacher,
+            hasAffiliation,
+            jobTitle,
+            employer,
+            startDate,
+            endDate,
+            userId,
           },
         })),
-      setStep2Data: (description) =>
+      setStep2Data: (selectedSubjects, selectedRate) =>
         set((state) => ({
           ...state,
           step2: {
@@ -148,8 +151,8 @@ const useFormStore = create<Store>()(
             userId: '',
           },
           step2: {
-            selectedSubjects,
-            selectedRate,
+            selectedSubjects: string[''],
+            selectedRate: '',
           },
         }),
     }),
