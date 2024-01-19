@@ -11,7 +11,7 @@ import Form3 from "components/TutorApplication/Forms/Form3";
 import Logo from "../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
 import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
-import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPrefernceForm";
+import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPreferenceForm";
 
 export default function PostAssignment() {
     const [step, setStep] = useState(1);

@@ -22,7 +22,8 @@ type Step1 = {
 }
 
 type Step2 = {
-  description: string
+  selectedSubjects: string[]
+  selectedRate: string
 }
 
 interface Store {
@@ -46,7 +47,7 @@ interface Store {
     endDate: string,
     userId: string
   ) => void
-  setStep2Data: (description: string) => void
+  setStep2Data: (selectedSubjects: string[], selectedRate: string) => void
   clearStore: () => void
 }
 const useFormStore = create<Store>()(
@@ -72,18 +73,34 @@ const useFormStore = create<Store>()(
         userId: '',
       },
       step2: {
-        description: '',
-        assignmentFilePath: '',
+        selectedSubjects: '',
+        selectedRate: ';',
       },
       step3: {
         budget: '',
       },
-      setStep1Data: (title, dueDate) =>
+      setStep1Data: (
+        firstName,
+        lastName,
+        country,
+        address,
+        city,
+        state,
+        howHeard,
+        lastSchoolName,
+        major,
+        isSchoolTeacher,
+        hasAffiliation,
+        jobTitle,
+        employer,
+        startDate,
+        endDate
+      ) =>
         set((state) => ({
           ...state,
           step1: {
             ...state.step1,
-            firstName: '',
+            firstName,
             lastName: '',
             country: '',
             address: '',
@@ -105,8 +122,8 @@ const useFormStore = create<Store>()(
           ...state,
           step2: {
             ...state.step2,
-            description,
-            assignmentFilePath: '',
+            selectedSubjects,
+            selectedRate,
           },
         })),
 
@@ -131,7 +148,8 @@ const useFormStore = create<Store>()(
             userId: '',
           },
           step2: {
-            description: '',
+            selectedSubjects,
+            selectedRate,
           },
         }),
     }),

@@ -4,6 +4,7 @@ import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/fire
 import { db } from '../../../firebase';
 import router, { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
+import useFormStore from 'store/tutorApplication';
 
 interface Props {
     handleNextStep: () => void
@@ -17,12 +18,41 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
     const router = useRouter();
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedRate, setSelectedRate] = useState('$10');
+    // Define constants for state variables using useState
+    const [selectedRateError, setSelectedRateError] = useState('');
+    const [selectedSubjectsError, setSelectedSubjectsError] = useState('');
 
-    const handleBack = () => {
-        toast.success('Personal info has been updated');
-        router.push('/tutor-application/step2');
+    const setData = useFormStore((state) => state.setStep2Data)
+
+    const handleNext = (event: any) => {
+        event.preventDefault();
+        let hasError = false;
+
+        if (!selectedSubjects.length) {
+            setSelectedSubjectsError('This field is required');
+            hasError = true;
+        } else {
+            setSelectedSubjectsError('');
+        }
+
+        if (!selectedRate) {
+            setSelectedRateError('This field is required');
+            hasError = true;
+        } else {
+            setSelectedRateError('');
+        }
+
+        if (hasError) {
+            return;
+        }
+
+        setData(
+            selectedSubjects,
+            selectedRate
+        );
+
+        handleNextStep();
     };
-
     const handleSave = async () => {
         console.log('User:', user);
 
@@ -85,6 +115,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
                                 <label className="mt-2" htmlFor={subject}>{subject}</label>
                             </div>
                         ))}
+                        {selectedSubjectsError && <span className="text-red-500">{selectedSubjectsError}</span>}
                     </div>
                 </div>
 
@@ -105,13 +136,14 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
                             ))}
                         </select>
                     </div>
+                    {selectedRateError && <span className="text-red-500">{selectedRateError}</span>}
                 </div>
 
                 <div className="flex gap-4">
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
-                        onClick={handleBack}
+                        onClick={handlePreviousStep}
                     >
                         Back
                     </button>
