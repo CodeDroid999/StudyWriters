@@ -6,11 +6,12 @@ import { useRouter } from "next/router";
 import useFormStore from "store/tutorApplication";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
-import Form1 from "components/TutorApplication/Forms/Form1";
 import Form2 from "components/TutorApplication/Forms/Form2";
 import Form3 from "components/TutorApplication/Forms/Form3";
 import Logo from "../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
+import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
+import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPrefernceForm";
 
 export default function PostAssignment() {
     const [step, setStep] = useState(1);
@@ -42,10 +43,10 @@ export default function PostAssignment() {
     const renderForm = () => {
         switch (step) {
             case 1:
-                return <Form1 handleNextStep={handleNextStep} />;
+                return <InfoForm handleNextStep={handleNextStep} />;
             case 2:
                 return (
-                    <Form2
+                    <SubjectPreferenceForm
                         handleNextStep={handleNextStep}
                         handlePreviousStep={handlePreviousStep}
                     />

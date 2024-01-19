@@ -44,7 +44,7 @@ export default function Form3({ handleNextStep, handlePreviousStep }: Props) {
         e.preventDefault();
     };
 
-    const handleSave = async () => {
+    const handleNexttep = async () => {
         // Validate form data
         if (!selectedTopic) {
             toast.error('Please select a topic and upload a valid .doc or .docx file');
