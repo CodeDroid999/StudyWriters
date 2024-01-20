@@ -13,15 +13,15 @@ export default function InfoForm({ handleNextStep }: Props) {
     const userId = user?.userId;
 
     // Define constants for state variables using useState
-    const [firstName, setFirstName] = useState(user?.firstName || '');
-    const [lastName, setLastName] = useState(user?.lastName || '');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [city, setCity] = useState(user?.city || '');
     const [address, setAddress] = useState(user?.address || '');
     const [countryList, setCountryList] = useState([]);
     const [country, setCountry] = useState('');
     const [state, setState] = useState(user?.state || '');
-    const [startDate, setStartDate] = useState(user?.startDate || '');
-    const [endDate, setEndDate] = useState(user?.endDate || '');
+    const [startDateString, setStartDateString] = useState(user?.startDate || '');
+    const [endDateString, setEndDateString] = useState(user?.endDate || '');
     const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
     const [howHeard, setHowHeard] = useState(user?.howHeard || '');
     const [major, setMajor] = useState(user?.major || '');
@@ -42,8 +42,8 @@ export default function InfoForm({ handleNextStep }: Props) {
     const [lastSchoolNameError, setLastSchoolNameError] = useState('');
     const [howHeardError, setHowHeardError] = useState('');
     const [majorError, setMajorError] = useState('');
-    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState('');
-    const [hasAffiliationError, setHasAffiliationError] = useState('');
+    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState(true);
+    const [hasAffiliationError, setHasAffiliationError] = useState(true);
     const [jobTitleError, setJobTitleError] = useState('');
     const [employerError, setEmployerError] = useState('');
 
@@ -94,14 +94,14 @@ export default function InfoForm({ handleNextStep }: Props) {
             setStateError('')
         }
 
-        if (!startDate) {
+        if (!startDateString) {
             setStartDateError('This field is required')
             hasError = true
         } else {
             setStartDateError('')
         }
 
-        if (!endDate) {
+        if (!endDateString) {
             setEndDateError('This field is required')
             hasError = true
         } else {
@@ -130,17 +130,17 @@ export default function InfoForm({ handleNextStep }: Props) {
         }
 
         if (!isSchoolTeacher) {
-            setIsSchoolTeacherError('This field is required')
+            setIsSchoolTeacherError(true)
             hasError = true
         } else {
-            setIsSchoolTeacherError('')
+            setIsSchoolTeacherError(false)
         }
 
         if (!hasAffiliation) {
-            setHasAffiliationError('This field is required')
+            setHasAffiliationError(true)
             hasError = true
         } else {
-            setHasAffiliationError('')
+            setHasAffiliationError(false)
         }
 
         if (!jobTitle) {
@@ -160,6 +160,8 @@ export default function InfoForm({ handleNextStep }: Props) {
         if (hasError) {
             return
         }
+        const startDate = Date.parse(startDateString)
+        const endDate = Date.parse(endDateString)
         setData(
             firstName,
             lastName,
@@ -501,7 +503,8 @@ export default function InfoForm({ handleNextStep }: Props) {
                             <div className="flex col-md-5 flex-col">
                                 <input
                                     type="date"
-                                    onChange={(e) => setStartDate(e.target.value)}
+                                    value={startDateString}
+                                    onChange={(e) => setStartDateString(e.target.value)}
                                     className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
                                 {startDateError && <span className="text-red-500">{startDateError}</span>}
@@ -512,8 +515,8 @@ export default function InfoForm({ handleNextStep }: Props) {
                             <div className="flex col-md-5 flex-col">
                                 <input
                                     type="date"
-                                    value={endDate}
-                                    onChange={(e) => setEndDate(e.target.value)}
+                                    value={endDateString}
+                                    onChange={(e) => setEndDateString(e.target.value)}
                                     className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
                                 {endDateError && <span className="text-red-500">{endDateError}</span>}

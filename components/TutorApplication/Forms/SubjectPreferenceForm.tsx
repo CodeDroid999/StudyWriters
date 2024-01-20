@@ -24,7 +24,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
 
     const setData = useFormStore((state) => state.setStep2Data)
 
-    const handleNextStep = (event: any) => {
+    const handleNext = (event: any) => {
         event.preventDefault();
         let hasError = false;
 
@@ -121,7 +121,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                        onClick={handleNextStep}
+                        onClick={handleNext}
                     >
                         Save and Continue
                     </button>

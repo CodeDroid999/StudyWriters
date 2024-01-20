@@ -44,7 +44,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
         e.preventDefault();
     };
 
-    const handleNexttep = async () => {
+    const handleNext = async () => {
         // Validate form data
         if (!selectedTopic) {
             toast.error('Please select a topic and upload a valid .doc or .docx file');
@@ -221,7 +221,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                        onClick={handleNextStep}
+                        onClick={handleNext}
                     >
                         Save and Continue
                     </button>

@@ -12,12 +12,12 @@ type Step1 = {
   howHeard: string
   lastSchoolName: string
   major: string
-  isSchoolTeacher: string
-  hasAffiliation: string
+  isSchoolTeacher: boolean
+  hasAffiliation: boolean
   jobTitle: string
   employer: string
-  startDate: string
-  endDate: string
+  startDate: Timestamp
+  endDate: Timestamp
   userId: string
 }
 
@@ -39,12 +39,12 @@ interface Store {
     howHeard: string,
     lastSchoolName: string,
     major: string,
-    isSchoolTeacher: string,
-    hasAffiliation: string,
+    isSchoolTeacher: boolean,
+    hasAffiliation: boolean,
     jobTitle: string,
     employer: string,
-    startDate: string,
-    endDate: string,
+    startDate: Timestamp,
+    endDate: Timestamp,
     userId: string
   ) => void
   setStep2Data: (selectedSubjects: string[], selectedRate: string) => void
@@ -63,17 +63,16 @@ const useFormStore = create<Store>()(
         howHeard: '',
         lastSchoolName: '',
         major: '',
-        isSchoolTeacher: '',
-        hasAffiliation: '',
+        isSchoolTeacher: null,
+        hasAffiliation: null,
         jobTitle: '',
         employer: '',
-        startDate: '',
-        endDate: '',
-        createdAt: '',
+        startDate: null,
+        endDate: null,
         userId: '',
       },
       step2: {
-        selectedSubjects: string[''],
+        selectedSubjects: [''],
         selectedRate: '',
       },
       step3: {
@@ -95,8 +94,7 @@ const useFormStore = create<Store>()(
         employer,
         startDate,
         endDate,
-        userId,
-        d
+        userId
       ) =>
         set((state) => ({
           ...state,
@@ -142,16 +140,16 @@ const useFormStore = create<Store>()(
             howHeard: '',
             lastSchoolName: '',
             major: '',
-            isSchoolTeacher: '',
-            hasAffiliation: '',
+            isSchoolTeacher: null,
+            hasAffiliation: null,
             jobTitle: '',
             employer: '',
-            startDate: '',
-            endDate: '',
+            startDate: null,
+            endDate: null,
             userId: '',
           },
           step2: {
-            selectedSubjects: string[''],
+            selectedSubjects: [''],
             selectedRate: '',
           },
         }),

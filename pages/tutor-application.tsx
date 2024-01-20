@@ -53,7 +53,7 @@ export default function PostAssignment() {
                     />
                 );
             case 3:
-                return <SkillAssessmentForm handlePreviousStep={handlePreviousStep} />;
+                return <SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
             default:
                 return null;
         }
