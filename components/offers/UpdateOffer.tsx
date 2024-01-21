@@ -48,7 +48,7 @@ export default function MakeOffer({
     event.preventDefault()
     let hasError = false
     if (!newOffer) {
-      setOfferError('This field is required')
+      setOfferError('* This field is required')
       hasError = true
     } else {
       const offerValue = Number(newOffer)
@@ -69,7 +69,7 @@ export default function MakeOffer({
     event.preventDefault()
     let hasError = false
     if (!newProposal) {
-      setProposalError('This field is required')
+      setProposalError('* This field is required')
       hasError = true
     } else if (newProposal.length < 25) {
       setProposalError('Must be at least 25 characters')

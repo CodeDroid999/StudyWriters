@@ -23,7 +23,7 @@ export default function UpdateEmail() {
     e.preventDefault()
     let hasError = false
     if (!email) {
-      setEmailError('This field is required')
+      setEmailError('* This field is required')
       hasError = true
     }
 

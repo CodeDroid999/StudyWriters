@@ -1,5 +1,5 @@
 import { UserAuth } from 'context/AuthContext';
-import { serverTimestamp } from 'firebase/firestore';
+import { Timestamp, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import useFormStore from 'store/tutorApplication';
@@ -25,8 +25,8 @@ export default function InfoForm({ handleNextStep }: Props) {
     const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
     const [howHeard, setHowHeard] = useState(user?.howHeard || '');
     const [major, setMajor] = useState(user?.major || '');
-    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolTeacher || '');
-    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation || '');
+    const [isSchoolTeacher, setIsSchoolTeacher] = useState(null);
+    const [hasAffiliation, setHasAffiliation] = useState(null);
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
 
@@ -42,8 +42,8 @@ export default function InfoForm({ handleNextStep }: Props) {
     const [lastSchoolNameError, setLastSchoolNameError] = useState('');
     const [howHeardError, setHowHeardError] = useState('');
     const [majorError, setMajorError] = useState('');
-    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState(true);
-    const [hasAffiliationError, setHasAffiliationError] = useState(true);
+    const [isSchoolTeacherError, setIsSchoolTeacherError] = useState(''); // Updated
+    const [hasAffiliationError, setHasAffiliationError] = useState(''); // Updated
     const [jobTitleError, setJobTitleError] = useState('');
     const [employerError, setEmployerError] = useState('');
 
@@ -53,105 +53,105 @@ export default function InfoForm({ handleNextStep }: Props) {
         event.preventDefault()
         let hasError = false
         if (!firstName) {
-            setFirstNameError('This field is required')
+            setFirstNameError('* This field is required')
             hasError = true
         } else {
             setFirstNameError('')
         }
 
         if (!lastName) {
-            setLastNameError('This field is required')
+            setLastNameError('* This field is required')
             hasError = true
         } else {
             setLastNameError('')
         }
 
         if (!city) {
-            setCityError('This field is required')
+            setCityError('* This field is required')
             hasError = true
         } else {
             setCityError('')
         }
 
         if (!address) {
-            setAddressError('This field is required')
+            setAddressError('* This field is required')
             hasError = true
         } else {
             setAddressError('')
         }
 
         if (!country) {
-            setCountryError('This field is required')
+            setCountryError('* This field is required')
             hasError = true
         } else {
             setCountryError('')
         }
 
         if (!state) {
-            setStateError('This field is required')
+            setStateError('* This field is required')
             hasError = true
         } else {
             setStateError('')
         }
 
         if (!startDateString) {
-            setStartDateError('This field is required')
+            setStartDateError('* This field is required')
             hasError = true
         } else {
             setStartDateError('')
         }
 
         if (!endDateString) {
-            setEndDateError('This field is required')
+            setEndDateError('* This field is required')
             hasError = true
         } else {
             setEndDateError('')
         }
 
         if (!lastSchoolName) {
-            setLastSchoolNameError('This field is required')
+            setLastSchoolNameError('* This field is required')
             hasError = true
         } else {
             setLastSchoolNameError('')
         }
 
         if (!howHeard) {
-            setHowHeardError('This field is required')
+            setHowHeardError('* This field is required')
             hasError = true
         } else {
             setHowHeardError('')
         }
 
         if (!major) {
-            setMajorError('This field is required')
+            setMajorError('* This field is required')
             hasError = true
         } else {
             setMajorError('')
         }
 
-        if (!isSchoolTeacher) {
-            setIsSchoolTeacherError(true)
-            hasError = true
+        if (isSchoolTeacher === null) {
+            setIsSchoolTeacherError('* This field is required');
+            hasError = true;
         } else {
-            setIsSchoolTeacherError(false)
+            setIsSchoolTeacherError('');
         }
 
-        if (!hasAffiliation) {
-            setHasAffiliationError(true)
-            hasError = true
+        if (hasAffiliation === null) {
+            setHasAffiliationError('* This field is required');
+            hasError = true;
         } else {
-            setHasAffiliationError(false)
+            setHasAffiliationError('');
         }
 
         if (!jobTitle) {
-            setJobTitleError('This field is required')
+            setJobTitleError('* This field is required')
             hasError = true
         } else {
             setJobTitleError('')
         }
 
         if (!employer) {
-            setEmployerError('This field is required')
+            setEmployerError('* This field is required')
             hasError = true
         } else {
             setEmployerError('')
@@ -160,8 +160,8 @@ export default function InfoForm({ handleNextStep }: Props) {
         if (hasError) {
             return
         }
-        const startDate = Date.parse(startDateString)
-        const endDate = Date.parse(endDateString)
+        const startDate = Timestamp.fromMillis(Date.parse(startDateString));
+        const endDate = Timestamp.fromMillis(Date.parse(endDateString));
         setData(
             firstName,
             lastName,
@@ -391,28 +391,26 @@ export default function InfoForm({ handleNextStep }: Props) {
                             Have you ever been a school teacher?
                         </div>
                         <div className="flex items-right space-x-4 justify-items-center mt-1">
-                            <label htmlFor="Are you a teaacher?"
-                                className="mb-2 text-sm font-medium text-gray-700">
-                                <input
-                                    type="radio"
-                                    value="true"
-                                    checked={isSchoolTeacher === "true"}
-                                    onChange={() => setIsSchoolTeacher("true")}
-                                    className="mr-2"
-                                />
+                            <input
+                                type="radio"
+                                checked={isSchoolTeacher}
+                                onChange={() => setIsSchoolTeacher(true)}
+                                className="mr-2"
+                            />
+                            <label htmlFor="Are you a teacher?" className="mb-2 text-sm font-medium text-gray-700">
                                 Yes
                             </label>
-                            <label htmlFor="Are you a teaacher?"
-                                className="mb-2 text-sm font-medium text-gray-700" >
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    checked={isSchoolTeacher === "false"}
-                                    onChange={() => setIsSchoolTeacher("false")}
-                                    className="mr-2"
-                                />
+
+                            <input
+                                type="radio"
+                                checked={!isSchoolTeacher}
+                                onChange={() => setIsSchoolTeacher(false)}
+                                className="mr-2"
+                            />
+                            <label htmlFor="Are you a teacher?" className="mb-2 text-sm font-medium text-gray-700">
                                 No
                             </label>
+
                         </div>
                         {isSchoolTeacherError && <span className="text-red-500">{isSchoolTeacherError}</span>}
                     </div>
@@ -422,28 +420,26 @@ export default function InfoForm({ handleNextStep }: Props) {
                             Do you have other professional affiliation with an academic institution?
                         </div>
                         <div className="flex items-right space-x-4 mt-1">
-                            <label htmlFor="Do you have other professional affiliation with an academic institution?"
-                                className="mb-2 text-sm font-medium text-gray-700">
-                                <input
-                                    type="radio"
-                                    value="true"
-                                    checked={hasAffiliation === "true"}
-                                    onChange={() => setHasAffiliation("true")}
-                                    className="mr-2"
-                                />
+                            <input
+                                type="radio"
+                                checked={hasAffiliation}
+                                onChange={() => setHasAffiliation(true)}
+                                className="mr-2"
+                            />
+                            <label htmlFor="Do you have other professional affiliation with an academic institution?" className="mb-2 text-sm font-medium text-gray-700">
                                 Yes
                             </label>
-                            <label htmlFor="Do you have other professional affiliation with an academic institution?"
-                                className="mb-2 text-sm font-medium text-gray-700">
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    checked={hasAffiliation === "false"}
-                                    onChange={() => setHasAffiliation("false")}
-                                    className="mr-2"
-                                />
+
+                            <input
+                                type="radio"
+                                checked={!hasAffiliation}
+                                onChange={() => setHasAffiliation(false)}
+                                className="mr-2"
+                            />
+                            <label htmlFor="Do you have other professional affiliation with an academic institution?" className="mb-2 text-sm font-medium text-gray-700">
                                 No
                             </label>
+
                         </div>
                         {hasAffiliationError && <span className="text-red-500">{hasAffiliationError}</span>}
                     </div>

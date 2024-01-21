@@ -51,7 +51,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
     event.preventDefault()
     let hasError = false
     if (!offer) {
-      setOfferError('This field is required')
+      setOfferError('* This field is required')
       hasError = true
     } else {
       const offerValue = Number(offer)
@@ -72,7 +72,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
     event.preventDefault()
     let hasError = false
     if (!proposal) {
-      setProposalError('This field is required')
+      setProposalError('* This field is required')
       hasError = true
     } else if (proposal.length < 25) {
       setProposalError('Must be at least 25 characters')

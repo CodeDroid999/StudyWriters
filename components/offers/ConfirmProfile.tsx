@@ -34,7 +34,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
     let hasError = false
 
     if (!date) {
-      setDateError('This field is required')
+      setDateError('* This field is required')
       hasError = true
     } else {
       setDateError('')
@@ -63,7 +63,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
     let hasError = false
 
     if (!phoneNumber) {
-      setPhoneNumberError('This field is required')
+      setPhoneNumberError('* This field is required')
       hasError = true
     } else if (phoneNumber.length >= 2 && phoneNumber.substr(0, 2) !== '04') {
       setPhoneNumberError('Invalid phone number. Enter Australian number')
@@ -95,7 +95,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
     let hasError = false
 
     if (!billingAddress) {
-      setBillingAddressError('This field is required')
+      setBillingAddressError('* This field is required')
       hasError = true
     } else {
       setBillingAddressError('')

@@ -44,7 +44,7 @@ export default function PostAssignment() {
 
     // Validate title
     if (!title) {
-      setTitleError('This field is required');
+      setTitleError('* This field is required');
       hasError = true;
     } else if (title.length < 10) {
       setTitleError('Must be at least 10 characters');
@@ -55,7 +55,7 @@ export default function PostAssignment() {
 
     // Validate dueDate
     if (!dueDate) {
-      setDueDateError('This field is required');
+      setDueDateError('* This field is required');
       hasError = true;
     } else {
       setDueDateError('');
@@ -63,7 +63,7 @@ export default function PostAssignment() {
 
     // Validate budget
     if (!budget) {
-      setBudgetError('This field is required');
+      setBudgetError('* This field is required');
       hasError = true;
     } else {
       const budgetValue = Number(budget);

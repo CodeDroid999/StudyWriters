@@ -33,7 +33,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
     event.preventDefault()
     let hasError = false
     if (!title) {
-      setTitleError('This field is required')
+      setTitleError('* This field is required')
       hasError = true
     } else if (title.length < 10) {
       setTitleError('Must be at least 10 characters')
@@ -43,14 +43,14 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
     }
 
     if (!dueDate) {
-      setDueDateError('This field is required')
+      setDueDateError('* This field is required')
       hasError = true
     } else {
       setDueDateError('')
     }
 
     if (!description) {
-      setDescriptionError('This field is required')
+      setDescriptionError('* This field is required')
       hasError = true
     } else if (description.length < 25) {
       setDescriptionError('Must be at least 25 characters')
@@ -60,7 +60,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
     }
 
     if (!budget) {
-      setBudgetError('This field is required')
+      setBudgetError('* This field is required')
       hasError = true
     } else {
       const budgetValue = Number(budget)

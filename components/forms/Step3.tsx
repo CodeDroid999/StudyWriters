@@ -34,7 +34,7 @@ export default function Step3({ handlePreviousStep }: Props) {
     event.preventDefault()
     let hasError = false
     if (!budget) {
-      setBudgetError('This field is required')
+      setBudgetError('* This field is required')
       hasError = true
     } else {
       const budgetValue = Number(budget)

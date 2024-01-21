@@ -29,14 +29,14 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
         let hasError = false;
 
         if (!selectedSubjects.length) {
-            setSelectedSubjectsError('This field is required');
+            setSelectedSubjectsError('* This field is required');
             hasError = true;
         } else {
             setSelectedSubjectsError('');
         }
 
         if (!selectedRate) {
-            setSelectedRateError('This field is required');
+            setSelectedRateError('* This field is required');
             hasError = true;
         } else {
             setSelectedRateError('');

@@ -16,7 +16,7 @@ export default function Step1({ handleNextStep }: Props) {
     event.preventDefault()
     let hasError = false
     if (!title) {
-      setTitleError('This field is required')
+      setTitleError('* This field is required')
       hasError = true
     } else if (title.length < 10) {
       setTitleError('Must be at least 10 characters')
@@ -26,7 +26,7 @@ export default function Step1({ handleNextStep }: Props) {
     }
 
     if (!dueDate) {
-      setDueDateError('This field is required')
+      setDueDateError('* This field is required')
       hasError = true
     } else {
       setDueDateError('')

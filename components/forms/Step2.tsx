@@ -48,7 +48,7 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
     }
 
     if (!description) {
-      setDescriptionError('This field is required');
+      setDescriptionError('* This field is required');
       hasError = true;
     } else if (description.length < 25) {
       setDescriptionError('Must be at least 25 characters');

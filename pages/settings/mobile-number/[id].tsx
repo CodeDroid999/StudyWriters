@@ -23,7 +23,7 @@ export default function MobileNumber() {
     e.preventDefault()
     let hasError = false
     if (!number) {
-      setPhoneNumberError('This field is required')
+      setPhoneNumberError('* This field is required')
       hasError = true
     }
 

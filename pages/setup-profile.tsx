@@ -47,21 +47,21 @@ export default function CompleteAccount() {
     event.preventDefault()
     let hasError = false
     if (!firstName) {
-      setFirstNameError('This field is required')
+      setFirstNameError('* This field is required')
       hasError = true
     } else {
       setFirstNameError('')
     }
 
     if (!lastName) {
-      setLastNameError('This field is required')
+      setLastNameError('* This field is required')
       hasError = true
     } else {
       setLastNameError('')
     }
 
     if (!role) {
-      setRoleError('This field is required')
+      setRoleError('* This field is required')
       hasError = true
     } else {
       setRoleError('')
