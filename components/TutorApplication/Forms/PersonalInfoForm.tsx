@@ -3,10 +3,15 @@ import { Timestamp, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import useFormStore from 'store/tutorApplication';
+import CountrySelector from '../CountrySelector';
 
 interface Props {
     handleNextStep: () => void
 }
+
+
+
+
 export default function InfoForm({ handleNextStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
@@ -17,7 +22,6 @@ export default function InfoForm({ handleNextStep }: Props) {
     const [lastName, setLastName] = useState('');
     const [city, setCity] = useState(user?.city || '');
     const [address, setAddress] = useState(user?.address || '');
-    const [countryList, setCountryList] = useState([]);
     const [country, setCountry] = useState('');
     const [state, setState] = useState(user?.state || '');
     const [startDateString, setStartDateString] = useState(user?.startDate || '');
@@ -29,6 +33,7 @@ export default function InfoForm({ handleNextStep }: Props) {
     const [hasAffiliation, setHasAffiliation] = useState(null);
     const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
     const [employer, setEmployer] = useState(user?.employer || '');
+
 
     // Define constants for state variables using useState
     const [firstNameError, setFirstNameError] = useState('');
@@ -241,25 +246,10 @@ export default function InfoForm({ handleNextStep }: Props) {
                 </div>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
-                        <label
-                            htmlFor="country of Nationality"
-                            className="mb-2 text-sm font-medium text-gray-700"
-                        >
+                        <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                             Choose your nationality
                         </label>
-                        <select
-                            id="countries"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
-              font-medium outline-none focus:border-blue-500`}
-                        >
-                            {countryList.map((country, index) => (
-                                <option key={index} value={country.value}>
-                                    {country.label}
-                                </option>
-                            ))}
-                        </select>
+                        <CountrySelector value={country} onChange={setCountry} />
                         {countryError && <span className="text-red-500">{countryError}</span>}
                     </div>
                 </div>
