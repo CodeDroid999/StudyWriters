@@ -249,7 +249,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                         <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                             Choose your nationality
                         </label>
-                        <CountrySelector value={country} onChange={setCountry} />
+                        <CountrySelector country={country} setCountry={setCountry} />
                         {countryError && <span className="text-red-500">{countryError}</span>}
                     </div>
                 </div>
