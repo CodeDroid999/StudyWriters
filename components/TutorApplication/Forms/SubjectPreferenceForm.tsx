@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { toast } from 'react-hot-toast';
-import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
-import { db } from '../../../firebase';
-import router, { useRouter } from 'next/router';
-import { UserAuth } from 'context/AuthContext';
+import React, { useState } from 'react';
 import useFormStore from 'store/tutorApplication';
 
 interface Props {
@@ -13,11 +8,8 @@ interface Props {
 
 
 export default function SubjectPreferenceForm({ handleNextStep, handlePreviousStep }: Props) {
-    const { user } = UserAuth();
-    const userId = user?.userId;
-    const router = useRouter();
     const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [selectedRate, setSelectedRate] = useState('$10');
+    const [selectedRate, setSelectedRate] = useState('$0.00');
     // Define constants for state variables using useState
     const [selectedRateError, setSelectedRateError] = useState('');
     const [selectedSubjectsError, setSelectedSubjectsError] = useState('');
@@ -28,15 +20,15 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
         event.preventDefault();
         let hasError = false;
 
-        if (!selectedSubjects.length) {
-            setSelectedSubjectsError('* This field is required');
+        if (selectedSubjects.length === 0) {
+            setSelectedSubjectsError('* Required');
             hasError = true;
         } else {
             setSelectedSubjectsError('');
         }
 
-        if (!selectedRate) {
-            setSelectedRateError('* This field is required');
+        if (selectedRate === '$0.00') {
+            setSelectedRateError('* Required');
             hasError = true;
         } else {
             setSelectedRateError('');
@@ -53,7 +45,6 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
 
         handleNextStep();
     };
-
 
     return (
         <div className="p-3 bg-white">
