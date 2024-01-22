@@ -30,7 +30,7 @@ const AppplyNowHero = () => {
             Earn up to <strong>$7,500 USD </strong>monthly working from home tutoring students!
           </p>
           <div className="btn-box whitespace-nowrap">
-            <Link className="btn-1 p-2 text-xl rounded bg-yellow-500 text-white" href="tutor-application/step1">Apply now!</Link>
+            <Link className="btn-1 p-2 text-xl rounded bg-yellow-500 text-white" href="tutor-application">Apply now!</Link>
           </div>
           <p className="text-lg mt-4">Now accepting tutors from all over the world!</p>
         </div>

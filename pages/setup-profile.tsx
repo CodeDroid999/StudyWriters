@@ -37,7 +37,7 @@ export default function CompleteAccount() {
       router.push('/post-assignment');
     } else if (activeRole === 'Tutor') {
       toast.success(`Welcome onboard . You are being redirected to tutor-application.`);
-      router.push('/tutor-application/step1');
+      router.push('/tutor-application');
     }
     // Add more conditions if needed for other roles
 

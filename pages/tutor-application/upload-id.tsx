@@ -17,7 +17,7 @@ export default function UploadId() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push(`/login?redirect=/tutor-application/step1
+                router.push(`/login?redirect=/tutor-application
                 `)
             }
         })
