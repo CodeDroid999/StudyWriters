@@ -15,7 +15,8 @@ interface Props {
 
 
 export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Props) {
-    const userId = UserAuth();
+    const user = UserAuth();
+    const userId = user?.userId;
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });
@@ -25,10 +26,10 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
     const step3 = useFormStore((state) => state.step3)
 
     const { firstName, lastName, country, address, city,
-        state, howHeard, lastSchoolName, major, isSchoolTeacher, hasAffiliation,
+        userState, howHeard, lastSchoolName, major, isSchoolTeacher, hasAffiliation,
         jobTitle, employer, startDate, endDate } = step1
     const { selectedSubjects, selectedRate } = step2
-    const { selectedTopic, SkillAssessmentDocUrl } = step3
+    const { selectedTopic, skillAssessmentDocUrl } = step3
 
 
 
@@ -73,7 +74,7 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
             country: country,
             address: address,
             city: city,
-            state: state,
+            userState: userState,
             howHeard: howHeard,
             lastSchoolName: lastSchoolName,
             major: major,
@@ -86,7 +87,7 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
             selectedSubjects: selectedSubjects,
             selectedRate: selectedRate,
             selectedTopic: selectedTopic,
-            SkillAssessmentDocUrl: SkillAssessmentDocUrl,
+            skillAssessmentDocUrl: skillAssessmentDocUrl,
             IdDoc_FrontUrl: frontUrl,
             IdDoc_BackUrl: backUrl,
             createdAt: serverTimestamp(),
@@ -102,7 +103,7 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
                 html: `A new assignment has been posted`,
             },
         })
-
+        handleNextStep();
     }
 
     return (

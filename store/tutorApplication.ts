@@ -8,7 +8,7 @@ type Step1 = {
   country: string
   address: string
   city: string
-  state: string
+  userState: string
   howHeard: string
   lastSchoolName: string
   major: string
@@ -26,7 +26,7 @@ type Step2 = {
 }
 type Step3 = {
   selectedTopic: string
-  SkillAssessmentDocUrl: string
+  skillAssessmentDocUrl: string
 }
 
 interface Store {
@@ -39,7 +39,7 @@ interface Store {
     country: string,
     address: string,
     city: string,
-    state: string,
+    userState: string,
     howHeard: string,
     lastSchoolName: string,
     major: string,
@@ -51,7 +51,7 @@ interface Store {
     endDate: Timestamp
   ) => void
   setStep2Data: (selectedSubjects: string[], selectedRate: string) => void
-  setStep3Data: (selectedTopic: string, SkillAssessmentDocUrl: string) => void
+  setStep3Data: (selectedTopic: string, skillAssessmentDocUrl: string) => void
   clearStore: () => void
 }
 const useFormStore = create<Store>()(
@@ -63,7 +63,7 @@ const useFormStore = create<Store>()(
         country: '',
         address: '',
         city: '',
-        state: '',
+        userState: '',
         howHeard: '',
         lastSchoolName: '',
         major: '',
@@ -80,7 +80,7 @@ const useFormStore = create<Store>()(
       },
       step3: {
         selectedTopic: '',
-        SkillAssessmentDocUrl: '',
+        skillAssessmentDocUrl: '',
       },
       setStep1Data: (
         firstName,
@@ -88,7 +88,7 @@ const useFormStore = create<Store>()(
         country,
         address,
         city,
-        state,
+        userState,
         howHeard,
         lastSchoolName,
         major,
@@ -108,7 +108,7 @@ const useFormStore = create<Store>()(
             country,
             address,
             city,
-            state,
+            userState,
             howHeard,
             lastSchoolName,
             major,
@@ -147,7 +147,7 @@ const useFormStore = create<Store>()(
             country: '',
             address: '',
             city: '',
-            state: '',
+            userState: '',
             howHeard: '',
             lastSchoolName: '',
             major: '',
@@ -164,7 +164,7 @@ const useFormStore = create<Store>()(
           },
           step3: {
             selectedTopic: '',
-            SkillAssessmentDocUrl: '',
+            skillAssessmentDocUrl: '',
           },
         }),
     }),

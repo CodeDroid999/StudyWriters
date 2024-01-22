@@ -12,6 +12,7 @@ import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
 import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPreferenceForm";
 import SkillAssessmentForm from "components/TutorApplication/Forms/SkillAssessmentForm";
 import UploadIDForm from "components/TutorApplication/Forms/UploadIDForm";
+import ThankYouPage from '../components/TutorApplication/ThankyouPage';
 
 export default function PostAssignment() {
     const [step, setStep] = useState(1);
@@ -56,7 +57,7 @@ export default function PostAssignment() {
             case 4:
                 return <UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
             case 5:
-                return <UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
+                return <ThankYouPage />;
             default:
                 return null;
         }
