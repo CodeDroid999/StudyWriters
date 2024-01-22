@@ -44,7 +44,8 @@ export default function PostAssignment() {
     const renderForm = () => {
         switch (step) {
             case 1:
-                return <InfoForm handleNextStep={handleNextStep} />;
+                return (<InfoForm
+                    handleNextStep={handleNextStep} />);
             case 2:
                 return (
                     <SubjectPreferenceForm
@@ -53,11 +54,11 @@ export default function PostAssignment() {
                     />
                 );
             case 3:
-                return <SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
+                return (<SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
             case 4:
-                return <UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
+                return (<UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
             case 5:
-                return <ThankYouPage />;
+                return (<ThankYouPage />);
             default:
                 return null;
         }
