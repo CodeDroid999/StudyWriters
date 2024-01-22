@@ -85,6 +85,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');
         }
+        handleNextStep();
     };
 
 
@@ -179,18 +180,20 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                         <input type="file" onChange={handleFileChange} />
                     </div>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex gap-4">
                     <button
-                        className="bg-blue-600 text-white px-4 py-2 rounded"
+                        type="button"
+                        className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
                         onClick={handlePreviousStep}
                     >
-                        Next
+                        Back
                     </button>
                     <button
-                        className="bg-blue-600 text-white px-4 py-2 rounded"
+                        type="button"
+                        className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
                         onClick={handleNext}
                     >
-                        Next
+                        Save and Continue
                     </button>
                 </div>
             </form>

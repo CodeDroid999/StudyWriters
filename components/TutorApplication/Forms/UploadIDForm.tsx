@@ -91,7 +91,8 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
             IdDoc_BackUrl: backUrl,
             createdAt: serverTimestamp(),
             userId: userId,
-            applicationStatus: "Pending"
+            applicationStatus: "Pending",
+            idVerificationStatus: false
         })
 
         await addDoc(collection(db, 'mail'), {

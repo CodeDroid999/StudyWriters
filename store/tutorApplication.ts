@@ -18,7 +18,6 @@ type Step1 = {
   employer: string
   startDate: Timestamp
   endDate: Timestamp
-  userId: string
 }
 
 type Step2 = {

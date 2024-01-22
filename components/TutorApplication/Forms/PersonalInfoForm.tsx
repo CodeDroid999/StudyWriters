@@ -10,8 +10,6 @@ interface Props {
 }
 
 
-
-
 export default function InfoForm({ handleNextStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
@@ -19,19 +17,19 @@ export default function InfoForm({ handleNextStep }: Props) {
     // Define constants for state variables using useState
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [city, setCity] = useState(user?.city || '');
-    const [address, setAddress] = useState(user?.address || '');
+    const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
     const [country, setCountry] = useState('');
-    const [state, setState] = useState(user?.state || '');
-    const [startDateString, setStartDateString] = useState(user?.startDate || '');
-    const [endDateString, setEndDateString] = useState(user?.endDate || '');
-    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
-    const [howHeard, setHowHeard] = useState(user?.howHeard || '');
-    const [major, setMajor] = useState(user?.major || '');
+    const [state, setState] = useState('');
+    const [startDateString, setStartDateString] = useState('');
+    const [endDateString, setEndDateString] = useState('');
+    const [lastSchoolName, setLastSchoolName] = useState('');
+    const [howHeard, setHowHeard] = useState('');
+    const [major, setMajor] = useState('');
     const [isSchoolTeacher, setIsSchoolTeacher] = useState(null);
     const [hasAffiliation, setHasAffiliation] = useState(null);
-    const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
-    const [employer, setEmployer] = useState(user?.employer || '');
+    const [jobTitle, setJobTitle] = useState('');
+    const [employer, setEmployer] = useState('');
 
 
     // Define constants for state variables using useState
