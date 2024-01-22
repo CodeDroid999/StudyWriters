@@ -75,7 +75,7 @@ export default function PostAssignment() {
                                         <Image
                                             src={Logo}
                                             alt="assignment"
-                                            className="h-[150px] w-[100%] md:h-[150px] lg:h-[60px] lg:w-[50px]"
+                                            className="h-[50px] w-[100%] md:h-[100px] lg:h-[60px] lg:w-[50px]"
                                         />
                                     </div>
                                 </Link>
