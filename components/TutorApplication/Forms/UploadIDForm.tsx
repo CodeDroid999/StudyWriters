@@ -5,7 +5,8 @@ import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/storage';
 import { db, storage } from '../../../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+import { addDoc, doc, collection, serverTimestamp, updateDoc } from 'firebase/firestore';
+import useFormStore from 'store/tutorApplication';
 
 interface Props {
     handleNextStep: () => void
@@ -13,17 +14,21 @@ interface Props {
 }
 
 
-export default function UploadIDForm({ handleNextStep }: Props) {
-    const { user } = UserAuth();
-    const router = useRouter();
-    const userId = user?.userId;
-    const { applicationId } = router.query;
-
+export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Props) {
+    const userId = UserAuth();
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });
 
+    const step1 = useFormStore((state) => state.step1)
+    const step2 = useFormStore((state) => state.step2)
+    const step3 = useFormStore((state) => state.step3)
 
+    const { firstName, lastName, country, address, city,
+        state, howHeard, lastSchoolName, major, isSchoolTeacher, hasAffiliation,
+        jobTitle, employer, startDate, endDate } = step1
+    const { selectedSubjects, selectedRate } = step2
+    const { selectedTopic, SkillAssessmentDocUrl } = step3
 
 
 
@@ -33,48 +38,71 @@ export default function UploadIDForm({ handleNextStep }: Props) {
         setFiles((prevFiles) => ({ ...prevFiles, [side]: droppedFile }));
     };
 
-    const handleDragOver = (e) => {
-        e.preventDefault();
-    };
-
-    const handleSave = async () => {
-        setUploading(true);
-        try {
-            const storage = getStorage();
-            const frontPath = `${userId}_frontId`;
-            const backPath = `${userId}_backId`;
-
-            const frontRef = ref(storage, frontPath);
-            const backRef = ref(storage, backPath);
-
-            const frontUploadTask = uploadBytesResumable(frontRef, uploadFiles.front);
-            const backUploadTask = uploadBytesResumable(backRef, uploadFiles.back);
-
-            await Promise.all([frontUploadTask, backUploadTask]);
-
-            const frontDownloadURL = await getDownloadURL(frontRef);
-            const backDownloadURL = await getDownloadURL(backRef);
-
-            // Update the application document with front and back URLs
-            await updateDoc(applicationRef, {
-                IdPhotoFrontUrl: frontDownloadURL,
-                IdPhotoBackUrl: backDownloadURL,
-            });
-
-            router.push('/tutor-application/thankyou');
-        } catch (error) {
-            console.error('Error during file upload:', error);
-            toast.error('Upload failed, please try again');
-        } finally {
-            setUploading(false);
-        }
-    };
-
-
     const handleFileChange = (e, side) => {
         const file = e.target.files[0];
         setUploadFiles((prevUploadFiles) => ({ ...prevUploadFiles, [side]: file }));
     };
+
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+
+    const handleNext = async (event: any) => {
+        event.preventDefault()
+        let hasError = false
+
+
+        if (hasError) {
+            return
+        }
+
+        const frontFile = uploadFiles.front;
+        const backFile = uploadFiles.back;
+
+        const storageRef = ref(storage, `IdPhotos/${userId}_IdDoc_front.${frontFile.name.split('.').pop()}`);
+        const frontUrl = await uploadFileAndGetURL(storageRef, frontFile);
+
+        const storageRef2 = ref(storage, `IdPhotos/${userId}_IdDoc_back.${backFile.name.split('.').pop()}`);
+        const backUrl = await uploadFileAndGetURL(storageRef2, backFile);
+
+        const docRef = await addDoc(collection(db, 'applications'), {
+            firstName: firstName,
+            lastName: lastName,
+            country: country,
+            address: address,
+            city: city,
+            state: state,
+            howHeard: howHeard,
+            lastSchoolName: lastSchoolName,
+            major: major,
+            isSchoolTeacher: isSchoolTeacher,
+            hasAffiliation: hasAffiliation,
+            jobTitle: jobTitle,
+            employer: employer,
+            startDate: startDate,
+            endDate: endDate,
+            selectedSubjects: selectedSubjects,
+            selectedRate: selectedRate,
+            selectedTopic: selectedTopic,
+            SkillAssessmentDocUrl: SkillAssessmentDocUrl,
+            IdDoc_FrontUrl: frontUrl,
+            IdDoc_BackUrl: backUrl,
+            createdAt: serverTimestamp(),
+            userId: userId,
+            applicationStatus: "Pending"
+        })
+
+        await addDoc(collection(db, 'mail'), {
+            to: 'airtaska1@gmail.com',
+            message: {
+                subject: 'New Assignment',
+                html: `A new assignment has been posted`,
+            },
+        })
+
+    }
 
     return (
         <div className="bg-white p-3">
@@ -135,14 +163,14 @@ export default function UploadIDForm({ handleNextStep }: Props) {
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
-                        onClick={() => router.push('sell-docs/step2')}
+                        onClick={handlePreviousStep}
                     >
                         Back
                     </button>
                     <button
                         type="button"
                         className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
-                        onClick={handleNextStep}
+                        onClick={handleNext}
                     >
                         Save and Continue
                     </button>

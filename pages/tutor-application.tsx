@@ -6,13 +6,12 @@ import { useRouter } from "next/router";
 import useFormStore from "store/tutorApplication";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
-import Form2 from "components/TutorApplication/Forms/Form2";
-import Form3 from "components/TutorApplication/Forms/Form3";
 import Logo from "../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
 import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
 import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPreferenceForm";
 import SkillAssessmentForm from "components/TutorApplication/Forms/SkillAssessmentForm";
+import UploadIDForm from "components/TutorApplication/Forms/UploadIDForm";
 
 export default function PostAssignment() {
     const [step, setStep] = useState(1);
@@ -54,6 +53,10 @@ export default function PostAssignment() {
                 );
             case 3:
                 return <SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
+            case 4:
+                return <UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
+            case 5:
+                return <UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />;
             default:
                 return null;
         }

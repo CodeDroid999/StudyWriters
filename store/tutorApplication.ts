@@ -25,10 +25,15 @@ type Step2 = {
   selectedSubjects: string[]
   selectedRate: string
 }
+type Step3 = {
+  selectedTopic: string
+  SkillAssessmentDocUrl: string
+}
 
 interface Store {
   step1: Step1
   step2: Step2
+  step3: Step3
   setStep1Data: (
     firstName: string,
     lastName: string,
@@ -44,10 +49,10 @@ interface Store {
     jobTitle: string,
     employer: string,
     startDate: Timestamp,
-    endDate: Timestamp,
-    userId: string
+    endDate: Timestamp
   ) => void
   setStep2Data: (selectedSubjects: string[], selectedRate: string) => void
+  setStep3Data: (selectedTopic: string, SkillAssessmentDocUrl: string) => void
   clearStore: () => void
 }
 const useFormStore = create<Store>()(
@@ -69,14 +74,14 @@ const useFormStore = create<Store>()(
         employer: '',
         startDate: null,
         endDate: null,
-        userId: '',
       },
       step2: {
         selectedSubjects: [''],
         selectedRate: '',
       },
       step3: {
-        budget: '',
+        selectedTopic: '',
+        SkillAssessmentDocUrl: '',
       },
       setStep1Data: (
         firstName,
@@ -93,8 +98,7 @@ const useFormStore = create<Store>()(
         jobTitle,
         employer,
         startDate,
-        endDate,
-        userId
+        endDate
       ) =>
         set((state) => ({
           ...state,
@@ -115,7 +119,6 @@ const useFormStore = create<Store>()(
             employer,
             startDate,
             endDate,
-            userId,
           },
         })),
       setStep2Data: (selectedSubjects, selectedRate) =>
@@ -125,6 +128,15 @@ const useFormStore = create<Store>()(
             ...state.step2,
             selectedSubjects,
             selectedRate,
+          },
+        })),
+      setStep3Data: (selectedTopic, skillAssessmentDocUrl) =>
+        set((state) => ({
+          ...state,
+          step3: {
+            ...state.step3,
+            selectedTopic,
+            skillAssessmentDocUrl,
           },
         })),
 
@@ -146,11 +158,14 @@ const useFormStore = create<Store>()(
             employer: '',
             startDate: null,
             endDate: null,
-            userId: '',
           },
           step2: {
             selectedSubjects: [''],
             selectedRate: '',
+          },
+          step3: {
+            selectedTopic: '',
+            SkillAssessmentDocUrl: '',
           },
         }),
     }),

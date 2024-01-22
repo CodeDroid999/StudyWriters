@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
+import { storage } from '../../../firebase';
+import useFormStore from 'store/tutorApplication';
+import { getStorage, uploadBytesResumable, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 interface Props {
     handleNextStep: () => void
@@ -10,14 +14,12 @@ interface Props {
 
 
 export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep }: Props) {
-    const { user } = UserAuth();
-    const router = useRouter();
-    const userId = router.query?.id;
-
+    const { firstName, lastName } = UserAuth();
     const [selectedTopic, setSelectedTopic] = useState('');
-    const [uploadFile, setUploadFile] = useState(null);
     const [file, setFile] = useState(null);
     const [problemStatement, setProblemStatement] = useState('');
+
+    const setData = useFormStore((state) => state.setStep3Data)
 
     const problemStatements = {
         Business: "Write an essay discussing the impact of digital marketing on modern businesses.",
@@ -39,6 +41,15 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
         const droppedFile = e.dataTransfer.files[0];
         setFile(droppedFile);
     };
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setFile(file);
+    };
+    const handleSubjectChange = (e) => {
+        const selectedSubject = e.target.value;
+        setSelectedTopic(selectedSubject);
+        setProblemStatement(problemStatements[selectedSubject]);
+    };
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -46,31 +57,38 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
 
     const handleNext = async () => {
         // Validate form data
-        if (!selectedTopic) {
+        if (!selectedTopic || !file) {
             toast.error('Please select a topic and upload a valid .doc or .docx file');
             return;
         }
 
         try {
-            // Perform additional validations if needed
+            // Generate a unique filename for the uploaded file
+            const filename = `SkillAssessmentDocs/${firstName}_${lastName}_${file.name}`;
 
+            // Create a reference to the file in the SkillAssessmentDocs folder
+            const storageRef = ref(storage, filename);
 
+            const uploadTask = uploadBytes(storageRef, file);
 
+            await uploadTask;
+
+            // Get the download URL of the uploaded file
+            const skillAssessmentDocUrl = await getDownloadURL(storageRef);
+
+            // Store the selectedTopic and SkillAssessmentDocUrl in the form store
+            setData(selectedTopic, skillAssessmentDocUrl);
+
+            // Proceed to the next step
+            handleNextStep();
         } catch (error) {
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');
         }
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setUploadFile(file);
-    };
-    const handleSubjectChange = (e) => {
-        const selectedSubject = e.target.value;
-        setSelectedTopic(selectedSubject);
-        setProblemStatement(problemStatements[selectedSubject]);
-    };
+
+
     return (
         <div className="bg-white p-3">
             <p className="mb-1 text-right text-xs font-bold uppercase text-orange-400 md:text-sm">
@@ -145,91 +163,37 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                         <p className="pt-1 pb-1">At least one example of correct use of all of the following:</p>
                         <ul className="list-inside list-disc">
                             <li>Commas</li>
-                            <li>Colons</li>
-                            <li>Semicolons</li>
-                            <li>Exclamations</li>
-                            <li>Quote Marks</li>
-                            <li>Apostrophes</li>
-                            <li>Parentheses</li>
-                            <li>Dashes</li>
-                            <li>Hyphens</li>
+                            {/* Add more requirements as needed */}
                         </ul>
-                        <li>Citation in APA format (at least one resource)</li>
-                        <p className="pt-1 pb-1">For more information, please refer to our Grammar Videos.</p>
-
-                        <div className="mb-1 rounded bg-red-100 p-2 text-red-600 ">
-                            <p className="text-bold text-lg">
-                                No plagiarism:
-                            </p>
-                            <ul className="list-inside list-disc pl-3">
-                                <li>
-                                    Answers must be 100% original. Any plagiarism will result in
-                                    your application being rejected.
-                                </li>
-                                <li>You should use your own words and ideas.</li>
-                                <li>
-                                    You may include quotes from outside sources that are up to
-                                    one (1) sentence long only. All quotes must be cited with
-                                    the appropriate format.
-                                </li>
-                                <li>
-                                    Paraphrasing outside sources without the respective
-                                    citations and failing to add your own ideas is plagiarism.
-                                </li>
-                                <li>
-                                    Taking your own ideas that are published elsewhere and not
-                                    properly citing them is plagiarism.
-                                </li>
-                                <li>
-                                    Copying text generated by artificial intelligence such as
-                                    ChatGPT is plagiarism.
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-                <label className="text-xl font-bold text-blue-950">
-                    Upload Answer
-                </label>
-
-                <div
-                    className="drop-container h-40 flex align-center items-center justify-center rounded-md bg-gray-100 border-dashed border-2 border-sky-500 "
-                    onDrop={handleDrop}
-                    onDragOver={handleDragOver}
-                >
-                    <input
-                        type="file"
-                        accept=".doc, .docx"
-                        onChange={handleFileChange}
-                    />
-                    <p>Drag and drop a file here or click to select</p>
-                    {file && (
-                        <div>
-                            <p>Selected File: {file.name}</p>
-                            <p>File Type: {file.type}</p>
-                        </div>
-                    )}
+                <div className="mb-4">
+                    <label className="text-xl font-bold text-blue-950">Upload your file:</label>
+                    <div
+                        className="border-dashed border-2 border-gray-300 p-4"
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                    >
+                        <p className="text-gray-500">Drag and drop your file here</p>
+                        <p className="text-gray-500">or</p>
+                        <input type="file" onChange={handleFileChange} />
+                    </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex justify-end">
                     <button
-                        type="button"
-                        className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
+                        className="bg-blue-600 text-white px-4 py-2 rounded"
                         onClick={handlePreviousStep}
                     >
-                        Back
+                        Next
                     </button>
                     <button
-                        type="button"
-                        className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
+                        className="bg-blue-600 text-white px-4 py-2 rounded"
                         onClick={handleNext}
                     >
-                        Save and Continue
+                        Next
                     </button>
                 </div>
             </form>
-
-
         </div>
     );
 }
-

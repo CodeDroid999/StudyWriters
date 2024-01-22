@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { UserAuth } from 'context/AuthContext';
 import useFormStore from 'store/tutorApplication';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 
 export default function SubjectPreferenceForm({ handleNextStep, handlePreviousStep }: Props) {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [selectedRate, setSelectedRate] = useState('$0.00');
+    const [selectedRate, setSelectedRate] = useState('$10');
     // Define constants for state variables using useState
     const [selectedRateError, setSelectedRateError] = useState('');
     const [selectedSubjectsError, setSelectedSubjectsError] = useState('');
@@ -20,15 +21,15 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
         event.preventDefault();
         let hasError = false;
 
-        if (selectedSubjects.length === 0) {
-            setSelectedSubjectsError('* Required');
+        if (!selectedSubjects.length) {
+            setSelectedSubjectsError('* This field is required');
             hasError = true;
         } else {
             setSelectedSubjectsError('');
         }
 
-        if (selectedRate === '$0.00') {
-            setSelectedRateError('* Required');
+        if (!selectedRate) {
+            setSelectedRateError('* This field is required');
             hasError = true;
         } else {
             setSelectedRateError('');
@@ -45,6 +46,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
 
         handleNextStep();
     };
+
 
     return (
         <div className="p-3 bg-white">

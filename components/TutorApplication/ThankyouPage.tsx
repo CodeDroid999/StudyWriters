@@ -8,9 +8,7 @@ const ThankYouPage = () => {
   const { user } = UserAuth();
   const userId = user?.userId;
 
-  const handleGoToHome = () => {
-    router.push('/dashboard');
-  };
+  c
 
   return (
     <div className="p-3 bg-white">

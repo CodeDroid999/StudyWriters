@@ -15,7 +15,6 @@ interface Props {
 export default function InfoForm({ handleNextStep }: Props) {
     const { user } = UserAuth();
     const router = useRouter();
-    const userId = user?.userId;
 
     // Define constants for state variables using useState
     const [firstName, setFirstName] = useState('');
@@ -183,7 +182,6 @@ export default function InfoForm({ handleNextStep }: Props) {
             employer,
             startDate,
             endDate,
-            userId,
         );
 
         handleNextStep()

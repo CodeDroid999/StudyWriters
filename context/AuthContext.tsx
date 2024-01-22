@@ -55,6 +55,9 @@ interface AuthContextType {
   user: User | null;
   userRole: string | null;
   accountStatus: string | null;
+  firstName: string;
+  lastName: string;
+  userId: string;
   logOut: () => void;
   loading: boolean;
   error: string | null;
@@ -65,6 +68,9 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   userRole: null,
   accountStatus: null,
+  firstName: '',
+  lastName: '',
+  userId: '',
   logOut: () => { },
   loading: false,
   error: null,
@@ -78,6 +84,9 @@ export function AuthContextProvider({
   const [user, setUser] = useState<User | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [accountStatus, setAccountStatus] = useState<string | null>(null);
+  const [firstName, setFirstName] = useState<string | null>(null);
+  const [lastName, setLastName] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -104,6 +113,9 @@ export function AuthContextProvider({
             setUser(userData);
             setUserRole(userData.role); // Assuming 'role' is a field in your user data
             setAccountStatus(userData.accountStatus);
+            setFirstName(userData.firstName);
+            setLastName(userData.lastName);
+            setUserId(userData.lastName)
             // Update the userId property
 
             setError(null);
@@ -122,6 +134,9 @@ export function AuthContextProvider({
         setUser(null);
         setUserRole(null);
         setAccountStatus(null);
+        setFirstName(null);
+        setLastName(null);
+        setUserId(null);
         setLoading(false);
       }
     });
@@ -153,7 +168,7 @@ export function AuthContextProvider({
   }
 
   return (
-    <AuthContext.Provider value={{ user, userRole, logOut, loading, error, accountStatus }}>
+    <AuthContext.Provider value={{ user, userRole, logOut, loading, error, accountStatus, firstName, lastName, userId }}>
       {children}
     </AuthContext.Provider>
   );
