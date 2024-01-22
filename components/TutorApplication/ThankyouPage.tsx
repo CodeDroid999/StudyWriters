@@ -8,7 +8,17 @@ const ThankYouPage = () => {
   const { user } = UserAuth();
   const userId = user?.userId;
 
-  c
+
+  const handleFinish = (e) => {
+    router.push(`/application-history/${user?.userId}`);
+  };
+  const handleView = (e) => {
+    router.push(`/application-history/${user?.userId}`);
+
+  };
+
+
+
 
   return (
     <div className="p-3 bg-white">
@@ -16,20 +26,24 @@ const ThankYouPage = () => {
       <p className="text-lg mb-4">
         Your application has been successfully submitted. We appreciate your interest in becoming a tutor.
       </p>
+      <div className="flex gap-4">
+        <button
+          type="button"
+          className="flex-1 cursor-pointer rounded-xl bg-gray-300 py-2 text-center text-gray-700"
+          onClick={handleFinish}
+        >
 
-      <div className="row justify-between px-3">
-        <div className="col-md-4 bg-green-700 rounded py-2">
-          <Link href="/dashboard" className=" text-center text-white w-100">
-            Finish
-          </Link>
-        </div>
-
-        <div className="col-md-4 bg-blue-500  rounded py-2">
-          <Link href={`/application-history/${user?.userId}`} className=" text-center text-white w-100">
-            View Application history
-          </Link>
-        </div>
+          Finish
+        </button>
+        <button
+          type="button"
+          className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
+          onClick={handleView}
+        >
+          View Application history
+        </button>
       </div>
+
     </div >
   );
 };
