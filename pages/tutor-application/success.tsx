@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import router, { useRouter } from "next/router";
 import useFormStore from "store/tutorApplication";
 import { onAuthStateChanged } from "firebase/auth";
-import Logo from "../public/QualityUnitedWritersLogo.png"
+import Logo from "../../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
 import ThankYouPage from "components/TutorApplication/ThankyouPage";
 import { auth } from "../../firebase";
