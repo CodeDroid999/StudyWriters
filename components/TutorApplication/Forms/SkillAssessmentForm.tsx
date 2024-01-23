@@ -85,7 +85,6 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
             console.error('Error submitting Skill Assessment:', error.message);
             toast.error('Error submitting Skill Assessment. Please try again.');
         }
-        handleNextStep();
     };
 
 

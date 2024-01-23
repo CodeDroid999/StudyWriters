@@ -55,7 +55,7 @@ export default function PostAssignment() {
             case 3:
                 return (<SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
             case 4:
-                return (<UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
+                return (<UploadIDForm handlePreviousStep={handlePreviousStep} />);
             default:
                 return null;
         }
