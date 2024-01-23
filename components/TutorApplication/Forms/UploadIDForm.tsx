@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/storage';
 import { db, storage } from '../../../firebase';
@@ -13,25 +13,20 @@ interface Props {
     handlePreviousStep: () => void
 }
 
-
 export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Props) {
     const user = UserAuth();
     const userId = user?.userId;
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });
-
     const step1 = useFormStore((state) => state.step1)
     const step2 = useFormStore((state) => state.step2)
     const step3 = useFormStore((state) => state.step3)
-
     const { firstName, lastName, country, address, city,
         userState, howHeard, lastSchoolName, major, isSchoolTeacher, hasAffiliation,
         jobTitle, employer, startDate, endDate } = step1
     const { selectedSubjects, selectedRate } = step2
     const { selectedTopic, skillAssessmentDocUrl } = step3
-
-
 
     const handleDrop = (e, side) => {
         e.preventDefault();
@@ -44,16 +39,13 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
         setUploadFiles((prevUploadFiles) => ({ ...prevUploadFiles, [side]: file }));
     };
 
-
     const handleDragOver = (e) => {
         e.preventDefault();
     };
 
-
     const handleNext = async (event: any) => {
         event.preventDefault()
         let hasError = false
-
 
         if (hasError) {
             return
@@ -100,10 +92,13 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
             to: 'airtaska1@gmail.com',
             message: {
                 subject: 'New Assignment',
-                html: `A new assignment has been posted`,
+                html: 'A new assignment has been posted',
             },
         })
-        handleNextStep();
+
+        toast.success('Application has been posted')
+
+        router.push(`/tutor-application/success}`)
     }
 
     return (
@@ -116,7 +111,6 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
                     Let's make it official! Upload a photo of your ID, passport, or driver's license.
                     Accepted file types: JPEG, PNG, or PDF. Ensure it's clear, and we'll handle the rest securely.
                 </p>
-
                 <p className="text-3xl font-bold text-blue-950">
                     Front
                 </p>
@@ -138,7 +132,6 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
                         </div>
                     )}
                 </div>
-
                 <p className="text-3xl font-bold text-blue-950">
                     Back
                 </p>
@@ -160,7 +153,6 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
                         </div>
                     )}
                 </div>
-
                 <div className="flex gap-4">
                     <button
                         type="button"
@@ -181,7 +173,6 @@ export default function UploadIDForm({ handleNextStep, handlePreviousStep }: Pro
         </div>
     );
 }
-
 
 // Helper function
 async function uploadFileAndGetURL(fileRef, file) {

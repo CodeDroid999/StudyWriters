@@ -2,63 +2,27 @@ import Link from "next/link";
 import { TfiClose } from "react-icons/tfi";
 import Image from "next/image"
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import useFormStore from "store/tutorApplication";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
 import Logo from "../public/QualityUnitedWritersLogo.png"
 import ImageHeader from "components/TutorApplication/ImageHeader";
-import InfoForm from "components/TutorApplication/Forms/PersonalInfoForm";
-import SubjectPreferenceForm from "components/TutorApplication/Forms/SubjectPreferenceForm";
-import SkillAssessmentForm from "components/TutorApplication/Forms/SkillAssessmentForm";
-import UploadIDForm from "components/TutorApplication/Forms/UploadIDForm";
+import ThankYouPage from "components/TutorApplication/ThankyouPage";
+import { auth } from "../../firebase";
 
 export default function PostAssignment() {
-    const [step, setStep] = useState(1);
-    const clearData = useFormStore((state) => state.clearStore);
-    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push(`/login?redirect=/post-assignment`);
+                router.push(`/login?redirect=/tutor-application/success`);
             }
         });
         return () => unsubscribe();
-    }, [router]);
-
-    const handleNextStep = () => {
-        setStep((prevStep) => prevStep + 1);
-    };
-
-    const handlePreviousStep = () => {
-        setStep((prevStep) => prevStep - 1);
-    };
+    },);
 
     const handleExit = () => {
-        clearData();
         router.push('/');
-    };
-
-    const renderForm = () => {
-        switch (step) {
-            case 1:
-                return (<InfoForm
-                    handleNextStep={handleNextStep} />);
-            case 2:
-                return (
-                    <SubjectPreferenceForm
-                        handleNextStep={handleNextStep}
-                        handlePreviousStep={handlePreviousStep}
-                    />
-                );
-            case 3:
-                return (<SkillAssessmentForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
-            case 4:
-                return (<UploadIDForm handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />);
-            default:
-                return null;
-        }
     };
 
     return (
@@ -93,7 +57,7 @@ export default function PostAssignment() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <div className="mx-auto mt-10 ">{renderForm()}</div>
+                    <div className="mx-auto mt-10 "><ThankYouPage /></div>
                 </div>
             </div>
         </div>
