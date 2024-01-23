@@ -2,11 +2,10 @@ import ImageHeader from 'components/TutorApplication/ImageHeader'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
-
 import { auth } from '../../firebase'
-import SideNav from 'components/AdminDasboard/AdminSideNav'
 import Navbar from 'components/AdminLayout/Navbar'
 import ApplicationHistoryCard from 'components/ManageApplication/ApplicationCard'
+import AdminSideNav from 'components/AdminLayout/SideNav'
 
 
 
@@ -27,25 +26,25 @@ export default function AdminDashboard() {
     }
     return (
 
-        <div className="flex h-screen overflow-hidden">
-            {/* Sidebar */}
-            <div className="w-1/6 bg-gray-100 h-full fixed top-0 left-0 overflow-y-auto mt-20">
-                <SideNav />
-            </div>
-
-            {/* Main Content */}
-            <div className="flex-grow mt-20 h-full overflow-y-auto">
-                <Navbar />
-                <div className=" mx-auto w-full ">
-                    <ImageHeader />
-                    <div className="row min-w-100 shadow-2xl">
-                        <div className="col-md-2"></div>
-                        <div className="col-md-10 rounded-xl">
-                            <ApplicationHistoryCard />
-                        </div>
+        <>
+            <Navbar />
+            <div className="row flex pt-12 mt-8">
+                <div className="container flex">
+                    <div className="col-md-2 mx-auto ">
+                        <AdminSideNav />
+                    </div>
+                    <div className="col-md-10 mx-auto h-full pl-2 shadow-inner">
+                        <ImageHeader />
+                        <ApplicationHistoryCard />
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
+
+
+
+
+

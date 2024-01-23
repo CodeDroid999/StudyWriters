@@ -1,41 +1,47 @@
 import Link from 'next/link';
 import React from 'react';
 
-const SideNav = () => {
+const AdminSideNav = () => {
   return (
-    <>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/help" className="text-blue-800 text-right whitespace-nowrap">Help</Link>
+    <div className="w-100">
+      <div className="p-2 bg-blue-100 flex font-bold items-center w-full border border-green-700">
+        <Link href="/admin/dashboard" className="bg-blue-100 text-blue-800 text-right whitespace-nowrap font-bold">
+          Dashboard
+        </Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/dashboard" className="text-blue-800 text-right whitespace-nowrap">Home</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap">
+          Applications
+        </Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/about" className="text-blue-800 text-right whitespace-nowrap">About</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/admin/manage-users" className="text-blue-800 text-right whitespace-nowrap">Accounts</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/privacy" className="text-blue-800 text-right whitespace-nowrap">Privacy</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/admin/manage-assignments" className="text-blue-800 text-right whitespace-nowrap">Assignments</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/terms" className="text-blue-800 text-right whitespace-nowrap">Terms</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/privacy" className="text-blue-800 text-right whitespace-nowrap">Messages</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/refund" className="text-blue-800 text-right whitespace-nowrap">Refund</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/terms" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/refer-a-friend" className="text-blue-800 text-right whitespace-nowrap">Refer a Friend</Link>
+
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/refer-a-friend" className="text-blue-800 text-right whitespace-nowrap">Chats</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/blog" className="text-blue-800 text-right whitespace-nowrap">Blog</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/blog" className="text-blue-800 text-right whitespace-nowrap">Edit Blogs</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/how-it-works" className="text-blue-800 text-right whitespace-nowrap">How It Works</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/how-it-works" className="text-blue-800 text-right whitespace-nowrap">Admin Accounts</Link>
       </div>
-      <div className="p-2 flex font-bold items-center">
-        <Link href="/contact-us" className="text-blue-800 text-right whitespace-nowrap">Contact Us</Link>
+      <div className="p-2 flex font-bold items-center w-full border border-green-700">
+        <Link href="/contact-us" className="text-blue-800 text-right whitespace-nowrap">Contact Forms</Link>
       </div>
-    </ >
+
+    </div>
   );
 };
 
-export default SideNav;
+export default AdminSideNav;

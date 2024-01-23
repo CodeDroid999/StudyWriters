@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import Navbar from 'components/layout/Navbar'
 import { auth } from '../../../firebase'
-import ApplicationCard from 'components/AdminDasboard/ApplicationCard'
+import ManageApplicationCard from 'components/AdminDasboard/ManageApplicationCard'
 
 
 
@@ -29,7 +29,7 @@ export default function ManageApplication() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <ApplicationCard />
+                    <ManageApplicationCard />
                 </div>
             </div>
         </div>

@@ -30,30 +30,8 @@ export const formatDate = (dateString) => {
 
 
 export default function ApplicationCard() {
-    const { user } = UserAuth();
     const router = useRouter();
     const routeId = router.query?.id;
-
-    // Define constants for state variables using useState
-    const [firstName, setFirstName] = useState(user?.firstName || '');
-    const [lastName, setLastName] = useState(user?.lastName || '');
-    const [city, setCity] = useState(user?.city || '');
-    const [address, setAddress] = useState(user?.address || '');
-    const [country, setCountry] = useState(user?.country || '');
-    const [state, setState] = useState(user?.state || '');
-    const [startDate, setStartDate] = useState(user?.startDate || '');
-    const [endDate, setEndDate] = useState(user?.endDate || '');
-    const [lastSchoolName, setLastSchoolName] = useState(user?.lastSchoolName || '');
-    const [howHeard, setHowHeard] = useState(user?.howHeard || '');
-    const [major, setMajor] = useState(user?.major || '');
-    const [isSchoolTeacher, setIsSchoolTeacher] = useState(user?.isSchoolTeacher || '');
-    const [hasAffiliation, setHasAffiliation] = useState(user?.hasAffiliation || '');
-    const [jobTitle, setJobTitle] = useState(user?.jobTitle || '');
-    const [employer, setEmployer] = useState(user?.employer || '');
-    const [error, setError] = useState('');
-    const [isIdentityVerified, setIsIdentityVerified] = useState(user?.identityVerification || '');
-    const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [selectedRate, setSelectedRate] = useState('$10');
     const [applicationData, setApplicationData] = useState(null);
 
 
@@ -74,6 +52,29 @@ export default function ApplicationCard() {
                         createdAt: doc.data().createdAt.toDate().toLocaleString(),
                         status: doc.data().applicationStatus,
                         userId: doc.data().userId,
+                        firstName: doc.data().firstName,
+                        lastName: doc.data().lastName,
+                        country: doc.data().country,
+                        address: doc.data().address,
+                        city: doc.data().city,
+                        userState: doc.data().userState,
+                        howHeard: doc.data().howHeard,
+                        lastSchoolName: doc.data().lastSchoolName,
+                        major: doc.data().major,
+                        isSchoolTeacher: doc.data().isSchoolTeacher,
+                        hasAffiliation: doc.data().hasAffiliation,
+                        jobTitle: doc.data().jobTitle,
+                        employer: doc.data().employer,
+                        startDate: doc.data().startDate,
+                        endDate: doc.data().endDate,
+                        selectedSubjects: doc.data().selectedSubjects,
+                        selectedRate: doc.data().selectedRate,
+                        selectedTopic: doc.data().selectedTopic,
+                        skillAssessmentDocUrl: doc.data().skillAssessmentDocUrl,
+                        IdDoc_FrontUrl: doc.data().IdDoc_FrontUrl,
+                        IdDoc_BackUrl: doc.data().IdDoc_BackUrl,
+                        applicationStatus: doc.data().applicationStatus,
+                        idVerificationStatus: doc.data().idVerificationStatus,
                         // Include all fields from the application document
                         ...doc.data(),
                     }));
@@ -112,7 +113,7 @@ export default function ApplicationCard() {
                             First Name
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {firstName}
+                            {applicationData?.firstName}
                         </p>
                     </div>
                     <div className="flex col-md-4 flex-col">
@@ -120,7 +121,7 @@ export default function ApplicationCard() {
                             Last Name
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {lastName}
+                            {applicationData?.lastName}
                         </p>
                     </div>
                 </div>
@@ -130,14 +131,14 @@ export default function ApplicationCard() {
                             Nationality
                         </label>
                         <p className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700">
-                            {country}
+                            {applicationData?.country}
                         </p>
                     </div>
                     <div className="flex col-md-3 flex-col items-center justify-center">
                         <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
                             ID Verification Status:
-                            <p className={`rounded-lg px-2 py-1 ${isIdentityVerified ? 'bg-green-700' : 'bg-yellow-500'} text-white`}>
-                                {isIdentityVerified ? 'Verified' : 'Pending'}
+                            <p className={`rounded-lg px-2 py-1 ${applicationData?.isIdentityVerified ? 'bg-green-700' : 'bg-yellow-500'} text-white`}>
+                                {applicationData?.isIdentityVerified ? 'Verified' : 'Pending'}
                             </p>
                         </p>
                     </div>
@@ -149,7 +150,7 @@ export default function ApplicationCard() {
                             Location
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {address}
+                            {applicationData?.address}
                         </p>
                     </div>
                     <div className="flex col-md-4 flex-col">
@@ -157,7 +158,7 @@ export default function ApplicationCard() {
                             City
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {city}
+                            {applicationData?.city}
                         </p>
                     </div>
                     <div className="flex col-md-4 flex-col">
@@ -165,7 +166,7 @@ export default function ApplicationCard() {
                             State
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {state}
+                            {applicationData?.state}
                         </p>
                     </div>
                 </div>
@@ -176,7 +177,7 @@ export default function ApplicationCard() {
                             How did you hear about us?
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {howHeard}
+                            {applicationData?.howHeard}
                         </p>
                     </div>
                 </div>
@@ -188,7 +189,7 @@ export default function ApplicationCard() {
                             Last school attended
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {lastSchoolName}
+                            {applicationData?.lastSchoolName}
                         </p>
                     </div>
                 </div>
@@ -198,7 +199,7 @@ export default function ApplicationCard() {
                             Field of study?
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {major}
+                            {applicationData?.major}
                         </p>
                     </div>
                 </div>
@@ -209,14 +210,14 @@ export default function ApplicationCard() {
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">School teacher experience</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{isSchoolTeacher}</p>
+                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData?.isSchoolTeacher}</p>
                         </div>
                     </div>
 
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">Professional affiliation academic institutions</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{hasAffiliation}</p>
+                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData?.hasAffiliation}</p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +230,7 @@ export default function ApplicationCard() {
                             Job Title
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {jobTitle}
+                            {applicationData?.jobTitle}
                         </p>
                     </div>
                     <div className="flex col-md-3 flex-col">
@@ -237,7 +238,7 @@ export default function ApplicationCard() {
                             Employer/company
                         </label>
                         <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                            {employer}
+                            {applicationData?.employer}
                         </p>
                     </div>
                     <div className="flex col-md-4 flex-col">
@@ -247,13 +248,13 @@ export default function ApplicationCard() {
                         <div className="row">
                             <div className="flex col-md-5 flex-col">
                                 <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">
-                                    {startDate}
+                                    {applicationData?.startDate}
                                 </p>
                             </div>
                             <div className="col-md-1 flex justify-center align-center items-center text-gray-400">to</div>
                             <div className="flex col-md-5 flex-col">
                                 <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">
-                                    {endDate}
+                                    {applicationData?.endDate}
                                 </p>
                             </div>
                         </div>
@@ -268,7 +269,7 @@ export default function ApplicationCard() {
                             Selected Subjects:
                         </p>
                         <div>
-                            {selectedSubjects.map((subject) => (
+                            {applicationData?.selectedSubjects.map((subject) => (
                                 <p key={subject}>{subject}</p>
                             ))}
                         </div>
@@ -278,7 +279,7 @@ export default function ApplicationCard() {
                         <p className="text-sm font-medium text-gray-700">
                             Selected Rate:
                         </p>
-                        <p>{selectedRate}</p>
+                        <p>{applicationData?.selectedRate}</p>
                     </div>
                 </div>
 
