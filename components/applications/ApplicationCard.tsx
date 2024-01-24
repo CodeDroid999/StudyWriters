@@ -7,21 +7,6 @@ import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase';
 import countryList from 'components/TutorApplication/countryList';
 
-export const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.toLocaleString('en-us', { month: 'short' });
-    const year = date.getFullYear();
-    const suffix =
-        day === 1 || day === 21 || day === 31
-            ? 'st'
-            : day === 2 || day === 22
-                ? 'nd'
-                : day === 3 || day === 23
-                    ? 'rd'
-                    : 'th';
-    return `${day}${suffix} ${month} ${year}`;
-};
 
 export default function ApplicationCard({ applicationData }) {
 
@@ -265,59 +250,3 @@ export default function ApplicationCard({ applicationData }) {
 
 
 
-
-
-
-
-
-
-export async function getServerSideProps({ params }) {
-    const applicationId = params.id;
-    const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-        const applicationData = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            createdAt: doc.data().createdAt.toDate().toLocaleString(),
-            status: doc.data().applicationStatus,
-            userId: doc.data().userId,
-            firstName: doc.data().firstName,
-            lastName: doc.data().lastName,
-            country: doc.data().country,
-            address: doc.data().address,
-            city: doc.data().city,
-            userState: doc.data().userState,
-            howHeard: doc.data().howHeard,
-            lastSchoolName: doc.data().lastSchoolName,
-            major: doc.data().major,
-            isSchoolTeacher: doc.data().isSchoolTeacher,
-            hasAffiliation: doc.data().hasAffiliation,
-            jobTitle: doc.data().jobTitle,
-            employer: doc.data().employer,
-            startDate: doc.data().startDate,
-            endDate: doc.data().endDate,
-            selectedSubjects: doc.data().selectedSubjects,
-            selectedRate: doc.data().selectedRate,
-            selectedTopic: doc.data().selectedTopic,
-            skillAssessmentDocUrl: doc.data().skillAssessmentDocUrl,
-            IdDoc_FrontUrl: doc.data().IdDoc_FrontUrl,
-            IdDoc_BackUrl: doc.data().IdDoc_BackUrl,
-            applicationStatus: doc.data().applicationStatus,
-            idVerificationStatus: doc.data().idVerificationStatus,
-            // Include all fields from the application document
-            ...doc.data(),
-        }));
-
-        return {
-            props: {
-                applicationData,
-            },
-        };
-    } else {
-        toast.error('No data found for the application');
-        return {
-            notFound: true,
-        };
-    }
-}

@@ -264,13 +264,6 @@ export default function ApplicationCard({ applicationData }) {
 
 
 
-
-
-
-
-
-
-
 export async function getServerSideProps({ params }) {
     const applicationId = params.id;
     const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));

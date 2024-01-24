@@ -7,13 +7,79 @@ import Logo from 'public/QualityUnitedWritersLogo.png'
 import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-import { auth } from '../../firebase'
+import { auth, db } from '../../firebase'
 import Navbar from 'components/layout/Navbar'
 import ApplicationCard from 'components/applications/ApplicationCard'
+import { query, collection, where, getDocs } from 'firebase/firestore'
+import toast from 'react-hot-toast'
 
+export const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('en-us', { month: 'short' });
+    const year = date.getFullYear();
+    const suffix =
+        day === 1 || day === 21 || day === 31
+            ? 'st'
+            : day === 2 || day === 22
+                ? 'nd'
+                : day === 3 || day === 23
+                    ? 'rd'
+                    : 'th';
+    return `${day}${suffix} ${month} ${year}`;
+};
+export async function getServerSideProps({ params }) {
+    const applicationId = params.id;
+    const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
+    const querySnapshot = await getDocs(q);
 
+    if (!querySnapshot.empty) {
+        const applicationData = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            createdAt: doc.data().createdAt.toDate().toLocaleString(),
+            status: doc.data().applicationStatus,
+            userId: doc.data().userId,
+            firstName: doc.data().firstName,
+            lastName: doc.data().lastName,
+            country: doc.data().country,
+            address: doc.data().address,
+            city: doc.data().city,
+            userState: doc.data().userState,
+            howHeard: doc.data().howHeard,
+            lastSchoolName: doc.data().lastSchoolName,
+            major: doc.data().major,
+            isSchoolTeacher: doc.data().isSchoolTeacher,
+            hasAffiliation: doc.data().hasAffiliation,
+            jobTitle: doc.data().jobTitle,
+            employer: doc.data().employer,
+            startDate: doc.data().startDate,
+            endDate: doc.data().endDate,
+            selectedSubjects: doc.data().selectedSubjects,
+            selectedRate: doc.data().selectedRate,
+            selectedTopic: doc.data().selectedTopic,
+            skillAssessmentDocUrl: doc.data().skillAssessmentDocUrl,
+            IdDoc_FrontUrl: doc.data().IdDoc_FrontUrl,
+            IdDoc_BackUrl: doc.data().IdDoc_BackUrl,
+            applicationStatus: doc.data().applicationStatus,
+            idVerificationStatus: doc.data().idVerificationStatus,
+            // Include all fields from the application document
+            ...doc.data(),
+        }));
 
-export default function Step1() {
+        return {
+            props: {
+                applicationData,
+            },
+        };
+    } else {
+        toast.error('No data found for the application');
+        return {
+            notFound: true,
+        };
+    }
+}
+
+export default function ApplicationDetailsPage({ applicationData }) {
     const router = useRouter()
 
     useEffect(() => {
@@ -34,7 +100,7 @@ export default function Step1() {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <ApplicationCard />
+                    <ApplicationCard applicationData={applicationData} />
                 </div>
             </div>
         </div>
