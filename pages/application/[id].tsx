@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from 'components/layout/Navbar';
 import ApplicationCard from 'components/applications/ApplicationCard';
