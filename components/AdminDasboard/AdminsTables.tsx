@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import profile from 'public/profile.jpeg';
 
-const AdminPage = () => {
+const AdminsPage = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const AdminPage = () => {
 
     return (
         <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">Suspened Accounts</p>
+            <p className="text-3xl font-bold text-blue-950 mb-4">Admin Accounts</p>
             {users.length > 0 ? (
                 <ul>
                     {users.map((user) => (
@@ -87,4 +87,4 @@ const AdminPage = () => {
     );
 };
 
-export default AdminPage;
+export default AdminsPage;

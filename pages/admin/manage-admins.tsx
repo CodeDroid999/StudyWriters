@@ -29,8 +29,6 @@ export default function ManageAdminDashboard() {
         router.push('/')
     }
     return (
-
-
         <>
             <Head>
                 <title>
