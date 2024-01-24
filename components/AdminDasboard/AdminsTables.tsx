@@ -11,7 +11,7 @@ const AdminPage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const q = query(collection(db, 'users'), where('userRole', '==', 'Admin'));
+                const q = query(collection(db, 'users'), where('role', '==', 'Admin'));
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
