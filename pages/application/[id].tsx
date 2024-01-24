@@ -1,38 +1,17 @@
-import ImageHeader from 'components/TutorApplication/ImageHeader'
-import { onAuthStateChanged } from 'firebase/auth'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import Logo from 'public/QualityUnitedWritersLogo.png'
-import React, { useEffect, useState } from 'react'
-import { TfiClose } from 'react-icons/tfi'
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { onAuthStateChanged } from 'firebase/auth';
+import Navbar from 'components/layout/Navbar';
+import ApplicationCard from 'components/applications/ApplicationCard';
+import { query, collection, where, getDocs } from 'firebase/firestore';
+import { auth, db } from '../../firebase';
+import toast from 'react-hot-toast';
+import ImageHeader from 'components/TutorApplication/ImageHeader';
 
-import { auth, db } from '../../firebase'
-import Navbar from 'components/layout/Navbar'
-import ApplicationCard from 'components/applications/ApplicationCard'
-import { query, collection, where, getDocs } from 'firebase/firestore'
-import toast from 'react-hot-toast'
-
-export const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.toLocaleString('en-us', { month: 'short' });
-    const year = date.getFullYear();
-    const suffix =
-        day === 1 || day === 21 || day === 31
-            ? 'st'
-            : day === 2 || day === 22
-                ? 'nd'
-                : day === 3 || day === 23
-                    ? 'rd'
-                    : 'th';
-    return `${day}${suffix} ${month} ${year}`;
-};
 export async function getServerSideProps({ params }) {
     const applicationId = params.id;
     const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
     const querySnapshot = await getDocs(q);
-
     if (!querySnapshot.empty) {
         const applicationData = querySnapshot.docs.map((doc) => ({
             id: doc.id,
@@ -65,7 +44,6 @@ export async function getServerSideProps({ params }) {
             // Include all fields from the application document
             ...doc.data(),
         }));
-
         return {
             props: {
                 applicationData,
@@ -80,20 +58,21 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function ApplicationDetailsPage({ applicationData }) {
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (!user) {
-                router.push(`/login`)
+                router.push('/login');
             }
-        })
-        return () => unsubscribe()
-    }, [router])
+        });
+        return () => unsubscribe();
+    }, [router]);
 
     const handleExit = () => {
-        router.push('/')
-    }
+        router.push('/');
+    };
+
     return (
         <div>
             <Navbar />
@@ -104,5 +83,5 @@ export default function ApplicationDetailsPage({ applicationData }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
