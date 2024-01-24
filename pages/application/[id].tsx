@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
 
 export async function getServerSideProps({ params }) {
-    const applicationId = params.id;
+    const applicationId = router.query.id.toString()
     const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {

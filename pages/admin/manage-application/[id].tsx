@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import router, { useRouter } from 'next/router';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from 'components/layout/Navbar';
 import ApplicationCard from 'components/applications/ApplicationCard';
@@ -10,7 +10,7 @@ import ImageHeader from 'components/TutorApplication/ImageHeader';
 import ManageApplicationCard from 'components/AdminDasboard/ManageApplicationCard';
 
 export async function getServerSideProps({ params }) {
-    const applicationId = params.id;
+    const applicationId = router.query.id.toString()
     const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
