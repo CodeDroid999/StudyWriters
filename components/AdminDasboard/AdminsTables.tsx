@@ -39,7 +39,7 @@ const AdminPage = () => {
 
     return (
         <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">Accounts</p>
+            <p className="text-3xl font-bold text-blue-950 mb-4">Suspened Accounts</p>
             {users.length > 0 ? (
                 <ul>
                     {users.map((user) => (

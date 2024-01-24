@@ -8,21 +8,7 @@ import { useParams } from 'react-router-dom';
 export default function ManageApplicationCard({ routerId }) {
     const [applicationData, setApplicationData] = useState({});
 
-    useEffect(() => {
-        const fetchApplicationData = async () => {
-            const docRef = firebase.firestore().collection('applications').doc(routerId);
-            const doc = await docRef.get();
-            if (doc.exists) {
-                setApplicationData(doc.data());
-            } else {
-                // Handle application not found
-                console.log('Application not found');
-                // You can display a toast message here
-            }
-        };
 
-        fetchApplicationData();
-    }, [routerId]);
 
     // Render the application data
 
