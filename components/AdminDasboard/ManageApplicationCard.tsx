@@ -1,14 +1,30 @@
-import { UserAuth } from 'context/AuthContext';
-import { addDoc, collection, doc, getDoc, getDocs, query, serverTimestamp, updateDoc, where } from 'firebase/firestore';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
-import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase';
-import countryList from 'components/TutorApplication/countryList';
+import { query, collection, where, getDocs } from 'firebase/firestore';
+import { formatDate } from 'pages/public-profile/[id]';
+import router from 'next/router';
+import { useParams } from 'react-router-dom';
 
+export default function ManageApplicationCard({ routerId }) {
+    const [applicationData, setApplicationData] = useState({});
 
-export default function ManageApplicationCard({ applicationData }) {
+    useEffect(() => {
+        const fetchApplicationData = async () => {
+            const docRef = firebase.firestore().collection('applications').doc(routerId);
+            const doc = await docRef.get();
+            if (doc.exists) {
+                setApplicationData(doc.data());
+            } else {
+                // Handle application not found
+                console.log('Application not found');
+                // You can display a toast message here
+            }
+        };
+
+        fetchApplicationData();
+    }, [routerId]);
+
+    // Render the application data
 
     return (
         <div className="p-3 bg-white">
@@ -228,7 +244,7 @@ export default function ManageApplicationCard({ applicationData }) {
                 <div className="row">
                     <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
                 </div>
-                {/* Display selected subjects and rate */}
+                {/* Display selected subjects and rate 
                 <div className="mb-4">
                     <p className="text-sm font-medium text-gray-700">Selected Subjects:</p>
                     <div>
@@ -240,7 +256,7 @@ export default function ManageApplicationCard({ applicationData }) {
                 <div className="mb-4">
                     <p className="text-sm font-medium text-gray-700">Selected Rate:</p>
                     <p>{applicationData.selectedRate}</p>
-                </div>
+                </div>*/}
             </form>
         </div>
     );

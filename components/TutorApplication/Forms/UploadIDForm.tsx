@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import router, { useRouter } from 'next/router';
 import { UserAuth } from 'context/AuthContext';
@@ -7,6 +6,8 @@ import { ref, uploadBytesResumable, getDownloadURL, getStorage } from 'firebase/
 import { db, storage } from '../../../firebase';
 import { addDoc, doc, collection, serverTimestamp, updateDoc } from 'firebase/firestore';
 import useFormStore from 'store/tutorApplication';
+import { useState } from 'react';
+
 
 interface Props {
     handlePreviousStep: () => void
@@ -29,6 +30,9 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
         jobTitle, employer, startDate, endDate } = step1
     const { selectedSubjects, selectedRate } = step2
     const { selectedTopic, skillAssessmentDocUrl } = step3
+
+
+
 
 
 
@@ -67,6 +71,7 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
         const storageRef2 = ref(storage, `IdPhotos/${userId}_IdDoc_back.${backFile.name.split('.').pop()}`);
         const backUrl = await uploadFileAndGetURL(storageRef2, backFile);
 
+
         const docRef = await addDoc(collection(db, 'applications'), {
             firstName: firstName,
             lastName: lastName,
@@ -92,9 +97,8 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
             createdAt: serverTimestamp(),
             userId: userId,
             applicationStatus: "Pending",
-            idVerificationStatus: false
+            idVerificationStatus: false,
         })
-
         await addDoc(collection(db, 'mail'), {
             to: 'airtaska1@gmail.com',
             message: {

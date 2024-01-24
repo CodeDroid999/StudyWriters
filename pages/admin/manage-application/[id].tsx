@@ -1,319 +1,218 @@
-import React, { useEffect } from 'react';
-import router, { useRouter } from 'next/router';
-import { onAuthStateChanged } from 'firebase/auth';
-import Navbar from 'components/layout/Navbar';
-import ApplicationCard from 'components/applications/ApplicationCard';
-import { query, collection, where, getDocs } from 'firebase/firestore';
-import { auth, db } from '../../../firebase';
-import toast from 'react-hot-toast';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../../firebase';
+import router from 'next/router';
+import Navbar from 'components/AdminLayout/Navbar';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
-import ManageApplicationCard from 'components/AdminDasboard/ManageApplicationCard';
 
-export async function getServerSideProps({ params, query }) {
-    const applicationId = params.id;
-    const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
-    const querySnapshot = await getDocs(q);
-    if (!querySnapshot.empty) {
-        const applicationData = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            createdAt: doc.data().createdAt.toDate().toLocaleString(),
-            status: doc.data().applicationStatus,
-            userId: doc.data().userId,
-            firstName: doc.data().firstName,
-            lastName: doc.data().lastName,
-            country: doc.data().country,
-            address: doc.data().address,
-            city: doc.data().city,
-            userState: doc.data().userState,
-            howHeard: doc.data().howHeard,
-            lastSchoolName: doc.data().lastSchoolName,
-            major: doc.data().major,
-            isSchoolTeacher: doc.data().isSchoolTeacher,
-            hasAffiliation: doc.data().hasAffiliation,
-            jobTitle: doc.data().jobTitle,
-            employer: doc.data().employer,
-            startDate: doc.data().startDate,
-            endDate: doc.data().endDate,
-            selectedSubjects: doc.data().selectedSubjects,
-            selectedRate: doc.data().selectedRate,
-            selectedTopic: doc.data().selectedTopic,
-            skillAssessmentDocUrl: doc.data().skillAssessmentDocUrl,
-            IdDoc_FrontUrl: doc.data().IdDoc_FrontUrl,
-            IdDoc_BackUrl: doc.data().IdDoc_BackUrl,
-            applicationStatus: doc.data().applicationStatus,
-            idVerificationStatus: doc.data().idVerificationStatus,
-            // Include all fields from the application document
-            ...doc.data(),
-        }));
-        return {
-            props: {
-                applicationData,
-            },
-        };
-    } else {
-        toast.error('No data found for the application');
-        return {
-            notFound: true,
-        };
-    }
+
+export const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    const day = date.getDate()
+    const month = date.toLocaleString('en-us', { month: 'short' })
+    const year = date.getFullYear()
+    const suffix =
+        day === 1 || day === 21 || day === 31
+            ? 'st'
+            : day === 2 || day === 22
+                ? 'nd'
+                : day === 3 || day === 23
+                    ? 'rd'
+                    : 'th'
+    return `${day}${suffix} ${month} ${year}`
 }
 
-export default function ApplicationDetailsPage({ applicationData }) {
-    const router = useRouter();
+export default function ManageApplicationDetailsPage() {
+    const id = router.query.id.toString()
+    const [application, setApplication] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                router.push('/login');
-            }
-        });
-        return () => unsubscribe();
-    }, [router]);
+        const fetchApplication = async () => {
+            try {
+                const docRef = doc(db, 'applications', id);
+                const docSnap = await getDoc(docRef);
 
-    const handleExit = () => {
-        router.push('/');
-    };
+                if (docSnap.exists()) {
+                    setApplication(docSnap.data());
+                } else {
+                    console.log('Application not found');
+                }
+            } catch (error) {
+                console.error('Error fetching application:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchApplication();
+    }, [id]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (!application) {
+        return <p>Application not found</p>;
+    }
 
     return (
         <div>
             <Navbar />
-            <div className="mx-auto w-full max-w-[1200px] px-3">
+            <div className="mt-28 mx-4">
                 <ImageHeader />
-                <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <div className="p-3 bg-white">
-                        <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4 pb-8">
-                            <p className="text-3xl font-bold text-blue-950">Personal Information</p>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
-                                        First Name
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.firstName}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastName" className="mb-2 text-sm font-medium text-gray-700">
-                                        Last Name
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastName}</p>
-                                </div>
+                <div className="bg-gray-100 p-3 flex flex-col mx-auto ">
+                    <p className="text-3xl font-bold text-blue-950 mb-4">Personal Information</p>
+                    <div className="row">
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
+                                First Name
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.firstName}</p>
+                        </div>
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="lastName" className="mb-2 text-sm font-medium text-gray-700">
+                                Last Name
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.lastName}</p>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
+                                Nationality
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.country}</p>
+                        </div>
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
+                                Identity verification status
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.idVerifcationStatus}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
+                                Where do you live?
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.address}</p>
+                        </div>
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="City of residence" className="mb-2 text-sm font-medium text-white">
+                                City
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.city}</p>
+                        </div>
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="State of residence" className="mb-2 text-sm font-medium text-white">
+                                State
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.state}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="flex col-md-8 col-sm-12 flex-col">
+                            <label htmlFor="How did you hear about us?" className="mb-2 text-sm font-medium text-gray-700">
+                                How did you hear about us?
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
+                        </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Education</p>
+                    <div className="row">
+                        <div className="flex col-md-4 flex-col">
+                            <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
+                                Name of the last school you attended
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.lastSchoolName}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="flex flex-col col-md-4">
+                            <label htmlFor="University Major" className="mb-2 text-sm font-medium text-gray-700">
+                                What is/was your field of study?
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.major}</p>
+                        </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
+
+                    <div className="row">
+                        <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
+                            <div className="question col-md-8">
+                                Have you ever been a school teacher?
                             </div>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
-                                        Nationality
-                                    </label>
-                                    <p className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700">{applicationData.country}</p>
-                                </div>
-                                <div className="flex col-md-3 flex-col items-center justify-center">
-                                    <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
-                                        ID Verification Status:
-                                        <p className={`rounded-lg px-2 py-1 ${applicationData.isIdentityVerified ? 'bg-green-700' : 'bg-yellow-500'} text-white`}>
-                                            {applicationData.isIdentityVerified ? 'Verified' : 'Pending'}
-                                        </p>
-                                    </p>
-                                </div>
+                            <div className="flex items-right space-x-4 justify-items-center mt-1">
+                                <input
+                                    type="radio"
+                                    checked={application.isSchoolTeacher}
+                                    className="mr-2"
+                                    disabled
+                                />
+                                <label htmlFor="Are you a teacher?" className="mb-2 text-sm font-medium text-gray-700">
+                                    Yes
+                                </label>
+                                <input
+                                    type="radio"
+                                    checked={!application.isSchoolTeacher}
+                                    className="mr-2"
+                                    disabled
+                                />
+                                <label htmlFor="Are you a teacher?" className="mb-2 text-sm font-medium text-gray-700">
+                                    No
+                                </label>
                             </div>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
-                                        Location
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
-                                        City
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
-                                        State
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
-                                </div>
+                        </div>
+                        <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
+                            <div className="question col-md-8">
+                                Do you have other professional affiliation with an academic institution?
                             </div>
-                            <div className="row">
-                                <div className="flex col-md-8 col-sm-12 flex-col">
-                                    <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
-                                        How did you hear about us?
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
-                                </div>
+                            <div className="flex items-right space-x-4 mt-1">
+                                <input
+                                    type="radio"
+                                    checked={application.hasAffiliation}
+                                    className="mr-2"
+                                    disabled
+                                />
+                                <label htmlFor="Do you have other professional affiliation with an academic institution?" className="mb-2 text-sm font-medium text-gray-700">
+                                    Yes
+                                </label>
+                                <input
+                                    type="radio"
+                                    checked={!application.hasAffiliation}
+                                    className="mr-2"
+                                    disabled
+                                />
+                                <label htmlFor="Do you have other professional affiliation with an academic institution?" className="mb-2 text-sm font-medium text-gray-700">
+                                    No
+                                </label>
                             </div>
-                            <p className="text-3xl font-bold text-blue-950">Education</p>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
-                                        Last school attended
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
-                                </div>
-                            </div>
-                            <div className="row ">
-                                <div className="flex flex-col col-md-4  ">
-                                    <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
-                                        Field of study?
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
-                                </div>
-                            </div>
-                            <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
-                            <div className="row">
-                                <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                                    <div className="question col-md-8">School teacher experience</div>
-                                    <div className="flex items-right space-x-4">
-                                        <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
-                                    </div>
-                                </div>
-                                <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                                    <div className="question col-md-8">Professional affiliation academic institutions</div>
-                                    <div className="flex items-right space-x-4">
-                                        <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="text-3xl font-bold text-blue-950">Work Experience</p>
-                            <div className="row">
-                                <div className="flex col-md-3 flex-col">
-                                    <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
-                                        Job Title
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
-                                </div>
-                                <div className="flex col-md-3 flex-col">
-                                    <label htmlFor="employer" className="mb-2 text-sm font-medium text-gray-700">
-                                        Employer/company
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="startDate" className="mb-2 text-sm font-medium text-gray-700">
-                                        Years worked
-                                    </label>
-                                    <div className="row">
-                                        <div className="flex col-md-5 flex-col">
-                                            <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
-                                        </div>
-                                        <div className="col-md-1 flex justify-center align-center items-center text-gray-400">to</div>
-                                        <div className="flex col-md-5 flex-col">
-                                            <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
-                            </div>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
-                                        Location
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
-                                        City
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
-                                        State
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="flex col-md-8 col-sm-12 flex-col">
-                                    <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
-                                        How did you hear about us?
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
-                                </div>
-                            </div>
-                            <p className="text-3xl font-bold text-blue-950">Education</p>
-                            <div className="row">
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
-                                        Last school attended
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
-                                </div>
-                            </div>
-                            <div className="row ">
-                                <div className="flex flex-col col-md-4  ">
-                                    <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
-                                        Field of study?
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
-                                </div>
-                            </div>
-                            <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
-                            <div className="row">
-                                <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                                    <div className="question col-md-8">School teacher experience</div>
-                                    <div className="flex items-right space-x-4">
-                                        <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
-                                    </div>
-                                </div>
-                                <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
-                                    <div className="question col-md-8">Professional affiliation academic institutions</div>
-                                    <div className="flex items-right space-x-4">
-                                        <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="text-3xl font-bold text-blue-950">Work Experience</p>
-                            <div className="row">
-                                <div className="flex col-md-3 flex-col">
-                                    <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
-                                        Job Title
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
-                                </div>
-                                <div className="flex col-md-3 flex-col">
-                                    <label htmlFor="employer" className="mb-2 text-sm font-medium text-gray-700">
-                                        Employer/company
-                                    </label>
-                                    <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
-                                </div>
-                                <div className="flex col-md-4 flex-col">
-                                    <label htmlFor="startDate" className="mb-2 text-sm font-medium text-gray-700">
-                                        Years worked
-                                    </label>
-                                    <div className="row">
-                                        <div className="flex col-md-5 flex-col">
-                                            <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
-                                        </div>
-                                        <div className="col-md-1 flex justify-center align-center items-center text-gray-400">to</div>
-                                        <div className="flex col-md-5 flex-col">
-                                            <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
-                            </div>
-                            {/* Display selected subjects and rate */}
-                            <div className="mb-4">
-                                <p className="text-sm font-medium text-gray-700">Selected Subjects:</p>
-                                <div>
-                                    {applicationData.selectedSubjects.map((subject) => (
-                                        <p key={subject}>{subject}</p>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="mb-4">
-                                <p className="text-sm font-medium text-gray-700">Selected Rate:</p>
-                                <p>{applicationData.selectedRate}</p>
-                            </div>
-                        </form>
+                        </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Work Experience</p>
+
+                    <div className="row">
+                        <div className="flex col-md-3 flex-col">
+                            <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
+                                Job Title
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.jobTitle}</p>
+                        </div>
+                        <div className="flex col-md-3 flex-col">
+                            <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
+                                Employer/company
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.employer}</p>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
+
+
 }

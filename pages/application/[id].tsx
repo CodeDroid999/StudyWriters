@@ -1,87 +1,57 @@
-import React, { useEffect } from 'react';
-import router, { useRouter } from 'next/router';
-import { onAuthStateChanged } from 'firebase/auth';
-import Navbar from 'components/layout/Navbar';
-import ApplicationCard from 'components/applications/ApplicationCard';
-import { query, collection, where, getDocs } from 'firebase/firestore';
-import { auth, db } from '../../firebase';
-import toast from 'react-hot-toast';
-import ImageHeader from 'components/TutorApplication/ImageHeader';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
+import router from 'next/router';
+import Navbar from 'components/AdminLayout/Navbar';
 
-export async function getServerSideProps({ params }) {
-    const applicationId = router.query.id.toString()
-    const q = query(collection(db, 'applications'), where('applicationId', '==', applicationId));
-    const querySnapshot = await getDocs(q);
-    if (!querySnapshot.empty) {
-        const applicationData = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            createdAt: doc.data().createdAt.toDate().toLocaleString(),
-            status: doc.data().applicationStatus,
-            userId: doc.data().userId,
-            firstName: doc.data().firstName,
-            lastName: doc.data().lastName,
-            country: doc.data().country,
-            address: doc.data().address,
-            city: doc.data().city,
-            userState: doc.data().userState,
-            howHeard: doc.data().howHeard,
-            lastSchoolName: doc.data().lastSchoolName,
-            major: doc.data().major,
-            isSchoolTeacher: doc.data().isSchoolTeacher,
-            hasAffiliation: doc.data().hasAffiliation,
-            jobTitle: doc.data().jobTitle,
-            employer: doc.data().employer,
-            startDate: doc.data().startDate,
-            endDate: doc.data().endDate,
-            selectedSubjects: doc.data().selectedSubjects,
-            selectedRate: doc.data().selectedRate,
-            selectedTopic: doc.data().selectedTopic,
-            skillAssessmentDocUrl: doc.data().skillAssessmentDocUrl,
-            IdDoc_FrontUrl: doc.data().IdDoc_FrontUrl,
-            IdDoc_BackUrl: doc.data().IdDoc_BackUrl,
-            applicationStatus: doc.data().applicationStatus,
-            idVerificationStatus: doc.data().idVerificationStatus,
-            // Include all fields from the application document
-            ...doc.data(),
-        }));
-        return {
-            props: {
-                applicationData,
-            },
-        };
-    } else {
-        toast.error('No data found for the application');
-        return {
-            notFound: true,
-        };
-    }
-}
-
-export default function ApplicationDetailsPage({ applicationData }) {
-    const router = useRouter();
+export default function ManageApplicationDetailsPage() {
+    const id = router.query.id.toString()
+    const [application, setApplication] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                router.push('/login');
-            }
-        });
-        return () => unsubscribe();
-    }, [router]);
+        const fetchApplication = async () => {
+            try {
+                const docRef = doc(db, 'applications', id);
+                const docSnap = await getDoc(docRef);
 
-    const handleExit = () => {
-        router.push('/');
-    };
+                if (docSnap.exists()) {
+                    setApplication(docSnap.data());
+                } else {
+                    console.log('Application not found');
+                }
+            } catch (error) {
+                console.error('Error fetching application:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchApplication();
+    }, [id]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (!application) {
+        return <p>Application not found</p>;
+    }
 
     return (
         <div>
             <Navbar />
-            <div className="mx-auto w-full max-w-[1200px] px-3">
-                <ImageHeader />
-                <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <ApplicationCard applicationData={applicationData} />
+            <div className="mt-28 mx-4">
+                <div className="w-full">
+                    <h1>Application Details</h1>
+                    <p>First Name: {application.firstName}</p>
+                    <p>Last Name: {application.lastName}</p>
+                    {/* Display other application data */}
                 </div>
             </div>
         </div>
     );
+
+
 }
