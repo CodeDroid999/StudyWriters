@@ -7,6 +7,7 @@ import { query, collection, where, getDocs } from 'firebase/firestore';
 import { auth, db } from '../../../firebase';
 import toast from 'react-hot-toast';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
+import ManageApplicationCard from 'components/AdminDasboard/ManageApplicationCard';
 
 export async function getServerSideProps({ params }) {
     const applicationId = params.id;
@@ -79,7 +80,7 @@ export default function ApplicationDetailsPage({ applicationData }) {
             <div className="mx-auto w-full max-w-[1200px] px-3">
                 <ImageHeader />
                 <div className="mx-auto mt-20 min-w-100 shadow-2xl">
-                    <ApplicationCard applicationData={applicationData} />
+                    <ManageApplicationCard applicationData={applicationData} />
                 </div>
             </div>
         </div>
