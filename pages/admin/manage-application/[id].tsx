@@ -87,45 +87,47 @@ export default function ManageApplicationDetailsPage() {
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.country}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
-                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
-                                Identity verification status
+                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-100">
+                                Nationality
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.idVerifcationStatus}</p>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                                Identity verification status
+                                {application.idVerificationStatus}</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
-                                Where do you live?
+                                Adress
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.address}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
-                            <label htmlFor="City of residence" className="mb-2 text-sm font-medium text-white">
+                            <label htmlFor="City of residence" className="mb-2 text-sm font-medium text-gray-700">
                                 City
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.city}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
-                            <label htmlFor="State of residence" className="mb-2 text-sm font-medium text-white">
+                            <label htmlFor="State of residence" className="mb-2 text-sm font-medium text-gray-700">
                                 State
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.state}</p>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.userState}</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="flex col-md-8 col-sm-12 flex-col">
                             <label htmlFor="How did you hear about us?" className="mb-2 text-sm font-medium text-gray-700">
-                                How did you hear about us?
+                                Channel of  hearing about QualityUnitedWriters
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Education</p>
+                    <p className="text-3xl font-bold text-blue-950 mt-4">Education</p>
                     <div className="row">
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
-                                Name of the last school you attended
+                                Name of the last school attended
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.lastSchoolName}</p>
                         </div>
@@ -133,17 +135,17 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row">
                         <div className="flex flex-col col-md-4">
                             <label htmlFor="University Major" className="mb-2 text-sm font-medium text-gray-700">
-                                What is/was your field of study?
+                                Field of study?
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.major}</p>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
+                    <p className="text-3xl font-bold text-blue-950 mt-4">Academic Experience</p>
 
                     <div className="row">
                         <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                             <div className="question col-md-8">
-                                Have you ever been a school teacher?
+                                Has applicant ever been a school teacher?
                             </div>
                             <div className="flex items-right space-x-4 justify-items-center mt-1">
                                 <input
@@ -168,7 +170,7 @@ export default function ManageApplicationDetailsPage() {
                         </div>
                         <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                             <div className="question col-md-8">
-                                Do you have other professional affiliation with an academic institution?
+                                Does Applicant have other professional affiliation with an academic institution?
                             </div>
                             <div className="flex items-right space-x-4 mt-1">
                                 <input
@@ -192,7 +194,7 @@ export default function ManageApplicationDetailsPage() {
                             </div>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Work Experience</p>
+                    <p className="text-3xl font-bold text-blue-950 mt-4">Work Experience</p>
 
                     <div className="row">
                         <div className="flex col-md-3 flex-col">
