@@ -3,10 +3,7 @@ import AssignmentsStatsCard from 'components/AdminDasboard/AsssignmentsStatsCard
 import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard';
 import Navbar from 'components/AdminLayout/Navbar';
 import AdminSideNav from 'components/AdminLayout/SideNav';
-import Steps from 'components/howitworks/Steps';
-import SideNav from 'components/layout/SideNav';
 import Footer from 'components/unAuthed/Footer';
-import CustomNavbar from 'components/unAuthed/Navbar';
 import Head from 'next/head';
 import React from 'react';
 

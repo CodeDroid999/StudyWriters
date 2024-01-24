@@ -21,20 +21,20 @@ const AdminSideNav = () => {
         <Link href="/admin/manage-assignments" className="text-blue-800 text-right whitespace-nowrap">Assignments</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/privacy" className="text-blue-800 text-right whitespace-nowrap">Messages</Link>
+        <Link href="/suspensions" className="text-blue-800 text-right whitespace-nowrap">suspensions</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/terms" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
+        <Link href="/admin/support" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
       </div>
 
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/refer-a-friend" className="text-blue-800 text-right whitespace-nowrap">Chats</Link>
+        <Link href="/chats" className="text-blue-800 text-right whitespace-nowrap">Chats</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/blog" className="text-blue-800 text-right whitespace-nowrap">Edit Blogs</Link>
+        <Link href="/studio" className="text-blue-800 text-right whitespace-nowrap">Edit Blogs</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/how-it-works" className="text-blue-800 text-right whitespace-nowrap">Admin Accounts</Link>
+        <Link href="/admin/manage-admins" className="text-blue-800 text-right whitespace-nowrap">Admin Accounts</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
         <Link href="/contact-us" className="text-blue-800 text-right whitespace-nowrap">Contact Forms</Link>

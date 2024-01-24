@@ -211,6 +211,18 @@ export default function ManageApplicationDetailsPage() {
                         </div>
 
                     </div>
+                    <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
+
+                    <div className="mb-4">
+                        <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
+                            Which subjects does applicant intend to tutor in? (at least one is required.)
+                        </label>
+                        <div className="flex flex-wrap gap-4 mt-2">
+                            {application.selectedSubjects.map((subject, index) => (
+                                <div key={index} className="flex items-center justify-items-center align-items-center space-x-2">{subject}</div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div >
         </div >

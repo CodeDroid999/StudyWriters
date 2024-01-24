@@ -30,16 +30,16 @@ const SideNav = () => {
                 <Link href="/privacy" className="text-blue-800 text-right whitespace-nowrap">Messages</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/terms" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
+                <Link href="/support" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/refund" className="text-blue-800 text-right whitespace-nowrap">Suspensions</Link>
+                <Link href="/suspensions" className="text-blue-800 text-right whitespace-nowrap">Suspensions</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/refer-a-friend" className="text-blue-800 text-right whitespace-nowrap">Chat</Link>
+                <Link href="/admin/chats" className="text-blue-800 text-right whitespace-nowrap">Chat</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/blog" className="text-blue-800 text-right whitespace-nowrap">Blog</Link>
+                <Link href="/studio" className="text-blue-800 text-right whitespace-nowrap">Edit Blog</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
                 <Link href="/how-it-works" className="text-blue-800 text-right whitespace-nowrap">Accounts</Link>
