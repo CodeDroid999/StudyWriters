@@ -47,33 +47,34 @@ const ManageAdminsCard = () => {
     return (
 
         <div className="bg-white p-4 shadow rounded-md">
-            <h2 className="text-2xl font-semibold mb-4">Accounts</h2>
+            <h2 className="text-2xl font-semibold mb-4">Site Admins</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.students}</p>
-                    <p className="text-center text-blue-900 font-bold border">Student</p>
+                    <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.tutors}</p>
-                    <p className="text-center text-blue-900 font-bold border">Tutor </p>
+                    <p className="text-center text-blue-900 font-bold border">Active </p>
                 </div>
 
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
-                    <p className="text-center text-blue-900 font-bold border">Verified</p>
+                    <p className="text-center text-blue-900 font-bold border">Inactive</p>
+                </div>
+                <div>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
+                    <p className="text-center text-blue-900 font-bold border">Percentage</p>
                 </div>
 
-                <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.totalUsers}</p>
-                    <p className="text-center text-blue-900 font-bold border">Total </p>
-                </div>
+
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>
-            <Link href="/admin/manage-users" className="flex align-items-right w-100">
-                <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage</span>
-            </Link>
-        </div>
+            <Link href="/admin/manage-admins" className=" flex align-items-right w-100">
+            <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage Admins</span>
+        </Link>
+        </div >
     );
 };
 
