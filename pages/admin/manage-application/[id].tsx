@@ -8,21 +8,6 @@ import ImageHeader from 'components/TutorApplication/ImageHeader';
 import Link from 'next/link';
 
 
-export const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    const day = date.getDate()
-    const month = date.toLocaleString('en-us', { month: 'short' })
-    const year = date.getFullYear()
-    const suffix =
-        day === 1 || day === 21 || day === 31
-            ? 'st'
-            : day === 2 || day === 22
-                ? 'nd'
-                : day === 3 || day === 23
-                    ? 'rd'
-                    : 'th'
-    return `${day}${suffix} ${month} ${year}`
-}
 
 export default function ManageApplicationDetailsPage() {
     const id = router.query.id.toString()
@@ -57,6 +42,8 @@ export default function ManageApplicationDetailsPage() {
     if (!application) {
         return <p>Application not found</p>;
     }
+
+
 
     return (
         <div>
@@ -208,6 +195,18 @@ export default function ManageApplicationDetailsPage() {
                                 Employer/company
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.employer}</p>
+                        </div>
+                        <div className="flex col-md-3 flex-col">
+                            <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
+                                From
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.startDate}</p>
+                        </div>
+                        <div className="flex col-md-3 flex-col">
+                            <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
+                                To
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.endDate}</p>
                         </div>
 
                     </div>

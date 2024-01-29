@@ -16,8 +16,8 @@ type Step1 = {
   hasAffiliation: boolean
   jobTitle: string
   employer: string
-  startDate: Timestamp
-  endDate: Timestamp
+  startDate: string
+  endDate: string
 }
 
 type Step2 = {
@@ -47,8 +47,8 @@ interface Store {
     hasAffiliation: boolean,
     jobTitle: string,
     employer: string,
-    startDate: Timestamp,
-    endDate: Timestamp
+    startDate: string,
+    endDate: string
   ) => void
   setStep2Data: (selectedSubjects: string[], selectedRate: string) => void
   setStep3Data: (selectedTopic: string, skillAssessmentDocUrl: string) => void
@@ -71,8 +71,8 @@ const useFormStore = create<Store>()(
         hasAffiliation: null,
         jobTitle: '',
         employer: '',
-        startDate: null,
-        endDate: null,
+        startDate:'',
+        endDate: '',
       },
       step2: {
         selectedSubjects: [''],
@@ -155,8 +155,8 @@ const useFormStore = create<Store>()(
             hasAffiliation: null,
             jobTitle: '',
             employer: '',
-            startDate: null,
-            endDate: null,
+            startDate: '',
+            endDate: '',
           },
           step2: {
             selectedSubjects: [''],
