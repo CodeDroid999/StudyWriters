@@ -81,7 +81,7 @@ const SuspensionsPage = () => {
                     ))}
                 </ul>
             ) : (
-                <p>There are no suspended accounts ...</p>
+                <p>Loading suspended accounts ...</p>
             )}
         </div>
     );

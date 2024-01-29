@@ -5,6 +5,7 @@ import { db } from '../../../firebase';
 import router from 'next/router';
 import Navbar from 'components/AdminLayout/Navbar';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
+import Link from 'next/link';
 
 
 export const formatDate = (dateString) => {
@@ -118,7 +119,7 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row mt-2">
                         <div className="flex col-md-8 col-sm-12 flex-col">
                             <label htmlFor="How did you hear about us?" className="mb-2 text-sm font-medium text-gray-700">
-                                Channel of  hearing about QualityUnitedWriters
+                                Channel of Advertisement they learnt about QualityUnitedWriters
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
                         </div>
@@ -215,13 +216,78 @@ export default function ManageApplicationDetailsPage() {
 
                     <div className="mb-4">
                         <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
-                            Which subjects does applicant intend to tutor in? (at least one is required.)
+                            Which subjects does applicant intend to tutor in? (Value determines which type of account the user will get once screening is done)
                         </label>
-                        <div className="flex flex-wrap gap-4 mt-2">
+                        <div className="flex bg-white flex-wrap gap-4 mt-2  p-1 border border-green-950">
                             {application.selectedSubjects.map((subject, index) => (
-                                <div key={index} className="flex items-center justify-items-center align-items-center space-x-2">{subject}</div>
+                                <div key={index} className="flex items-center rounded justify-items-center align-items-center space-x-2 p-1 bg-gray-100 border-green-950">{subject}</div>
                             ))}
                         </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Skill Assessment</p>
+                    <div className="row mt-2">
+                        <div className="flex col-md-3 col-sm-4 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                Selected Account type
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="flex col-md-5 col-sm-12 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                Skill Assessment Question
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
+                        </div>
+                        <div className="flex col-md-3 col-sm-6 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                Skill Assessment Answer
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                                <Link href={application.skillAssessmentDocUrl} className="text-blue-600 px-1 py-2 font-medium">View Answer</Link>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row mb-4">
+                        <div className="flex col-md-3 col-sm-12 flex-col">
+
+                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Approve</p>
+                        </div>
+                        <div className="flex col-md-3 col-sm-6 flex-col">
+
+                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Reject</p>
+                        </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Applicant ID verification</p>
+                    <div className="row mt-2">
+                        <div className="flex col-md-3 col-sm-5 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                ID document: Front
+                            </label>
+                            <Link href={application.IdDoc_FrontUrl} className="rounded-lg border bg-gray-100 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                        </div>
+                        <div className="flex col-md-3 col-sm-5 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                ID document: Back
+                            </label>
+                            <Link href={application.IdDoc_BackUrl} className="rounded-lg border bg-blue-500 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                        </div>
+                        <div className="flex col-md-3 col-sm-5 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                ID Verification Status
+                            </label>
+                            <div className="rounded-lg border bg-gray-100 shadow text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</div>
+                        </div>
+                    </div>
+                    <div className="row mt-2 gap-4">
+                        <div className="flex col-md-3 col-sm-6 flex-col bg-green-600 text-white rounded p-1 text-center">
+                            Approve
+                        </div>
+                        <div className="flex col-md-3 col-sm-6 flex-col bg-red-600  text-white rounded p-1 text-center">
+                            Reject
+                        </div>
+
                     </div>
                 </div>
             </div >

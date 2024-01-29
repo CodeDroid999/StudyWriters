@@ -14,7 +14,7 @@ interface Props {
 
 
 export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep }: Props) {
-    const { firstName, lastName } = UserAuth();
+    const { userId } = UserAuth();
     const [selectedTopic, setSelectedTopic] = useState('');
     const [file, setFile] = useState(null);
     const [problemStatement, setProblemStatement] = useState('');
@@ -64,7 +64,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
 
         try {
             // Generate a unique filename for the uploaded file
-            const filename = `SkillAssessmentDocs/${firstName}_${lastName}_${file.name}`;
+            const filename = `SkillAssessmentDocs/${userId}_${file.name}`;
 
             // Create a reference to the file in the SkillAssessmentDocs folder
             const storageRef = ref(storage, filename);
