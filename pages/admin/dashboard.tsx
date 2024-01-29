@@ -1,5 +1,6 @@
 import ApplicationsStatsCard from 'components/AdminDasboard/ApplicationsStatsCard';
 import AssignmentsStatsCard from 'components/AdminDasboard/AsssignmentsStatsCard';
+import ManageAdminsCard from 'components/AdminDasboard/ManageAdminsCard';
 import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard';
 import Navbar from 'components/AdminLayout/Navbar';
 import AdminSideNav from 'components/AdminLayout/SideNav';
@@ -54,7 +55,9 @@ const AdminDashboard: React.FC = () => {
                                 <div className="col-md-6 p-2">
                                     <UsersStatsCard />
                                 </div>
-
+                                <div className="col-md-6 p-2">
+                                    <ManageAdminsCard />
+                                </div>
                             </div>
                         </div>
                     </div>
