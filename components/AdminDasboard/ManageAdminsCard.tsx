@@ -7,6 +7,10 @@ const ManageAdminsCard = () => {
     const [userStats, setUserStats] = useState({
         totalUsers: 0,
         students: 0,
+        admins: 0,
+        activeAdmins: 0,
+        inActiveAdmins: 0,
+        suspendedAdmins: 0,
         tutors: 0,
         emailVerified: 0,
     });
@@ -25,11 +29,20 @@ const ManageAdminsCard = () => {
                     const totalUsers = usersData.length;
                     const students = usersData.filter((user) => user.role === 'student').length;
                     const tutors = usersData.filter((user) => user.role === 'tutor').length;
+                    const admins = usersData.filter((user) => user.role === 'Admin').length;
                     const emailVerified = usersData.filter((user) => user.emailVerified).length;
+                    const activeAdmins = usersData.filter((user) => user.role === 'Admin' && user.accountStatus === 'active').length;
+                    const inActiveAdmins = usersData.filter((user) => user.role === 'Admin' && user.accountStatus === 'inActive').length;
+                    const suspendedAdmins = usersData.filter((user) => user.role === 'Admin' && user.accountStatus === 'suspended').length;
+
 
                     setUserStats({
                         totalUsers,
                         students,
+                        admins,
+                        activeAdmins,
+                        inActiveAdmins,
+                        suspendedAdmins,
                         tutors,
                         emailVerified,
                     });
@@ -50,22 +63,22 @@ const ManageAdminsCard = () => {
             <h2 className="text-2xl font-semibold mb-4">Site Admins</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.students}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.admins}</p>
                     <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>
 
                 <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.tutors}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.activeAdmins}</p>
                     <p className="text-center text-blue-900 font-bold border">Active </p>
                 </div>
 
                 <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.inActiveAdmins}</p>
                     <p className="text-center text-blue-900 font-bold border">Inactive</p>
                 </div>
                 <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
-                    <p className="text-center text-blue-900 font-bold border">Percentage</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.suspendedAdmins}</p>
+                    <p className="text-center text-blue-900 font-bold border">Suspended</p>
                 </div>
 
 

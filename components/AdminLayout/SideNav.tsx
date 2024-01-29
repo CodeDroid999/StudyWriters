@@ -21,7 +21,7 @@ const AdminSideNav = () => {
         <Link href="/admin/manage-assignments" className="text-blue-800 text-right whitespace-nowrap">Assignments</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/admin/suspensions" className="text-blue-800 text-right whitespace-nowrap">suspensions</Link>
+        <Link href="/admin/suspensions" className="text-blue-800 text-right whitespace-nowrap">Suspensions</Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
         <Link href="/admin/support" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
