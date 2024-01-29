@@ -87,12 +87,11 @@ export default function ManageApplicationDetailsPage() {
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.country}</p>
                         </div>
-                        <div className="flex col-md-4 flex-col">
-                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-100">
-                                Nationality
-                            </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                        <div className="flex col-md-2 flex-col">
+                            <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                                 Identity verification status
+                            </label>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium text-green-950">
                                 {application.idVerificationStatus}</p>
                         </div>
                     </div>
@@ -274,26 +273,27 @@ export default function ManageApplicationDetailsPage() {
                                 ID document: Back
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                                <Link href={application.IdDoc_BackUrl} className="text-blue-600 px-1 py-2 font-mediumrounded-lg border bg-blue-500 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                                <Link href={application.IdDoc_BackUrl} className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
                             </p>
                         </div>
                         <div className="flex col-md-3 col-sm-5 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID Verification Status
                             </label>
-                            <div className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                                <p className="rounded-lg border bg-gray-100 shadow text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</p>
+                            <div className="rounded-lg border bg-gray-50 px-1 font-medium">
+                                <p className="text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</p>
                             </div>
                         </div>
                     </div>
-                    <div className="row mt-2 gap-4">
-                        <div className="flex col-md-3 col-sm-6 flex-col bg-green-600 text-white rounded p-1 text-center">
-                            Approve
-                        </div>
-                        <div className="flex col-md-3 col-sm-6 flex-col bg-red-600  text-white rounded p-1 text-center">
-                            Reject
-                        </div>
+                    <div className="row mb-4 mt-2">
+                        <div className="flex col-md-3 col-sm-12 flex-col">
 
+                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Approve</p>
+                        </div>
+                        <div className="flex col-md-3 col-sm-6 flex-col">
+
+                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Reject</p>
+                        </div>
                     </div>
                 </div>
             </div >
