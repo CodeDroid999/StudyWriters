@@ -7,6 +7,8 @@ const UsersStatsCard = () => {
     const [userStats, setUserStats] = useState({
         totalUsers: 0,
         students: 0,
+        admins: 0,
+        suspendedUsers: 0,
         tutors: 0,
         emailVerified: 0,
     });
@@ -23,14 +25,18 @@ const UsersStatsCard = () => {
                     }));
 
                     const totalUsers = usersData.length;
-                    const students = usersData.filter((user) => user.role === 'student').length;
-                    const tutors = usersData.filter((user) => user.role === 'tutor').length;
+                    const students = usersData.filter((user) => user.role === 'Student').length;
+                    const tutors = usersData.filter((user) => user.role === 'Tutor').length;
+                    const admins = usersData.filter((user) => user.role === 'Admin').length;
                     const emailVerified = usersData.filter((user) => user.emailVerified).length;
+                    const suspendedUsers = usersData.filter((user) => user.accountStatus === 'suspended').length;
 
                     setUserStats({
                         totalUsers,
+                        suspendedUsers,
                         students,
                         tutors,
+                        admins,
                         emailVerified,
                     });
                 } else {
@@ -60,10 +66,13 @@ const UsersStatsCard = () => {
                 </div>
 
                 <div>
-                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.emailVerified}</p>
-                    <p className="text-center text-blue-900 font-bold border">Verified</p>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.admins}</p>
+                    <p className="text-center text-blue-900 font-bold border">Admins</p>
                 </div>
-
+                <div>
+                    <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.suspendedUsers}</p>
+                    <p className="text-center text-blue-900 font-bold border">Suspended</p>
+                </div>
                 <div>
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.totalUsers}</p>
                     <p className="text-center text-blue-900 font-bold border">Total </p>

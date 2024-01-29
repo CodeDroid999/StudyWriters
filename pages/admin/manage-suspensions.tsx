@@ -9,6 +9,7 @@ import SideNav from 'components/AdminDasboard/AdminSideNav'
 import Navbar from 'components/AdminLayout/Navbar'
 import Head from 'next/head'
 import AdminSideNav from 'components/AdminLayout/SideNav'
+import SuspensionsPage from 'components/AdminDasboard/SuspensionsList'
 
 
 
@@ -60,7 +61,7 @@ export default function AdminDashboard() {
                         <AdminSideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-2 shadow-inner">
-                        <UsersPage />
+                        <SuspensionsPage />
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@ const SideNav = () => {
                 <Link href="/support" className="text-blue-800 text-right whitespace-nowrap">Support</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
-                <Link href="/suspensions" className="text-blue-800 text-right whitespace-nowrap">Suspensions</Link>
+                <Link href="/manage-suspensions" className="text-blue-800 text-right whitespace-nowrap">Suspensions</Link>
             </div>
             <div className="p-2 flex font-bold items-center w-full border border-green-700">
                 <Link href="/admin/chats" className="text-blue-800 text-right whitespace-nowrap">Chat</Link>
