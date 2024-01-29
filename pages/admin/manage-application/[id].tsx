@@ -233,7 +233,7 @@ export default function ManageApplicationDetailsPage() {
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row mb-2">
                         <div className="flex col-md-5 col-sm-12 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Skill Assessment Question
@@ -265,19 +265,25 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID document: Front
                             </label>
-                            <Link href={application.IdDoc_FrontUrl} className="rounded-lg border bg-gray-100 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                                <Link href={application.IdDoc_FrontUrl} className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
+                            </p>
                         </div>
                         <div className="flex col-md-3 col-sm-5 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID document: Back
                             </label>
-                            <Link href={application.IdDoc_BackUrl} className="rounded-lg border bg-blue-500 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                                <Link href={application.IdDoc_BackUrl} className="text-blue-600 px-1 py-2 font-mediumrounded-lg border bg-blue-500 shadow text-white px-1 py-2 font-medium">View ID</Link>
+                            </p>
                         </div>
                         <div className="flex col-md-3 col-sm-5 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID Verification Status
                             </label>
-                            <div className="rounded-lg border bg-gray-100 shadow text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</div>
+                            <div className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                                <p className="rounded-lg border bg-gray-100 shadow text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</p>
+                            </div>
                         </div>
                     </div>
                     <div className="row mt-2 gap-4">
