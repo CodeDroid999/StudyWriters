@@ -6,6 +6,7 @@ import router from 'next/router';
 import Navbar from 'components/AdminLayout/Navbar';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
 import Link from 'next/link';
+import ApproveSkillAssessment from 'components/adminActions/ApproveSkillAssessment';
 
 
 
@@ -273,7 +274,7 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row mb-4">
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
-                            <p className="rounded-lg border-2 text-center text-green-600 hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Approve</p>
+                            <ApproveSkillAssessment applicationId={id} />
                         </div>
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
