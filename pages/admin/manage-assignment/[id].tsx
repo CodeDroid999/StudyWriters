@@ -132,9 +132,7 @@ export default function TaskDetails(props: any) {
                                 <div className="flex flex-col">
                                     <h4 className="text-sm font-bold uppercase text-green-950">
                                         Posted                                     </h4>
-                                    <p className="text-lg font-medium text-green-950">
-                                        {student.firstName} {student.lastName}
-                                    </p>
+
                                     <p className="text-sm font-medium text-green-950">
                                         On {assignmentData.createdAt}
                                     </p>
