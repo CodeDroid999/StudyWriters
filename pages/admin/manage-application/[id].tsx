@@ -51,7 +51,22 @@ export default function ManageApplicationDetailsPage() {
             <div className="mt-28 mx-4">
                 <ImageHeader />
                 <div className="bg-gray-100 p-3 flex flex-col mx-auto ">
+                    <p className="text-3xl font-bold text-blue-950">Profile Assessment</p>
+                    <div className="row mb-4 mt-2">
+                        <div className="flex col-md-3 col-sm-6 flex-col">
+                            <Link href={`/public-profile/${application.userId}`} target="_blank" className="rounded-lg border-2
+                            text-center text-blue-600  hover:shadow bg-white
+                             hover:bg-blue-500 px-1 py-2 border-blue-600 font-medium">View Applicant Profile</Link>
+                        </div>
+                        <div className="flex col-md-3 col-sm-6 flex-col">
+                            <Link href={`/admin/manage-account/${application.userId}`} target="_blank" className="rounded-lg border-2
+                            text-center text-blue-600  hover:shadow bg-white
+                             hover:bg-blue-500 px-1 py-2 border-blue-600 font-medium">Manage Applicant Account</Link>
+                        </div>
+
+                    </div>
                     <p className="text-3xl font-bold text-blue-950 mb-4">Personal Information</p>
+
                     <div className="row mt-2">
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
@@ -238,13 +253,21 @@ export default function ManageApplicationDetailsPage() {
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
                         </div>
-                        <div className="flex col-md-3 col-sm-6 flex-col">
+                        <div className="flex col-md-3 col-sm-12 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Skill Assessment Answer
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                                <Link href={application.skillAssessmentDocUrl} className="text-blue-600 px-1 py-2 font-medium">View Answer</Link>
+                                <Link href={application.skillAssessmentDocUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View Answer</Link>
                             </p>
+                        </div>
+                        <div className="flex col-md-3 col-sm-12 flex-col">
+                            <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
+                                Skill Assessment Status
+                            </label>
+                            <div className="rounded-lg border bg-gray-50 px-1 font-medium">
+                                <p className="text-green-950 px-1 py-2 font-medium">{application.skillAssessmentStatus}</p>
+                            </div>
                         </div>
                     </div>
                     <div className="row mb-4">
@@ -264,7 +287,7 @@ export default function ManageApplicationDetailsPage() {
                                 ID document: Front
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                                <Link href={application.IdDoc_FrontUrl} className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
+                                <Link href={application.IdDoc_FrontUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
                             </p>
                         </div>
                         <div className="flex col-md-3 col-sm-5 flex-col">
@@ -272,7 +295,7 @@ export default function ManageApplicationDetailsPage() {
                                 ID document: Back
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
-                                <Link href={application.IdDoc_BackUrl} className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
+                                <Link href={application.IdDoc_BackUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
                             </p>
                         </div>
                         <div className="flex col-md-3 col-sm-5 flex-col">
@@ -287,11 +310,22 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row mb-4 mt-2">
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
-                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Approve</p>
+                            <p className="rounded-lg border-2 text-center text-green-600  hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Approve</p>
                         </div>
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
-                            <p className="rounded-lg border text-center bg-blue-500 shadow text-white px-1 py-2 font-medium">Reject</p>
+                            <p className="rounded-lg border-2 text-center text-red-600  hover:shadow bg-white hover:bg-red-500 px-1 py-2 font-medium border-red-600">Reject</p>
+                        </div>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-950">Overall Assessment</p>
+                    <div className="row mb-4 mt-2">
+                        <div className="flex col-md-6 col-sm-6 flex-col">
+
+                            <p className="rounded-lg border-2 text-center text-green-600  hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Accept Application</p>
+                        </div>
+                        <div className="flex col-md-6 col-sm-6 flex-col">
+
+                            <p className="rounded-lg border-2 text-center text-red-600  hover:shadow bg-white hover:bg-red-500 px-1 py-2 font-medium border-red-600">Reject Application</p>
                         </div>
                     </div>
                 </div>

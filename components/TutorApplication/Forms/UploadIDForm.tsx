@@ -97,7 +97,8 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
             createdAt: serverTimestamp(),
             userId: userId,
             applicationStatus: "Pending",
-            idVerificationStatus: false,
+            idVerificationStatus: "Unverified",
+            skillAssessmentStatus: "Unverified",
         })
         await addDoc(collection(db, 'mail'), {
             to: 'airtaska1@gmail.com',
