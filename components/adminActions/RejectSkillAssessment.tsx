@@ -9,12 +9,12 @@ import {
 } from 'firebase/firestore'
 
 
-export default function ApproveSkillAssessment({ applicationId }) {
+export default function RejectSkillAssessment({ applicationId }) {
     const [isFormOpen, setIsFormOpen] = useState(false)
-    const ApproveAssessment = async () => {
+    const RejectAssessment = async () => {
         try {
             const docRef = doc(db, 'applications', applicationId);
-            await updateDoc(docRef, { skillAssessmentStatus: 'Approved' });
+            await updateDoc(docRef, { skillAssessmentStatus: 'Rejected' });
             toast.success('Skill assessment approved');
 
         } catch (error) {
@@ -28,9 +28,9 @@ export default function ApproveSkillAssessment({ applicationId }) {
         <div className="relative">
             <button
                 onClick={() => setIsFormOpen(true)}
-                className="mt-2 w-full cursor-pointer  bg-gray-100 px-4 py-2 text-center  text-green-600 border-2 border-green-600 rounded"
+                className="mt-2 w-full cursor-pointer  bg-gray-100 px-4 py-2 text-center  text-red-600 border-2 border-red-600 rounded"
             >
-                Approve
+                Reject
             </button>
 
             {isFormOpen && (
@@ -41,7 +41,7 @@ export default function ApproveSkillAssessment({ applicationId }) {
                flex-row justify-between`}
                         >
                             <div className="flex-1 text-center text-base font-medium text-gray-800">
-                                Approve Skill Assessment
+                                Reject Skill Assessment
                             </div>
                             <AiOutlineClose
                                 size={20}
@@ -50,7 +50,7 @@ export default function ApproveSkillAssessment({ applicationId }) {
                             />
                         </div>
                         <div className="mb-10 mt-5 text-base font-medium text-black">
-                            <p>Are you sure you want to approve the Skill Assessment?</p>
+                            <p>Are you sure you want to reject the Skill Assessment?</p>
                         </div>
                         <div className="flex w-full flex-row space-x-4">
                             <button
@@ -60,10 +60,10 @@ export default function ApproveSkillAssessment({ applicationId }) {
                                 Back
                             </button>
                             <button
-                                onClick={ApproveAssessment}
+                                onClick={RejectAssessment}
                                 className="flex-1  bg-green-600 px-2 py-1.5 text-center font-medium text-white"
                             >
-                                Approve
+                                Reject
                             </button>
                         </div>
                     </div>

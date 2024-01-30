@@ -9,12 +9,12 @@ import {
 } from 'firebase/firestore'
 
 
-export default function ApproveSkillAssessment({ applicationId }) {
+export default function ApproveIdDocs({ applicationId }) {
     const [isFormOpen, setIsFormOpen] = useState(false)
     const ApproveAssessment = async () => {
         try {
             const docRef = doc(db, 'applications', applicationId);
-            await updateDoc(docRef, { skillAssessmentStatus: 'Approved' });
+            await updateDoc(docRef, { idVerificationStatus: 'Approved' });
             toast.success('Skill assessment approved');
 
         } catch (error) {
@@ -41,7 +41,7 @@ export default function ApproveSkillAssessment({ applicationId }) {
                flex-row justify-between`}
                         >
                             <div className="flex-1 text-center text-base font-medium text-gray-800">
-                                Approve Skill Assessment
+                                Approve ID documents for the applicant.
                             </div>
                             <AiOutlineClose
                                 size={20}
@@ -50,7 +50,7 @@ export default function ApproveSkillAssessment({ applicationId }) {
                             />
                         </div>
                         <div className="mb-10 mt-5 text-base font-medium text-black">
-                            <p>Are you sure you want to approve the Skill Assessment?</p>
+                            <p>Are you sure you want to approve the Id documents?</p>
                         </div>
                         <div className="flex w-full flex-row space-x-4">
                             <button

@@ -7,6 +7,7 @@ import Navbar from 'components/AdminLayout/Navbar';
 import ImageHeader from 'components/TutorApplication/ImageHeader';
 import Link from 'next/link';
 import ApproveSkillAssessment from 'components/adminActions/ApproveSkillAssessment';
+import RejectSkillAssessment from 'components/adminActions/RejectSkillAssessment';
 
 
 
@@ -273,12 +274,11 @@ export default function ManageApplicationDetailsPage() {
                     </div>
                     <div className="row mb-4">
                         <div className="flex col-md-3 col-sm-6 flex-col">
-
                             <ApproveSkillAssessment applicationId={id} />
+
                         </div>
                         <div className="flex col-md-3 col-sm-6 flex-col">
-
-                            <p className="rounded-lg border-2 text-center text-red-600 hover:shadow bg-white hover:bg-red-500 px-1 py-2 font-medium border-red-600">Reject</p>
+                            <RejectSkillAssessment applicationId={id} />
                         </div>
                     </div>
                     <p className="text-3xl font-bold text-blue-950">Applicant ID verification</p>
@@ -310,12 +310,11 @@ export default function ManageApplicationDetailsPage() {
                     </div>
                     <div className="row mb-4 mt-2">
                         <div className="flex col-md-3 col-sm-6 flex-col">
+                            <ApproveIdDocs applicationId={id} />
 
-                            <p className="rounded-lg border-2 text-center text-green-600  hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Approve</p>
                         </div>
                         <div className="flex col-md-3 col-sm-6 flex-col">
-
-                            <p className="rounded-lg border-2 text-center text-red-600  hover:shadow bg-white hover:bg-red-500 px-1 py-2 font-medium border-red-600">Reject</p>
+                            <RejectIdDocs applicationId={id} />
                         </div>
                     </div>
                     <p className="text-3xl font-bold text-blue-950">Overall Assessment</p>
