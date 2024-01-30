@@ -250,11 +250,11 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row mb-4">
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
-                            <p className="rounded-lg border-2 text-center text-green-600 hover:shadow bg-white hover:bg-green-300 px-1 py-2 border-green-600 font-medium">Approve</p>
+                            <p className="rounded-lg border-2 text-center text-green-600 hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Approve</p>
                         </div>
                         <div className="flex col-md-3 col-sm-6 flex-col">
 
-                            <p className="rounded-lg border-2 text-center text-red-600 hover:shadow bg-white hover:bg-red-300 px-1 py-2 font-medium border-red-600">Reject</p>
+                            <p className="rounded-lg border-2 text-center text-red-600 hover:shadow bg-white hover:bg-red-500 px-1 py-2 font-medium border-red-600">Reject</p>
                         </div>
                     </div>
                     <p className="text-3xl font-bold text-blue-950">Applicant ID verification</p>
