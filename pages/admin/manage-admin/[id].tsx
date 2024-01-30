@@ -16,6 +16,8 @@ import Navbar from 'components/AdminLayout/Navbar'
 import UserApplicationHistory from 'components/manage-account/ApplicationsTab'
 import SuspendAccount from 'components/adminActions/SuspendAccount'
 import ActivateAccount from 'components/adminActions/ctivateAccount'
+import DemoteAccount from 'components/adminActions/DemoteAccount'
+import MakeAdmin from 'components/adminActions/MakeAdmin'
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -218,7 +220,7 @@ export default function ManageAdmin() {
                                 <DemoteAccount userId={userId} />
                             </div>
                             <div className="col-md-6">
-                                <ActivateAccount userId={userId} />
+                                <MakeAdmin userId={userId} />
                             </div>
                         </div>
 
