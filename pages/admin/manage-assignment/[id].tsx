@@ -1,4 +1,3 @@
-import Navbar from 'components/layout/Navbar'
 import { db } from '../../../firebase'
 import {
     addDoc,
@@ -37,6 +36,7 @@ import CancelTask from 'components/tasks/CancelTask'
 import WithdrawFromTask from 'components/tasks/WithdrawFromTask'
 import MoreOptions from 'components/tasks/MoreOptions'
 import PostSimilarTask from 'components/tasks/PostSimilarTask'
+import Navbar from 'components/AdminLayout/Navbar'
 
 export default function TaskDetails(props: any) {
     const [offers, setOffers] = useState([])
@@ -160,189 +160,53 @@ export default function TaskDetails(props: any) {
                                     </p>
                                 </div>
 
-                                {user && assignmentData.student.userId === user?.userId && (
-                                    <div className="w-full">
-                                        {assignmentData.status === 'Open' && (
-                                            <UpdateTask assignmentId={assignmentId} assignmentData={assignmentData} />
+                                <div className="w-full">
+                                    {assignmentData.status === 'Open' && (
+                                        <UpdateTask assignmentId={assignmentId} assignmentData={assignmentData} />
+                                    )}
+                                    {(assignmentData.status === 'Open' ||
+                                        assignmentData.status === 'Assigned') && (
+                                            <CancelTask
+                                                assignmentId={assignmentId}
+                                                assignmentData={assignmentData}
+                                                tutor={tutorDetails}
+                                            />
                                         )}
-                                        {(assignmentData.status === 'Open' ||
-                                            assignmentData.status === 'Assigned') && (
-                                                <CancelTask
-                                                    assignmentId={assignmentId}
-                                                    assignmentData={assignmentData}
-                                                    tutor={tutorDetails}
-                                                />
-                                            )}
-                                        {assignmentData.status === 'Cancelled' && (
-                                            <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
+                                    {assignmentData.status === 'Cancelled' && (
+                                        <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
+                                            {assignmentData.status}
+                                        </div>
+                                    )}
+                                    {assignmentData.paymentReleased ? (
+                                        !assignmentData.posterReview ? (
+                                            <AddReview
+                                                tutorDetails={tutorDetails}
+                                                assignmentId={assignmentId}
+                                                student={student}
+                                                assignmentData={assignmentData}
+                                            />
+
+                                        ) : (
+                                            <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-800">
                                                 {assignmentData.status}
                                             </div>
-                                        )}
-                                        {assignmentData.paymentReleased ? (
-                                            !assignmentData.posterReview ? (
-                                                <AddReview
-                                                    tutorDetails={tutorDetails}
-                                                    assignmentId={assignmentId}
-                                                    student={student}
-                                                    assignmentData={assignmentData}
-                                                />
-                                            ) : (
-                                                <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-800">
-                                                    {assignmentData.status}
-                                                </div>
-                                            )
-                                        ) : (
-                                            assignmentData.paymentRequested &&
-                                            assignmentData.status === 'Assigned' && (
-                                                <ReleasePayment
-                                                    assignmentData={assignmentData}
-                                                    tutorDetails={tutorDetails}
-                                                    student={student}
-                                                    assignmentId={assignmentId}
-                                                />
-                                            )
-                                        )}
-                                    </div>
-                                )}
+                                        )
+                                    ) : (
+                                        assignmentData.paymentRequested &&
+                                        assignmentData.status === 'Assigned' && (
+                                            <ReleasePayment
+                                                assignmentData={assignmentData}
+                                                tutorDetails={tutorDetails}
+                                                student={student}
+                                                assignmentId={assignmentId}
+                                            />
+                                        )
+                                    )}
+                                </div>
 
-                                {user && assignmentData.student.userId !== user?.userId && (
-                                    <div className="w-full">
-                                        {assignmentData.status === 'Open' ? (
-                                            offers.some(
-                                                (offer: any) => offer.userId === user.userId
-                                            ) ? (
-                                                offers.map((offer: any) => {
-                                                    if (offer.userId === user.userId) {
-                                                        return (
-                                                            <div key={offer.offerId}>
-                                                                <div className="rounded-full bg-white p-2 text-center font-medium text-blue-400 ">
-                                                                    You bidded ${offer.amount}
-                                                                </div>
-                                                                <div className="my-3 w-full text-sm">
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
-                                                                        <span>Service fee</span>
-                                                                        <span>-${offer.serviceFee}</span>
-                                                                    </div>
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
-                                                                        <span>You will receive</span>
-                                                                        <span>${offer.finalPrice}</span>
-                                                                    </div>
-                                                                </div>
-                                                                <UpdateOffer
-                                                                    proposal={offer.proposal}
-                                                                    offerId={offer.offerId}
-                                                                    student={studentDetails}
-                                                                    studentId={student.userId}
-                                                                    assignmentTitle={assignmentData.title}
-                                                                />
-                                                            </div>
-                                                        )
-                                                    }
-                                                    return null
-                                                })
-                                            ) : (
-                                                <MakeOffer
-                                                    studentId={assignmentData.student.userId}
-                                                    assignmentTitle={assignmentData.title}
-                                                    student={studentDetails}
-                                                />
-                                            )
-                                        ) : assignmentData.tutor.userId === user?.userId ? (
-                                            <div>
-                                                {assignmentData.paymentRequested &&
-                                                    (assignmentData.status === 'Assigned' ||
-                                                        assignmentData.status === 'Completed') ? (
-                                                    <div>
-                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-green-950">
-                                                            <span>Your Bid</span>
-                                                            <span>${assignmentData.tutor.price}</span>
-                                                        </div>
-                                                        <div className="flex flex-row items-center justify-between text-sm font-medium text-green-950">
-                                                            <span>Service fee</span>
-                                                            <span>-${assignmentData.tutor.serviceFee}</span>
-                                                        </div>
-                                                        <div className="flex flex-row items-center justify-between text-base font-medium text-green-950">
-                                                            <span>Earned</span>
-                                                            <span>${assignmentData.tutor.finalPrice}</span>
-                                                        </div>
-                                                        {assignmentData.status === 'Completed' ? (
-                                                            <div className="mt-3 rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-800">
-                                                                {assignmentData.status}
-                                                            </div>
-                                                        ) : (
-                                                            <div className="mt-3 rounded-full bg-white px-4 py-2 text-center text-base font-semibold  text-green-950">
-                                                                Awaiting Payment
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                ) : (
-                                                    <div>
-                                                        {assignmentData.status === 'Assigned' && (
-                                                            <div>
-                                                                <div className="my-3 w-full text-sm">
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
-                                                                        <span>Your Bid</span>
-                                                                        <span>${assignmentData.tutor.price}</span>
-                                                                    </div>
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
-                                                                        <span>Service fee</span>
-                                                                        <span>-${assignmentData.tutor.serviceFee}</span>
-                                                                    </div>
-                                                                    <div className="flex flex-row items-center justify-between font-medium text-green-950">
-                                                                        <span>You will receive</span>
-                                                                        <span>${assignmentData.tutor.finalPrice}</span>
-                                                                    </div>
-                                                                </div>
-                                                                <RequestPayment
-                                                                    assignmentData={assignmentData}
-                                                                    student={student}
-                                                                    assignmentId={assignmentId}
-                                                                />
-                                                            </div>
-                                                        )}
-                                                        {assignmentData.status === 'Cancelled' && (
-                                                            <div>
-                                                                <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-blue-950">
-                                                                    {assignmentData.status}
-                                                                </div>
-                                                                <button
-                                                                    onClick={() => router.push('/contact-us')}
-                                                                    className="mt-2 w-full rounded-full bg-green-700 px-4 py-2 text-center font-semibold uppercase text-white"
-                                                                >
-                                                                    Contact Support
-                                                                </button>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                )}
 
-                                                {!assignmentData.taskerReview &&
-                                                    assignmentData.status === 'Completed' && (
-                                                        <div className="mt-5">
-                                                            <AddReview
-                                                                tutorDetails={tutorDetails}
-                                                                assignmentId={assignmentId}
-                                                                student={student}
-                                                                assignmentData={assignmentData}
-                                                            />
-                                                        </div>
-                                                    )}
-                                            </div>
-                                        ) : (
-                                            <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950">
-                                                {assignmentData.status}
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
+
                             </div>
-                            {user && (
-                                <MoreOptions
-                                    assignmentData={assignmentData}
-                                    student={student}
-                                    assignmentId={assignmentId}
-                                />
-                            )}
                         </div>
                     </div>
 
