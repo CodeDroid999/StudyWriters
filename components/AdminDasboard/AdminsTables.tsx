@@ -44,7 +44,7 @@ const AdminsPage = () => {
                 <ul>
                     {users.map((user) => (
                         <li key={user.id} className="mb-2">
-                            <Link href={`/admin/manage-account/${user.id}`}>
+                            <Link href={`/admin/manage-admin/${user.id}`}>
                                 <div className="flex justify-between px-2 py-2 bg-gray-300 rounded">
                                     <div className="flex text-green-950 space-x-1 justify-items-center align-items-center">
                                         <Image
@@ -71,7 +71,7 @@ const AdminsPage = () => {
                                     </div>
                                     <div className="flex max-w-[200px] gap-1">
                                         <div className="bg-blue-800 rounded text-gray-100 text-center px-1 py-1 shadow">
-                                            Manage Account
+                                            Manage Admin
                                         </div>
                                     </div>
                                     {/* Add more user details as needed */}
