@@ -29,7 +29,7 @@ export default function RejectApplication({ applicationId }) {
                 onClick={() => setIsFormOpen(true)}
                 className="mt-2 w-full cursor-pointer  bg-gray-100 px-4 py-2 text-center  text-red-600 border-2 border-red-600 rounded"
             >
-                Reject
+                Reject Application
             </button>
 
             {isFormOpen && (

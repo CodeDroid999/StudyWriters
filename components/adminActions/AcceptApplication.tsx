@@ -30,7 +30,7 @@ export default function AcceptApplication({ applicationId }) {
                 onClick={() => setIsFormOpen(true)}
                 className="mt-2 w-full cursor-pointer  bg-gray-100 px-4 py-2 text-center  text-green-600 border-2 border-green-600 rounded"
             >
-                Accept
+                Accept Application
             </button>
 
             {isFormOpen && (

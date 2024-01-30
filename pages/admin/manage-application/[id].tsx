@@ -10,6 +10,8 @@ import ApproveSkillAssessment from 'components/adminActions/ApproveSkillAssessme
 import RejectSkillAssessment from 'components/adminActions/RejectSkillAssessment';
 import ApproveIdDocs from 'components/adminActions/ApproveIdDocs';
 import RejectIdDocs from 'components/adminActions/RejectIDocs';
+import AcceptApplication from 'components/adminActions/AcceptApplication';
+import RejectApplication from 'components/adminActions/RejectApplication';
 
 
 
@@ -323,7 +325,6 @@ export default function ManageApplicationDetailsPage() {
                     <div className="row mb-4 mt-2">
                         <div className="flex col-md-6 col-sm-6 flex-col">
                             <AcceptApplication applicationId={id} />
-                            <p className="rounded-lg border-2 text-center text-green-600  hover:shadow bg-white hover:bg-green-500 px-1 py-2 border-green-600 font-medium">Accept Application</p>
                         </div>
                         <div className="flex col-md-6 col-sm-6 flex-col">
                             <RejectApplication applicationId={id} />
