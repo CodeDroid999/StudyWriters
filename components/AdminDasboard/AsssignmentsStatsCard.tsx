@@ -25,9 +25,9 @@ const AssignmentsStatsCard = () => {
                 const assignedAssignments = assignmentsSnapshot.docs.filter(doc =>
                     doc.data().status === 'Assigned').length;
                 const biddingOpen = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Bidding').length;
+                    doc.data().status === 'Open').length;
                 const completedAssignments = assignmentsSnapshot.docs.filter(doc =>
-                    doc.data().status === 'Completed').length;
+                    doc.data().status === 'Closed').length;
                 const cancelledAssignments = assignmentsSnapshot.docs.filter(doc =>
                     doc.data().status === 'Cancelled').length;
 

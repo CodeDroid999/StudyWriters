@@ -45,7 +45,8 @@ export default function TaskDetails(props: any) {
     const { user } = UserAuth()
     const router = useRouter()
     const assignmentId = router.query.id.toString()
-    const student = studentDetails
+    const student = assignmentData.studentDetails
+
 
     useEffect(() => {
         setLoading(true)
@@ -80,6 +81,7 @@ export default function TaskDetails(props: any) {
         }
     }, [assignmentId])
 
+
     const withdrawOffer = async (offerId: string) => {
         try {
             await deleteDoc(doc(db, 'assignments', assignmentId, 'offers', offerId))
@@ -97,7 +99,7 @@ export default function TaskDetails(props: any) {
                 to: student?.email,
                 message: {
                     subject: 'Bid Withdrawn',
-                    html: `${user?.firstName} has withdrawn offer made on ${assignmentData.title}`,
+                    html: `${user?.firstName} has withdrawn Bid made on ${assignmentData.title}`,
                 },
             })
             toast.success('Bid has been withdrawn')
@@ -129,10 +131,10 @@ export default function TaskDetails(props: any) {
                             <div className="mt-4 flex flex-col gap-3">
                                 <div className="flex flex-col">
                                     <h4 className="text-sm font-bold uppercase text-green-950">
-                                        Posted
+                                        Posted By
                                     </h4>
                                     <p className="text-lg font-medium text-green-950">
-                                        {student.firstName} {student.lastName}
+                                        {assignmentData.student.firstName} {assignmentData.student.lastName}
                                     </p>
                                     <p className="text-sm font-medium text-green-950">
                                         On {assignmentData.createdAt}

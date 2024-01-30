@@ -97,7 +97,7 @@ export default function ManageApplicationDetailsPage() {
                         </div>
                         <div className="flex col-md-2 flex-col">
                             <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
-                                Identity verification status
+                                Verification Status
                             </label>
                             <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium text-green-950">
                                 {application.idVerificationStatus}</p>
