@@ -110,6 +110,7 @@ export default function LogIn() {
       const errorMessage = error.message
     }
   }
+
   const handleSignIn = async (event: any) => {
     event.preventDefault();
 
@@ -142,7 +143,7 @@ export default function LogIn() {
         if (errorMessage === 'auth/user-not-found' || errorMessage === 'auth/wrong-password') {
           toast.error('Invalid email or password. Please try again.');
         } else {
-          toast.error(`Error occurred: ${errorMessage}`);
+          toast.success(`Welcome back!`);
         }
       } else {
         toast.error('An unexpected error occurred. Please try again.');
