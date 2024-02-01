@@ -5,11 +5,15 @@ import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard';
 import Navbar from 'components/AdminLayout/Navbar';
 import AdminSideNav from 'components/AdminLayout/SideNav';
 import Footer from 'components/unAuthed/Footer';
+import RoleBasedAccess from 'hooks/ActiveAdmin';
 import Head from 'next/head';
 import React from 'react';
 
 const AdminDashboard: React.FC = () => {
-    return (
+    const { isUserAllowed } = RoleBasedAccess(['Admin', 'SuperAdmin'], 'Active');
+
+    if (isUserAllowed()) {
+        // Render the content for allowed users
         <>
             <Head>
                 <title>
@@ -65,7 +69,16 @@ const AdminDashboard: React.FC = () => {
             </div>
             <Footer />
         </>
-    );
+    } else {
+        // Render the content for denied users
+        return <div className="h-100 w-100 bg-red-200">
+            <div className="container">
+                <p className="text-lg text-red-600"> You are no longer granted access to this page. If you think this is a mistake</p>
+                <a href="contact">Contact Admin for support</a>
+            </div>
+        </div>;
+    }
+
 };
 
 export default AdminDashboard;

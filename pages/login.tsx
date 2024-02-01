@@ -31,15 +31,43 @@ export default function LogIn() {
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect')
 
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push(redirect || '/');
+        // Get the user's role from the database
+        const userDocRef = doc(db, 'users', user.uid);
+        getDoc(userDocRef)
+          .then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+              const userData = docSnapshot.data();
+              const role = userData.role;
+
+              // Redirect the user based on their role
+              if (role === 'Admin') {
+                router.push('/admin/dashboard');
+              } else if (role === 'Student') {
+                router.push('/post-assignment');
+              } else if (role === 'Tutor') {
+                router.push('/dashboard');
+              } else {
+                router.push(redirect || '/');
+              }
+            } else {
+              router.push(redirect || '/');
+            }
+          })
+          .catch((error) => {
+            console.error('Error getting user data:', error);
+            router.push(redirect || '/');
+          });
+
         toast.success('Logged In');
       }
     });
 
-  })
+    return () => unsubscribe();
+  }, [redirect, router]);
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider()
@@ -59,20 +87,15 @@ export default function LogIn() {
 
       if (!userDocSnapshot.exists()) {
         const userRef = await addDoc(collection(db, 'users'), {
+          userId: user.uid,
           firstName: '',
           lastName: '',
           dateOfBirth: '',
           phoneNumber: '',
           profilePicture: '',
-          billingAddress: '',
+          accountStatus: 'inActive',
           role: '',
           email: user.email,
-          userId: user.uid,
-          bankAccount: {
-            accountHolderName: '',
-            accountNumber: '',
-            BSB: '',
-          },
           aboutDescription: '',
           postalCode: '',
           tag: '',

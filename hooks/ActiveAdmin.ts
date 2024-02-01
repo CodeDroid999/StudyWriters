@@ -1,7 +1,7 @@
 import React from 'react'
 import { UserAuth } from '../context/AuthContext' // Adjust the import path based on your file structure
 
-const useRoleBasedAccess = (allowedRoles, accountStatus) => {
+const RoleBasedAccess = (allowedRoles, accountStatus) => {
   const { userRole } = UserAuth()
 
   const isUserAllowed = () => {
@@ -19,4 +19,4 @@ const useRoleBasedAccess = (allowedRoles, accountStatus) => {
   }
 }
 
-export default useRoleBasedAccess
+export default RoleBasedAccess
