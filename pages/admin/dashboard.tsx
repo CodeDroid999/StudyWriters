@@ -71,12 +71,17 @@ const AdminDashboard: React.FC = () => {
         </>
     } else {
         // Render the content for denied users
-        return <div className="h-100 w-100 bg-red-200">
-            <div className="container">
-                <p className="text-lg text-red-600"> You are no longer granted access to this page. If you think this is a mistake</p>
-                <a href="contact">Contact Admin for support</a>
-            </div>
-        </div>;
+        return (
+            <div className="flex h-screen bg-gray-100 justify-center align-center">
+                <div className="container align-items-center mx-auto">
+                    <img src="https://i.postimg.cc/d39KSRJ8/padlock.png" alt="" className="align-center mx-auto" />
+                    <p className="text-lg text-red-600 text-center pt-5"> You are no longer granted access to this page. If you think this is a mistake</p>
+                    <p className="text-center text-green-600 mt-3">
+                        <a href="contact" className="py-1 px-2 text-white-100 border-2 rounded border-green-700">Contact Support</a>
+                    </p>
+                </div>
+            </div >
+        );
     }
 
 };

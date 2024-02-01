@@ -21,6 +21,7 @@ import ReferFriends from 'components/Homepage/ReferFriendsSection.tsx'
 import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import AppplyNowHero from 'components/Become-a-tutor/ApplyNowSection'
 import TasksTable from 'components/BrowseTasks/TasksTable'
+import { UserAuth } from 'context/AuthContext'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -36,16 +37,26 @@ export default function Home(props: PageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect');
+  const { userRole } = UserAuth()
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        router.push(redirect || '/dashboard');
-        toast.success('Logged In');
+    try {
+      const { userRole } = UserAuth();
+
+      // Redirect the user based on their role
+      if (userRole === 'Admin') {
+        router.push('/admin/dashboard');
+      } else if (userRole === 'Student') {
+        router.push('/post-assignment');
+      } else if (userRole === 'Tutor') {
+        router.push('/dashboard');
+      } else {
+        router.push(redirect || '/');
       }
-    });
-    return () => unsubscribe();
-  }, [router, redirect]);
+    } catch (error) {
+      console.error('Error redirecting user:', error);
+    }
+  }, []);
 
   return (
     <>
