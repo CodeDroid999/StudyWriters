@@ -56,10 +56,7 @@ export default function Home(props: PageProps) {
             // Redirect Admin to /admin/dashboard
             router.push('/admin/dashboard');
             break;
-          default:
-            // Redirect others to a default page
-            router.push('/');
-            break;
+
         }
       }
     };
