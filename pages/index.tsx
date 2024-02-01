@@ -34,29 +34,39 @@ interface Query {
 
 export default function Home(props: PageProps) {
   const { posts, settings, draftMode } = props
-  const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect');
-  const { userRole } = UserAuth()
+
+  const router = useRouter();
+  const { userRole } = UserAuth(); // Access the userRole from the context
 
   useEffect(() => {
-    try {
-      const { userRole } = UserAuth();
-
-      // Redirect the user based on their role
-      if (userRole === 'Admin') {
-        router.push('/admin/dashboard');
-      } else if (userRole === 'Student') {
-        router.push('/post-assignment');
-      } else if (userRole === 'Tutor') {
-        router.push('/dashboard');
-      } else {
-        router.push(redirect || '/');
+    const redirectToRolePage = () => {
+      if (userRole) {
+        switch (userRole) {
+          case 'Student':
+            // Redirect Student to post-assignment
+            router.push('/dashboard');
+            break;
+          case 'Tutor':
+            // Redirect Tutor to dashboard
+            router.push('/dashboard');
+            break;
+          case 'Admin':
+            // Redirect Admin to /admin/dashboard
+            router.push('/admin/dashboard');
+            break;
+          default:
+            // Redirect others to a default page
+            router.push('/');
+            break;
+        }
       }
-    } catch (error) {
-      console.error('Error redirecting user:', error);
-    }
-  }, []);
+    };
+
+    redirectToRolePage();
+  }, [userRole, router]);
+
 
   return (
     <>
