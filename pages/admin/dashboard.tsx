@@ -5,12 +5,13 @@ import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard';
 import Navbar from 'components/AdminLayout/Navbar';
 import AdminSideNav from 'components/AdminLayout/SideNav';
 import Footer from 'components/unAuthed/Footer';
-import RoleBasedAccess from 'hooks/ActiveAdmin';
+import AdminAccess from 'hooks/AdminHook';
+import RoleBasedAccess from 'hooks/AdminHook';
 import Head from 'next/head';
 import React from 'react';
 
 const AdminDashboard: React.FC = () => {
-    const { isUserAllowed } = RoleBasedAccess(['Admin', 'SuperAdmin'], 'Active');
+    const { isUserAllowed } = AdminAccess(['Admin', 'SuperAdmin']);
 
     if (isUserAllowed()) {
         // Render the content for allowed users
@@ -75,7 +76,7 @@ const AdminDashboard: React.FC = () => {
             <div className="flex h-screen bg-gray-100 justify-center align-center">
                 <div className="container align-items-center mx-auto">
                     <img src="https://i.postimg.cc/d39KSRJ8/padlock.png" alt="" className="align-center mx-auto" />
-                    <p className="text-lg text-red-600 text-center pt-5"> You are no longer granted access to this page. If you think this is a mistake</p>
+                    <p className="text-lg text-red-600 text-center pt-5"> You are no longer granted access to this page. If you think this is a mistake contact support.</p>
                     <p className="text-center text-green-600 mt-3">
                         <a href="contact" className="py-1 px-2 text-white-100 border-2 rounded border-green-700">Contact Support</a>
                     </p>
