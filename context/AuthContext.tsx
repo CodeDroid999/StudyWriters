@@ -115,7 +115,7 @@ export function AuthContextProvider({
             setAccountStatus(userData.accountStatus);
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
-            setUserId(userData.lastName)
+            setUserId(userData.userId)
             // Update the userId property
 
             setError(null);
@@ -150,12 +150,7 @@ export function AuthContextProvider({
     return (
       <div className="relative h-[100vh] w-100 flex justify-center align-center items-center">
         <div className="">
-          <Image
-            src={HeroBackground}
-            alt="Background"
-            width="200"
-            height="200"
-          />
+          issa
         </div>
       </div>
 

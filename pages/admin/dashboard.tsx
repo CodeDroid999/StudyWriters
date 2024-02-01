@@ -30,6 +30,10 @@ const AdminDashboard: React.FC = () => {
                         toast.success("You need an Admin account to access this.");
                         router.push('/dashboard');
                         break;
+                    case 'Admin':
+                        // Redirect Tutor to dashboard
+                        toast.success("You are an Admin ");
+                        break;
                     default:
                         // Redirect others to a default page
                         router.push('/');
