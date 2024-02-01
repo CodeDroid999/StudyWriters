@@ -32,10 +32,6 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
     const { selectedTopic, skillAssessmentDocUrl } = step3
 
 
-
-
-
-
     const handleDrop = (e, side) => {
         e.preventDefault();
         const droppedFile = e.dataTransfer.files[0];

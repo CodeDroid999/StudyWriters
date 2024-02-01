@@ -115,7 +115,7 @@ export function AuthContextProvider({
             setAccountStatus(userData.accountStatus);
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
-            setUserId(userData.lastName)
+            setUserId(userData.userId)
             // Update the userId property
 
             setError(null);
