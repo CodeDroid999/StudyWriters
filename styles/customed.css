@@ -51,7 +51,7 @@ body {
   content: "";
   width: 40px;
   height: 7px;
-  background-color: ffff;
+  background-color: #f1db25;
   border-radius: 10px;
   position: absolute;
   bottom: 0;
@@ -356,7 +356,6 @@ a:focus {
 }
 
 .slider_section .detail-box h1 span {
-
   color: #f1db25;
 }
 
@@ -396,6 +395,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn-2 {
   display: inline-block;
   padding: 10px 35px;
+  background-color: #f1db25;
   color: #ffffff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -404,7 +404,6 @@ a:focus {
 
 .slider_section .detail-box .btn-box .btn-2:hover {
   background-color: transparent;
-  color: rgb(21, 63, 7);
   border-color: #f1db25;
   color: #f1db25;
 }
@@ -524,6 +523,7 @@ a:focus {
   display: inline-block;
   padding: 8px 35px;
   background-color: #f1db25;
+  color: #ffffff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   border: 1px solid transparent;
@@ -532,7 +532,6 @@ a:focus {
 
 .service_section .box .detail-box a:hover {
   background-color: transparent;
-  color: rgb(21, 63, 7);
   border-color: #f1db25;
   color: #f1db25;
 }
