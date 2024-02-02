@@ -144,7 +144,7 @@ export default function LogIn() {
       <form onSubmit={handleSignIn} className="flex flex-col gap-4">
         {/* Email input */}
         <div className="flex flex-col">
-          <h1>Admin Login</h1>
+          <h1 className="text-lg text-green-700 mb-3 underline">Admin Login</h1>
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
             Email
           </label>
