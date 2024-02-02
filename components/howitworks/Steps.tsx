@@ -71,8 +71,8 @@ export default function StudentSteps() {
                 </div>
                 <div className="col-md-12 col-sm-12 flex flex-col items-center justify-center pt-3 pb-2">
                     <div className="mb-1">
-                        <Link href="/signup" className='flex justify-center items-centerdecoration-none '>
-                            <div className="w-60 text-center rounded p-2 bg-yellow-500 text-white text-lg">
+                        <Link href="/signup" className='flex justify-center items-center decoration-none '>
+                            <div className="w-60 text-center rounded p-2 bg-green-900 text-white text-lg">
                                 Signup
                             </div>
                         </Link>

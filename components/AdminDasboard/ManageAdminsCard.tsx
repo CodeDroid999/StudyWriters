@@ -85,7 +85,7 @@ const ManageAdminsCard = () => {
             </div>
             <div className="divide border-2 w-full mt-2 mb-2"></div>
             <Link href="/admin/manage-admins" className=" flex align-items-right w-100">
-                <span className="rounded bg-green-700 hover:bg-green-800 px-1 text-white">Manage Admins</span>
+                <span className="rounded bg-green-900 hover:bg-green-800 px-1 text-white">Manage Admins</span>
             </Link>
         </div >
     );

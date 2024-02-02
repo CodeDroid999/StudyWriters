@@ -77,7 +77,7 @@ const ManageAssignments: React.FC = (props: any) => {
                     <div className="col-md-10 mx-auto h-full pl-2 shadow-inner">
                         <div className="h-screen overflow-hidden">
                             <div className="border border-green-800 rounded-xl pb-3 h-80">
-                                <p className="bg-green-700 w-full p-3 text-white">Manage Assignments</p>
+                                <p className="bg-green-900 w-full p-3 text-white">Manage Assignments</p>
                                 <div className="flex flex-col flex-grow w-full bg-white p-2">
                                     <table className="w-full">
                                         <thead>

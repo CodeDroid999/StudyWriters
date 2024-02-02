@@ -92,8 +92,8 @@ export default function Home(props: PageProps) {
       <HeroArea />
       <StatsCounter />
       <PostYourAssignment />
-      <HowItWorksSection />
       <Features />
+      <HowItWorksSection />
       <BeYourOwnBoss />
       <AppplyNowHero />
       <HighestEarners />

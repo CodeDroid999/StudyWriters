@@ -38,7 +38,7 @@ const TasksTable = () => {
 
   return (
     <div className='border border-blue-800 rounded-xl  pb-3'>
-      <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
+      <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
       <div className="flex flex-col flex-grow w-full bg-white p-2">
         <table className="w-full">
           <thead>

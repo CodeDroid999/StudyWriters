@@ -115,7 +115,7 @@ export default function TaskDetails(props: any) {
             <div className="mt-28 mx-4">
                 <div className="w-full">
                     {/**Status */}
-                    <div className="flex max-w-[130px] justify-center rounded-full bg-green-700  p-1  text-xs font-bold uppercase text-green-950">
+                    <div className="flex max-w-[130px] justify-center rounded-full bg-green-900  p-1  text-xs font-bold uppercase text-green-950">
                         Bidding: {assignmentData.status}
                     </div>
 

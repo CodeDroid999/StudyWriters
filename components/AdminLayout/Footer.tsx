@@ -6,7 +6,7 @@ import airtaskalogo from 'public/sync-my-socials-logo.png'
 
 export default function Footer() {
   return (
-    <footer className=" bg-green-700 py-2 w-screen">
+    <footer className=" bg-green-900 py-2 w-screen">
       <div className="container">
         <div className="row">
           <div className="col-md-3">

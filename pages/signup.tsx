@@ -198,7 +198,7 @@ export default function Signup() {
       <div className="flex justify-center align-center pt-1 pb-2">
         <button
           type="button"
-          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-700 hover:text-white"
+          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-900 hover:text-white"
           onClick={handleGoogleSignIn}
         >
           <FcGoogle className="mr-2" size={20} />
@@ -262,7 +262,7 @@ export default function Signup() {
 
         <button
           type="submit"
-          className="rounded-2xl bg-green-700 hover:bg-green-600 px-4 py-2 text-white"
+          className="rounded-2xl bg-green-900 hover:bg-green-600 px-4 py-2 text-white"
         >
           Sign Up
         </button>

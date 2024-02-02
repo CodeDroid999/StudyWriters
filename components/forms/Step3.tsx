@@ -131,7 +131,7 @@ export default function Step3({ handlePreviousStep }: Props) {
             Back
           </button>
           <button
-            className="flex-1 rounded-xl bg-green-700 py-2 text-center text-white"
+            className="flex-1 rounded-xl bg-green-900 py-2 text-center text-white"
             onClick={handleNext}
           >
             Post assignment
