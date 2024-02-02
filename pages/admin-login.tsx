@@ -92,6 +92,8 @@ export default function LogIn() {
 
       // Display success message to user
       toast.success('Logged In');
+      router.push('/admin/dashboard');
+
 
       // Your existing code for making HTTP request to '/api/welcomeuser'
     } catch (error) {
