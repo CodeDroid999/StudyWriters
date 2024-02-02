@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "qualityunitedwriters",
+    "default": "qualityunitedwriters-999",
     "staging": "qualityunitedwriters",
     "production": "qualityunitedwriters-999"
   },
