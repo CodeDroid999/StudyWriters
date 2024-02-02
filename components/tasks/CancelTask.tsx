@@ -88,7 +88,7 @@ export default function CancelTask({ assignmentId, assignmentData, tutor }) {
               </button>
               <button
                 onClick={cancelTask}
-                className="flex-1 rounded-full bg-green-600 px-2 py-1.5 text-center font-medium text-white"
+                className="flex-1 rounded-full bg-green-900 px-2 py-1.5 text-center font-medium text-white"
               >
                 Cancel Assignment
               </button>

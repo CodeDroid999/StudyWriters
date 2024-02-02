@@ -86,7 +86,7 @@ export default function Step1({ handleNextStep }: Props) {
           </div>
 
           <div
-            className="mt-4 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
+            className="mt-4 cursor-pointer rounded-xl bg-green-900 py-2 text-center text-white"
             onClick={handleNext}
           >
             Next

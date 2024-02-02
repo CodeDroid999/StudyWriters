@@ -55,7 +55,7 @@ export default function RequestPayment({ assignmentData, student, assignmentId }
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="w-full rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
+        className="w-full rounded-full bg-green-900 px-4 py-2 text-center font-semibold text-white"
       >
         Request Payment
       </button>

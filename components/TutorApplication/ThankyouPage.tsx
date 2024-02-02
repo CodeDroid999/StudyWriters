@@ -37,7 +37,7 @@ const ThankYouPage = () => {
         </button>
         <button
           type="button"
-          className="flex-1 cursor-pointer rounded-xl bg-green-600 py-2 text-center text-white"
+          className="flex-1 cursor-pointer rounded-xl bg-green-900 py-2 text-center text-white"
           onClick={handleView}
         >
           View Application history

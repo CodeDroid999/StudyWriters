@@ -20,7 +20,7 @@ export default function Hero() {
     },
   ]
   return (
-    <div className="my-4 flex flex-col-reverse  rounded-3xl bg-green-600 px-3 py-8 sm:px-4 sm:py-16  md:flex-row  md:px-8 xl:my-10 xl:px-36  xl:py-20">
+    <div className="my-4 flex flex-col-reverse  rounded-3xl bg-green-900 px-3 py-8 sm:px-4 sm:py-16  md:flex-row  md:px-8 xl:my-10 xl:px-36  xl:py-20">
       <div className="flex flex-1 flex-col items-start justify-center">
         <h2 className="text-[40px] font-bold  text-white sm:text-[55px] sm:leading-[55px] ">
           Be your own boss

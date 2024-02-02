@@ -61,7 +61,7 @@ export default function ActivateAccount({ userId }) {
                             </button>
                             <button
                                 onClick={activateAccount}
-                                className="flex-1  bg-green-600 px-2 py-1.5 text-center font-medium text-white"
+                                className="flex-1  bg-green-900 px-2 py-1.5 text-center font-medium text-white"
                             >
                                 Activate
                             </button>

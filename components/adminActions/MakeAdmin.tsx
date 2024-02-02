@@ -60,7 +60,7 @@ export default function MakeAdmin({ userId }) {
                             </button>
                             <button
                                 onClick={MakeAdmin}
-                                className="flex-1  bg-green-600 px-2 py-1.5 text-center font-medium text-white"
+                                className="flex-1  bg-green-900 px-2 py-1.5 text-center font-medium text-white"
                             >
                                 upgrade to Admin
                             </button>

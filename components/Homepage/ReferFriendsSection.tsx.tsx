@@ -19,7 +19,7 @@ const ReferFriends = () => {
                         </p>
                         <div className="btn-box">
                             <Link href="/howitworks" className="btn-1 rounded bg-blue-500 text-white px-4 py-2 mx-2 hidden md:inline">Learn more</Link>
-                            <Link href="" className="btn-2 rounded bg-green-600 text-white px-4 py-2 mx-2">Post Assignment     </Link>
+                            <Link href="" className="btn-2 rounded bg-green-900 text-white px-4 py-2 mx-2">Post Assignment     </Link>
                         </div>
                     </div>
                 </div>

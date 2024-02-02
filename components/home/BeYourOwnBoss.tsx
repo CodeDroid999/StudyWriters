@@ -20,15 +20,15 @@ export default function BeYourOwnBoss() {
     },
   ]
   return (
-    <div className="bg-green-600 p-4">
+    <div className="bg-green-900 pt-5 pb-5">
       <div className="container flex flex-1 flex-col items-center justify-center pb-4">
 
-        <h1 className="font-bold text-center md:text-6xl text-4xl text-blue-300 md:pt-3 whitespace-nowrap">
+        <h1 className="font-bold text-center text-gray-100 text-6xl whitespace-nowrap pb-3">
           Be your own boss
         </h1>
         <div className="row mx-auto flex justify-center align-center pt-4">
           <div className="col-md-4">
-            <p className="md:text-5xl md:block text-gray-100 font-bold ">
+            <p className="md:text-5xl md:block text-yellow-600 font-extrabold underline ">
               Find your next job. Earn money as a tutor.
             </p>
           </div>
@@ -38,8 +38,8 @@ export default function BeYourOwnBoss() {
                 return (
                   <li key={title}>
                     <div className="flex items-center gap-2 md:text-2xl p-2">
-                      <MdCheck className=" text-xl text-white bg-yellow-400 font-bold rounded border shadow" />
-                      <h4 className="font-medium text-green-950">{title}</h4>
+                      <MdCheck className=" text-2xl text-black bg-gray-100 font-bold rounded border shadow" />
+                      <h4 className="font-medium text-black pl-3">{title}</h4>
                     </div>
                   </li>
                 )

@@ -82,7 +82,7 @@ export default function Outgoing() {
                 <div className="mt-6">
                   <Link
                     href="/post-assignment"
-                    className="rounded-full bg-green-600 px-4 py-2 font-semibold text-white"
+                    className="rounded-full bg-green-900 px-4 py-2 font-semibold text-white"
                   >
                     Post an assignment
                   </Link>

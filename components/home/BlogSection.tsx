@@ -24,7 +24,7 @@ export default function BlogSection(posts: BlogPageProps) {
           <div className="hidden md:block">
             <Link
               href="/blog"
-              className="rounded-full bg-green-600 p-4  font-semibold text-white"
+              className="rounded-full bg-green-900 p-4  font-semibold text-white"
             >
               Visit our blog
             </Link>
@@ -65,7 +65,7 @@ export default function BlogSection(posts: BlogPageProps) {
             </div>
           ))}
         </div>
-        <div className="mb-4 mt-10 block max-w-sm rounded-full bg-green-600 px-4 py-3 md:hidden">
+        <div className="mb-4 mt-10 block max-w-sm rounded-full bg-green-900 px-4 py-3 md:hidden">
           <Link
             href="/blog"
             className="flex w-full justify-center rounded-full  text-lg font-semibold text-white"

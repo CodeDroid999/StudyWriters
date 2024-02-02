@@ -89,7 +89,7 @@ export default function AddBankAccount() {
       </div>
       <button
         type="submit"
-        className="mt-3 rounded-full bg-green-600 px-3 py-2 font-semibold text-white "
+        className="mt-3 rounded-full bg-green-900 px-3 py-2 font-semibold text-white "
       >
         Add Bank Account
       </button>

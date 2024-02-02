@@ -72,7 +72,7 @@ export default function PaymentForm({ assignTutor }) {
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="mt-6 w-full rounded-full bg-green-600 py-2 font-semibold text-white"
+        className="mt-6 w-full rounded-full bg-green-900 py-2 font-semibold text-white"
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}

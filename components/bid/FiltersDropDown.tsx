@@ -76,7 +76,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
                 <button className="rounded-3xl bg-blue-100 px-4 py-2 text-blue-600 hover:bg-blue-300 focus:outline-none">
                   Cancel
                 </button>
-                <button className="rounded-3xl bg-green-600 px-4 py-2 text-white hover:bg-blue-400 focus:outline-none">
+                <button className="rounded-3xl bg-green-900 px-4 py-2 text-white hover:bg-blue-400 focus:outline-none">
                   Apply
                 </button>
               </div>

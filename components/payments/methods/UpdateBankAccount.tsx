@@ -122,7 +122,7 @@ export default function UpdateBankAccount({
               </div>
               <button
                 type="submit"
-                className="bg-green-600 px-3 mb-2 mt-5 w-full rounded-full py-2 font-semibold text-white "
+                className="bg-green-900 px-3 mb-2 mt-5 w-full rounded-full py-2 font-semibold text-white "
               >
                 Update Bank Account
               </button>

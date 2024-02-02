@@ -144,7 +144,7 @@ export default function PostSimilarTask({ assignmentData }) {
     <div className="relative">
       <button
         onClick={openForm}
-        className="w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
+        className="w-full cursor-pointer rounded-full bg-green-900 px-4 py-2 text-center font-semibold text-white"
       >
         Post Similar Assignment
       </button>
@@ -255,7 +255,7 @@ export default function PostSimilarTask({ assignmentData }) {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-green-600 py-2 text-center text-white"
+                    className="flex-1 rounded-xl bg-green-900 py-2 text-center text-white"
                   >
                     Post assignment
                   </button>

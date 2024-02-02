@@ -59,7 +59,7 @@ export default function WithdrawFromTask({ assignmentId, assignmentData, student
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="mt-2 w-full cursor-pointer rounded-full bg-green-600 px-4 py-2 text-center font-semibold text-white"
+        className="mt-2 w-full cursor-pointer rounded-full bg-green-900 px-4 py-2 text-center font-semibold text-white"
       >
         Withdraw From Assignment
       </button>
@@ -92,7 +92,7 @@ export default function WithdrawFromTask({ assignmentId, assignmentData, student
               </button>
               <button
                 onClick={cancelTask}
-                className="flex-1 rounded-full bg-green-600 px-2 py-1.5 text-center font-medium text-white"
+                className="flex-1 rounded-full bg-green-900 px-2 py-1.5 text-center font-medium text-white"
               >
                 Withdraw
               </button>

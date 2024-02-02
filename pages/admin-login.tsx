@@ -192,7 +192,7 @@ export default function LogIn() {
         {/* Continue button */}
         <button
           type="submit"
-          className="rounded-2xl bg-green-900 px-4 py-2 text-white hover:bg-green-600"
+          className="rounded-2xl bg-green-900 px-4 py-2 text-white hover:bg-green-900"
         >
           Continue
         </button>
@@ -206,7 +206,7 @@ export default function LogIn() {
         </div>
 
         {/* Forgot password button */}
-        <button className="rounded-2xl bg-green-900 px-4 py-2 text-white hover:bg-green-600">
+        <button className="rounded-2xl bg-green-900 px-4 py-2 text-white hover:bg-green-900">
           <Link href="/forgot-password">Forgot password?</Link>
         </button>
       </form>

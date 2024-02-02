@@ -9,7 +9,7 @@ import photo3 from "../../public/project-completed.jpg"
 export default function StudentSteps() {
     return (
         <div>
-            <div className="row mt-2 space-x-2 justify-evenly">
+            <div className="row mt-4 mb-6 space-x-2 justify-evenly">
                 <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border shadow p-2 rounded">
                     <div className="mb-1">
                         <Image
@@ -69,20 +69,6 @@ export default function StudentSteps() {
                     </div>
 
                 </div>
-                <div className="col-md-12 col-sm-12 flex flex-col items-center justify-center pt-3 pb-2">
-                    <div className="mb-1">
-                        <Link href="/signup" className='flex justify-center items-center decoration-none '>
-                            <div className="w-60 text-center rounded p-2 bg-green-900 text-white text-lg">
-                                Signup
-                            </div>
-                        </Link>
-                    </div>
-
-
-                </div>
-
-
-
             </div>
         </div>
     )
