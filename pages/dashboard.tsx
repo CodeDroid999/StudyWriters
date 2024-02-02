@@ -33,6 +33,7 @@ import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 import Footer from 'components/layout/Footer'
 import PostAssignment from 'components/Homepage/PostAssignment'
+import HowItWorksSection from 'components/Homepage/HowITWorksSection'
 
 const Dashboard: React.FC = (props: any) => {
   const router = useRouter();
@@ -74,7 +75,11 @@ const Dashboard: React.FC = (props: any) => {
       <Navbar />
       <div className="mx-auto w-full">
         {userRole === 'Student' && (
-          <PostAssignment />
+          <>
+            <PostAssignment />
+            <PostYourTask />
+            <HowItWorksSection />
+          </>
 
         )}
 
@@ -85,7 +90,7 @@ const Dashboard: React.FC = (props: any) => {
                 <>
                   <div className="mt-20 h-screen overflow-hidden">
                     <div className="border border-green-800 rounded-xl pb-3 h-80">
-                      <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
+                      <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
                       <div className="flex flex-col flex-grow w-full bg-white p-2">
                         <table className="w-full">
                           <thead>
@@ -117,20 +122,14 @@ const Dashboard: React.FC = (props: any) => {
                       </div>
                     </div>
                   </div>
+
+
+                  <BeYourOwnBoss />
                 </>
               )}
             </div>
           </>
 
-        )}
-      </div>
-      <div className="mx-auto w-full">
-        {userRole === 'Student' && (
-          <PostYourTask />
-        )}
-
-        {userRole === 'Tutor' && (
-          <BeYourOwnBoss />
         )}
       </div>
 

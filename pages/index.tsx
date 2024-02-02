@@ -17,6 +17,7 @@ import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import AppplyNowHero from 'components/Become-a-tutor/ApplyNowSection'
 import TasksTable from 'components/BrowseTasks/TasksTable'
 import { UserAuth } from 'context/AuthContext'
+import Link from 'next/link'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -88,13 +89,17 @@ export default function Home(props: PageProps) {
       <StatsCounter />
       <PostYourAssignment />
       <Features />
-      <HowItWorksSection />
-      <BeYourOwnBoss />
       <AppplyNowHero />
+      <HowItWorksSection />
       <HighestEarners />
-      <div className="container pb-3">
-        <TasksTable />
-      </div>
+      <BeYourOwnBoss />
+      <section className="flex justify-center align-center mx-auto my-4">
+        <div className="w-5/6 shadow-xl">
+          <Link href="/login" className="w-full">
+            <TasksTable />
+          </Link>
+        </div>
+      </section>
       <FAQAccordion />
       <Footer />
     </>

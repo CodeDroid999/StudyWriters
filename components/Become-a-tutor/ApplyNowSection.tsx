@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-import HeroBackground from 'public/bg/Become-a-Tutor-cover.jpg';
 
 const AppplyNowHero = () => {
   return (
-    <div className="relative h-[60vh]">
+    <div className="relative h-[70vh] pb-6">
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src={HeroBackground}
+          src="https://i.postimg.cc/hPLTtfQZ/banner.png"
           alt="Background"
           layout="fill"
           objectFit="cover"
@@ -30,9 +29,9 @@ const AppplyNowHero = () => {
             Earn up to <strong>$7,500 USD </strong>monthly working from home tutoring students!
           </p>
           <div className="btn-box whitespace-nowrap">
-            <Link className="btn-1 p-2 text-xl rounded bg-yellow-500 text-white" href="tutor-application">Apply now!</Link>
+            <Link className="btn-1 py-2 px-3 text-xl rounded bg-green-900 text-white" href="tutor-application">Apply now!</Link>
           </div>
-          <p className="text-lg mt-4">Now accepting tutors from all over the world!</p>
+          <p className="text-lg mt-4 text-yellow-600 pb-4">Now accepting tutors from all over the world!</p>
         </div>
       </div>
 
