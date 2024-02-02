@@ -51,7 +51,7 @@ body {
   content: "";
   width: 40px;
   height: 7px;
-  background-color: hsl(116, 89%, 11%));
+  background-color: #f1db25;
   border-radius: 10px;
   position: absolute;
   bottom: 0;
