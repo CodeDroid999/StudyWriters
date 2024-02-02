@@ -6,11 +6,11 @@ import airtaskalogo from 'public/sync-my-socials-logo.png'
 
 export default function Footer() {
   return (
-    <footer className=" bg-green-900 py-2 w-screen">
-      <div className="container">
+    <footer className=" bg-green-900">
+      <div className="container md:pt-6 pt-4">
         <div className="row">
           <div className="col-md-3">
-            <h4 className="font-semibold md:text-2xl text-gray-100">SUBJECTS WE COVER</h4>
+            <h4 className="font-semibold md:text-2xl text-white">SUBJECTS WE COVER</h4>
             <p className="pt-1">
               <Link
                 className="inline-flex text-md underline font-extrabold gap-x-2 text-gray-300 hover:text-yellow-400"
