@@ -22,7 +22,7 @@ interface Query {
     [key: string]: string
 }
 
-export default function BecomeATutor(props: PageProps) {
+export default function HowItWorks(props: PageProps) {
     const { posts, settings, draftMode } = props
 
     return (
