@@ -146,7 +146,7 @@ export default function LogIn() {
       <form onSubmit={handleSignIn} className="flex flex-col gap-4">
         {/* Email input */}
         <div className="flex flex-col">
-          <h1 className="text-lg text-green-700 mb-3 underline">Admin Login</h1>
+          <h1 className="text-lg text-green-900 mb-3 underline">Admin Login</h1>
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
             Email
           </label>
@@ -200,7 +200,7 @@ export default function LogIn() {
         {/* Sign up link */}
         <div className="flex flex-row space-x-3 text-base font-normal items-center">
           <p className="pt-1 pb-2 text-lg">Dont have an account?</p>
-          <p className="font-medium text-green-700">
+          <p className="font-medium text-green-900">
             <Link href={`/signup?redirect=${redirect}`}>Sign up</Link>
           </p>
         </div>

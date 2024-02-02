@@ -248,7 +248,7 @@ export default function PostSimilarTask({ assignmentData }) {
                 </div>
                 <div className="mt-5 flex flex-row space-x-3 font-semibold">
                   <button
-                    className="flex-1 rounded-xl bg-gray-100 py-2 text-center text-green-700"
+                    className="flex-1 rounded-xl bg-gray-100 py-2 text-center text-green-900"
                     onClick={closeForm}
                   >
                     Back

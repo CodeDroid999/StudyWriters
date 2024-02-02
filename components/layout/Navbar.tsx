@@ -189,7 +189,7 @@ function Navbar() {
                   </Link>
                   <Link
                     href="/become-a-tutor"
-                    className="rounded-2xl bg-blue-50 px-2 py-[3px] text-blue-700 hover:bg-blue-100 hover:text-green-700"
+                    className="rounded-2xl bg-blue-50 px-2 py-[3px] text-blue-700 hover:bg-blue-100 hover:text-green-900"
                     style={{ whiteSpace: 'nowrap' }}
                     id="customfontsize"
                   >
@@ -354,7 +354,7 @@ function Navbar() {
               </Link>
               <Link
                 href="/become-a-tutor"
-                className="rounded-3xl bg-blue-50 px-4 py-[6px] text-blue-600 hover:bg-blue-100 hover:text-green-700"
+                className="rounded-3xl bg-blue-50 px-4 py-[6px] text-blue-600 hover:bg-blue-100 hover:text-green-900"
               >
                 Become a tutor
               </Link>

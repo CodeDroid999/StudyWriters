@@ -251,7 +251,7 @@ export default function LogIn() {
         {/* Sign up link */}
         <div className="flex flex-row space-x-3 text-base font-normal items-center">
           <p className="pt-1 pb-2 text-lg">Dont have an account?</p>
-          <p className="font-medium text-green-700">
+          <p className="font-medium text-green-900">
             <Link href={`/signup?redirect=${redirect}`}>Sign up</Link>
           </p>
         </div>

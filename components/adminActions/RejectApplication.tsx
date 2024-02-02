@@ -54,7 +54,7 @@ export default function RejectApplication({ applicationId }) {
                         <div className="flex w-full flex-row space-x-4">
                             <button
                                 onClick={() => setIsFormOpen(false)}
-                                className="flex-1  bg-gray-200 px-2 py-1.5 text-center font-medium text-green-700"
+                                className="flex-1  bg-gray-200 px-2 py-1.5 text-center font-medium text-green-900"
                             >
                                 Back
                             </button>

@@ -71,7 +71,7 @@ const FAQAccordion: React.FC = () => {
   return (
     <div className="p-4   bg-gray-100">
       <div className="items-left flex flex-col">
-        <h2 className="mt-5 text-5xl font-bold tracking-tight text-green-700">
+        <h2 className="mt-5 text-5xl font-bold tracking-tight text-green-900">
           Frequently Asked Questions
         </h2>
       </div>

@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
 
           <div className="col-md-3">
-            <h4 className="font-semibold text-green-700">SUBJECTS WE COVER</h4>
+            <h4 className="font-semibold text-green-900">SUBJECTS WE COVER</h4>
             <div className="mt-3 grid space-y-1">
               <p className="pt-1">
                 <Link
@@ -160,7 +160,7 @@ export default function Footer() {
 
 
           <div className="col-md-3">
-            <h4 className="font-semibold text-green-700">SUBJECTS WE COVER</h4>
+            <h4 className="font-semibold text-green-900">SUBJECTS WE COVER</h4>
 
             <div className="mt-3 grid space-y-1">
               <p className="pt-1">

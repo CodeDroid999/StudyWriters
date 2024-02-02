@@ -11,7 +11,7 @@ const ReferFriends = () => {
             <section className="slider_section2">
                 <div className="container flex justify-center items-center h-full">
                     <div className="w-3/5 text-center">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-700">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-900">
                             Get on-demand Q&A <span className="font-normal">Homework help</span> from verified tutors.
                         </h1>
                         <p className="text-lg md:text-xl lg:text-2xl my-4">

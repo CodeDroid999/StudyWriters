@@ -11,12 +11,12 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export default function CancelTask({assignmentId, assignmentData, tutor }) {
+export default function CancelTask({ assignmentId, assignmentData, tutor }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const router = useRouter()
   const cancelTask = async () => {
     try {
-      const taskRef = doc(db, 'assignments',assignmentId)
+      const taskRef = doc(db, 'assignments', assignmentId)
       if (assignmentData.status === 'Assigned') {
         await updateDoc(taskRef, {
           status: 'Cancelled',
@@ -27,7 +27,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
           type: 'CancelTask',
           content: 'has cancelled ',
           assignmentTitle: assignmentData.title,
-         assignmentId,
+          assignmentId,
           read: false,
           createdAt: serverTimestamp(),
         })
@@ -57,7 +57,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
         onClick={() => setIsFormOpen(true)}
         className="mt-2 w-full cursor-pointer rounded-full bg-red-500 px-4 py-2 text-center font-semibold text-white"
       >
-        Cancel 
+        Cancel
       </button>
 
       {isFormOpen && (
@@ -68,7 +68,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
                flex-row justify-between`}
             >
               <div className="flex-1 text-center text-base font-medium text-gray-800">
-                Cancel Assignment    
+                Cancel Assignment
               </div>
               <AiOutlineClose
                 size={20}
@@ -82,7 +82,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
             <div className="flex w-full flex-row space-x-4">
               <button
                 onClick={() => setIsFormOpen(false)}
-                className="flex-1 rounded-full bg-gray-200 px-2 py-1.5 text-center font-medium text-green-700"
+                className="flex-1 rounded-full bg-gray-200 px-2 py-1.5 text-center font-medium text-green-900"
               >
                 Back
               </button>
@@ -90,7 +90,7 @@ export default function CancelTask({assignmentId, assignmentData, tutor }) {
                 onClick={cancelTask}
                 className="flex-1 rounded-full bg-green-600 px-2 py-1.5 text-center font-medium text-white"
               >
-                Cancel Assignment    
+                Cancel Assignment
               </button>
             </div>
           </div>

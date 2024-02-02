@@ -27,7 +27,7 @@ const HeroArea = () => {
                                     <div className="col-md-7">
                                         <div className="detail-box">
                                             <h1>
-                                                Get on-demand Q&A<span className="text-green-700"> Homework help</span> from verified tutors.
+                                                Get on-demand Q&A<span className="text-green-900"> Homework help</span> from verified tutors.
                                             </h1>
                                             <p className="pt-1 pb-2 text-lg">
                                                 Work with thousands of tutors to help you meet your deadlines and get the grades you so sorely need!
@@ -48,7 +48,7 @@ const HeroArea = () => {
                                         <div className="detail-box">
                                             <h1>
                                                 Apply for an account to start working online.
-                                                <span className="text-green-700">
+                                                <span className="text-green-900">
                                                     Tutor Online </span>
                                             </h1>
                                             <p className="pt-1 pb-2 text-lg">Every 15 assigned tutoring, get 10% cash back (Limited to $50) on your posted assignments!</p>
@@ -67,7 +67,7 @@ const HeroArea = () => {
                                     <div className="col-md-7">
                                         <div className="detail-box">
                                             <h1>
-                                                APA examples/ samples<span className="text-green-700"> creative vision </span>
+                                                APA examples/ samples<span className="text-green-900"> creative vision </span>
                                             </h1>
                                             <p className="pt-1 pb-2 text-lg">
                                                 Collaborate to bring your ideas to life with precision, creativity, and innovation. We are your
