@@ -18,6 +18,7 @@ import AppplyNowHero from 'components/Become-a-tutor/ApplyNowSection'
 import TasksTable from 'components/BrowseTasks/TasksTable'
 import { UserAuth } from 'context/AuthContext'
 import Link from 'next/link'
+import PopularCountries from 'components/Become-a-tutor/PopularCountriesSection'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -100,6 +101,7 @@ export default function Home(props: PageProps) {
           </Link>
         </div>
       </section>
+      <PopularCountries />
       <FAQAccordion />
       <Footer />
     </>

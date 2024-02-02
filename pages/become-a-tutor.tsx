@@ -1,4 +1,3 @@
-import HeroArea from 'components/Become-a-tutor/HeroSection'
 import HighestEarners from 'components/Become-a-tutor/HighestEarnersSection'
 import HowItWorksSection from 'components/Become-a-tutor/HowITWorksSection'
 import StatsCounter from 'components/Become-a-tutor/StatsCounter'
@@ -12,6 +11,7 @@ import type { SharedPageProps } from 'pages/_app'
 import React from 'react'
 import PopularCountries from 'components/Become-a-tutor/PopularCountriesSection'
 import Features from 'components/home/Features'
+import HeroArea from 'components/Become-a-tutor/HeroSection'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]

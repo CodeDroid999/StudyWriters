@@ -15,7 +15,7 @@ const CustomNavbar = () => {
     setMenuOpen(!isMenuOpen);
   };
   return (
-    <div className="m-auto flex max-w-[1100px] items-center justify-between p-2 lg:p-3">
+    <div className="m-auto flex max-w-[1100px] items-center justify-between p-2 lg:p-3 ">
       {/**Mobile Nav */}
       <MobileNavbar />
 
@@ -63,11 +63,11 @@ const CustomNavbar = () => {
             href="/signup"
             className="font-medium text-white hover:text-green-500"
           >
-            Sign up      </Link> 
-            <Link
-              href="/blog"
-              className="font-medium text-white hover:text-green-500"
-            >
+            Sign up      </Link>
+          <Link
+            href="/blog"
+            className="font-medium text-white hover:text-green-500"
+          >
             Blog
           </Link>
           <Link
