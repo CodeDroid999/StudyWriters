@@ -1,7 +1,7 @@
 import Home from 'components/unAuthed/HomeSection';
 import Image from 'next/image'
 import Link from 'next/link';
-import HeroBackground from "public/hero-bg.jpeg"
+import HeroBackground from "public/bg/hero-bg.jpeg"
 import React from 'react';
 
 const HeroArea = () => {
