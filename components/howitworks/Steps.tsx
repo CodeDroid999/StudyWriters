@@ -24,7 +24,7 @@ export default function StudentSteps() {
                             <p className="pt-1 pb-2 text-lg"> 1. Upload your question</p>
                         </span>
                         <p className="text-md">
-                            We meticulously prepare before commencing to ensure thorough adherence to all instructions. Our unwavering commitment to quality work stands as our foremost priority.
+                            Upload your question by posting an assignment. Be sure to be descriptive as possible to ensure the right people bid.
                         </p>
 
                     </div>
