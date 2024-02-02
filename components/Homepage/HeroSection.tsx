@@ -1,7 +1,6 @@
 import Home from 'components/unAuthed/HomeSection';
 import Image from 'next/image'
 import Link from 'next/link';
-import HeroBackground from "public/bg/hero-bg.jpeg"
 import React from 'react';
 
 const HeroArea = () => {
@@ -10,9 +9,10 @@ const HeroArea = () => {
             <div className="hero_bg_box">
                 <div className="img-box">
                     <Image
-                        src={HeroBackground}
+                        src="https://i.postimg.cc/zDKqLqyb/hero-bg.jpg"
                         alt="assignment"
-
+                        width="1400"
+                        height="800"
                         className="w-full h-full"
                     />
                 </div>
