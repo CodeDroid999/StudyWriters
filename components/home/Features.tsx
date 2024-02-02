@@ -46,7 +46,7 @@ export default function Features() {
                 <div className="pt-1 text-blue-600 text-4xl">{feature.icon}</div>
               </div>
               <div className="ml-3 flex flex-col">
-                <h4 className="text-2xl text-center font-semibold text-amber-400">
+                <h4 className="text-2xl text-center font-semibold text-green-900">
                   {feature.title}
                 </h4>
                 <p className="mt-1 text-center text-[18px] font-[490] leading-[22px] text-green-950">

@@ -23,7 +23,7 @@ export default function PostYourTask() {
         <h2 className="text-[42px] font-bold leading-[45px] text-green-950 sm:text-[50px] sm:leading-[50px] xl:text-[72px] xl:leading-[75px]">
           Step your work.Its simple.
         </h2>
-        <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-amber-400">
+        <p className="my-4 max-w-[470px] text-[22px] font-medium leading-[28px]  text-green-900">
           Find freelancers and manage projects your way.
         </p>
         <ul className="flex flex-col gap-3">
