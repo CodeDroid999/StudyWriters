@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { MdSend } from 'react-icons/md';
 import { UserAuth } from 'context/AuthContext';
 import SendFile from 'components/messaging/SendFile';
+import CustomNavbar from 'components/unAuthed/Navbar';
 
 // Define the SupportPage component
 export default function SupportPage() {
@@ -79,40 +80,44 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="mx-auto max-w-[800px] px-2">
-      {/* Messages section */}
-      <div className="mt-12">
-        {/* Display messages here */}
-        {messages.map((message) => (
-          // Display message components
-          <div key={message.messageId} className="my-3 w-full">
-            {/* Render each message component */}
-            <div>
-              <p>{message.senderId}: {message.content}</p>
-            </div>
-          </div>
-        ))}
+    <div className="mx-auto  bg-gray-200">
+      <div className="bg-gray-600">
+        <CustomNavbar />
       </div>
+      <div className="container w-2/3  h-[70vh] pt-2 rounded bg-gray-200 shadow-inner">
+        {/* Messages section */}
+        <div className="mt-12 bg-white mx-2">
+          {/* Display messages here */}
+          {messages.map((message) => (
+            // Display message components
+            <div key={message.messageId} className="my-3 w-full h-full bg-gray-100">
+              {/* Render each message component */}
+              <div className="p-1 rounded">
+                <p>You : {message.content}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {/* Message input and send button */}
-      <div className="fixed bottom-0 left-0 right-0 z-10 bg-white px-2 duration-300 ease-in">
-        <form
-          onSubmit={handleFormSubmit} // Use the custom handler
-          className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border border-gray-400"
-        >
-          <input
-            placeholder="Message"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={handleKeyDown} // Add keydown event handler
-            className="mr-16 h-16 w-full rounded-xl p-2 outline-none"
-          />
-          <div className="absolute right-0 mr-1 flex flex-row items-center space-x-3">
-            {/* Add file input or any other components as needed */}
-            <SendFile userId={user?.userId} chatId={supportChatId} />
-            <MdSend size={28} className="cursor-pointer" onClick={sendMessage} />
-          </div>
-        </form>
+        {/* Message input and send button */}
+        <div className="fixed shadow bottom-0 left-0 right-0 z-10 bg-gray-300 px-2 border border-black duration-300 ease-in">
+          <form
+            onSubmit={handleFormSubmit} // Use the custom handler
+            className="relative mx-auto mb-6 mt-7 bg-gray-500 flex w-full max-w-[800px] flex-row items-center rounded-xl border border-green-900"
+          >
+            <input
+              placeholder="Message"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={handleKeyDown} // Add keydown event handler
+              className="mr-16 h-16 w-full rounded-xl p-2 outline-none"
+            />
+            <div className="absolute right-0 mr-1 flex flex-row items-center space-x-3 ">
+              {/* Add file input or any other components as needed */}
+              <MdSend size={28} className="cursor-pointer" onClick={sendMessage} />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
