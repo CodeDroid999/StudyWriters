@@ -28,7 +28,7 @@ export default function BeYourOwnBoss() {
         </h1>
         <div className="row mx-auto flex justify-center align-center pt-4">
           <div className="col-md-4">
-            <p className="md:text-5xl md:block text-yellow-600 font-extrabold underline ">
+            <p className="md:text-3xl md:block md:pt-3 text-yellow-600 font-extrabold underline hidden">
               Find your next job. Earn money as a tutor.
             </p>
           </div>
