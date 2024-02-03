@@ -8,6 +8,7 @@ import { MdSend } from 'react-icons/md';
 import { UserAuth } from 'context/AuthContext';
 import SendFile from 'components/messaging/SendFile';
 import CustomNavbar from 'components/unAuthed/Navbar';
+import { formatDate } from './profile/[id]'; // Update this path to the actual path of your profile page
 
 // Define the SupportPage component
 export default function SupportPage() {
@@ -31,16 +32,20 @@ export default function SupportPage() {
 
           return {
             messageId: doc.id,
+            createdAt: messageData.createdAt,
+            content: messageData.content,
+            read: messageData.read,
+            senderId: messageData.senderId,
             ...messageData,
           };
         })
       );
 
       // Filter out messages without a timestamp
-      const messagesWithTimestamp = updatedMessages.filter((message) => message.timestamp);
+      const messagesWithTimestamp = updatedMessages.filter((message) => message.createdAt);
 
       // Sort messages by timestamp
-      messagesWithTimestamp.sort((a, b) => a.timestamp?.toMillis() - b.timestamp?.toMillis());
+      messagesWithTimestamp.sort((a, b) => a.createdAt?.toMillis() - b.createdAt?.toMillis());
 
       setMessages(messagesWithTimestamp);
     });
@@ -57,8 +62,9 @@ export default function SupportPage() {
 
     // Add new message to the support chat
     await addDoc(collection(db, 'supportMessages'), {
+      messageId: supportChatId,
       content: newMessage,
-      timestamp: serverTimestamp(),
+      createdAt: serverTimestamp(),
       senderId: user?.userId || 'anonymousUserId',
       read: false,
     });
@@ -80,20 +86,21 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="mx-auto  bg-gray-200">
+    <div className="mx-auto bg-gray-200">
       <div className="bg-gray-600">
         <CustomNavbar />
       </div>
-      <div className="container w-2/3  h-[70vh] pt-2 rounded bg-gray-200 shadow-inner">
+      <div className="container w-2/3 h-[70vh]  overflow-y-auto pt-2 rounded bg-gray-200 shadow-inner">
         {/* Messages section */}
-        <div className="mt-12 bg-white mx-2">
+        <div className="mt-12 bg-white mx-2 h-[1/2]">
           {/* Display messages here */}
-          {messages.map((message) => (
+          {messages.map((message: { messageId: string; createdAt: any; content: string }) => (
             // Display message components
             <div key={message.messageId} className="my-3 w-full h-full bg-gray-100">
               {/* Render each message component */}
               <div className="p-1 rounded">
-                <p>You : {message.content}</p>
+                <p>You: {message.content}</p>
+                <p>Time: {formatDate(message.createdAt)}</p> {/* Format timestamp using formatDate function */}
               </div>
             </div>
           ))}

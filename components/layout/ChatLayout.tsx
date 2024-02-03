@@ -1,11 +1,12 @@
 import React from 'react';
 import ChatModalContainer from './ChatModalContainer';
+import ChatIcon from './ChatIcon';
 
 const ChatLayout = ({ children }) => {
     return (
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             {children}
-            <ChatModalContainer />
+            <ChatIcon onClick={onclick} />
         </div>
     );
 };
