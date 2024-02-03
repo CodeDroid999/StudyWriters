@@ -12,10 +12,9 @@ import { AppProps } from 'next/app'
 import { lazy, useEffect } from 'react'
 import { AuthContextProvider } from 'context/AuthContext'
 import { Toaster } from 'react-hot-toast'
-import chatLayout from 'components/layout/ChatLayout';
 
 import '../styles/custom.css'
-import ChatLayout from 'components/layout/ChatLayout';
+import ChatLayout from 'components/layout/chatLayout';
 
 export interface SharedPageProps {
   draftMode: boolean
