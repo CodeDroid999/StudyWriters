@@ -1,7 +1,7 @@
 import React from 'react';
 import ChatModalContainer from './ChatModalContainer';
 
-const chatLayout = ({ children }) => {
+const ChatLayout = ({ children }) => {
     return (
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             {children}
@@ -10,4 +10,4 @@ const chatLayout = ({ children }) => {
     );
 };
 
-export default chatLayout;
+export default ChatLayout;
