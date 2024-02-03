@@ -9,6 +9,7 @@ import { UserAuth } from 'context/AuthContext';
 import SendFile from 'components/messaging/SendFile';
 import CustomNavbar from 'components/unAuthed/Navbar';
 import { formatDate } from './profile/[id]'; // Update this path to the actual path of your profile page
+import toast from 'react-hot-toast';
 
 // Define the SupportPage component
 export default function SupportPage() {
@@ -68,7 +69,7 @@ export default function SupportPage() {
       senderId: user?.userId || 'anonymousUserId',
       read: false,
     });
-
+    toast.success('Message sent')
     setNewMessage('');
   };
 
