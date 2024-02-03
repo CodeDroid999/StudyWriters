@@ -15,7 +15,7 @@ const CustomNavbar = () => {
     setMenuOpen(!isMenuOpen);
   };
   return (
-    <div className="m-auto flex max-w-[1100px] items-center justify-between p-2 lg:p-3 ">
+    <div className="m-auto flex max-w-[11/12] items-center justify-between p-2 lg:p-3 ">
       {/**Mobile Nav */}
       <MobileNavbar />
 
