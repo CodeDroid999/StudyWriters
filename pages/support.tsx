@@ -93,7 +93,7 @@ export default function SupportPage() {
       </div>
       <div className="container w-2/3 h-[70vh]  overflow-y-auto pt-2 rounded bg-gray-200 shadow-inner">
         {/* Messages section */}
-        <div className="mt-12 bg-white mx-2 h-[1/2]">
+        <div className="mt-12 bg-white mx-2 min-h-[1/2] overflow-y-auto px-2">
           {/* Display messages here */}
           {messages.map((message: { messageId: string; createdAt: any; content: string }) => (
             // Display message components
@@ -101,7 +101,6 @@ export default function SupportPage() {
               {/* Render each message component */}
               <div className="p-1 rounded">
                 <p>You: {message.content}</p>
-                <p>Time: {formatDate(message.createdAt)}</p> {/* Format timestamp using formatDate function */}
               </div>
             </div>
           ))}
