@@ -61,9 +61,7 @@ const TasksTable = () => {
           </tbody>
         </table>
         <div className="flex w-full flex-col justify-center">
-          <div className="assignment-counter text-blue-900">
-            <TaskCounter assignments={filteredData} />
-          </div>
+
           <div className="pagination space-x-2 flex justify-center">
             {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, index) => (
               <button className="bg-yellow-500 px-2" key={index + 1} onClick={() => paginate(index + 1)}>
