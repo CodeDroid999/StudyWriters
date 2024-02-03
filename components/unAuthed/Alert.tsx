@@ -10,9 +10,9 @@ type Props = {
 
 const Alert = ({ preview }: Props) => {
     return (
-        <div className="items-right text-right bg-gray-300">
+        <div className="items-right text-right bg-green-900 text-gray-100">
             <Link href="/refer-a-friend" className="text-right pt-1 pb-1 pr-4 text-green-950 ">
-                Earn: Refer a friend        
+                Earn: Refer a friend
             </Link>
         </div>
     )
