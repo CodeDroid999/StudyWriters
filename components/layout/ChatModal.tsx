@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, onSnapshot, serverTimestamp } from 'firebase/firestore';
-import { db } from 'firebase';
+import { db } from '../../firebase';
 
 const ChatModalComponent = ({ onClose }) => {
     const [messages, setMessages] = useState([]);

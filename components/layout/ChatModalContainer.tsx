@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ChatIcon from './ChatIcon';
-import ChatModalComponent from './chatModal';
+import ChatModalComponent from './ChatModal';
 
 const ChatModalContainer = () => {
     const [isChatModalOpen, setChatModalOpen] = useState(false);

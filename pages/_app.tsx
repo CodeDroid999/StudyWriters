@@ -12,8 +12,10 @@ import { AppProps } from 'next/app'
 import { lazy, useEffect } from 'react'
 import { AuthContextProvider } from 'context/AuthContext'
 import { Toaster } from 'react-hot-toast'
+import chatLayout from 'components/layout/ChatLayout';
 
 import '../styles/custom.css'
+import ChatLayout from 'components/layout/ChatLayout';
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -28,18 +30,20 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
 
- 
+
   return (
     <>
       <AuthContextProvider>
         <Toaster position="bottom-center" />
-        {draftMode ? (
-          <PreviewProvider token={token}>
+        <ChatLayout>
+          {draftMode ? (
+            <PreviewProvider token={token}>
+              <Component {...pageProps} />
+            </PreviewProvider>
+          ) : (
             <Component {...pageProps} />
-          </PreviewProvider>
-        ) : (
-          <Component {...pageProps} />
-        )}
+          )}
+        </ChatLayout>
       </AuthContextProvider>
     </>
   )
