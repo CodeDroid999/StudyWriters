@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, onSnapshot, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { db } from 'firebase';
 
-const ChatComponent = () => {
+const ChatModalComponent = ({ onClose }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
@@ -50,8 +50,9 @@ const ChatComponent = () => {
                 />
                 <button onClick={sendMessage}>Send</button>
             </div>
+            <button onClick={onClose}>Close</button>
         </div>
     );
 };
 
-export default ChatComponent;
+export default ChatModalComponent;

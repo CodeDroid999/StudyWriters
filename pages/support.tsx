@@ -1,5 +1,3 @@
-// ChatPage.js
-
 import ChatComponent from 'components/layout/ChatComponent';
 import React from 'react';
 
