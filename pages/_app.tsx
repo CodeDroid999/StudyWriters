@@ -13,7 +13,7 @@ import { lazy, useEffect } from 'react'
 import { AuthContextProvider } from 'context/AuthContext'
 import { Toaster } from 'react-hot-toast'
 import '../styles/custom.css'
-import ChatLayout from 'components/layout/chatLayout';
+import ChatLayout from 'components/layout/ChatLayout';
 
 export interface SharedPageProps {
   draftMode: boolean
