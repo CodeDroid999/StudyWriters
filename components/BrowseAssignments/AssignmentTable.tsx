@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import AssignmentCount from './AssignmentCount';
 
 const assignmentsData = [
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
-  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/11/2023", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
+  { id: 1, summary: "450 min for the assignment. There is part two for the two responses.", price: "$45.00", dueDate: "15/01/2024", bids: 41 },
   // ... other assignment objects
 ];
 
@@ -43,17 +43,17 @@ const AssignmentTable = () => {
           <tbody className="pt-2 pb-2">
             {currentRows.map((row, index) => (
               <tr key={row.id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
-              <td className="pl-2 pt-1 pb-1">{row.summary}</td>
-              <td className="text-center">{row.price}</td>
-              <td className="text-center">{row.dueDate}</td>
-              <td className="text-center">{row.bids}</td>
+                <td className="pl-2 pt-1 pb-1">{row.summary}</td>
+                <td className="text-center">{row.price}</td>
+                <td className="text-center">{row.dueDate}</td>
+                <td className="text-center">{row.bids}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="flex w-full flex-col justify-center">
           <div className="assignment-counter text-blue-900">
-          <AssignmentCount assignments={filteredData} />
+            <AssignmentCount assignments={filteredData} />
           </div>
           <div className="pagination space-x-2 flex justify-center">
             {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, index) => (
