@@ -32,7 +32,7 @@ const StatsCounter = () => {
           </div>
           <div className="rounded text-center p-2 shadow">
             <h2 className="text-3xl font-bold rounded-xl shadow-inner p-1">
-              <CountUp end={9.37} duration={2} decimals={2} start={startAnimation ? null : undefined} /> <span className="text-green-500 text-5xl ">+</span>
+              <CountUp end={99.37} duration={2} decimals={2} start={startAnimation ? null : undefined} /> <span className="text-green-500 text-5xl ">%</span>
             </h2>
             <p className="text-xl font-bold pt-2 pb-2 text-green-950">Current Quality Score</p>
           </div>
