@@ -90,7 +90,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
 
 
     return (
-        <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div className="isolate bg-gray-200 px-6 py-24 sm:py-32 lg:px-8">
             <div
                 className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
                 aria-hidden="true"
@@ -126,7 +126,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 autoComplete="given-name"
                                 value={formData.firstName}
                                 onChange={handleChange}
-                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${!firstNameValid ? 'border-red-500' : ''
+                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 ${!firstNameValid ? 'border-red-500' : ''
                                     }`}
                             />
                         </div>
@@ -143,7 +143,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 autoComplete="family-name"
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${!lastNameValid ? 'border-red-500' : ''
+                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 ${!lastNameValid ? 'border-red-500' : ''
                                     }`}
                             />
                         </div>
@@ -161,7 +161,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 autoComplete="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${!emailValid ? 'border-red-500' : ''
+                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 ${!emailValid ? 'border-red-500' : ''
                                     }`}
                             />
                         </div>
@@ -179,7 +179,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 autoComplete="tel"
                                 value={formData.phoneNumber}
                                 onChange={handleChange}
-                                className={`block w-full leading-8 rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${!phoneNumberValid ? 'border-red-500' : ''
+                                className={`block w-full leading-8 rounded-md border-0 px-3.5 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 ${!phoneNumberValid ? 'border-red-500' : ''
                                     }`}
                             />
                         </div>
@@ -196,7 +196,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
-                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${!firstNameValid ? 'border-red-500' : ''
+                                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 ${!firstNameValid ? 'border-red-500' : ''
                                     }`}
                             />
 
@@ -208,8 +208,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                                 checked={agreed}
                                 onChange={setAgreed}
                                 className={classNames(
-                                    agreed ? 'bg-indigo-600' : 'bg-gray-200',
-                                    'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                    agreed ? 'bg-green-600' : 'bg-red-700',
+                                    'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
                                 )}
                             >
                                 <span className="sr-only">Agree to policies</span>
@@ -224,7 +224,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                         </div>
                         <Switch.Label className="text-sm leading-6 text-gray-600">
                             By selecting this, you agree to our{' '}
-                            <Link href="#" className="font-semibold text-indigo-600">
+                            <Link href="#" className="font-semibold text-green-600">
                                 privacy&nbsp;policy
                             </Link>
                             .
@@ -235,7 +235,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                     <button
                         type="submit"
                         onClick={handleSubmit}
-                        className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="block w-full rounded-md bg-green-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                     >
                         send message
                     </button>
