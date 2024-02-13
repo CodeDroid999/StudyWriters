@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -5,8 +6,11 @@ const AdminSideNav = () => {
   return (
     <div className="w-100">
       <div className="p-2 bg-blue-100 flex font-bold items-center w-full border border-green-700">
-        <Link href="/admin/dashboard" className="bg-blue-100 text-blue-800 text-right whitespace-nowrap font-bold">
+        <Link href="/admin/dashboard" className="md:inline hidden bg-blue-100 text-blue-800 text-right whitespace-nowrap font-bold">
           Dashboard
+        </Link>
+        <Link href="/admin/dashboard" className="md:hidden inline bg-blue-100 text-blue-800 text-right whitespace-nowrap font-bold">
+          <Image src="https://i.postimg.cc/CxCVTyGc/dashboard-icon.png" width="70" height="70" alt="Das Icon"></Image>
         </Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">

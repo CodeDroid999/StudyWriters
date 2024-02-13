@@ -4,7 +4,7 @@ import ManageAdminsCard from 'components/AdminDasboard/ManageAdminsCard';
 import UsersStatsCard from 'components/AdminDasboard/UsersStatsCard';
 import Navbar from 'components/AdminLayout/Navbar';
 import AdminSideNav from 'components/AdminLayout/SideNav';
-import Footer from 'components/unAuthed/Footer';
+import Footer from 'components/layout/Footer';
 import { UserAuth } from 'context/AuthContext';
 import AdminAccess from 'hooks/AdminHook';
 import Head from 'next/head';
@@ -74,13 +74,13 @@ const AdminDashboard: React.FC = () => {
             <Navbar />
             <div className="row flex pt-12 mt-8">
                 <div className="container flex">
-                    <div className="col-md-2 mx-auto ">
+                    <div className="md:col-md-2">
                         <AdminSideNav />
                     </div>
                     <div className="col-md-10 mx-auto h-full pl-2 shadow-inner">
                         <div className="row min-w-100 ">
                             <div className="row w-full mx-auto">
-                                <div className="col-md-6 p-2">
+                                <div className="md:col-md-6 p-2">
                                     <ApplicationsStatsCard />
 
                                 </div>
@@ -89,7 +89,7 @@ const AdminDashboard: React.FC = () => {
                                 </div>
                             </div>
                             <div className="row w-full mx-auto">
-                                <div className="col-md-6 p-2">
+                                <div className="md:col-md-6 p-2">
                                     <UsersStatsCard />
                                 </div>
                                 <div className="col-md-6 p-2">
