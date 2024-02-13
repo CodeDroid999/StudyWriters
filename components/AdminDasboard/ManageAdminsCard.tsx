@@ -60,10 +60,9 @@ const ManageAdminsCard = () => {
     return (
 
         <div className="bg-white p-4 shadow rounded-md">
-            <h2 className="text-2xl font-semibold mb-4">Site Admins</h2>
-            <div className="grid grid-cols-5 gap-4">
+            <h2 className="md:text-2xl font-semibold mb-4">Site Admins</h2>
+            <div className="grid md:grid-cols-5 gap-4">
                 <div className="border-2 border-gray-300">
-
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.admins}</p>
                     <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>

@@ -51,15 +51,12 @@ const ApplicationsStatsCard = () => {
 
     return (
         <div className="bg-white p-4 shadow rounded-md mb-3 mt-20">
-            <h2 className="text-2xl font-semibold mb-4">Applications</h2>
-            <div className="grid md:grid-cols-5 gap-4 grid-rows-5">
-
-
+            <h2 className="md:text-2xl font-semibold mb-4">Applications</h2>
+            <div className="grid md:grid-cols-5 gap-4">
                 <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.pending}</p>
                     <p className="text-center text-blue-900 font-bold border">Pending</p>
                 </div>
-
                 <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.verification}</p>
                     <p className="text-center text-blue-800 font-bold whitespace-nowrap">Verification</p>
@@ -77,6 +74,7 @@ const ApplicationsStatsCard = () => {
                     <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>
             </div>
+
             <div className="divide border-2 w-full mt-2 mb-2"></div>
             <Link href="/admin/manage-applications" className="flex align-items-right w-100">
                 <span className="rounded bg-green-900 hover:bg-green-800 px-1 text-white">Manage</span>
