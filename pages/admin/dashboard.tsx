@@ -73,9 +73,7 @@ const AdminDashboard: React.FC = () => {
             </Head>
             <Navbar />
             <div className="container flex">
-                <div className="col-md-2 min-h-screen">
-                    <AdminSideNav />
-                </div>
+                <AdminSideNav />
                 <div className="col-md-10 mx-auto max-h-screen overflow-y-auto pl-2 shadow-inner">
                     <div className="row min-w-100 ">
                         <div className="row w-full mx-auto">

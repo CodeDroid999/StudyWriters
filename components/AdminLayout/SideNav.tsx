@@ -4,14 +4,14 @@ import React from 'react';
 
 const AdminSideNav = () => {
   return (
-    <div className="w-100">
+    <div className="w-100 mt-20">
       <div className="p-2 bg-blue-100 flex font-bold items-center w-full border border-green-700">
         <Link href="/admin/dashboard" className="bg-blue-100 text-blue-800 text-right whitespace-nowrap font-bold">
           Dashboard
         </Link>
       </div>
       <div className="p-2 flex font-bold items-center w-full border border-green-700">
-        <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap sm:text-xs">
+        <Link href="/admin/manage-applications" className="text-blue-800 text-right whitespace-nowrap">
           Applications
         </Link>
       </div>
