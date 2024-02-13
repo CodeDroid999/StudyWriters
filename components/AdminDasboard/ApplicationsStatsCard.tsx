@@ -55,24 +55,24 @@ const ApplicationsStatsCard = () => {
             <div className="grid grid-cols-5 gap-4">
 
 
-                <div>
+                <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.pending}</p>
                     <p className="text-center text-blue-900 font-bold border">Pending</p>
                 </div>
 
-                <div>
+                <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.verification}</p>
-                    <p className="text-blue-800 font-bold whitespace-nowrap">Verification</p>
+                    <p className="text-center text-blue-800 font-bold whitespace-nowrap">Verification</p>
                 </div>
-                <div>
+                <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.accepted}</p>
                     <p className="text-center text-blue-900 font-bold border">Accepted</p>
                 </div>
-                <div>
+                <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.rejected}</p>
                     <p className="text-center text-blue-900 font-bold border">Rejected</p>
                 </div>
-                <div className="border">
+                <div className="border-2 border-gray-300">
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{applicationStats.totalApplications}</p>
                     <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>

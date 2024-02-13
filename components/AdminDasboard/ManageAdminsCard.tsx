@@ -62,21 +62,25 @@ const ManageAdminsCard = () => {
         <div className="bg-white p-4 shadow rounded-md">
             <h2 className="text-2xl font-semibold mb-4">Site Admins</h2>
             <div className="grid grid-cols-5 gap-4">
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.admins}</p>
                     <p className="text-center text-blue-900 font-bold border">Total</p>
                 </div>
 
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.activeAdmins}</p>
                     <p className="text-center text-blue-900 font-bold border">Active </p>
                 </div>
 
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.inActiveAdmins}</p>
                     <p className="text-center text-blue-900 font-bold border">Inactive</p>
                 </div>
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{userStats.suspendedAdmins}</p>
                     <p className="text-center text-blue-900 font-bold border">Suspended</p>
                 </div>

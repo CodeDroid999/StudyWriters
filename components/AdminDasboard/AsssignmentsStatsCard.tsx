@@ -50,25 +50,30 @@ const AssignmentsStatsCard = () => {
         <div className="bg-white p-4 shadow rounded-md mb-3">
             <h2 className="text-2xl font-semibold mb-4">Assignments</h2>
             <div className="grid grid-cols-5 gap-4">
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.biddingOpen}</p>
                     <p className="text-center text-blue-900 font-bold border">Bidding</p>
                 </div>
 
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.assignedAssignments}</p>
                     <p className="text-center text-blue-900 font-bold border">Assigned </p>
                 </div>
 
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.completedAssignments}</p>
                     <p className="text-center text-blue-900 font-bold border">Completed </p>
                 </div>
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.cancelledAssignments}</p>
                     <p className="text-center text-blue-900 font-bold border">Cancelled </p>
                 </div>
-                <div>
+                <div className="border-2 border-gray-300">
+
                     <p className="text-center text-green-800 font-bold mb-1 whitespace-nowrap shadow-inner rounded">{stats.totalAssignments}</p>
                     <p className="text-center text-blue-900 font-bold border">Total </p>
                 </div>
