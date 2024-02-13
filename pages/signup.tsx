@@ -62,7 +62,6 @@ export default function Signup() {
       });
       // Add additional fields or data as needed
       console.log('User object updated successfully:', userRef.id);
-      router.push(`/setup-profile`)
     } catch (error) {
       console.error('Error updating user object:', error);
       // Handle error, show toast, or log it as needed
