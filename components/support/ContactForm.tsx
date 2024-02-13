@@ -1,7 +1,7 @@
 import { Switch } from '@headlessui/react'
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import router, { useRouter } from 'next/router'; 
+import router, { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
@@ -36,13 +36,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
     useEffect(() => {
         // Store the previous page URL in a cookie
         if (typeof window !== 'undefined') {
-          setPreviousPageURL(Cookies.get('previousPageURL'));
-          Cookies.set('previousPageURL', window.location.href, { expires: 7 }); // Store the current page URL
+            setPreviousPageURL(Cookies.get('previousPageURL'));
+            Cookies.set('previousPageURL', window.location.href, { expires: 7 }); // Store the current page URL
         }
-      }, []); // <-- Make sure to pass an empty dependency array
-    
-      // ...
-    
+    }, []); // <-- Make sure to pass an empty dependency array
+
+    // ...
+
 
     // Add state variables for field validation
     const [firstNameValid, setFirstNameValid] = useState(true);
@@ -96,7 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                 aria-hidden="true"
             >
                 <div
-                    className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+                    className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#50f52f] to-[#028217] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
                     style={{
                         clipPath:
                             'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
@@ -105,7 +105,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
             </div>
             <div className="mx-auto max-w-2xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Get in touch</h2>
-                <p className="mt-2 text-lg text-left   text-gray-600">
+                <p className="mt-2 text-lg text-left   text-gray-600 hidden md:inline">
                     We value your feedback, inquiries, and messages. Whether you have questions about our services,
                     want to report an issue, or simply wish to say hello, we are here to listen and assist. Please feel
                     free to reach out to us using the form below, and we will get back to you as soon as possible. Your input
@@ -171,19 +171,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                             Phone number
                         </label>
                         <div className="relative mt-2.5">
-                            <div className="absolute inset-y-0 left-0 flex items-center">
-                                <label htmlFor="country" className="sr-only">
-                                    Country
-                                </label>
-                                <select
-                                    id="country"
-                                    name="country"
-                                    className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-2 pr-4 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                                >
-                                    <option>AUS</option>
-                                </select>
 
-                            </div>
                             <input
                                 type="tel"
                                 name="phoneNumber"

@@ -17,7 +17,7 @@ const Contact = () => {
   };
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>
           QualityunitedWriters | Get More Done | Post any assignment. Pick the best person. Get it done. | Post your assignment for free Earn money as a tutor
@@ -42,10 +42,8 @@ const Contact = () => {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
 
-      <div className="container mx-auto flex justify-center items-center ">
-        <ContactForm onSubmit={handleFormSubmit} />
-      </div>
-    </Layout>
+      <ContactForm onSubmit={handleFormSubmit} />
+    </>
   );
 };
 
