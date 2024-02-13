@@ -3,6 +3,8 @@ import ContactForm from 'components/support/ContactForm';
 import React from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
 import Head from 'next/head';
+import CustomNavbar from 'components/unAuthed/Navbar';
+import LightCustomNavbar from 'components/layout/LightNav';
 
 const Contact = () => {
   const handleFormSubmit = async (formData) => {
@@ -41,6 +43,7 @@ const Contact = () => {
 
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
+      <LightCustomNavbar />
 
       <ContactForm onSubmit={handleFormSubmit} />
     </>
