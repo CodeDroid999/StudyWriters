@@ -72,35 +72,21 @@ const AdminDashboard: React.FC = () => {
                 <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
             </Head>
             <Navbar />
-            <div className="row flex pt-12 mt-8">
-                <div className="container flex">
-                    <div className="md:col-md-2">
-                        <AdminSideNav />
-                    </div>
-                    <div className="col-md-10 mx-auto h-full pl-2 shadow-inner">
-                        <div className="row min-w-100 ">
-                            <div className="row w-full mx-auto">
-                                <div className="md:col-md-6 p-2">
-                                    <ApplicationsStatsCard />
-
-                                </div>
-                                <div className="col-md-6 p-2">
-                                    <AssignmentsStatsCard />
-                                </div>
-                            </div>
-                            <div className="row w-full mx-auto">
-                                <div className="md:col-md-6 p-2">
-                                    <UsersStatsCard />
-                                </div>
-                                <div className="col-md-6 p-2">
-                                    <ManageAdminsCard />
-                                </div>
-                            </div>
+            <div className="container flex">
+                <div className="col-md-2 min-h-screen">
+                    <AdminSideNav />
+                </div>
+                <div className="col-md-10 mx-auto max-h-screen overflow-y-auto pl-2 shadow-inner">
+                    <div className="row min-w-100 ">
+                        <div className="row w-full mx-auto">
+                            <ApplicationsStatsCard />
+                            <AssignmentsStatsCard />
+                            <UsersStatsCard />
+                            <ManageAdminsCard />
                         </div>
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 

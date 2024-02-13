@@ -52,7 +52,7 @@ const UsersStatsCard = () => {
 
     return (
 
-        <div className="bg-white p-4 shadow rounded-md">
+        <div className="bg-white p-4 shadow rounded-md mb-4">
             <h2 className="text-2xl font-semibold mb-4">Accounts</h2>
             <div className="grid grid-cols-5 gap-4">
                 <div>
