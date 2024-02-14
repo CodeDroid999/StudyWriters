@@ -75,7 +75,7 @@ const BidAssignments: React.FC = (props: any) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
