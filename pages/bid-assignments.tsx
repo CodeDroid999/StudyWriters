@@ -28,80 +28,54 @@ const BidAssignments: React.FC = (props: any) => {
   return (
     <div className="max-w-screen">
       <Navbar />
-      <div className="mt-20 flex flex-col mx-auto justify-center">
-        <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
-        <div className="md:hidden flex flex-col mx-auto justify-center align-center">
-          <div className="flex justify-center align-middle pt-2 pb-2 bg-gray-100">
-            <div className="text-center">Assigments</div>
+      <div className="mt-20 h-screen overflow-hidden">
+        <div className="border border-green-800 rounded-xl pb-3 h-80">
+          <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
+          <div className="flex flex-col flex-grow w-full bg-white p-2 overflow-auto">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="">Title</th>
+                  <th className="text-center">Due Date</th>
+                  <th className="text-center">Bidding</th>
+                  <th className="text-center">Price</th>
+                  <th className="text-center">Bids</th>
+                </tr>
+              </thead>
+              <tbody className="pt-2 pb-2">
+                {assignments.map((assignment, index) => (
+                  <tr
+                    key={assignment.id}
+                    className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
+                    onClick={() => handleNavigation(assignment.id)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <td className="pl-2 pt-1">{assignment.title}</td>
+                    <td className="text-center">{assignment.dueDate}</td>
+                    <td className="text-center">{assignment.status}</td>
+                    <td className="text-center">{assignment.budget}</td>
+                    <td className="text-center">{assignment.offers.length}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="mt-2">
-            {assignments.map((assignment, index) => (
-              <div
-                key={assignment.id}
-                className={index % 2 === 0 ? 'bg-blue-100 grid mb-2 shadow mx-3 rounded' : 'bg-white grid mb-2 shadow mx-3 rounded'}
-                onClick={() => handleNavigation(assignment.id)}
-                style={{ cursor: 'pointer' }}
+          {/* Pagination */}
+          <div className="flex justify-center mt-4">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
+                  }`}
+                onClick={() => router.push(`/bid-assignments/?page=${index + 1}`)}
               >
-                <div className="row justify-around pt-2">
-                  <div className="pl-2 pt-1 col-5 text-md border-1 border-blue-700">{assignment.title}</div>
-                  <div className="col-4 flex flex-col">
-                    <div className="text-green-950 ">Bidding: {assignment.status}</div>
-                    <div className="text-green-950">Due: {assignment.dueDate}</div>
-                  </div>
-                </div>
-                <div className="row justify-around pb-2 pt-1 border">
-                  <div className="text-green-950 col-5">Budget: {assignment.budget}</div>
-                  <div className="text-green-950 col-4">Bids: {assignment.offers.length}</div>
-                </div>
-              </div>
+                {index + 1}
+              </button>
             ))}
           </div>
-        </div >
-
-        <div className="md:flex hidden flex-col flex-grow w-full bg-white p-2 overflow-auto">
-          <table className="w-full">
-            <thead>
-              <tr>
-                <th className="">Title</th>
-                <th className="text-center">Due Date</th>
-                <th className="text-center">Bidding</th>
-                <th className="text-center">Price</th>
-                <th className="text-center">Bids</th>
-              </tr>
-            </thead>
-            <tbody className="pt-2 pb-2">
-              {assignments.map((assignment, index) => (
-                <tr
-                  key={assignment.id}
-                  className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
-                  onClick={() => handleNavigation(assignment.id)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <td className="pl-2 pt-1">{assignment.title}</td>
-                  <td className="text-center">{assignment.dueDate}</td>
-                  <td className="text-center">{assignment.status}</td>
-                  <td className="text-center">{assignment.budget}</td>
-                  <td className="text-center">{assignment.offers.length}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
-        {/* Pagination */}
-        <div className="flex justify-center mt-4">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
-                }`}
-              onClick={() => router.push(`/bid-assignments/?page=${index + 1}`)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-      </div >
-    </div >
+      </div>
+    </>
   );
 };
 
