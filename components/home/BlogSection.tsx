@@ -35,7 +35,7 @@ export default function BlogSection(posts: BlogPageProps) {
           {blogPosts.slice(0, 3).map((post) => (
             <div
               key={post._id}
-              className="flex flex-col rounded-xl border bg-white shadow-sm"
+              className="flex flex-col rounded-xl border-1bg-white shadow-sm"
             >
               <Link href={`/blog/posts/${post.slug}`}>
                 <Image

@@ -187,8 +187,8 @@ export default function ManageAccount() {
                             </div>
                             <div className="container flex justify-center mt-2">
                                 <div className="grid grid-cols-4 w-[1200px] gap-1">
-                                    <div className="border shadow rounded py-1 px-1 text-center">Type: {userRole}</div>
-                                    <div className="border shadow rounded py-1 px-1 text-center">Status: {user?.accountStatus}</div>
+                                    <div className="border-1shadow rounded py-1 px-1 text-center">Type: {userRole}</div>
+                                    <div className="border-1shadow rounded py-1 px-1 text-center">Status: {user?.accountStatus}</div>
                                 </div>
                             </div>
                         </div>

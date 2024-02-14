@@ -170,7 +170,7 @@ export default function ChatRoom() {
 
   return (
     <div className="mx-auto  max-w-[800px] px-2">
-      
+
       <div className="fixed left-0 right-0 top-0  z-10 bg-white px-2 py-3 duration-300 ease-in">
         <div className="mx-auto  max-w-[800px] ">
           <div
@@ -193,11 +193,10 @@ export default function ChatRoom() {
           {messages.map((message: any) => (
             <div key={message.messageId} className="my-3 w-full">
               <div
-                className={`flex items-start ${
-                  message.senderId === user?.userId
+                className={`flex items-start ${message.senderId === user?.userId
                     ? 'flex-row-reverse'
                     : 'flex-row'
-                }`}
+                  }`}
               >
                 <div className="">
                   <Image
@@ -209,11 +208,10 @@ export default function ChatRoom() {
                   />
                 </div>
                 <div
-                  className={`min-h-[60px] flex-1 rounded-md p-2 ${
-                    message.senderId === user?.userId
+                  className={`min-h-[60px] flex-1 rounded-md p-2 ${message.senderId === user?.userId
                       ? 'ml-6 mr-2 bg-green-950 text-gray-100 md:ml-14'
                       : 'ml-2 mr-6 bg-gray-100 text-gray-800 md:mr-14'
-                  }`}
+                    }`}
                 >
                   <div className="flex flex-row justify-between text-xs">
                     <span>{message.senderDetails.firstName}</span>
@@ -277,7 +275,7 @@ export default function ChatRoom() {
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 z-10 bg-white px-2 duration-300 ease-in">
-        <form className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border border-gray-400 ">
+        <form className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1border-gray-400 ">
           <input
             placeholder="Message"
             value={newMessage}

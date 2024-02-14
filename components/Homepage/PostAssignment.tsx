@@ -159,7 +159,7 @@ export default function PostAssignment() {
                 type="text"
                 placeholder="e.g. Dissertation writing for Engineering Paper"
                 onChange={(e) => setTitle(e.target.value)}
-                className="border rounded p-1"
+                className="border-1rounded p-1"
               />
               {titleError && (
                 <span className="text-red-500">{titleError}</span>
@@ -179,7 +179,7 @@ export default function PostAssignment() {
                 placeholder="Enter date"
                 min={currentDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="border rounded p-1 sm:w-full"
+                className="border-1rounded p-1 sm:w-full"
               />
               {dueDateError && (
                 <span className="text-red-500">{dueDateError}</span>
@@ -195,7 +195,7 @@ export default function PostAssignment() {
               <input
                 placeholder="$ Enter budget"
                 onChange={(e) => setBudget(e.target.value)}
-                className="border rounded p-1"
+                className="border-1rounded p-1"
               />
               {budgetError && (
                 <span className="text-red-500">{budgetError}</span>

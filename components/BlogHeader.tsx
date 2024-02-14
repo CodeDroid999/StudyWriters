@@ -3,7 +3,7 @@ import { MdArrowForward } from 'react-icons/md'
 
 export default function BlogHeader() {
   return (
-    <header className="mb-10 flex flex-row items-center justify-between border  border-x-transparent border-b-gray-200 border-t-transparent bg-white py-2 duration-300 ease-in">
+    <header className="mb-10 flex flex-row items-center justify-between border-1 border-x-transparent border-b-gray-200 border-t-transparent bg-white py-2 duration-300 ease-in">
       <h1 className="text-5xl font-bold ">
         <Link href="/blog">Blog</Link>
       </h1>

@@ -105,7 +105,7 @@ export default function Step2({ handleNextStep, handlePreviousStep }: Props) {
             <textarea
               placeholder="Write a summary of the key details"
               onChange={(e) => setDescription(e.target.value)}
-              className={`h-32 w-full rounded-lg border bg-gray-50 p-2
+              className={`h-32 w-full rounded-lg border-1bg-gray-50 p-2
               font-medium outline-none focus:border-blue-500`}
             />
             {descriptionError && (

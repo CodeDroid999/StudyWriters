@@ -145,7 +145,7 @@ function LightCustomNavbar() {
   }
 
   return (
-    <div className="fixed left-0 top-0 z-20 w-full  border border-x-transparent bg-gray-100 duration-300 ease-in">
+    <div className="fixed left-0 top-0 z-20 w-full  border-1border-x-transparent bg-gray-100 duration-300 ease-in">
       <div className="m-auto flex  items-center justify-between p-2 lg:p-3">
         {/**Mobile Nav */}
         <div className=" flex items-center justify-between  lg:hidden w-100">

@@ -24,7 +24,7 @@ const HoverDropdown: React.FC<DropdownProps> = ({ trigger, content }) => {
     >
       {trigger}
       {isOpen && (
-        <div className="absolute right-0 top-10 rounded border bg-white p-4 shadow-lg">
+        <div className="absolute right-0 top-10 rounded border-1bg-white p-4 shadow-lg">
           {content}
         </div>
       )}

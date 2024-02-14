@@ -53,7 +53,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 grid grid-cols-2 rounded-lg border bg-white shadow-lg">
+        <div className="absolute right-0 top-full mt-2 grid grid-cols-2 rounded-lg border-1bg-white shadow-lg">
           <div>
             {firstColumnOptions.map((option) => (
               <label

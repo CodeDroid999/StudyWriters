@@ -254,7 +254,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
               type="date"
               placeholder="Enter date of birth"
               onChange={(e) => setDate(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+              className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
             />
             {dateError && <span className="text-red-500">{dateError}</span>}
@@ -282,7 +282,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
               type="text"
               placeholder="e.g 0412345678"
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+              className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
             />
             {phoneNumberError && (
@@ -312,7 +312,7 @@ export default function ConfirmProfile({ closePopup, goToForms }) {
               type="text"
               placeholder="e.g 1/23 John St"
               onChange={(e) => setBillingAddress(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+              className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
             />
             {billingAddressError && (

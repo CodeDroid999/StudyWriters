@@ -81,7 +81,7 @@ export default function PostAssignment() {
                         </div>
                     </div>
                     <div className="flex space-x-2">
-                        <div className="px-2 py-1 border border-gray-900 rounded-md shadow-md">
+                        <div className="px-2 py-1 border-1border-gray-900 rounded-md shadow-md">
                             <Link href={'/setup-profile'}>        Switch to Student Mode</Link>
                         </div>
                         <div className="cursor-pointer " onClick={handleExit}>

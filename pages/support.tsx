@@ -107,10 +107,10 @@ export default function SupportPage() {
         </div>
 
         {/* Message input and send button */}
-        <div className="fixed shadow bottom-0 left-0 right-0 z-10 bg-gray-300 px-2 border border-black duration-300 ease-in">
+        <div className="fixed shadow bottom-0 left-0 right-0 z-10 bg-gray-300 px-2 border-1border-black duration-300 ease-in">
           <form
             onSubmit={handleFormSubmit} // Use the custom handler
-            className="relative mx-auto mb-6 mt-7 bg-gray-500 flex w-full max-w-[800px] flex-row items-center rounded-xl border border-green-900"
+            className="relative mx-auto mb-6 mt-7 bg-gray-500 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1border-green-900"
           >
             <input
               placeholder="Message"

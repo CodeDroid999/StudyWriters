@@ -223,7 +223,7 @@ export default function MakeOffer({
                   placeholder="e.g. I will be great for this assignment. I have the necessary experience,skills and equipment required to get this done."
                   value={newProposal}
                   onChange={(e) => setNewProposal(e.target.value)}
-                  className="h-40 w-full rounded-lg border bg-gray-50 p-2 text-sm font-medium
+                  className="h-40 w-full rounded-lg border-1bg-gray-50 p-2 text-sm font-medium
                   text-gray-800 outline-none focus:border-blue-500"
                 />
                 <p className="mt-1 text-xs font-medium text-gray-800">
@@ -271,7 +271,7 @@ export default function MakeOffer({
                     * QualityunitedWriters automatically includes a Service Fee to cover
                     insurance and transaction costs.
                   </p>
-                  <div className="mt-4 max-w-[280px] rounded-xl border border-gray-400 px-3 py-2">
+                  <div className="mt-4 max-w-[280px] rounded-xl border-1border-gray-400 px-3 py-2">
                     <div className="flex flex-row items-center">
                       <div className="flex flex-col items-center justify-center rounded-full bg-blue-100 p-3">
                         <BiLock className="text-blue-800" size={22} />

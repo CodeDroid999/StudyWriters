@@ -7,7 +7,7 @@ import Link from 'next/link'
 const ReviewCard = ({ review }) => {
   const reviewer = review.reviewer
   return (
-    <div className="mb-4 rounded-lg border bg-white p-4">
+    <div className="mb-4 rounded-lg border-1bg-white p-4">
       <div className="item-left flex  flex-grow justify-start">
         <div className="align-center flex justify-center">
           <Link href={`/public-profile/${reviewer.userId}`}>

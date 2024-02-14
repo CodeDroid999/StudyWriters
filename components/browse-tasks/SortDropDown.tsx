@@ -42,7 +42,7 @@ const SortDropdown: React.FC<DropdownProps> = ({ options }) => {
       </button>
       {isOpen && (
         <ul
-          className="absolute right-0 top-full mt-2 rounded-lg border bg-white shadow-lg"
+          className="absolute right-0 top-full mt-2 rounded-lg border-1bg-white shadow-lg"
           style={{ minWidth: '300%', maxWidth: '300%', width: 'auto' }}
         >
           {options.map((option) => (

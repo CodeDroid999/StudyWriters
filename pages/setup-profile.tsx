@@ -137,7 +137,7 @@ export default function CompleteAccount() {
                 type="text"
                 placeholder="e.g John"
                 onChange={(e) => setfirstName(e.target.value)}
-                className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+                className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
               />
               {firstNameError && (
@@ -155,7 +155,7 @@ export default function CompleteAccount() {
                 type="text"
                 placeholder="e.g Doe"
                 onChange={(e) => setLastName(e.target.value)}
-                className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+                className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
               />
               {lastNameError && (

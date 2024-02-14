@@ -62,7 +62,7 @@ export default function Step1({ handleNextStep }: Props) {
               type="text"
               placeholder="e.g.Help with my accounting paper:college level "
               onChange={(e) => setTitle(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+              className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
             />
             {titleError && <span className="text-red-500">{titleError}</span>}
@@ -79,7 +79,7 @@ export default function Step1({ handleNextStep }: Props) {
               placeholder="Enter date"
               min={currentDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 px-2 py-4
+              className={`h-full w-full rounded-lg border-1bg-gray-50 px-2 py-4
                   font-medium outline-none focus:border-blue-500`}
             />
             {dueDateError && <span className="text-red-500">{dueDateError}</span>}

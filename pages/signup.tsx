@@ -197,7 +197,7 @@ export default function Signup() {
       <div className="flex justify-center align-center pt-1 pb-2">
         <button
           type="button"
-          className="flex w-100 flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-900 hover:text-white"
+          className="flex w-100 flex-row items-center justify-center rounded-2xl border-1border-gray-400 bg-gray-100 px-8 py-2 text-lg font-medium text-green-950 hover:bg-green-900 hover:text-white"
           onClick={handleGoogleSignIn}
         >
           <FcGoogle className="mr-2" size={20} />
@@ -221,7 +221,7 @@ export default function Signup() {
             name="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className={`h-full w-full rounded-lg border bg-gray-50 p-2
+            className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   outline-none focus:border-blue-500`}
           />
           {emailError && <span className="text-red-500">{emailError}</span>}
@@ -239,7 +239,7 @@ export default function Signup() {
               placeholder="Password"
               type={passwordVisible ? 'text' : 'password'}
               onChange={(e) => setPassword(e.target.value)}
-              className="h-full w-full rounded-lg border bg-gray-50 p-2
+              className="h-full w-full rounded-lg border-1bg-gray-50 p-2
                   outline-none focus:border-blue-500 "
             />
             <button

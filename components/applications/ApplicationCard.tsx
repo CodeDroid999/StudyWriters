@@ -19,13 +19,13 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                             First Name
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.firstName}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.firstName}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastName" className="mb-2 text-sm font-medium text-gray-700">
                             Last Name
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastName}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.lastName}</p>
                     </div>
                 </div>
                 <div className="row">
@@ -33,7 +33,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                             Nationality
                         </label>
-                        <p className="mb-2 text-sm font-medium text-gray-700 p-1 border border-gray-700">{applicationData.country}</p>
+                        <p className="mb-2 text-sm font-medium text-gray-700 p-1 border-1border-gray-700">{applicationData.country}</p>
                     </div>
                     <div className="flex col-md-3 flex-col items-center justify-center">
                         <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
@@ -49,19 +49,19 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
                             Location
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
                             City
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
                             State
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
                     </div>
                 </div>
                 <div className="row">
@@ -69,7 +69,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                             How did you hear about us?
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
                     </div>
                 </div>
                 <p className="text-3xl font-bold text-blue-950">Education</p>
@@ -78,7 +78,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
                             Last school attended
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
                     </div>
                 </div>
                 <div className="row ">
@@ -86,7 +86,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                             Field of study?
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
                     </div>
                 </div>
                 <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
@@ -94,13 +94,13 @@ export default function ApplicationCard({ applicationData }) {
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">School teacher experience</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
+                            <p className="mr-2 rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
                         </div>
                     </div>
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">Professional affiliation academic institutions</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
+                            <p className="mr-2 rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
                         </div>
                     </div>
                 </div>
@@ -110,13 +110,13 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
                             Job Title
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
                     </div>
                     <div className="flex col-md-3 flex-col">
                         <label htmlFor="employer" className="mb-2 text-sm font-medium text-gray-700">
                             Employer/company
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="startDate" className="mb-2 text-sm font-medium text-gray-700">
@@ -124,11 +124,11 @@ export default function ApplicationCard({ applicationData }) {
                         </label>
                         <div className="row">
                             <div className="flex col-md-5 flex-col">
-                                <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
+                                <p className="py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
                             </div>
                             <div className="col-md-1 flex justify-center align-center items-center text-gray-400">to</div>
                             <div className="flex col-md-5 flex-col">
-                                <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
+                                <p className="py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
                             </div>
                         </div>
                     </div>
@@ -141,19 +141,19 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
                             Location
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.address}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
                             City
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.city}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastName" className="mb-2 text-sm font-medium text-white">
                             State
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.state}</p>
                     </div>
                 </div>
                 <div className="row">
@@ -161,7 +161,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                             How did you hear about us?
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
                     </div>
                 </div>
                 <p className="text-3xl font-bold text-blue-950">Education</p>
@@ -170,7 +170,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
                             Last school attended
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.lastSchoolName}</p>
                     </div>
                 </div>
                 <div className="row ">
@@ -178,7 +178,7 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                             Field of study?
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
                     </div>
                 </div>
                 <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
@@ -186,13 +186,13 @@ export default function ApplicationCard({ applicationData }) {
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">School teacher experience</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
+                            <p className="mr-2 rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.isSchoolTeacher}</p>
                         </div>
                     </div>
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">Professional affiliation academic institutions</div>
                         <div className="flex items-right space-x-4">
-                            <p className="mr-2 rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
+                            <p className="mr-2 rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.hasAffiliation}</p>
                         </div>
                     </div>
                 </div>
@@ -202,13 +202,13 @@ export default function ApplicationCard({ applicationData }) {
                         <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
                             Job Title
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.jobTitle}</p>
                     </div>
                     <div className="flex col-md-3 flex-col">
                         <label htmlFor="employer" className="mb-2 text-sm font-medium text-gray-700">
                             Employer/company
                         </label>
-                        <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
+                        <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.employer}</p>
                     </div>
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="startDate" className="mb-2 text-sm font-medium text-gray-700">
@@ -216,11 +216,11 @@ export default function ApplicationCard({ applicationData }) {
                         </label>
                         <div className="row">
                             <div className="flex col-md-5 flex-col">
-                                <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
+                                <p className="py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium">{applicationData.startDate}</p>
                             </div>
                             <div className="col-md-1 flex justify-center align-center items-center text-gray-400">to</div>
                             <div className="flex col-md-5 flex-col">
-                                <p className="py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
+                                <p className="py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium">{applicationData.endDate}</p>
                             </div>
                         </div>
                     </div>

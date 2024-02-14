@@ -250,7 +250,7 @@ export default function Footer() {
         </div>
 
       </div>
-      <div className="row md:justify-between justify-center  border border-white mt-4 px-2 py-2">
+      <div className="row md:justify-between justify-center  border-1border-white mt-4 px-2 py-2">
         <div className="col-md-6 flex md:justify-between justify-center">
           <p className="text-md text-gray-100 pt-2 text-right">
             © 2023 QualityUnitedWriters. All rights reserved.
@@ -258,7 +258,7 @@ export default function Footer() {
         </div>
         <div className="col-md-6 flex md:items-right justify-center space-x-4 md:space-x-2 md:pt-0 pt-2">
           <a
-            className="inline-flex text-sm h-10 w-10  border border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+            className="inline-flex text-sm h-10 w-10  border-1border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
             href="https://www.facebook.com/profile.php?id=100095462311480"
           >
             <svg
@@ -274,7 +274,7 @@ export default function Footer() {
           </a>
 
           <a
-            className="inline-flex text-sm h-10 w-10  border border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+            className="inline-flex text-sm h-10 w-10  border-1border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
             href="https://www.instagram.com/airtaska/?igshid=NGExMmI2YTkyZg%3D%3D"
           >
             <svg
@@ -293,7 +293,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            className="inline-flex text-sm h-10 w-10  border border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+            className="inline-flex text-sm h-10 w-10  border-1border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
             href="#"
           >
             <svg
@@ -308,7 +308,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            className="inline-flex text-sm h-10 w-10  border border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+            className="inline-flex text-sm h-10 w-10  border-1border-white items-center justify-center gap-x-3.5 rounded-md text-center text-gray-200 transition hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
             href="https://twitter.com/airtaska?t=Z3QCo7Yclx-wZeWSPjjOcQ&s=09"
           >
             <svg

@@ -116,7 +116,7 @@ export default function Step3({ handlePreviousStep }: Props) {
             <input
               placeholder="Enter budget"
               onChange={(e) => setBudget(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 py-4 pl-8
+              className={`h-full w-full rounded-lg border-1bg-gray-50 py-4 pl-8
           font-medium outline-none focus:border-blue-500`}
             />
           </div>

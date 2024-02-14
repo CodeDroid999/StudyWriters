@@ -43,7 +43,7 @@ const FiltersDropdown: React.FC<DropdownProps> = ({ options }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="w-40% absolute right-0 top-full mt-2 rounded-lg border bg-white shadow-lg">
+        <div className="w-40% absolute right-0 top-full mt-2 rounded-lg border-1bg-white shadow-lg">
           <div className="w-full whitespace-nowrap border-2">
             <div className="flex flex-col px-4 py-2">
               <div className="mb-4 text-left  text-neutral-500">Assignmentprice</div>

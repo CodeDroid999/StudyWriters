@@ -156,7 +156,7 @@ export default function LogIn() {
             name="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className={`h-full w-full rounded-lg border bg-gray-50 p-2
+            className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   outline-none focus:border-green-500`}
           />
           {emailError && <span className="text-red-500">{emailError}</span>}
@@ -175,7 +175,7 @@ export default function LogIn() {
               placeholder="Password"
               type={passwordVisible ? 'text' : 'password'}
               onChange={(e) => setPassword(e.target.value)}
-              className="h-full w-full rounded-lg border bg-gray-50 p-2
+              className="h-full w-full rounded-lg border-1bg-gray-50 p-2
                   outline-none focus:border-green-500 "
             />
             <button

@@ -74,7 +74,7 @@ export default function ForgotPassword() {
           </p>
         </div>
         <div className="align-center flex justify-center space-x-2">
-          <div className="border p-1">
+          <div className="border-1p-1">
             <input
               type="email"
               id="email"
@@ -82,7 +82,7 @@ export default function ForgotPassword() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`h-full w-full rounded-lg border bg-gray-50 p-2
+              className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   outline-none focus:border-green-500`}
             />
           </div>

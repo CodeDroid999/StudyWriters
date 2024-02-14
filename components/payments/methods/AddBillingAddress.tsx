@@ -47,7 +47,7 @@ export default function AddBillingAddress() {
           type="text"
           placeholder="e.g 1/23 John St"
           onChange={(e) => setBillingAddress(e.target.value)}
-          className={`h-full w-full rounded-lg border bg-gray-50 p-2
+          className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
         />
 

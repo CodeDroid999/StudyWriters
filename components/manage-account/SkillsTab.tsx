@@ -148,7 +148,7 @@ const SkillsAndEducation = ({ user }) => {
             value={newSkill}
             onChange={(e) => setNewSkill(e.target.value)}
             placeholder="Add skill"
-            className="rounded-lg border px-2 py-1 outline-blue-950"
+            className="rounded-lg border-1px-2 py-1 outline-blue-950"
           />
           <button
             onClick={() => addSkill(newSkill)}
@@ -183,7 +183,7 @@ const SkillsAndEducation = ({ user }) => {
             value={newEducation}
             onChange={(e) => setNewEducation(e.target.value)}
             placeholder="Enter education"
-            className="rounded-lg border px-2 py-1 outline-blue-950"
+            className="rounded-lg border-1px-2 py-1 outline-blue-950"
           />
           <button
             onClick={() => addEducation(newEducation)}

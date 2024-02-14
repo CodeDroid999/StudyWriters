@@ -126,7 +126,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className={`h-full w-full rounded-lg border bg-gray-50 p-2
+                    className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                    outline-none focus:border-green-500`}
                   />
                   {titleError && (
@@ -146,7 +146,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
                     min={currentDate}
                     value={dueDate}
                     onChange={(e) => setDueDate(e.target.value)}
-                    className={`h-full w-full rounded-lg border bg-gray-50 p-2
+                    className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                    outline-none focus:border-green-500`}
                   />
                   {dueDateError && (
@@ -164,7 +164,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
                     placeholder="Write a summary of the key details"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className={`h-32 w-full rounded-lg border bg-gray-50 p-2
+                    className={`h-32 w-full rounded-lg border-1bg-gray-50 p-2
                outline-none focus:border-green-500`}
                   />
                   {descriptionError && (
@@ -187,7 +187,7 @@ export default function UpdateTask({ assignmentId, assignmentData }) {
                       placeholder="Enter budget"
                       onChange={(e) => setBudget(e.target.value)}
                       value={budget}
-                      className={`h-full w-full rounded-lg border bg-gray-50 py-2 pl-8
+                      className={`h-full w-full rounded-lg border-1bg-gray-50 py-2 pl-8
            outline-none focus:border-green-500`}
                     />
                   </div>

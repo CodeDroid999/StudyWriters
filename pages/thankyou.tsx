@@ -57,7 +57,7 @@ const ThankYouPage = () => {
                 <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
             </Head>
             <div className="p-4 rounded ">
-                <h1 className="text-5xl text-center text-blue-900 font-bold border mt-8">Thank you!</h1>
+                <h1 className="text-5xl text-center text-blue-900 font-bold border-1mt-8">Thank you!</h1>
                 <p className="mt-4 text-3xl">Thank you for reaching out to us! Your message has been sent successfully.
                     We appreciate your communication and value your feedback. We look forward to assisting you further and continuing our interaction.
 

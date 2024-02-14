@@ -36,7 +36,7 @@ export default function ScrollCTA() {
 
             <div className="mt-5 flex flex-col items-center  gap-2 px-3 sm:flex-row sm:gap-3 lg:mt-8">
               <a
-                className="inline-flex w-full items-center justify-center gap-x-3 rounded-md border border-transparent bg-blue-600 px-3 px-4 py-3 text-center font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-x-3 rounded-md border-1border-transparent bg-blue-600 px-3 px-4 py-3 text-center font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 sm:w-auto"
                 href="#"
               >
                 Post your assignment
@@ -55,7 +55,7 @@ export default function ScrollCTA() {
             </div>
             <div className="mt-7 flex flex-col items-center  gap-2 px-3 sm:flex-row sm:gap-3 lg:mt-8">
               <a
-                className="hover:bg-blue-70 inline-flex w-full items-center justify-center gap-x-3 rounded-md border border-transparent  px-3 px-4 py-3  text-center font-medium text-black transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 sm:w-auto"
+                className="hover:bg-blue-70 inline-flex w-full items-center justify-center gap-x-3 rounded-md border-1border-transparent  px-3 px-4 py-3  text-center font-medium text-black transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 sm:w-auto"
                 href="#"
               >
                 Learn how QualityunitedWriters works

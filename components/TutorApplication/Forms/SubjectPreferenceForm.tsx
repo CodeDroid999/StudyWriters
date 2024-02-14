@@ -91,7 +91,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
                         <select
                             value={selectedRate}
                             onChange={(e) => setSelectedRate(e.target.value)}
-                            className="border rounded p-1"
+                            className="border-1rounded p-1"
                         >
                             {Array.from({ length: 15 }, (_, index) => (index + 1) * 10).map((rate) => (
                                 <option key={rate} value={`$${rate}`}>

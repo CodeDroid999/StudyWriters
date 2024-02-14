@@ -26,79 +26,82 @@ const BidAssignments: React.FC = (props: any) => {
 
 
   return (
-    <>
-      <Head>
-        <title>
-          QualityUnitedWriters - Your Academic Research and Project Partner
-        </title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="description"
-          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
-        />
-        <meta name="keywords" content="Academic writing services, Expert academic writers, Professional research assistance, High-quality research papers, Academic project support, Thesis and dissertation help, Essay writing service, Top-rated tutors, Academic success tips, Homework assistance, Online tutoring, Quality writing solutions, Best essay writers, Custom research papers, Academic support platform, Tutoring for students, Research paper editing, Writing and editing services, Academic guidance, Homework help for students" />
-        <meta name="author" content="QualityUnitedWriters" />
-        <meta name="robots" content="index, follow" />
-        <meta name="og:title" property="og:title" content="QualityUnitedWriters - Your Academic Research and Project Partner" />
-        <meta
-          name="og:description"
-          property="og:description"
-          content="Discover a dedicated platform for students and tutors offering expert assistance in a wide range of academic research and projects. Quality Unitted Writers connects you with quality solutions for your educational needs. Whether you're seeking help with essays, theses, or any academic work, our talented team is here to assist you."
-        />
-        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
-
-        <meta name="og:url" property="og:url" content="https://www.qualityunitedswriters.com" />
-      </Head>
+    <div className="max-w-screen">
       <Navbar />
-      <div className="mt-20 h-screen overflow-hidden">
-        <div className="border border-green-800 rounded-xl pb-3 h-80">
-          <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
-          <div className="flex flex-col flex-grow w-full bg-white p-2 overflow-auto">
-            <table className="w-full">
-              <thead>
-                <tr>
-                  <th className="">Title</th>
-                  <th className="text-center">Due Date</th>
-                  <th className="text-center">Bidding</th>
-                  <th className="text-center">Price</th>
-                  <th className="text-center">Bids</th>
-                </tr>
-              </thead>
-              <tbody className="pt-2 pb-2">
-                {assignments.map((assignment, index) => (
-                  <tr
-                    key={assignment.id}
-                    className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
-                    onClick={() => handleNavigation(assignment.id)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <td className="pl-2 pt-1">{assignment.title}</td>
-                    <td className="text-center">{assignment.dueDate}</td>
-                    <td className="text-center">{assignment.status}</td>
-                    <td className="text-center">{assignment.budget}</td>
-                    <td className="text-center">{assignment.offers.length}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div className="mt-20 flex flex-col mx-auto justify-center">
+        <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
+        <div className="md:hidden flex flex-col mx-auto justify-center align-center">
+          <div className="flex justify-center align-middle pt-2 pb-2 bg-gray-100">
+            <div className="text-center">Assigments</div>
           </div>
-          {/* Pagination */}
-          <div className="flex justify-center mt-4">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
-                  }`}
-                onClick={() => router.push(`/bid-assignments/?page=${index + 1}`)}
+          <div className="mt-2">
+            {assignments.map((assignment, index) => (
+              <div
+                key={assignment.id}
+                className={index % 2 === 0 ? 'bg-blue-100 grid mb-2 shadow mx-3 rounded' : 'bg-white grid mb-2 shadow mx-3 rounded'}
+                onClick={() => handleNavigation(assignment.id)}
+                style={{ cursor: 'pointer' }}
               >
-                {index + 1}
-              </button>
+                <div className="row justify-around pt-2">
+                  <div className="pl-2 pt-1 col-5 text-md border-1 border-blue-700">{assignment.title}</div>
+                  <div className="col-4 flex flex-col">
+                    <div className="text-green-950 ">Bidding: {assignment.status}</div>
+                    <div className="text-green-950">Due: {assignment.dueDate}</div>
+                  </div>
+                </div>
+                <div className="row justify-around pb-2 pt-1 border">
+                  <div className="text-green-950 col-5">Budget: {assignment.budget}</div>
+                  <div className="text-green-950 col-4">Bids: {assignment.offers.length}</div>
+                </div>
+              </div>
             ))}
           </div>
+        </div >
+
+        <div className="md:flex hidden flex-col flex-grow w-full bg-white p-2 overflow-auto">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="">Title</th>
+                <th className="text-center">Due Date</th>
+                <th className="text-center">Bidding</th>
+                <th className="text-center">Price</th>
+                <th className="text-center">Bids</th>
+              </tr>
+            </thead>
+            <tbody className="pt-2 pb-2">
+              {assignments.map((assignment, index) => (
+                <tr
+                  key={assignment.id}
+                  className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
+                  onClick={() => handleNavigation(assignment.id)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <td className="pl-2 pt-1">{assignment.title}</td>
+                  <td className="text-center">{assignment.dueDate}</td>
+                  <td className="text-center">{assignment.status}</td>
+                  <td className="text-center">{assignment.budget}</td>
+                  <td className="text-center">{assignment.offers.length}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
-    </>
+        {/* Pagination */}
+        <div className="flex justify-center mt-4">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
+                }`}
+              onClick={() => router.push(`/bid-assignments/?page=${index + 1}`)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </div >
+    </div >
   );
 };
 

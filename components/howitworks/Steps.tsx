@@ -10,7 +10,7 @@ export default function StudentSteps() {
     return (
         <div>
             <div className="row mt-4 mb-6 space-x-2 justify-evenly">
-                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border shadow p-2 rounded">
+                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border-1shadow p-2 rounded">
                     <div className="mb-1">
                         <Image
                             src={photo1}
@@ -30,7 +30,7 @@ export default function StudentSteps() {
                     </div>
 
                 </div>
-                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border shadow p-2 rounded">
+                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border-1shadow p-2 rounded">
                     <div className="mb-1">
                         <Image
                             src={photo2}
@@ -50,7 +50,7 @@ export default function StudentSteps() {
 
                 </div>
 
-                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border shadow p-2 rounded">
+                <div className="col-md-3 col-sm-10 flex flex-col items-center justify-center border-1shadow p-2 rounded">
                     <div className="mb-1">
                         <Image
                             src={photo3}

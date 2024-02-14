@@ -61,7 +61,7 @@ const Bio = () => {
           <textarea
             placeholder="Write something about yourself"
             onChange={(e) => setBio(e.target.value)}
-            className={`h-36 w-full rounded-lg border bg-gray-50 p-2
+            className={`h-36 w-full rounded-lg border-1bg-gray-50 p-2
                outline-none focus:border-blue-500`}
           />
           {bioError && <span className="text-red-500">{bioError}</span>}

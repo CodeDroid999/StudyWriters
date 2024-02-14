@@ -55,7 +55,7 @@ const PriceDropdown: React.FC<DropdownProps> = ({ options }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="mt- w-40% absolute right-0 top-full rounded-lg border bg-white shadow-lg">
+        <div className="mt- w-40% absolute right-0 top-full rounded-lg border-1bg-white shadow-lg">
           <div className="w-full">
             <div className="flex items-center justify-center">
               <div className="rounded-lg bg-white p-4 shadow-lg">

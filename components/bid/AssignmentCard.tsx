@@ -29,7 +29,7 @@ const AssignmentCard: React.FC<CardProps> = ({
 
   return (
     <Link href={`/order/${id}`}>
-      <div className="m-2 flex  rounded-lg border bg-white p-2 shadow-sm hover:bg-neutral-100">
+      <div className="m-2 flex  rounded-lg border-1bg-white p-2 shadow-sm hover:bg-neutral-100">
         <div className="flex-1">
           <div className="mb-2 flex items-center pr-3">
             <h1 className="text-md max-w-[230px] break-words font-bold text-blue-800 xl:max-w-[300px] ">

@@ -78,13 +78,13 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
                                 First Name
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.firstName}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.firstName}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="lastName" className="mb-2 text-sm font-medium text-gray-700">
                                 Last Name
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.lastName}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.lastName}</p>
                         </div>
                     </div>
 
@@ -93,13 +93,13 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                                 Nationality
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.country}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.country}</p>
                         </div>
                         <div className="flex col-md-2 flex-col">
                             <label htmlFor="country of Nationality" className="mb-2 text-sm font-medium text-gray-700">
                                 Verification Status
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium text-green-950">
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium text-green-950">
                                 {application.idVerificationStatus}</p>
                         </div>
                     </div>
@@ -108,19 +108,19 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Country of Residence" className="mb-2 text-sm font-medium text-gray-700">
                                 Adress
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.address}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.address}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="City of residence" className="mb-2 text-sm font-medium text-gray-700">
                                 City
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.city}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.city}</p>
                         </div>
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="State of residence" className="mb-2 text-sm font-medium text-gray-700">
                                 State
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.userState}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.userState}</p>
                         </div>
                     </div>
                     <div className="row mt-2">
@@ -128,7 +128,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="How did you hear about us?" className="mb-2 text-sm font-medium text-gray-700">
                                 Channel of Advertisement they learnt about QualityUnitedWriters
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
                         </div>
                     </div>
                     <p className="text-3xl font-bold text-blue-950 mt-4">Education</p>
@@ -137,7 +137,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
                                 Name of the last school attended
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.lastSchoolName}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.lastSchoolName}</p>
                         </div>
                     </div>
                     <div className="row mt-2">
@@ -145,7 +145,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="University Major" className="mb-2 text-sm font-medium text-gray-700">
                                 Field of study?
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.major}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.major}</p>
                         </div>
                     </div>
                     <p className="text-3xl font-bold text-blue-950 mt-4">Academic Experience</p>
@@ -209,25 +209,25 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
                                 Job Title
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.jobTitle}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.jobTitle}</p>
                         </div>
                         <div className="flex col-md-3 flex-col">
                             <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
                                 Employer/company
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.employer}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.employer}</p>
                         </div>
                         <div className="flex col-md-3 flex-col">
                             <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
                                 From
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.startDate}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.startDate}</p>
                         </div>
                         <div className="flex col-md-3 flex-col">
                             <label htmlFor="Employer/company" className="mb-2 text-sm font-medium text-gray-700">
                                 To
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.endDate}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.endDate}</p>
                         </div>
 
                     </div>
@@ -237,7 +237,7 @@ export default function ManageApplicationDetailsPage() {
                         <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
                             Which subjects does applicant intend to tutor in? (Value determines which type of account the user will get once screening is done)
                         </label>
-                        <div className="flex bg-white flex-wrap gap-4 mt-2  p-1 border border-green-950">
+                        <div className="flex bg-white flex-wrap gap-4 mt-2  p-1 border-1border-green-950">
                             {application.selectedSubjects.map((subject, index) => (
                                 <div key={index} className="flex items-center rounded justify-items-center align-items-center space-x-2 p-1 bg-gray-100 border-green-950">{subject}</div>
                             ))}
@@ -249,7 +249,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Selected Account type
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
                         </div>
                     </div>
                     <div className="row mb-2">
@@ -257,13 +257,13 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Skill Assessment Question
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.selectedTopic}</p>
                         </div>
                         <div className="flex col-md-3 col-sm-12 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Skill Assessment Answer
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">
                                 <Link href={application.skillAssessmentDocUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View Answer</Link>
                             </p>
                         </div>
@@ -271,7 +271,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 Skill Assessment Status
                             </label>
-                            <div className="rounded-lg border bg-gray-50 px-1 font-medium">
+                            <div className="rounded-lg border-1bg-gray-50 px-1 font-medium">
                                 <p className="text-green-950 px-1 py-2 font-medium">{application.skillAssessmentStatus}</p>
                             </div>
                         </div>
@@ -291,7 +291,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID document: Front
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">
                                 <Link href={application.IdDoc_FrontUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
                             </p>
                         </div>
@@ -299,7 +299,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID document: Back
                             </label>
-                            <p className="rounded-lg border bg-gray-50 px-1 py-2 font-medium">
+                            <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">
                                 <Link href={application.IdDoc_BackUrl} target="_blank" className="text-blue-600 px-1 py-2 font-medium">View ID</Link>
                             </p>
                         </div>
@@ -307,7 +307,7 @@ export default function ManageApplicationDetailsPage() {
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
                                 ID Verification Status
                             </label>
-                            <div className="rounded-lg border bg-gray-50 px-1 font-medium">
+                            <div className="rounded-lg border-1bg-gray-50 px-1 font-medium">
                                 <p className="text-green-950 px-1 py-2 font-medium">{application.idVerificationStatus}</p>
                             </div>
                         </div>

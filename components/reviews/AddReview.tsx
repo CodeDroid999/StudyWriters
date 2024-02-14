@@ -172,7 +172,7 @@ export default function AddReview({ tutorDetails, assignmentId, student, assignm
               <textarea
                 placeholder="Leave a review"
                 onChange={(e) => setReview(e.target.value)}
-                className={`h-32 w-full rounded-lg border bg-gray-50 p-2
+                className={`h-32 w-full rounded-lg border-1bg-gray-50 p-2
               font-normal outline-none `}
               />
             </div>

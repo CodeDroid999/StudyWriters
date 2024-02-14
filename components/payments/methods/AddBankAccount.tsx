@@ -53,7 +53,7 @@ export default function AddBankAccount() {
           type="text"
           placeholder="John Doe"
           onChange={(e) => setHolderName(e.target.value)}
-          className={`h-full w-full rounded-lg border bg-gray-50 p-2
+          className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
         />
       </div>
@@ -68,7 +68,7 @@ export default function AddBankAccount() {
           type="text"
           placeholder="12345678"
           onChange={(e) => setAccountNumber(e.target.value)}
-          className={`h-full w-full rounded-lg border bg-gray-50 p-2
+          className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
         />
       </div>
@@ -83,7 +83,7 @@ export default function AddBankAccount() {
           type="text"
           placeholder="000-000"
           onChange={(e) => setBsb(e.target.value)}
-          className={`h-full w-full rounded-lg border bg-gray-50 p-2
+          className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
         />
       </div>

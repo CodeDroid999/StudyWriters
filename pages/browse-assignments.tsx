@@ -32,10 +32,10 @@ const BrowseAssignments: React.FC = (props: any) => {
             <thead>
               <tr>
                 <th className="">Title</th>
-                <th className="text-center border border-green-950 md:pl-3">Due Date</th>
-                <th className="text-center border border-green-950 md:pl-3">Bidding</th>
-                <th className="text-center border border-green-950 md:pl-3">Price</th>
-                <th className="text-center border border-green-950 md:pl-3">Bids</th>
+                <th className="text-center border-1border-green-950 md:pl-3">Due Date</th>
+                <th className="text-center border-1border-green-950 md:pl-3">Bidding</th>
+                <th className="text-center border-1border-green-950 md:pl-3">Price</th>
+                <th className="text-center border-1border-green-950 md:pl-3">Bids</th>
               </tr>
             </thead>
             <tbody className="pt-2 pb-2">
@@ -47,16 +47,16 @@ const BrowseAssignments: React.FC = (props: any) => {
                   style={{ cursor: 'pointer' }}
                 >
                   <td className="pl-2 pt-1">{assignment.title}</td>
-                  <td className="text-center border border-green-950 md:pl-3">{assignment.dueDate}</td>
-                  <td className="text-center border border-green-950 md:pl-3">{assignment.status}</td>
-                  <td className="text-center border border-green-950 md:pl-3">{assignment.budget}</td>
-                  <td className="text-center border border-green-950 md:pl-3">{assignment.offers.length}</td>
+                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.dueDate}</td>
+                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.status}</td>
+                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.budget}</td>
+                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.offers.length}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           <div className="flex flex-col bg-green-950 flex-grow w-[20vw] justify-centerr align-middle bg- gray-100 p-2 overflow-auto">
-            <span className="text-xl text-gray text-center border border-green-950 md:pl-3 font-bold text-gray-100">  Your Assignments</span>
+            <span className="text-xl text-gray text-center border-1border-green-950 md:pl-3 font-bold text-gray-100">  Your Assignments</span>
 
           </div>
         </div>

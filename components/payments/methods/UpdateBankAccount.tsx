@@ -84,7 +84,7 @@ export default function UpdateBankAccount({
                   placeholder="John Doe"
                   value={newHolderName}
                   onChange={(e) => setNewHolderName(e.target.value)}
-                  className={`h-full w-full rounded-lg border bg-gray-50 p-2
+                  className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
                 />
               </div>
@@ -100,7 +100,7 @@ export default function UpdateBankAccount({
                   placeholder="12345678"
                   value={newAccountNumber}
                   onChange={(e) => setNewAccountNumber(e.target.value)}
-                  className={`h-full w-full rounded-lg border bg-gray-50 p-2
+                  className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
                 />
               </div>
@@ -116,7 +116,7 @@ export default function UpdateBankAccount({
                   placeholder="000-000"
                   value={newBsb}
                   onChange={(e) => setNewBsb(e.target.value)}
-                  className={`h-full w-full rounded-lg border bg-gray-50 p-2
+                  className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
                   font-medium outline-none focus:border-blue-500`}
                 />
               </div>

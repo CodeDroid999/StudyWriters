@@ -116,7 +116,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                     <select
                         value={selectedTopic}
                         onChange={handleSubjectChange}
-                        className="rounded border p-1"
+                        className="rounded border-1p-1"
                     >
                         <option value="">Select a subject</option>
                         <option value="Business">Business</option>

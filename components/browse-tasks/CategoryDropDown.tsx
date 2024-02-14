@@ -53,14 +53,14 @@ const CategoryDropdown: React.FC<DropdownProps> = ({ options }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="w-40% absolute right-0 top-full mt-2 rounded-lg border bg-white px-3 py-3 shadow-lg">
+        <div className="w-40% absolute right-0 top-full mt-2 rounded-lg border-1bg-white px-3 py-3 shadow-lg">
           <div className="w-full">
-            <div className="relative w-full rounded-lg border bg-white">
+            <div className="relative w-full rounded-lg border-1bg-white">
               <div className="flex items-center justify-between px-2 py-1">
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full rounded border px-2 py-1 focus:outline-none"
+                  className="w-full rounded border-1px-2 py-1 focus:outline-none"
                 />
                 <button className="ml-2 rounded bg-green-900 px-4 py-1 text-white hover:bg-blue-600 focus:outline-none">
                   Search

@@ -40,7 +40,7 @@ export default function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`w-full col-md-3 xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card border border-green-100 rounded p-2 shadow`}
+              className={`w-full col-md-3 xl:w-[30%] mb-6 md:mb-0 md:pr-5 feature-card border-1border-green-100 rounded p-2 shadow`}
             >
               <div className="flex justify-center">
                 <div className="pt-1 text-blue-600 text-4xl">{feature.icon}</div>

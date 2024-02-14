@@ -216,7 +216,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="e.g Albert"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {firstNameError && <span className="text-red-500">{firstNameError}</span>}
@@ -233,7 +233,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="e.g Einsten"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {lastNameError && <span className="text-red-500">{lastNameError}</span>}
@@ -261,7 +261,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="Address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {addressError && <span className="text-red-500">{addressError}</span>}
@@ -278,7 +278,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="City"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {cityError && <span className="text-red-500">{cityError}</span>}
@@ -295,7 +295,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="State"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {stateError && <span className="text-red-500">{stateError}</span>}
@@ -313,7 +313,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             type="text"
                             placeholder="e,g Social media, Video Advert, Fair, Friends"
                             value={howHeard}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
           font-medium outline-none focus:border-blue-500`}
                             onChange={(e) => setHowHeard(e.target.value)}
                         />
@@ -337,7 +337,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="Enter name of the last school you attended"
                             value={lastSchoolName}
                             onChange={(e) => setLastSchoolName(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {lastSchoolNameError && <span className="text-red-500">{lastSchoolNameError}</span>}
@@ -357,7 +357,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             placeholder="Enter your major"
                             onChange={(e) => setMajor(e.target.value)}
                             value={major} // Bind the input value to the 'major' state
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
       font-medium outline-none focus:border-blue-500`}
                         />
                         {majorError && <span className="text-red-500">{majorError}</span>}
@@ -451,7 +451,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             type="text"
                             placeholder="Your Job Title"
                             onChange={(e) => setJobTitle(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {jobTitleError && <span className="text-red-500">{jobTitleError}</span>}
@@ -467,7 +467,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                             type="text"
                             placeholder="Employer/company"
                             onChange={(e) => setEmployer(e.target.value)}
-                            className={`rounded-lg border bg-gray-50 px-1 py-2
+                            className={`rounded-lg border-1bg-gray-50 px-1 py-2
               font-medium outline-none focus:border-blue-500`}
                         />
                         {employerError && <span className="text-red-500">{employerError}</span>}
@@ -486,7 +486,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                                     type="date"
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
-                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
+                                    className={`py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
                                 {startDateError && <span className="text-red-500">{startDateError}</span>}
                             </div>
@@ -498,7 +498,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                                     type="date"
                                     value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
-                                    className={`py-2 px-1 w-full rounded-lg border bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
+                                    className={`py-2 px-1 w-full rounded-lg border-1bg-gray-50 text-sm font-medium outline-none focus:border-blue-500`}
                                 />
                                 {endDateError && <span className="text-red-500">{endDateError}</span>}
                             </div>

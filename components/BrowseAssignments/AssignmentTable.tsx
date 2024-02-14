@@ -28,7 +28,7 @@ const AssignmentTable = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div className='border border-blue-800 rounded-xl  pb-3'>
+    <div className='border-1border-blue-800 rounded-xl  pb-3'>
       <p className="bg-blue-900 w-full p-3 text-white">Find a tutor to help you with your school!</p>
       <div className="flex flex-col flex-grow w-full bg-white p-2">
         <table className="w-full">

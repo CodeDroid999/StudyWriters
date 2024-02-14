@@ -68,18 +68,18 @@ export default function TaskReviews({ assignmentId }) {
           <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
             <span
               className={`${activeTab === 'Student'
-                  ? 'border-b-blue-600 text-green-950'
-                  : 'border-none'
-                } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+                ? 'border-b-blue-600 text-green-950'
+                : 'border-none'
+                } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Student')}
             >
               Student
             </span>
             <span
               className={`${activeTab === 'Tutor'
-                  ? 'border-b-blue-600 text-green-950'
-                  : 'border-none'
-                } cursor-pointer border border-x-transparent border-t-transparent px-3`}
+                ? 'border-b-blue-600 text-green-950'
+                : 'border-none'
+                } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Tutor')}
             >
               Tutor
