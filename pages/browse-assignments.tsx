@@ -26,44 +26,37 @@ const BrowseAssignments: React.FC = (props: any) => {
     <div className="max-h-screen">
       <Navbar />
       <div className="mt-20 overflow-hidden flex flex-col mx-auto">
-        <p className="bg-green-900 w-full p-3 text-white">Make Money by Helping with Homework</p>
+        <p className="bg-green-950 w-full p-3 text-white">Make Money by Helping with Homework</p>
         <div className="flex">
-          <div className="flex flex-col flex-grow md:w-[80vw] w-[100vw] bg-white p-2 h-[80vh]">
-            <table className="w-full overflow-x-auto">
-              <thead>
-                <tr className="md:hidden row bg-gray-100">
-                  <th className="text-center text-green-950 whitespace-nowrap border border-green-900 ">
-                    Assignments
-                  </th>
+          <table className="w-full bg-white p-2 overflow-x-auto">
+            <thead>
+              <tr>
+                <th className="">Title</th>
+                <th className="text-center border border-green-950 md:pl-3">Due Date</th>
+                <th className="text-center border border-green-950 md:pl-3">Bidding</th>
+                <th className="text-center border border-green-950 md:pl-3">Price</th>
+                <th className="text-center border border-green-950 md:pl-3">Bids</th>
+              </tr>
+            </thead>
+            <tbody className="pt-2 pb-2">
+              {assignments.map((assignment, index) => (
+                <tr
+                  key={assignment.id}
+                  className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}
+                  onClick={() => handleNavigation(assignment.id)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <td className="pl-2 pt-1">{assignment.title}</td>
+                  <td className="text-center border border-green-950 md:pl-3">{assignment.dueDate}</td>
+                  <td className="text-center border border-green-950 md:pl-3">{assignment.status}</td>
+                  <td className="text-center border border-green-950 md:pl-3">{assignment.budget}</td>
+                  <td className="text-center border border-green-950 md:pl-3">{assignment.offers.length}</td>
                 </tr>
-                <tr className="md:inline row hidden">
-                  <th className="pl-2 pt-1 md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-7 ">Title</th>
-                  <th className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-2">Due Date</th>
-                  <th className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">Bidding</th>
-                  <th className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">Price</th>
-                  <th className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">Bids</th>
-                </tr>
-              </thead>
-              <tbody className="pt-2 pb-2">
-                {assignments.map((assignment, index) => (
-                  <tr
-                    key={assignment.id}
-                    className={index % 2 === 0 ? 'bg-blue-100 row' : 'bg-white row'}
-                    onClick={() => handleNavigation(assignment.id)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <td className="pl-2 pt-1 md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-7"><span className="md:hidden">Title: </span>{assignment.title}</td>
-                    <td className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-2">{assignment.dueDate}</td>
-                    <td className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">{assignment.status}</td>
-                    <td className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">{assignment.budget}</td>
-                    <td className="text-center md:text-lg text-xs whitespace-nowrap border border-green-900 col-md-1">{assignment.offers.length}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="md:flex hidden flex-col bg-green-900 flex-grow w-[20vw] justify-center align-middle bg- gray-100 p-2 overflow-auto">
-            <span className="text-xl text-gray text-center font-bold text-gray-100">  Your Assignments</span>
+              ))}
+            </tbody>
+          </table>
+          <div className="flex flex-col bg-green-950 flex-grow w-[20vw] justify-centerr align-middle bg- gray-100 p-2 overflow-auto">
+            <span className="text-xl text-gray text-center border border-green-950 md:pl-3 font-bold text-gray-100">  Your Assignments</span>
 
           </div>
         </div>

@@ -90,7 +90,7 @@ const BidAssignments: React.FC = (props: any) => {
                 key={index}
                 className={`mx-1 px-3 py-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-white text-blue-800'
                   }`}
-                onClick={() => router.push(`/?page=${index + 1}`)}
+                onClick={() => router.push(`/bid-assignments/?page=${index + 1}`)}
               >
                 {index + 1}
               </button>
