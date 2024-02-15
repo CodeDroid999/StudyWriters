@@ -51,101 +51,31 @@ const Dashboard: React.FC = (props: any) => {
   };
 
 
-
-
-  const [assignmente, setAssignmente] = useState([])
-  const [reviews, setReviews] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [activeTab, setActiveTab] = useState('basic') // Default tab is 'Personal Info tab'
-
-  const userId = UserAuth()
-  useEffect(() => {
-    if (userId) {
-      setLoading(true)
-      setLoading(true)
-      const q = query(collection(db, 'users'), where('userId', '==', userId))
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        if (!querySnapshot.empty) {
-          const doc = querySnapshot.docs[0]
-          const userData = doc.data()
-          userData.createdAt = formatDate(userData.createdAt.toDate())
-          setUser(userData)
-        } else {
-          setUser(null)
-        }
-        setLoading(false)
-      })
-
-      return () => {
-        unsubscribe()
-      }
-
-      const assignmentsQuery = query(
-        collection(db, 'users'),
-        where('tutor.userId', '==', userId)
-      )
-
-      // Create a query for reviews
-      const reviewsQuery = query(
-        collection(db, 'reviews'),
-        where('tutorId', '==', userId)
-      )
-
-      // Fetch assignments
-      const assignmentsPromise = getDocs(assignmentsQuery).then((assignmentQuerySnapshot) => {
-        const assignments = assignmentQuerySnapshot.docs.map((doc) => {
-          const data = doc.data()
-          // Additional processing for assignment data if needed
-          return { id: doc.id, ...data }
-        })
-        return assignments
-      })
-
-      // Fetch reviews
-      const reviewsPromise = getDocs(reviewsQuery)
-        .then((reviewQuerySnapshot) => {
-          const reviews = reviewQuerySnapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() }
-          })
-          return reviews
-        })
-        .then((reviews) => {
-          // Fetch sender data for each review
-          const senderPromises = reviews.map((review: any) =>
-            getDocs(
-              query(
-                collection(db, 'users'),
-                where('userId', '==', review.senderId)
-              )
-            ).then((senderSnapshot) => {
-              const senderData = senderSnapshot.docs[0].data()
-              return { ...review, reviewer: senderData }
-            })
-          )
-
-          return Promise.all(senderPromises)
-        })
-
-      // Wait for both promises to resolve
-      Promise.all([assignmentsPromise, reviewsPromise])
-        .then(([assignments, reviews]) => {
-          setAssignmente(assignmente)
-          setReviews(reviews)
-          setLoading(false)
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error)
-        })
-    }
-  }, [userId])
-
-
-  const completedAssignments = assignmente.filter((assignment) => assignment.status === 'Completed')
-  const myTutorReviews = reviews.filter(
-    (review) => review.senderId !== review.tutorId
-  )
   return (
     <>
+      <Head>
+        <title>
+          QualityunitedWriters | Get More Done | Post any assignment. Pick the best person. Get it done. | Post your assignment for free Earn money as a tutor
+        </title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="QualityunitedWriters is your one-stop destination for finding the right assignments and talented taskers. Post any assignment, pick the best person, and get it done. Join now to earn money as a tutor or post your assignments for free."
+        />
+        <meta name="keywords" content="QualityunitedWriters, assignments, tutor, earn money, post assignment" />
+        <meta name="author" content="QualityunitedWriters" />
+        <meta name="robots" content="index, follow" />
+        <meta name="og:title" property="og:title" content="QualityunitedWriters | Get More Done" />
+        <meta
+          name="og:description"
+          property="og:description"
+          content="QualityunitedWriters is your one-stop destination for finding the right assignments and talented taskers. Post any assignment, pick the best person, and get it done. Join now to earn money as a tutor or post your assignments for free."
+        />
+        <meta name="og:image" property="og:image" content="public/sync-my-socials-logo.png" />
+
+        <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
+      </Head>
       <Navbar />
       <div className="mx-auto w-full">
         {userRole === 'Student' && (
@@ -163,7 +93,7 @@ const Dashboard: React.FC = (props: any) => {
               {userRole === 'Tutor' && (
                 <>
                   <div className="mt-20 h-screen overflow-hidden">
-                    <div className="border-1 border-green-800 rounded-xl pb-3 h-80">
+                    <div className="border-1border-green-800 rounded-xl pb-3 h-80">
                       <p className="bg-green-700 w-full p-3 text-white">Make Money by Helping with Homework</p>
                       <div className="flex flex-col flex-grow w-full bg-white p-2">
                         <table className="w-full">
@@ -197,41 +127,6 @@ const Dashboard: React.FC = (props: any) => {
                     </div>
                   </div>
 
-
-                  {/* ... (user stats content) */}
-                  <div className="flex flex-wrap items-center  justify-center gap-2 p-5 pt-1">
-                    <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                      <div className="p-4 md:p-7">
-                        <h2 className="text-center text-xl capitalize text-gray-200">
-                          {completedAssignments.length}
-                        </h2>
-                        <h3 className="text-center  text-sm  text-gray-400">
-                          completed
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="w-42 h-42 flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                      <div className="p-4 md:p-7">
-                        <h2 className="text-center text-xl capitalize text-gray-200">
-                          {assignmente.length}
-                        </h2>
-                        <h3 className="text-center  text-sm  text-gray-400">
-                          Homeworks Assigned
-                        </h3>
-                      </div>
-                    </div>
-
-                    <div className="w-42 h-42  flex-auto rounded-lg  bg-gradient-to-r from-gray-800    to-gray-700    shadow-lg">
-                      <div className="p-4 md:p-7">
-                        <h2 className="text-center text-lg capitalize text-gray-200">
-                          {myTutorReviews.length}
-                        </h2>
-                        <h3 className="text-center  text-sm  text-gray-400">
-                          Reviews
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
 
 
                   <BeYourOwnBoss />
