@@ -15,8 +15,7 @@ interface Props {
 
 
 export default function UploadIDForm({ handlePreviousStep }: Props) {
-    const user = UserAuth();
-    const userId = user?.userId;
+    const userId = UserAuth();
     const [uploadFiles, setUploadFiles] = useState({ front: null, back: null });
     const [uploading, setUploading] = useState(false);
     const [files, setFiles] = useState({ front: null, back: null });
@@ -68,7 +67,7 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
         const backUrl = await uploadFileAndGetURL(storageRef2, backFile);
 
 
-        const docRef = await addDoc(collection(db, 'applications'), {
+        await addDoc(collection(db, 'applications'), {
             firstName: firstName,
             lastName: lastName,
             country: country,
