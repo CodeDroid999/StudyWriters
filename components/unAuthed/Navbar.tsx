@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import MobileNavbar from './MobileNav';
 import logo from 'public/sync-my-socials-logo.png'
+import LogIn from '../../context/login';
 
 
 const CustomNavbar = () => {
@@ -58,12 +59,9 @@ const CustomNavbar = () => {
             href="/become-a-tutor"
             className="font-medium text-white hover:text-green-500"
           >
-            Become a Tutor
-          </Link> <Link
-            href="/signup"
-            className="font-medium text-white hover:text-green-500"
-          >
-            Sign up      </Link>
+            Become-a-Tutor
+          </Link>
+
           <Link
             href="/blog"
             className="font-medium text-white hover:text-green-500"
@@ -71,10 +69,16 @@ const CustomNavbar = () => {
             Blog
           </Link>
           <Link
-            href="/contact-us"
+            href="/signup"
             className="font-medium text-white hover:text-green-500"
           >
-            Contact us
+            SignUp
+          </Link>
+          <Link
+            href="/login"
+            className="font-medium text-white hover:text-green-500"
+          >
+            LogIn
           </Link>
         </div>
       </div>

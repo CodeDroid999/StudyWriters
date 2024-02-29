@@ -39,15 +39,15 @@ const BrowseAssignments: React.FC = (props: any) => {
             <TfiPlus size={22} className="font-semibold text-gray-100" />
           </div>
         </header>
-        <div className="flex">
-          <table className="w-full bg-white p-2 overflow-x-auto">
+        <div className="flex bg-green mx-auto bg-green-950">
+          <table className="w-full  p-2 overflow-x-auto">
             <thead>
               <tr>
                 <th className="">Title</th>
-                <th className="text-center border-1border-green-950 md:pl-3">Due Date</th>
-                <th className="text-center border-1border-green-950 md:pl-3">Bidding</th>
-                <th className="text-center border-1border-green-950 md:pl-3">Price</th>
-                <th className="text-center border-1border-green-950 md:pl-3">Bids</th>
+                <th className="text-center border-1 border-green-950 md:pl-3">Due Date</th>
+                <th className="text-center border-1 border-green-950 md:pl-3">Bidding</th>
+                <th className="text-center border-1 border-green-950 md:pl-3">Price</th>
+                <th className="text-center border-1 border-green-950 md:pl-3">Bids</th>
               </tr>
             </thead>
             <tbody className="pt-2 pb-2">
@@ -59,18 +59,15 @@ const BrowseAssignments: React.FC = (props: any) => {
                   style={{ cursor: 'pointer' }}
                 >
                   <td className="pl-2 pt-1">{assignment.title}</td>
-                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.dueDate}</td>
-                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.status}</td>
-                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.budget}</td>
-                  <td className="text-center border-1border-green-950 md:pl-3">{assignment.offers.length}</td>
+                  <td className="text-center border-1 border-green-950 md:pl-3">{assignment.dueDate}</td>
+                  <td className="text-center border-1 border-green-950 md:pl-3">{assignment.status}</td>
+                  <td className="text-center border-1 border-green-950 md:pl-3">{assignment.budget}</td>
+                  <td className="text-center border-1 border-green-950 md:pl-3">{assignment.offers.length}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="flex flex-col bg-green-950 flex-grow w-[20vw] align-top bg- gray-100 overflow-auto pr-4">
-            <span className="text-xl text-gray border-1border-green-950 md:pl-3 font-bold text-gray-100 text-right">  Yours</span>
 
-          </div>
         </div>
       </div >
     </div >
