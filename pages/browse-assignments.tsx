@@ -14,7 +14,7 @@ import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import AssignmentCounter from 'components/BrowseAssignmentsTable/AssignmentCounter';
 import Link from 'next/link';
 import router from 'next/router';
-import { TfiClose } from 'react-icons/tfi';
+import { TfiClose, TfiPlus } from 'react-icons/tfi';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
@@ -30,9 +30,13 @@ const BrowseAssignments: React.FC = (props: any) => {
     <div className="max-h-screen">
       <Navbar />
       <div className="mt-20 overflow-hidden flex flex-col mx-auto">
-        <header className="flex flex-row  justify-end bg-white  py-2 ">
-          <div className="cursor-pointer " onClick={handlePostTask}>
-            <TfiClose size={22} className="font-semibold text-blue-800" />
+        <header className="flex flex-row  justify-between bg-green-950  py-2 ">
+          <div className="flex ml-4 justify-items-center align-items-center">
+            <span className="text-gray-100">Get online tutor help!</span>
+          </div>
+          <div className="flex  items-center cursor-pointer border-1 border-gray-100 rounded px-2 py-1 mr-4 hover:bg-green-800 border-2 border-b" onClick={handlePostTask}>
+            <span className="text-gray-100 md:px-1 pl-1 ">Post new</span>
+            <TfiPlus size={22} className="font-semibold text-gray-100" />
           </div>
         </header>
         <div className="flex">
@@ -63,8 +67,8 @@ const BrowseAssignments: React.FC = (props: any) => {
               ))}
             </tbody>
           </table>
-          <div className="flex flex-col bg-green-950 flex-grow w-[20vw] justify-centerr align-middle bg- gray-100 p-2 overflow-auto">
-            <span className="text-xl text-gray text-center border-1border-green-950 md:pl-3 font-bold text-gray-100">  Your Assignments</span>
+          <div className="flex flex-col bg-green-950 flex-grow w-[20vw] align-top bg- gray-100 overflow-auto pr-4">
+            <span className="text-xl text-gray border-1border-green-950 md:pl-3 font-bold text-gray-100 text-right">  Yours</span>
 
           </div>
         </div>
