@@ -44,7 +44,7 @@ const UsersPage = () => {
 
     return (
         <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-green-950 mb-4">Accounts</p>
+            <p className="text-3xl font-bold text-green-950  mb-4">Accounts</p>
             {users.length > 0 ? (
                 <ul>
                     {users.map((user) => (

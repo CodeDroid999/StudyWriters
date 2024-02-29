@@ -110,7 +110,7 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
     return (
         <div className="bg-white p-3">
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
-                <p className="text-3xl font-bold text-green-950">
+                <p className="text-3xl font-bold text-green-950 ">
                     Upload a photo of your ID Documents.
                 </p>
                 <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm">
@@ -118,7 +118,7 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
                     Accepted file types: JPEG, PNG, or PDF. Ensure it's clear, and we'll handle the rest securely.
                 </p>
 
-                <p className="text-3xl font-bold text-green-950">
+                <p className="text-3xl font-bold text-green-950 ">
                     Front
                 </p>
                 <div
@@ -140,7 +140,7 @@ export default function UploadIDForm({ handlePreviousStep }: Props) {
                     )}
                 </div>
 
-                <p className="text-3xl font-bold text-green-950">
+                <p className="text-3xl font-bold text-green-950 ">
                     Back
                 </p>
                 <div

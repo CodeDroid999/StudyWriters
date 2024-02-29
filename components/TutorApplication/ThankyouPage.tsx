@@ -22,7 +22,7 @@ const ThankYouPage = () => {
 
   return (
     <div className="p-3 bg-white">
-      <p className="text-3xl font-bold text-green-950 mb-4">Thank You for Your Application!</p>
+      <p className="text-3xl font-bold text-green-950  mb-4">Thank You for Your Application!</p>
       <p className="text-lg mb-4">
         Your application has been successfully submitted. We appreciate your interest in becoming a tutor.
       </p>

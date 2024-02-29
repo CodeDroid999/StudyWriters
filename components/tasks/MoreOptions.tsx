@@ -12,7 +12,7 @@ export default function MoreOptions({ assignmentData, student, assignmentId }) {
     <div className="relative ">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`mt-2 flex w-full cursor-pointer flex-row items-center justify-between rounded-xl bg-gray-200 px-3 py-2 text-base font-semibold text-green-950 outline-none ${isOpen ? 'rounded-b-none' : 'rounded-b-xl'
+        className={`mt-2 flex w-full cursor-pointer flex-row items-center justify-between rounded-xl bg-gray-200 px-3 py-2 text-base font-semibold text-green-950  outline-none ${isOpen ? 'rounded-b-none' : 'rounded-b-xl'
           }`}
       >
         <span>More Options</span>

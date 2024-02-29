@@ -48,7 +48,7 @@ export default function MobileNumber() {
     <div className="bg-gray-100">
       <Navbar />
       <div className="mx-auto mt-20 min-h-screen max-w-[800px] px-3 py-4">
-        <h1 className="mb-3 text-2xl font-semibold text-green-950">
+        <h1 className="mb-3 text-2xl font-semibold text-green-950 ">
           Mobile Number
         </h1>
         <div className="flex flex-col">

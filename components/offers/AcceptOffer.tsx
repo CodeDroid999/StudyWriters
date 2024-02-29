@@ -162,7 +162,7 @@ export default function AcceptOffer({ offer, assignmentData, student }) {
                   className=" h-[50px] w-[50px] rounded-full object-cover"
                 />
                 <div className="ml-3 flex flex-1 flex-col">
-                  <span className="text-base font-semibold text-green-950">
+                  <span className="text-base font-semibold text-green-950 ">
                     {student?.firstName} {student?.lastName}
                   </span>
                   <span className="text-sm font-medium text-gray-800">

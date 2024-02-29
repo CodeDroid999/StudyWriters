@@ -176,7 +176,7 @@ export default function AssignmentDetails(props: any) {
                         />
                       )}
                     {assignmentData.status === 'Cancelled' && (
-                      <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950">
+                      <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950 ">
                         {assignmentData.status}
                       </div>
                     )}
@@ -304,7 +304,7 @@ export default function AssignmentDetails(props: any) {
                             )}
                             {assignmentData.status === 'Cancelled' && (
                               <div>
-                                <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950">
+                                <div className="rounded-full bg-white px-4 py-2 text-center font-semibold uppercase text-green-950 ">
                                   {assignmentData.status}
                                 </div>
                                 <button
