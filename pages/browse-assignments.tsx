@@ -27,10 +27,10 @@ const BrowseAssignments: React.FC = (props: any) => {
     router.push("/post-assignment");
   };
   return (
-    <div className="max-h-screen">
+    <div className="max-h-screen bg-green-950">
       <Navbar />
       <div className="mt-20 overflow-hidden flex flex-col mx-auto">
-        <header className="flex flex-row  justify-between bg-green-950  py-2 ">
+        <header className="flex flex-row  justify-between bg-green-950  py-2  shadow-xl">
           <div className="flex ml-4 justify-items-center align-items-center">
             <span className="text-gray-100">Get online tutor help!</span>
           </div>
@@ -39,15 +39,15 @@ const BrowseAssignments: React.FC = (props: any) => {
             <TfiPlus size={22} className="font-semibold text-gray-100" />
           </div>
         </header>
-        <div className="flex bg-green mx-auto">
-          <table className="w-full max-w-[1000px]  p-2 overflow-x-auto">
-            <thead>
+        <div className="flex bg-gray-100 mx-auto shadow-xl">
+          <table className="w-full max-w-[1000px]  p-2 overflow-x-auto ">
+            <thead className="mt-4">
               <tr>
-                <th className="">Title</th>
-                <th className="text-center border-2 border-gray-500 md:pl-3">Due Date</th>
-                <th className="text-center border-2 border-gray-500 md:pl-3">Bidding</th>
-                <th className="text-center border-2 border-gray-500 md:pl-3">Price</th>
-                <th className="text-center border-2 border-gray-500 md:pl-3">Bids</th>
+                <th className="text-left border-2 border-gray-700 md:px-3">Title</th>
+                <th className="text-center border-2 border-gray-500 md:px-3">Due Date</th>
+                <th className="text-center border-2 border-gray-500 md:px-2">Bidding</th>
+                <th className="text-center border-2 border-gray-500 md:px-3">Price</th>
+                <th className="text-center border-2 border-gray-500 md:px-3">Bids</th>
               </tr>
             </thead>
             <tbody className="pt-2 pb-2">
@@ -58,11 +58,11 @@ const BrowseAssignments: React.FC = (props: any) => {
                   onClick={() => handleNavigation(assignment.id)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <td className="pl-2 pt-1">{assignment.title}</td>
-                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.dueDate}</td>
-                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.status}</td>
-                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.budget}</td>
-                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.offers.length}</td>
+                  <td className="px-2 py-1 text-left border-2 border-gray-500">{assignment.title}</td>
+                  <td className="tel-2 pt-1xt-center border-2 border-gray-500 md:px-3">{assignment.dueDate}</td>
+                  <td className="text-center border-2 border-gray-500 md:px-2">{assignment.status}</td>
+                  <td className="text-center border-2 border-gray-500 md:px-3">{assignment.budget}</td>
+                  <td className="text-center border-2 border-gray-500 md:px-3">{assignment.offers.length}</td>
                 </tr>
               ))}
             </tbody>

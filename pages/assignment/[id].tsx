@@ -38,7 +38,7 @@ import WithdrawFromTask from 'components/tasks/WithdrawFromTask'
 import MoreOptions from 'components/tasks/MoreOptions'
 import PostSimilarTask from 'components/tasks/PostSimilarTask'
 
-export default function TaskDetails(props: any) {
+export default function AssignmentDetails(props: any) {
   const [offers, setOffers] = useState([])
   const [loading, setLoading] = useState(false)
   const { assignmentData, tutorDetails, studentDetails } = props
@@ -107,11 +107,10 @@ export default function TaskDetails(props: any) {
   }
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Navbar />
-
-      <div className="mt-28 mx-4">
-        <div className="w-full">
+      <div className="mt-20 mx-4 bg-gray-100 pt-4">
+        <div className="w-full bg-gray-100">
           {/**Status */}
           <div className="flex max-w-[130px] justify-center rounded-full bg-green-900  p-1  text-xs font-bold uppercase text-green-950">
             Bidding: {assignmentData.status}
@@ -153,7 +152,7 @@ export default function TaskDetails(props: any) {
 
             {/**Bid */}
             <div className="mt-4 w-full max-w-screen-sm md:ml-6 md:mt-0 md:max-w-[300px] ">
-              <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-100 p-3 ">
+              <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-2xl bg-gray-300 p-3 ">
                 <div className="flex flex-col items-center justify-center pb-4">
                   <h1 className="text-xs font-bold uppercase text-green-950">
                     Assignment Budget
