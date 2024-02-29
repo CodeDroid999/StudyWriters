@@ -106,7 +106,6 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
               >
                 <option value="">Select Filter</option>
                 <option value="posted">Posted</option> {/* Updated option label */}
-                <option value="assigned">Assigned</option> {/* Updated option label */}
                 <option value="offers-pending">Pending Bids</option>
                 <option value="completed">Completed</option> {/* Updated option label */}
               </select>
@@ -114,7 +113,7 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
           </div>
           <div className="mt-5">
             {!selectedFilter && (
-              <div className="mt-28 flex flex-col items-center justify-center">
+              <div className="mt-28 flex flex-col items-center justify-items-center min-h-screen">
                 <h1 className="text-xl font-medium text-gray-700">
                   Hello {user?.firstName}, select a category to display your
                   assignments
