@@ -45,10 +45,10 @@ export default function MobileNumber() {
   }
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Navbar />
-      <div className="mx-auto mt-28 max-w-[800px] px-3">
-        <h1 className="mb-3 text-2xl font-semibold text-blue-950">
+      <div className="mx-auto mt-20 min-h-screen max-w-[800px] px-3 py-4">
+        <h1 className="mb-3 text-2xl font-semibold text-green-950">
           Mobile Number
         </h1>
         <div className="flex flex-col">
@@ -56,7 +56,7 @@ export default function MobileNumber() {
             placeholder="Enter your mobile number"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
-            className="h-16 w-full rounded-lg bg-gray-50 p-2 text-gray-700 outline-none focus:outline-blue-950"
+            className="h-10 w-full rounded-lg bg-gray-50 p-2 text-gray-700 outline-gray-500 focus:outline-green-700"
           />
           {phoneNumberError && (
             <span className="text-red-500 ">{phoneNumberError}</span>
@@ -64,7 +64,7 @@ export default function MobileNumber() {
         </div>
         <button
           onClick={handleSubmit}
-          className="mt-3 rounded-full bg-blue-700 px-4 py-1.5 font-medium text-white"
+          className="mt-3 rounded-full bg-green-800 px-4 py-1.5 font-medium text-white"
         >
           {!user?.phoneNumber ? 'Save Number' : 'Update Number'}
         </button>

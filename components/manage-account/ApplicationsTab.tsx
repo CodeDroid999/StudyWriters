@@ -59,7 +59,7 @@ const UserApplicationHistory = () => {
 
     return (
         <div className="p-3 bg-white">
-            <p className="text-3xl font-bold text-blue-950 mb-4">Application History</p>
+            <p className="text-3xl font-bold text-green-950 mb-4">Application History</p>
             {userApplications.length > 0 ? (
                 <ul>
                     {userApplications.map((application) => (

@@ -45,10 +45,10 @@ export default function UpdateEmail() {
   }
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Navbar />
       <div className="mx-auto mt-28 max-w-[800px] px-3">
-        <h1 className="mb-3 text-2xl font-semibold text-blue-950">
+        <h1 className="mb-3 text-2xl font-semibold text-green-950">
           Update Email
         </h1>
         <div className="flex flex-col">

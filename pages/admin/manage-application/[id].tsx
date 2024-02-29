@@ -57,7 +57,7 @@ export default function ManageApplicationDetailsPage() {
             <div className="mt-28 mx-4">
                 <ImageHeader />
                 <div className="bg-gray-100 p-3 flex flex-col mx-auto ">
-                    <p className="text-3xl font-bold text-blue-950">Profile Assessment</p>
+                    <p className="text-3xl font-bold text-green-950">Profile Assessment</p>
                     <div className="row mb-4 mt-2">
                         <div className="flex col-md-3 col-sm-6 flex-col">
                             <Link href={`/public-profile/${application.userId}`} target="_blank" className="rounded-lg border-2
@@ -71,7 +71,7 @@ export default function ManageApplicationDetailsPage() {
                         </div>
 
                     </div>
-                    <p className="text-3xl font-bold text-blue-950 mb-4">Personal Information</p>
+                    <p className="text-3xl font-bold text-green-950 mb-4">Personal Information</p>
 
                     <div className="row mt-2">
                         <div className="flex col-md-4 flex-col">
@@ -131,7 +131,7 @@ export default function ManageApplicationDetailsPage() {
                             <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.howHeard}</p>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950 mt-4">Education</p>
+                    <p className="text-3xl font-bold text-green-950 mt-4">Education</p>
                     <div className="row mt-2">
                         <div className="flex col-md-4 flex-col">
                             <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
@@ -148,7 +148,7 @@ export default function ManageApplicationDetailsPage() {
                             <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{application.major}</p>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950 mt-4">Academic Experience</p>
+                    <p className="text-3xl font-bold text-green-950 mt-4">Academic Experience</p>
 
                     <div className="row mt-2">
                         <div className="row mt-2 flex justify-between col-md-12 col-sm-12 flex-col">
@@ -202,7 +202,7 @@ export default function ManageApplicationDetailsPage() {
                             </div>
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950 mt-4">Work Experience</p>
+                    <p className="text-3xl font-bold text-green-950 mt-4">Work Experience</p>
 
                     <div className="row mt-2">
                         <div className="flex col-md-3 flex-col">
@@ -231,7 +231,7 @@ export default function ManageApplicationDetailsPage() {
                         </div>
 
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
+                    <p className="text-3xl font-bold text-green-950">Subject Preference</p>
 
                     <div className="mb-4">
                         <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
@@ -243,7 +243,7 @@ export default function ManageApplicationDetailsPage() {
                             ))}
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Skill Assessment</p>
+                    <p className="text-3xl font-bold text-green-950">Skill Assessment</p>
                     <div className="row mt-2">
                         <div className="flex col-md-3 col-sm-4 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
@@ -285,7 +285,7 @@ export default function ManageApplicationDetailsPage() {
                             <RejectSkillAssessment applicationId={id} />
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Applicant ID verification</p>
+                    <p className="text-3xl font-bold text-green-950">Applicant ID verification</p>
                     <div className="row mt-2">
                         <div className="flex col-md-3 col-sm-5 flex-col">
                             <label htmlFor="Problem statement?" className="mb-2 text-sm font-medium text-gray-700">
@@ -321,7 +321,7 @@ export default function ManageApplicationDetailsPage() {
                             <RejectIdDocs applicationId={id} />
                         </div>
                     </div>
-                    <p className="text-3xl font-bold text-blue-950">Overall Assessment</p>
+                    <p className="text-3xl font-bold text-green-950">Overall Assessment</p>
                     <div className="row mb-4 mt-2">
                         <div className="flex col-md-6 col-sm-6 flex-col">
                             <AcceptApplication applicationId={id} />

@@ -55,7 +55,7 @@ export default function SubjectPreferenceForm({ handleNextStep, handlePreviousSt
             </p>
 
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
-                <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
+                <p className="text-3xl font-bold text-green-950">Subject Preference</p>
 
                 <div className="mb-4">
                     <label className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">

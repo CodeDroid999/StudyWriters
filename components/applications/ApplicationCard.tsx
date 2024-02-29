@@ -13,7 +13,7 @@ export default function ApplicationCard({ applicationData }) {
     return (
         <div className="p-3 bg-white">
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4 pb-8">
-                <p className="text-3xl font-bold text-blue-950">Personal Information</p>
+                <p className="text-3xl font-bold text-green-950">Personal Information</p>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="firstName" className="mb-2 text-sm font-medium text-gray-700">
@@ -72,7 +72,7 @@ export default function ApplicationCard({ applicationData }) {
                         <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Education</p>
+                <p className="text-3xl font-bold text-green-950">Education</p>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
@@ -89,7 +89,7 @@ export default function ApplicationCard({ applicationData }) {
                         <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
+                <p className="text-3xl font-bold text-green-950">Academic Experience</p>
                 <div className="row">
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">School teacher experience</div>
@@ -104,7 +104,7 @@ export default function ApplicationCard({ applicationData }) {
                         </div>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Work Experience</p>
+                <p className="text-3xl font-bold text-green-950">Work Experience</p>
                 <div className="row">
                     <div className="flex col-md-3 flex-col">
                         <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
@@ -134,7 +134,7 @@ export default function ApplicationCard({ applicationData }) {
                     </div>
                 </div>
                 <div className="row">
-                    <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
+                    <p className="text-3xl font-bold text-green-950">Subject Preference</p>
                 </div>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
@@ -164,7 +164,7 @@ export default function ApplicationCard({ applicationData }) {
                         <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.howHeard}</p>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Education</p>
+                <p className="text-3xl font-bold text-green-950">Education</p>
                 <div className="row">
                     <div className="flex col-md-4 flex-col">
                         <label htmlFor="lastSchoolName" className="mb-2 text-sm font-medium text-gray-700">
@@ -181,7 +181,7 @@ export default function ApplicationCard({ applicationData }) {
                         <p className="rounded-lg border-1bg-gray-50 px-1 py-2 font-medium">{applicationData.major}</p>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Academic Experience</p>
+                <p className="text-3xl font-bold text-green-950">Academic Experience</p>
                 <div className="row">
                     <div className="row flex justify-between col-md-12 col-sm-12 flex-col">
                         <div className="question col-md-8">School teacher experience</div>
@@ -196,7 +196,7 @@ export default function ApplicationCard({ applicationData }) {
                         </div>
                     </div>
                 </div>
-                <p className="text-3xl font-bold text-blue-950">Work Experience</p>
+                <p className="text-3xl font-bold text-green-950">Work Experience</p>
                 <div className="row">
                     <div className="flex col-md-3 flex-col">
                         <label htmlFor="jobTitle" className="mb-2 text-sm font-medium text-gray-700">
@@ -226,7 +226,7 @@ export default function ApplicationCard({ applicationData }) {
                     </div>
                 </div>
                 <div className="row">
-                    <p className="text-3xl font-bold text-blue-950">Subject Preference</p>
+                    <p className="text-3xl font-bold text-green-950">Subject Preference</p>
                 </div>
                 {/* Display selected subjects and rate */}
                 <div className="mb-4">

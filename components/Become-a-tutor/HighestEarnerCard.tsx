@@ -29,7 +29,7 @@ const HighestEarner = () => {
     <div className="row w-full bg-gray-100 sm:shadow">
       {earners.map((earner, index) => (
         <div key={index} className="col-md-3 col-sm-6 border-1align-items-center justify-items-center pb-2 pt-2">
-          <h2 className="text-center text-xl font-semibold text-blue-950">{earner.name}</h2>
+          <h2 className="text-center text-xl font-semibold text-green-950">{earner.name}</h2>
           {/* Display star rating */}
           <div className="flex flex-row items-center justify-center space-x-1">
             {Rating(earner.rating)}

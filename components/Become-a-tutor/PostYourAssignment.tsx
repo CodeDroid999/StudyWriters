@@ -11,7 +11,7 @@ export default function PostYourAssignment() {
                     <div className="flex justify-center w-full flex-col md:flex-row md:space-x-6">
                         <div className="col-md-4">
                             <div className="p2">
-                                <h3 className="text-blue-950 font-semibold uppercase">
+                                <h3 className="text-green-950 font-semibold uppercase">
                                     Lowest service fees
                                 </h3>
                                 <p>
@@ -21,7 +21,7 @@ export default function PostYourAssignment() {
                         </div>
                         <div className="col-md-4">
                             <div className="p2">
-                                <h3 className="text-blue-950 font-semibold uppercase">
+                                <h3 className="text-green-950 font-semibold uppercase">
                                     Reliable Income
                                 </h3>
                                 <p>
@@ -30,7 +30,7 @@ export default function PostYourAssignment() {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <h3 className="text-blue-950 font-semibold uppercase whitespace-nowrap">
+                            <h3 className="text-green-950 font-semibold uppercase whitespace-nowrap">
                                 Freedom and Flexibility
                             </h3>
                             <p>

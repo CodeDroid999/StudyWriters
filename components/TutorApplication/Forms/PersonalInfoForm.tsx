@@ -197,7 +197,7 @@ export default function InfoForm({ handleNextStep }: Props) {
             </p>
 
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
-                <p className="text-3xl font-bold text-blue-950">
+                <p className="text-3xl font-bold text-green-950">
                     Personal Information
                 </p>
                 <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
@@ -321,7 +321,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                     </div>
                 </div>
 
-                <p className="text-3xl font-bold text-blue-950">
+                <p className="text-3xl font-bold text-green-950">
                     Education
                 </p>
                 <div className="row">
@@ -364,7 +364,7 @@ export default function InfoForm({ handleNextStep }: Props) {
                     </div>
                 </div>
 
-                <p className="text-3xl font-bold text-blue-950">
+                <p className="text-3xl font-bold text-green-950">
                     Academic Experience
                 </p>
                 <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">
@@ -432,7 +432,7 @@ export default function InfoForm({ handleNextStep }: Props) {
 
 
 
-                <p className="text-3xl font-bold text-blue-950">
+                <p className="text-3xl font-bold text-green-950">
                     Work Experience
                 </p>
                 <p className="mb-1 p-2 rounded bg-blue-100 text-blue-600 md:text-sm">

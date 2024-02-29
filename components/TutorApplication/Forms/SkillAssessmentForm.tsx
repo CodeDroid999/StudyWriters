@@ -96,7 +96,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
             </p>
 
             <form className="mt-6 flex flex-col gap-4 md:mt-8 md:pl-4">
-                <p className="text-3xl font-bold text-blue-950">
+                <p className="text-3xl font-bold text-green-950">
                     Short Questions : Writing Skills Assessment
                 </p>
                 <p className="mb-1 rounded bg-blue-100 p-2 text-blue-600 md:text-sm sm:text-sm">
@@ -108,7 +108,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                 </p>
 
                 <div className="">
-                    <label className="text-xl font-bold text-blue-950">
+                    <label className="text-xl font-bold text-green-950">
                         What would you like to write about?
                     </label>
                 </div>
@@ -137,12 +137,12 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                 {/* Display the problem statement based on the selected subject */}
                 {problemStatement && (
                     <div className="mb-1">
-                        <p className="text-xl font-bold text-blue-950">Problem Statement:</p>
+                        <p className="text-xl font-bold text-green-950">Problem Statement:</p>
                         <p>{problemStatement}</p>
                     </div>
                 )}
                 <div className="mb-4 ">
-                    <p className="text-xl font-bold text-blue-950">Requirements:</p>
+                    <p className="text-xl font-bold text-green-950">Requirements:</p>
                     <div className="p-2">
                         <ul className="list-inside list-disc">
                             <li>
@@ -168,7 +168,7 @@ export default function SkillAssessmentForm({ handleNextStep, handlePreviousStep
                     </div>
                 </div>
                 <div className="mb-4">
-                    <label className="text-xl font-bold text-blue-950">Upload your file:</label>
+                    <label className="text-xl font-bold text-green-950">Upload your file:</label>
                     <div
                         className="border-dashed border-2 border-gray-300 p-4"
                         onDrop={handleDrop}

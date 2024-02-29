@@ -96,7 +96,7 @@ export default function RequestPayment({ assignmentData, student, assignmentId }
                   {!user?.bankAccount.accountHolderName ||
                     !user?.bankAccount.accountNumber ? (
                     <div className="flex w-full flex-col">
-                      <p className="mb-2 text-center text-base font-medium text-blue-950">
+                      <p className="mb-2 text-center text-base font-medium text-green-950">
                         Add your bank account details, where you are to receive
                         payments!
                       </p>
