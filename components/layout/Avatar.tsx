@@ -108,12 +108,26 @@ export default function Avatar() {
             My Profile
           </Link>
 
-          <Link
-            className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100  border-1w-100 "
-            href={`/payment-history/${user?.userId}`}
-          >
-            Payment History
-          </Link>
+
+          <div className="flex ">
+            {userRole === 'Student' && (
+              <Link
+                className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100  border-1w-100 "
+                href={`/transaction-history/${user?.userId}`}
+              >
+                Transaction History
+              </Link>
+            )}
+
+            {userRole === 'Tutor' && (
+              <Link
+                className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100  border-1w-100 "
+                href={`/payment-history/${user?.userId}`}
+              >
+                Payment History
+              </Link>
+            )}
+          </div>
           <Link
             className="bg-white- 500 flex items-center gap-x-3.5 rounded-md px-3 mb-1 py-2 text-sm text-gray-800 hover:bg-neutral-100 border-1w-100  "
             href={`/payment-methods/${user?.userId}`}
