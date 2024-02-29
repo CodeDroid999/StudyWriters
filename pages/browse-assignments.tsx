@@ -44,10 +44,10 @@ const BrowseAssignments: React.FC = (props: any) => {
             <thead>
               <tr>
                 <th className="">Title</th>
-                <th className="text-center border-2 border-green-950 md:pl-3">Due Date</th>
-                <th className="text-center border-2 border-green-950 md:pl-3">Bidding</th>
-                <th className="text-center border-2 border-green-950 md:pl-3">Price</th>
-                <th className="text-center border-2 border-green-950 md:pl-3">Bids</th>
+                <th className="text-center border-2 border-gray-500 md:pl-3">Due Date</th>
+                <th className="text-center border-2 border-gray-500 md:pl-3">Bidding</th>
+                <th className="text-center border-2 border-gray-500 md:pl-3">Price</th>
+                <th className="text-center border-2 border-gray-500 md:pl-3">Bids</th>
               </tr>
             </thead>
             <tbody className="pt-2 pb-2">
@@ -59,10 +59,10 @@ const BrowseAssignments: React.FC = (props: any) => {
                   style={{ cursor: 'pointer' }}
                 >
                   <td className="pl-2 pt-1">{assignment.title}</td>
-                  <td className="text-center border-2 border-green-950 md:pl-3">{assignment.dueDate}</td>
-                  <td className="text-center border-2 border-green-950 md:pl-3">{assignment.status}</td>
-                  <td className="text-center border-2 border-green-950 md:pl-3">{assignment.budget}</td>
-                  <td className="text-center border-2 border-green-950 md:pl-3">{assignment.offers.length}</td>
+                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.dueDate}</td>
+                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.status}</td>
+                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.budget}</td>
+                  <td className="text-center border-2 border-gray-500 md:pl-3">{assignment.offers.length}</td>
                 </tr>
               ))}
             </tbody>
