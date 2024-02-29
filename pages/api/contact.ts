@@ -26,7 +26,7 @@ export default async function handler(
       // Compose email
       const mailOptions = {
         from: process.env.NODEMAILER_EMAIL, // Use environment variable for sender email
-        to: 'airtaska1@gmail.com', // Destination email address
+        to: 'qualityunitedwriters@gmail.com', // Destination email address
         subject: 'New Contact Form Submission',
         text: `
           Name: ${firstName} ${lastName}

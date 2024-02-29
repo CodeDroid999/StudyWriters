@@ -62,6 +62,15 @@ export default function Signup() {
       });
       // Add additional fields or data as needed
       console.log('User object updated successfully:', userRef.id);
+      // Make the HTTP request to the newuser API
+      const userData = {
+        firstName: '', // Fill in the user's first name
+        lastName: '',  // Fill in the user's last name
+        email: user.email, // Use the user's email
+        phoneNumber: '', // Fill in the user's phone number
+        message: 'New user signed up', // Optional message
+      };
+      await axios.post('/api/newuser', userData);
     } catch (error) {
       console.error('Error updating user object:', error);
       // Handle error, show toast, or log it as needed

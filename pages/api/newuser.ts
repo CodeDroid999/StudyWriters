@@ -20,19 +20,21 @@ export default async function handler(
       })
 
       // Console log the destination email and password
-      console.log('Destination Email:', 'airtaska1@gmail.com')
+      console.log('Destination Email:', 'qualityunitedwriters@gmail.com')
       console.log('Password Used:', process.env.NODEMAILER_PW)
 
       // Compose email
       const mailOptions = {
         from: process.env.NODEMAILER_EMAIL, // Use environment variable for sender email
-        to: 'airtaska1@gmail.com', // Destination email address
+        to: 'qualityunitedwriters@gmail.com', // Destination email address
         subject: 'New User Signup on QualityunitedWriters',
         text: `
         A new user with the following details has just signed up.
           Name: ${firstName} 
           Last name:${lastName}
           Email: ${email}
+          Phone Number: ${phoneNumber}
+          Message: ${message}
         `,
       }
 
