@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { db } from '../../../firebase'
 import {
   collection,
@@ -77,14 +78,14 @@ export default function Earned() {
             {payments.length === 0 ? (
               <div className="mt-28 flex flex-col items-center">
                 <h1 className="text-xl font-semibold text-green-950 ">
-                  You havent earned from any assignments yet. But lets change that!
+                  You have'nt earned from any assignments yet. But lets change that!
                 </h1>
                 <div className="mt-6">
                   <Link
-                    href="/browse-assignments"
+                    href="/bid-assignments"
                     className="rounded-full bg-green-900 px-4 py-2 font-semibold text-white"
                   >
-                    Browse Assignments
+                    Bid Assignments
                   </Link>
                 </div>
               </div>

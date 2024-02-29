@@ -23,17 +23,8 @@ export default function PaymentHistory() {
     <div className="bg-gray-100">
       <Navbar />
       <div className="mx-auto mt-20 max-w-[900px] px-3 pt-4 min-h-screen justify-items-center align-center">
-        <h1 className="text-4xl font-bold text-green-950">Payment History</h1>
-        <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-gray-400">
-          <span
-            className={`${activeTab === 'Earned'
-              ? 'border-b-blue-600 text-green-950'
-              : 'border-none'
-              } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
-            onClick={() => setActiveTab('Earned')}
-          >
-            Earned
-          </span>
+        <h1 className="text-4xl font-bold text-green-950">Transaction History</h1>
+        <div className="my-3 flex flex-row space-x-4 text-lg font-medium text-green-950 underline">
           <span
             className={`${activeTab === 'Outgoing'
               ? 'border-b-blue-600 text-green-950'

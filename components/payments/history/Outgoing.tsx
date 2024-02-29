@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { db } from '../../../firebase'
 import {
   collection,
@@ -77,7 +78,7 @@ export default function Outgoing() {
             {payments.length === 0 ? (
               <div className="mt-28 flex flex-col items-center">
                 <h1 className="text-xl font-semibold text-green-950 ">
-                  You havent paid for any assignments yet. But lets change that!
+                  You have'nt paid for any assignments yet. But lets change that!
                 </h1>
                 <div className="mt-6">
                   <Link
