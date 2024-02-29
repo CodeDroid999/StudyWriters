@@ -1,6 +1,6 @@
 // pages/api/contact.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
-import nodemailer from 'nodemailer';
+import type { NextApiRequest, NextApiResponse } from 'next'
+import nodemailer from 'nodemailer'
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const { firstName, lastName, email, phoneNumber, message } = req.body;
+      const { firstName, lastName, email, phoneNumber, message } = req.body
 
       // Load environment variables
       const transporter = nodemailer.createTransport({
@@ -17,11 +17,11 @@ export default async function handler(
           user: process.env.NODEMAILER_EMAIL, // Use environment variable for email
           pass: process.env.NODEMAILER_PW, // Use environment variable for password
         },
-      });
+      })
 
       // Console log the destination email and password
-      console.log('Destination Email:', 'airtaska1@gmail.com');
-      console.log('Password Used:', process.env.NODEMAILER_PW);
+      console.log('Destination Email:', 'qualityunitedwriters@gmail.com')
+      console.log('Password Used:', process.env.NODEMAILER_PW)
 
       // Compose email
       const mailOptions = {
@@ -34,17 +34,19 @@ export default async function handler(
           Phone Number: ${phoneNumber}
           Message: ${message}
         `,
-      };
+      }
 
       // Send email
-      await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions)
 
-      res.status(200).json({ message: 'Email sent successfully!' });
+      res.status(200).json({ message: 'Email sent successfully!' })
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while sending the email.' });
+      console.error(error)
+      res
+        .status(500)
+        .json({ error: 'An error occurred while sending the email.' })
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed.' });
+    res.status(405).json({ error: 'Method not allowed.' })
   }
 }
