@@ -17,26 +17,26 @@ const NavigationMenu: React.FC = () => {
         </li>
         <li className="nav-item p-2">
           <Link href="/login" passHref>
-            <span className="nav-link pl-3">Sign in</span>
+            <span className="nav-link pl-3">LogIn</span>
           </Link>
         </li>
         <li className="nav-item p-2">
           <Link href="/signup" passHref>
-            <span className="nav-link pl-3">Sign up +</span>
+            <span className="nav-link pl-3">SignUp</span>
           </Link>
         </li>
         <li className="nav-item p-2">
-          <Link href="/blog" passHref>
-            <span className="nav-link pl-3">Blog</span>
+          <Link href="/tutor-application" passHref>
+            <span className="nav-link pl-3">Become-a-Tutor</span>
           </Link>
         </li>
         <li className="nav-item p-2">
           <Link href="/contact-us" passHref>
-            <span className="nav-link  pl-3">Contact us</span>
+            <span className="nav-link  pl-3">Contact Support</span>
           </Link>
         </li>
       </ul>
-    </div>
+    </div >
   );
 };
 
