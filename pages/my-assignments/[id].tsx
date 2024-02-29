@@ -76,10 +76,10 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
   });
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Navbar />
       {loading ? (
-        <div className="flex h-screen items-center justify-center">
+        <div className="flex h-screen items-center justify-center bg-gray-300">
           <div
             className="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600"
             role="status"
@@ -89,9 +89,9 @@ export default function MyAssignmentsDetailsPage() { // Updated component name
           </div>
         </div>
       ) : (
-        <div className=" mt-28 px-3">
-          <div className="flex flex-row justify-end">
-            <div>
+        <div className="mt-20 pt-2">
+          <div className="flex flex-row justify-end bg-gray-300 shadow px-3 py-2">
+            <div className="flex justify-items-center align-items-between">
               <label
                 htmlFor="filter"
                 className="mr-1 text-xl font-medium text-green-950"

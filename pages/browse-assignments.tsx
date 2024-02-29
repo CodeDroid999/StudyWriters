@@ -27,7 +27,7 @@ const BrowseAssignments: React.FC = (props: any) => {
     router.push("/post-assignment");
   };
   return (
-    <div className="max-h-screen bg-green-950">
+    <div className="max-h-screen bg-gray-100">
       <Navbar />
       <div className="mt-20 overflow-hidden flex flex-col mx-auto">
         <header className="flex flex-row  justify-between bg-green-950  py-2  shadow-xl">
