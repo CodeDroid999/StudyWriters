@@ -14,6 +14,7 @@ import SideNav from 'components/layout/BrowseAssignmentsSideNav';
 import AssignmentCounter from 'components/BrowseAssignmentsTable/AssignmentCounter';
 import Link from 'next/link';
 import router from 'next/router';
+import { TfiClose } from 'react-icons/tfi';
 
 const BrowseAssignments: React.FC = (props: any) => {
   const { assignments } = props;
@@ -22,11 +23,18 @@ const BrowseAssignments: React.FC = (props: any) => {
     router.push(`/assignment/${assignmentId}`);
   };
 
+  const handlePostTask = () => {
+    router.push("/post-assignment");
+  };
   return (
     <div className="max-h-screen">
       <Navbar />
       <div className="mt-20 overflow-hidden flex flex-col mx-auto">
-        <p className="bg-green-950 w-full p-3 text-white">Make Money by Helping with Homework</p>
+        <header className="flex flex-row  justify-end bg-white  py-2 ">
+          <div className="cursor-pointer " onClick={handlePostTask}>
+            <TfiClose size={22} className="font-semibold text-blue-800" />
+          </div>
+        </header>
         <div className="flex">
           <table className="w-full bg-white p-2 overflow-x-auto">
             <thead>
@@ -60,8 +68,8 @@ const BrowseAssignments: React.FC = (props: any) => {
 
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
