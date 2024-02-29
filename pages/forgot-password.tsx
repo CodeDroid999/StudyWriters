@@ -67,7 +67,7 @@ export default function ForgotPassword() {
         <meta name="og:url" property="og:url" content="https://www.QualityUnited Writers.com" />
       </Head>
 
-      <div className="align-center flex flex-col justify-center md:bg-white bg-gray-100 sm:h-screen w-100">
+      <div className="align-center flex flex-col justify-center align-center md:bg-white bg-gray-100 sm:h-screen w-100">
         <div>
           <p className="pb-3 text-center text-green-950">
             We will send you a link to change your password. Enter your email.
