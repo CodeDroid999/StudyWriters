@@ -82,15 +82,15 @@ export default function ForgotPassword() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`h-full w-full rounded-lg border-1bg-gray-50 p-2
-                  outline-none focus:border-green-500`}
+              className={`h-full w-full rounded border-1 bg-gray-100 shadow-inner p-2
+                  outline-none focus:border-green-800`}
             />
           </div>
           <div>
 
             <button
               onClick={handleResetPassword}
-              className="rounded-2xl bg-green-900 px-4 py-2 text-white hover:bg-green-900"
+              className="rounded shadow bg-green-900 px-4 py-2 text-white hover:bg-green-900"
             >
               Continue
             </button>
