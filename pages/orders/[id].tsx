@@ -116,7 +116,7 @@ export default function MyOrdersDetailsPage() { // Updated component name
               <div className="mt-28 flex flex-col items-center justify-items-center min-h-screen">
                 <h1 className="text-xl font-medium text-gray-700">
                   Hello {user?.firstName}, select a category to display your
-                  assignments
+                  orders
                 </h1>
               </div>
             )}
@@ -124,28 +124,28 @@ export default function MyOrdersDetailsPage() { // Updated component name
               <MyAssignmentsDetails
                 heading="Posted"
                 assignments={postedAssignments}
-                warning="You have not posted any assignments!"
+                warning="You have not posted any orders!"
               />
             )}
             {selectedFilter === 'assigned' && (
               <MyAssignmentsDetails
                 heading="Assignments I have been assigned"
                 assignments={assignedAssignments}
-                warning="You have not assigned any assignments to a tutor!"
+                warning="You have not assigned any orders to a tutor!"
               />
             )}
             {selectedFilter === 'offers-pending' && (
               <MyAssignmentsDetails
                 heading="Pending Bids"
                 assignments={pendingOffers}
-                warning="You have no pending offers!"
+                warning="You have no pending bids!"
               />
             )}
             {selectedFilter === 'completed' && (
               <MyAssignmentsDetails
-                heading="Assignments I have completed"
+                heading="Orders I have completed"
                 assignments={completedAssignments}
-                warning="You dont have any completed assignments!"
+                warning="You dont have any completed orders!"
               />
             )}
           </div>
