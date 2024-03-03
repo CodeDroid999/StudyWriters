@@ -25,10 +25,11 @@ const ChatLayout = ({ children }) => {
 
     const handleClick = async () => {
         const user = UserAuth(); // Assuming UserAuth returns the user object or null
+        const userId = UserAuth(); // Assuming UserAuth returns the user object or null
 
         if (user && user.userId) {
             // User is logged in
-            router.push(`/support-room/${user.userId}`);
+            router.push(`/support-room/${userId}`);
         } else {
             // User is not logged in
             const guestProfilePicture = 'default-profile-picture-url'; // Set default profile picture for guest

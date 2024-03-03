@@ -36,7 +36,7 @@ export default function Messages() {
       setLoading(true)
       const unsubscribe = onSnapshot(
         query(
-          collection(db, 'VSupportChats'),
+          collection(db, 'USupportChats'),
           where('participants', 'array-contains', userId)
         ),
         async (snapshot) => {
@@ -75,8 +75,10 @@ export default function Messages() {
       return () => {
         unsubscribe()
       }
-    }
-  }, [userId])
+    } else (
+      router.push("/login")
+    )
+  }, [router, userId])
 
   const chatId = router.query.id?.toString() || ''
 
