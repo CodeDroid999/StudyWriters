@@ -22,14 +22,38 @@ const generateVisitorId = () => {
 
 const ChatLayout = ({ children }) => {
     const router = useRouter();
+    const user = UserAuth(); // Assuming UserAuth returns the user object or null
+
 
     const handleClick = async () => {
-        const user = UserAuth(); // Assuming UserAuth returns the user object or null
-        const userId = UserAuth(); // Assuming UserAuth returns the user object or null
 
         if (user && user.userId) {
             // User is logged in
-            router.push(`/support-room/${userId}`);
+            router.push(`/support-room/${user?.userId}`);
+        } else {
+            try {
+                // Display a toast notification with a link
+                toast.success(
+                    <div>
+                        <p>You are not  logged in. Signup or proceed as guest.</p>
+                        <div className="button"><Link href="/signup">Signup</Link></div>
+                    </div>,
+                    {
+                        duration: 10000 // Duration in milliseconds (4 seconds in this example)
+                    }
+
+                );
+            } catch (error) {
+                console.error('Error creating guest user:', error);
+                // Handle error, display message to user, etc.
+            }
+        }
+    };
+    const proceedAsGuest = async () => {
+
+        if (user && user.userId) {
+            // User is logged in
+            router.push(`/support-room/${user?.userId}`);
         } else {
             // User is not logged in
             const guestProfilePicture = 'default-profile-picture-url'; // Set default profile picture for guest
@@ -39,12 +63,13 @@ const ChatLayout = ({ children }) => {
             try {
                 // Display a toast notification with a link
                 toast.success(
-                    <div>
-                        <p>You are not  logged in. Signup or proceed as guest.</p>
-                        <div className="button"><Link href="/signup">Signup</Link></div>
+                    <div className="flex flex-col">
+                        <p className="text-sm">You are not  logged in. Signup or proceed as guest.</p>
+                        <div className="button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
+                        <div className="button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
                     </div>,
                     {
-                        duration: 1000 // Duration in milliseconds (4 seconds in this example)
+                        duration: 10000 // Duration in milliseconds (4 seconds in this example)
                     }
 
                 );
@@ -64,11 +89,30 @@ const ChatLayout = ({ children }) => {
         }
     };
 
+
     return (
-        <div style={{ position: 'relative', minHeight: '100vh' }}>
-            {children}
-            <ChatIcon onClick={handleClick} />
-        </div>
+        <>
+            <div style={{ position: 'relative', minHeight: '100vh' }}>
+                {children}
+                <div onClick={handleClick} className="bg-white rounded shadow" style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px',
+                    padding: '10px',
+                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer',
+                }}
+                >
+                    {/* Add your chat icon SVG or image here */}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0">                    </g>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> <path d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22C17.5228 22 22 17.5228 22 12C22 10.1786 21.513 8.47087 20.6622 7" stroke="#0e920c" strokeWidth="1.5" strokeLinecap="round"></path>
+                            <path d="M8 12H8.009M11.991 12H12M15.991 12H16" stroke="#0e920c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+                    <span>Support</span>
+                </div>
+            </div>
+        </>
     );
 };
 
