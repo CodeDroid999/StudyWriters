@@ -60,7 +60,7 @@ const ChatLayout = ({ children }) => {
                 profilePicture: guestProfilePicture,
                 role: role
             });
-            router.push(`/support/${user?.userId}`);
+            router.push(`/support/${visitorId}`);
         } catch (error) {
             console.error('Error creating guest user:', error);
             // Handle error, display message to user, etc.
