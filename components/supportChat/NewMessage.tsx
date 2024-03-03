@@ -13,15 +13,14 @@ import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { MdSend } from 'react-icons/md'
 import { toast } from 'react-hot-toast'
-import { useRouter } from 'next/router'
+import { Router, useRouter } from 'next/router'
 
-export default function NewMessage({
-  customerId,
-}) {
+export default function NewMessage() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [message, setMessage] = useState('')
   const router = useRouter()
   const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
+  const userId = router.query?.id
 
   const sendMessage = async (e: any) => {
     e.preventDefault()
@@ -30,7 +29,7 @@ export default function NewMessage({
       return
     }
 
-    const participants = [chatAdminId, customerId]
+    const participants = [chatAdminId, userId]
     participants.sort() // Sort to ensure consistent chat IDs
 
     const chatQuery = query(
@@ -59,14 +58,14 @@ export default function NewMessage({
     await addDoc(collection(existingChatRef, 'messages'), {
       content: message,
       timestamp: serverTimestamp(),
-      senderId: customerId,
+      senderId: userId,
       receiverId: chatAdminId,
       read: false,
     })
 
     await addDoc(collection(db, 'CustomerChatNotifications'), {
       receiverId: chatAdminId,
-      senderId: customerId,
+      senderId: userId,
       type: 'Message',
       content: 'has sent you a message on',
       read: false,
@@ -86,7 +85,7 @@ export default function NewMessage({
       lastMessageTimestamp: serverTimestamp(),
     })
 
-    router.push(`/support/${customerId}`)
+    router.push(`/support/${userId}`)
 
     toast.success('Message sent. We will contact you within 2 hours.')
 

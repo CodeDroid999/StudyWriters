@@ -17,15 +17,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
-import NewMessage from 'components/supportChat/NewMessage'
 import { MdArrowBack, MdSend } from 'react-icons/md'
 import SendFile from 'components/supportChat/SendFile'
+import NewMessage from 'components/supportRoomChat/NewMessage'
+import { UserAuth } from 'context/AuthContext'
 
 export default function Messages() {
   const router = useRouter()
   const [supportChats, setSupportChats] = useState([])
   const [loading, setLoading] = useState(false)
-  const userId = router.query.id?.toString()
+  const userId = UserAuth();
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
   const [receiverId, setReceiverId] = useState('')
@@ -206,7 +207,7 @@ export default function Messages() {
           </div>
           <div className="text-lg font-semibold text-green-950 xl:text-2xl ">
             You haven't sent any messages
-            <NewMessage customerId={userId} />
+            <NewMessage />
           </div>
         </div>
       ) : (

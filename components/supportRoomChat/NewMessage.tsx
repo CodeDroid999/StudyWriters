@@ -1,4 +1,4 @@
-import { UserAuth } from 'context/AuthContext'
+import AuthContext, { UserAuth } from 'context/AuthContext'
 import { db } from '../../firebase'
 import {
   addDoc,
@@ -15,14 +15,13 @@ import { MdSend } from 'react-icons/md'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router'
 
-export default function NewMessage({
-  customerId,
-}) {
+
+export default function NewMessage() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [message, setMessage] = useState('')
   const router = useRouter()
   const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
-
+  const customerId = UserAuth();
   const sendMessage = async (e: any) => {
     e.preventDefault()
 
