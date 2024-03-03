@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Navbar from 'components/layout/Navbar'
 import { db, auth } from '../../firebase'
 import {
@@ -12,6 +13,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
+import NewMessage from 'components/supportChat/NewMessage'
 
 export default function Messages() {
   const router = useRouter()
@@ -24,7 +26,7 @@ export default function Messages() {
       setLoading(true)
       const unsubscribe = onSnapshot(
         query(
-          collection(db, 'supportChats'),
+          collection(db, 'VSupportChats'),
           where('participants', 'array-contains', userId)
         ),
         async (snapshot) => {
@@ -67,7 +69,7 @@ export default function Messages() {
   }, [userId])
 
   return (
-    <div>
+    <div className="bg-gr0">
       <Navbar />
       {loading ? (
         <div className="flex h-screen items-center justify-center">
@@ -82,12 +84,13 @@ export default function Messages() {
       ) : supportChats.length === 0 ? (
         <div className="flex h-screen items-center justify-center">
           <div className="text-lg font-semibold text-green-950 xl:text-2xl ">
-            You dont have any messages
+            You haven't sent any messages
+            <NewMessage customerId={userId} />
           </div>
         </div>
       ) : (
-        <div className="mx-auto mt-24 max-w-[700px] px-3">
-          <h1 className="mb-3 text-2xl font-semibold text-green-950">Chats</h1>
+        <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen">
+          <h1 className="mb-3 text-2xl font-semibold text-green-950">Customer Support</h1>
           <ul>
             {supportChats.map((chat: any) => (
               <li
