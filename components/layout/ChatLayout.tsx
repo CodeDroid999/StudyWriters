@@ -6,6 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { UserAuth } from 'context/AuthContext'; // Assuming UserAuth is the function to check user authentication
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import { TfiClose } from 'react-icons/tfi';
 
 // Function to generate a random visitorId ID
 const generateVisitorId = () => {
@@ -31,6 +32,7 @@ const ChatLayout = ({ children }) => {
                 // Display a toast notification with a link
                 toast.success(
                     <div className="flex flex-col">
+                        <p className="font-bold text-right"><TfiClose size="25" /></p>
                         <p className="font-bold">You are not logged in. Signup or proceed as guest.</p>
                         <div className="rounded mt-2 shadow text-center button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
                         <div onClick={proceedAsGuest} className="shadow text-center p-2 bg-green-700 text-gray-100 mb-2">Proceed as guest</div>
@@ -61,6 +63,7 @@ const ChatLayout = ({ children }) => {
                 role: role
             });
             router.push(`/support/${visitorId}`);
+            toast.success("Continued as guest!")
         } catch (error) {
             console.error('Error creating guest user:', error);
             // Handle error, display message to user, etc.
