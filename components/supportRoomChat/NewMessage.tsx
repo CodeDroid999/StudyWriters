@@ -34,7 +34,7 @@ export default function NewMessage({
     participants.sort() // Sort to ensure consistent chat IDs
 
     const chatQuery = query(
-      collection(db, 'VSupportChats'),
+      collection(db, 'USupportChats'),
       where('participants', '==', participants)
     )
 
@@ -46,7 +46,7 @@ export default function NewMessage({
       existingChatRef = querySnapshot.docs[0].ref
     } else {
       // Create a new chat since no existing chat was found
-      const newChatRef = await addDoc(collection(db, 'VSupportChats'), {
+      const newChatRef = await addDoc(collection(db, 'USupportChats'), {
         participants: participants,
         lastMessage: message,
         lastMessageTimestamp: serverTimestamp(),
@@ -68,7 +68,7 @@ export default function NewMessage({
       receiverId: chatAdminId,
       senderId: customerId,
       type: 'Message',
-      content: 'has sent you a message on',
+      content: `The user with the user id : ${customerId} has sent you a message on the Support Room Chat.`,
       read: false,
       createdAt: serverTimestamp(),
     })
@@ -76,7 +76,7 @@ export default function NewMessage({
       to: "qualityunitedwriters@gmail.com",
       message: {
         subject: 'New Message',
-        html: `A Site Visitor has sent you a message from the support page. Please attend to him ASAP`,
+        html: `The user with the user id : ${customerId} has sent you a message on the Support Room Chat. Please attend to him ASAP.`,
       },
     })
 
