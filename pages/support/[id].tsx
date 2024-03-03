@@ -69,7 +69,7 @@ export default function Messages() {
   }, [userId])
 
   return (
-    <div className="bg-gr0">
+    <div className="bg-green-950">
       <Navbar />
       {loading ? (
         <div className="flex h-screen items-center justify-center">
@@ -82,14 +82,14 @@ export default function Messages() {
           </div>
         </div>
       ) : supportChats.length === 0 ? (
-        <div className="flex h-screen items-center justify-center">
+        <div className="flex h-screen items-center justify-center ">
           <div className="text-lg font-semibold text-green-950 xl:text-2xl ">
             You haven't sent any messages
             <NewMessage customerId={userId} />
           </div>
         </div>
       ) : (
-        <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen">
+        <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen bg-green-950 shadow-2xl">
           <h1 className="mb-3 text-2xl font-semibold text-green-950">Customer Support</h1>
           <ul>
             {supportChats.map((chat: any) => (
