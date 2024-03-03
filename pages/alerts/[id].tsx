@@ -1,217 +1,297 @@
-import { UserAuth } from 'context/AuthContext'
-import { db, auth } from '../../firebase'
+import Image from 'next/image'
+import { db } from '../../firebase'
 import {
+  addDoc,
   collection,
   doc,
   getDocs,
   onSnapshot,
   query,
+  serverTimestamp,
   updateDoc,
   where,
-  writeBatch,
 } from 'firebase/firestore'
-import React, { useState, useEffect } from 'react'
-import Navbar from 'components/layout/Navbar'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { onAuthStateChanged } from 'firebase/auth'
-import profile from 'public/profile.jpeg'
+import React, { useState, useEffect } from 'react'
+import { MdArrowBack, MdSend } from 'react-icons/md'
+import { UserAuth } from 'context/AuthContext'
+import SendFile from 'components/messaging/SendFile'
+import { formatDate } from 'components/profile/PersonalInfoTab'
 
-export default function Notifications() {
-  const { user } = UserAuth()
-  const [notifications, setNotifications] = useState([])
+export default function AlertRoom() {
+  const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState('')
+  const [receiverId, setReceiverId] = useState('')
+  const [receiver, setReceiver] = useState(null)
   const [loading, setLoading] = useState(false)
+  const { user } = UserAuth()
   const router = useRouter()
-  const userId = router.query.id?.toString() || ''
+
+  const alertId = router.query.id?.toString() || ''
+  const userId = user?.userId
 
   useEffect(() => {
-    if (userId) {
-      setLoading(true)
-      const notificationsRef = collection(db, 'notifications')
-
-      // Fetch user's notifications
-      const notificationsQuery = query(
-        notificationsRef,
-        where('receiverId', '==', userId)
-      )
+    if (alertId) {
+      const messagesCollectionRef = collection(db, 'alerts', alertId, 'messages')
 
       const unsubscribe = onSnapshot(
-        notificationsQuery,
-        async (querySnapshot) => {
-          const notificationsData = await Promise.all(
-            querySnapshot.docs.map(async (doc) => {
+        messagesCollectionRef,
+        async (snapshot) => {
+          const updatedMessages: any = await Promise.all(
+            snapshot.docs.map(async (doc) => {
+              const messageData = doc.data()
               const senderSnapshot = await getDocs(
                 query(
                   collection(db, 'users'),
-                  where('userId', '==', doc.data().senderId)
+                  where('userId', '==', messageData.senderId)
                 )
               )
               const senderData = senderSnapshot.docs[0].data()
 
               return {
-                id: doc.id,
-                ...doc.data(),
+                messageId: doc.id,
+                ...messageData,
                 senderDetails: senderData,
               }
             })
           )
 
-          // Update the state with all notifications
-          notificationsData?.sort((a: any, b: any) => b.createdAt - a.createdAt)
-          setNotifications(notificationsData)
-
-          // Mark unread notifications as read
-          const unreadNotifications = notificationsData.filter(
-            (notification: any) => !notification.read
+          updatedMessages.sort(
+            (a: any, b: any) =>
+              a.timestamp?.toMillis() - b.timestamp?.toMillis()
           )
 
-          const updatePromises = unreadNotifications.map(
-            async (notification) => {
-              const notificationRef = doc(db, 'notifications', notification.id)
-              await updateDoc(notificationRef, { read: true })
-            }
+          setMessages(updatedMessages)
+
+          const unreadMessages = updatedMessages.filter(
+            (message: any) => !message.read && message.receiverId === userId
           )
+
+          const updatePromises = unreadMessages.map(async (message: any) => {
+            const messageRef = doc(
+              db,
+              'chats',
+              alertId,
+              'messages',
+              message.messageId
+            )
+            await updateDoc(messageRef, { read: true })
+          })
 
           // Wait for all updates to complete
           await Promise.all(updatePromises).catch((error) => {
-            console.error('Error marking notifications as read:', error)
+            console.error('Error marking messages as read:', error)
           })
-
-          setLoading(false)
         }
       )
-
-        // Fetch unread notifications and mark them as read on initial load
-        ; (async () => {
-          const unreadQuerySnapshot = await getDocs(
-            query(
-              notificationsRef,
-              where('receiverId', '==', userId),
-              where('read', '==', false)
-            )
-          )
-
-          const unreadNotifications = unreadQuerySnapshot.docs.map(
-            (doc) => doc.ref
-          )
-          const batch = writeBatch(db)
-
-          unreadNotifications.forEach((notificationRef) => {
-            batch.update(notificationRef, { read: true })
-          })
-
-          await batch.commit()
-        })()
 
       return () => {
         unsubscribe()
       }
     }
-  }, [userId])
+  }, [alertId, userId])
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push(`/`)
+    if (alertId) {
+      const chatRef = doc(db, 'chats', alertId)
+
+      const unsubscribe = onSnapshot(chatRef, (docSnapshot) => {
+        const chatData = docSnapshot.data()
+
+        const otherParticipantId = chatData.participants.find(
+          (participantId: string) => participantId !== userId
+        )
+        setReceiverId(otherParticipantId)
+      })
+
+      return () => {
+        unsubscribe()
       }
-    })
-    return () => unsubscribe()
-  }, [router])
-
-  function timeAgo(timestamp: any) {
-    const now = new Date()
-    const createdDate = timestamp.toDate()
-    const timeDifference = now.getTime() - createdDate.getTime()
-
-    if (timeDifference < 60000) {
-      // Less than 1 minute
-      return 'Just now'
-    } else if (timeDifference < 3600000) {
-      // Less than 1 hour
-      const minutes = Math.floor(timeDifference / 60000)
-      return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
-    } else if (timeDifference < 86400000) {
-      // Less than 1 day
-      const hours = Math.floor(timeDifference / 3600000)
-      return `${hours} hour${hours > 1 ? 's' : ''} ago`
-    } else if (timeDifference < 604800000) {
-      // Less than 1 week
-      const days = Math.floor(timeDifference / 86400000)
-      return `${days} day${days > 1 ? 's' : ''} ago`
-    } else if (timeDifference < 31536000000) {
-      // Less than 1 year
-      const weeks = Math.floor(timeDifference / 604800000)
-      return `${weeks} week${weeks > 1 ? 's' : ''} ago`
-    } else {
-      const years = Math.floor(timeDifference / 31536000000)
-      return `${years} year${years > 1 ? 's' : ''} ago`
     }
+  }, [alertId, userId])
+
+  useEffect(() => {
+    if (receiverId) {
+      setLoading(true)
+      const q = query(
+        collection(db, 'users'),
+        where('userId', '==', receiverId)
+      )
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0]
+          const userData = doc.data()
+          userData.createdAt = formatDate(userData.createdAt.toDate())
+          setReceiver(userData)
+        } else {
+          setReceiver(null)
+        }
+        setLoading(false)
+      })
+
+      return () => {
+        unsubscribe()
+      }
+    }
+  }, [receiverId])
+
+  const sendMessage = async (event: any) => {
+    event.preventDefault()
+    if (!receiverId) {
+      return
+    }
+    if (!newMessage) {
+      return
+    }
+
+    const chatRef = doc(db, 'chats', alertId)
+    await addDoc(collection(chatRef, 'messages'), {
+      content: newMessage,
+      timestamp: serverTimestamp(),
+      senderId: user?.userId,
+      receiverId: receiverId,
+      read: false,
+    })
+    if (receiverId !== user?.userId) {
+      await addDoc(collection(db, 'mail'), {
+        to: receiver?.email,
+        message: {
+          subject: 'New Message',
+          html: `${user?.firstName} has sent you a message.`,
+        },
+      })
+    }
+    await updateDoc(chatRef, {
+      lastMessage: newMessage,
+      lastMessageTimestamp: serverTimestamp(),
+    })
+    setNewMessage('')
   }
 
   return (
-    <div>
-      <Navbar />
+    <div className="mx-auto  max-w-[800px] px-2">
 
-      {loading ? (
-        <div className="flex h-screen items-center justify-center">
+      <div className="fixed left-0 right-0 top-0  z-10 bg-white px-2 py-3 duration-300 ease-in">
+        <div className="mx-auto  max-w-[800px] ">
           <div
-            className="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600"
-            role="status"
-            aria-label="loading"
+            onClick={() => router.back()}
+            className="flex w-[70px] cursor-pointer flex-row items-center justify-start "
           >
-            <span className="sr-only">Loading...</span>
+            <MdArrowBack className="text-[20px] text-green-950" />
+            <span className="ml-1 text-[18px] font-medium text-green-950">
+              Back
+            </span>
           </div>
         </div>
-      ) : notifications.length === 0 ? (
-        <div className="flex h-screen items-center justify-center">
-          <div className="text-lg font-semibold text-green-950 xl:text-2xl ">
-            You dont have any Alerts
-          </div>
-        </div>
-      ) : (
-        <div className="mx-auto mt-24 max-w-[700px] px-3">
-          <h1 className="mb-3 text-3xl font-bold text-green-950">
-            Alerts
-          </h1>
-          <ul className="mt-5">
-            {notifications.map((notification) => (
-              <li
-                key={notification.id}
-                className="my-4 rounded-xl bg-gray-100 p-2"
-              >
-                <div className="flex w-full flex-row items-center">
-                  <div>
-                    <Image
-                      src={notification.senderDetails.profilePicture || profile}
-                      width={40}
-                      height={40}
-                      alt="profile"
-                      className="h-[40px] w-[40px] rounded-full object-cover"
-                    />
-                  </div>
-                  <h1 className="ml-2 flex-1 text-sm font-medium">
-                    <span className="text-blue-700">
-                      {notification.senderDetails.firstName}{' '}
-                      {notification.senderDetails.lastName}
-                    </span>
-                    <span className=""> {notification.content}</span>
+      </div>
 
-                    <span className="ml-1.5 text-blue-700">
-                      <Link href={`/assignments/${notification.assignmentId}`}>
-                        {notification.assignmentTitle}
-                      </Link>
+      <div className=" mt-12">
+        <h1 className="text-center text-sm font-medium text-gray-400">
+          For your protection, keep communication and payments within QualityunitedWriters.
+        </h1>
+        <div className="mb-20 mt-5">
+          {messages.map((message: any) => (
+            <div key={message.messageId} className="my-3 w-full">
+              <div
+                className={`flex items-start ${message.senderId === user?.userId
+                  ? 'flex-row-reverse'
+                  : 'flex-row'
+                  }`}
+              >
+                <div className="">
+                  <Image
+                    src={message.senderDetails.profilePicture}
+                    alt="profile"
+                    width={50}
+                    height={50}
+                    className="h-[45px] w-[45px] rounded-full object-cover"
+                  />
+                </div>
+                <div
+                  className={`min-h-[60px] flex-1 rounded-md p-2 ${message.senderId === user?.userId
+                    ? 'ml-6 mr-2 bg-green-950 text-gray-100 md:ml-14'
+                    : 'ml-2 mr-6 bg-gray-100 text-gray-800 md:mr-14'
+                    }`}
+                >
+                  <div className="flex flex-row justify-between text-xs">
+                    <span>{message.senderDetails.firstName}</span>
+
+                    <span className="">
+                      {new Date(
+                        message.timestamp?.toMillis()
+                      ).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                      })}{' '}
+                      {new Date(
+                        message.timestamp?.toMillis()
+                      ).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      })}
                     </span>
-                  </h1>
+                  </div>
+                  {message.fileUrl ? (
+                    <div>
+                      {message.senderId === user?.userId ? (
+                        <span>
+                          <p className="my-0.5 text-xs">File has been sent</p>
+                          <a
+                            href={message.fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-base font-semibold"
+                          >
+                            View file
+                          </a>
+                        </span>
+                      ) : (
+                        <span className="flex flex-col">
+                          <p className=" text-sm text-gray-800">
+                            {message.senderDetails.firstName} shared a file
+                          </p>
+                          <a
+                            href={message.fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-base font-semibold"
+                          >
+                            View file
+                          </a>
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="text-base ">{message.content}</p>
+                    </div>
+                  )}
                 </div>
-                <div className="my-0.5 flex flex-row justify-end text-xs font-medium text-gray-700">
-                  <span>{timeAgo(notification.createdAt)}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
+
+      <div className="fixed bottom-0 left-0 right-0 z-10 bg-white px-2 duration-300 ease-in">
+        <form className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1border-gray-400 ">
+          <input
+            placeholder="Message"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            className="mr-16 h-16 w-full rounded-xl  p-2 outline-none"
+          />
+          <div className="absolute right-0 mr-1 flex flex-row items-center space-x-3">
+            <SendFile userId={user?.userId} chatId={alertId} />
+            <MdSend
+              size={28}
+              className="cursor-pointer"
+              onClick={sendMessage}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
