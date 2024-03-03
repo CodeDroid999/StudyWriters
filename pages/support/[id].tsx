@@ -50,7 +50,7 @@ export default function Messages() {
 
               const userQuerySnapshot = await getDocs(
                 query(
-                  collection(db, 'users'),
+                  collection(db, 'visitors'),
                   where('userId', '==', otherParticipantId)
                 )
               )
@@ -81,7 +81,7 @@ export default function Messages() {
   const chatId = router.query.id?.toString() || ''
 
   useEffect(() => {
-    const messagesCollectionRef = collection(db, 'chats', chatId, 'messages')
+    const messagesCollectionRef = collection(db, 'USupportChats', chatId, 'messages')
 
     const unsubscribe = onSnapshot(
       messagesCollectionRef,

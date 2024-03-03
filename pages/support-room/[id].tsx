@@ -83,7 +83,7 @@ export default function Messages() {
   const chatId = router.query.id?.toString() || ''
 
   useEffect(() => {
-    const messagesCollectionRef = collection(db, 'chats', chatId, 'messages')
+    const messagesCollectionRef = collection(db, 'USupportChats', chatId, 'messages')
 
     const unsubscribe = onSnapshot(
       messagesCollectionRef,
@@ -93,7 +93,7 @@ export default function Messages() {
             const messageData = doc.data()
             const senderSnapshot = await getDocs(
               query(
-                collection(db, 'visitors'),
+                collection(db, 'users'),
                 where('userId', '==', messageData.senderId)
               )
             )
@@ -121,7 +121,7 @@ export default function Messages() {
         const updatePromises = unreadMessages.map(async (message: any) => {
           const messageRef = doc(
             db,
-            'VSupportChats',
+            'USupportChats',
             chatId,
             'messages',
             message.messageId
@@ -150,7 +150,7 @@ export default function Messages() {
       return
     }
 
-    const chatRef = doc(db, 'VSupportChats', chatId)
+    const chatRef = doc(db, 'USupportChats', chatId)
     await addDoc(collection(chatRef, 'messages'), {
       content: newMessage,
       timestamp: serverTimestamp(),
