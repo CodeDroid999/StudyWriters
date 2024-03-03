@@ -7,8 +7,6 @@ import { UserAuth } from 'context/AuthContext'; // Assuming UserAuth is the func
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 
-
-
 // Function to generate a random visitorId ID
 const generateVisitorId = () => {
     // Generate a random alphanumeric string of length 10
@@ -24,9 +22,7 @@ const ChatLayout = ({ children }) => {
     const router = useRouter();
     const user = UserAuth(); // Assuming UserAuth returns the user object or null
 
-
     const handleClick = async () => {
-
         if (user && user.userId) {
             // User is logged in
             router.push(`/support-room/${user?.userId}`);
@@ -35,14 +31,13 @@ const ChatLayout = ({ children }) => {
                 // Display a toast notification with a link
                 toast.success(
                     <div className="flex flex-col">
-                        <p className="text-sm">You are not  logged in. Signup or proceed as guest.</p>
+                        <p className="font-bold">You are not logged in. Signup or proceed as guest.</p>
                         <div className="rounded mt-2 shadow text-center button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
-                        <div className="button shadow text-center p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
+                        <div onClick={proceedAsGuest} className="shadow text-center p-2 bg-green-700 text-gray-100 mb-2">Proceed as guest</div>
                     </div>,
                     {
-                        duration: 10000 // Duration in milliseconds (4 seconds in this example)
+                        duration: 4000 // Duration in milliseconds (10 seconds in this example)
                     }
-
                 );
             } catch (error) {
                 console.error('Error creating guest user:', error);
@@ -50,46 +45,27 @@ const ChatLayout = ({ children }) => {
             }
         }
     };
+
     const proceedAsGuest = async () => {
 
-        if (user && user.userId) {
-            // User is logged in
-            router.push(`/support-room/${user?.userId}`);
-        } else {
-            // User is not logged in
-            const guestProfilePicture = 'default-profile-picture-url'; // Set default profile picture for guest
-            const role = 'Visitor';
-            const visitorId = generateVisitorId()
+        // User is not logged in
+        const guestProfilePicture = 'default-profile-picture-url'; // Set default profile picture for guest
+        const role = 'Visitor';
+        const visitorId = generateVisitorId();
 
-            try {
-                // Display a toast notification with a link
-                toast.success(
-                    <div className="flex flex-col">
-                        <p className="text-sm">You are not  logged in. Signup or proceed as guest.</p>
-                        <div className="button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
-                        <div className="button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
-                    </div>,
-                    {
-                        duration: 10000 // Duration in milliseconds (4 seconds in this example)
-                    }
-
-                );
-
-                // Add guest user to visitors collection with unique userId
-                const docRef = await addDoc(collection(db, 'visitors'), {
-                    userId: visitorId, // Assuming currentUser is authenticated
-                    profilePicture: guestProfilePicture,
-                    role: role
-                });
-
-                router.push('/signup');
-            } catch (error) {
-                console.error('Error creating guest user:', error);
-                // Handle error, display message to user, etc.
-            }
+        try {
+            // Add guest user to visitors collection with unique userId
+            const docRef = await addDoc(collection(db, 'visitors'), {
+                userId: visitorId, // Assuming currentUser is authenticated
+                profilePicture: guestProfilePicture,
+                role: role
+            });
+            router.push(`/support/${user?.userId}`);
+        } catch (error) {
+            console.error('Error creating guest user:', error);
+            // Handle error, display message to user, etc.
         }
     };
-
 
     return (
         <>

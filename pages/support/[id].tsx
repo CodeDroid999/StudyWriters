@@ -202,8 +202,8 @@ export default function Messages() {
               </div>
             </div>
           </div>
-          <div className="text-lg font-semibold text-green-950 xl:text-2xl ">
-            You haven't sent any messages
+          <div className="flex flex-col align-items-center justify-items-center text-lg font-semibold text-green-950 xl:text-2xl ">
+            <p className="text-center mb-4">You haven't sent any messages</p>
             <NewMessage customerId={userId} />
           </div>
         </div>

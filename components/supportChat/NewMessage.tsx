@@ -98,7 +98,7 @@ export default function NewMessage({
     <div className="relative">
       <button
         onClick={() => setIsFormOpen(true)}
-        className="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 text-sm font-semibold text-blue-700"
+        className="cursor-pointer rounded-xl bg-gray-200 px-4 py-2 text-sm font-semibold text-blue-700 border-1 border-green-950"
       >
         Contact Support
       </button>
