@@ -142,7 +142,7 @@ export default function NewMessage({
               />
             </div>
             <div className="mt-5">
-              <form className="relative mx-auto mb-2 flex w-full max-w-[900px] flex-row items-center rounded-xl border-1border-gray-400 ">
+              <form className="relative mx-auto mb-2 flex w-full max-w-[900px] flex-row items-center rounded-xl border-1 border-gray-400 ">
                 <input
                   placeholder="Message"
                   value={message}

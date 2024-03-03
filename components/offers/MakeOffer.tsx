@@ -287,7 +287,7 @@ export default function MakeOffer({ studentId, assignmentTitle, student }) {
                     * QualityunitedWriters automatically includes a Service Fee to cover
                     insurance and transaction costs.
                   </p>
-                  <div className="mt-4 max-w-[280px] rounded-xl border-1border-gray-400 px-3 py-2">
+                  <div className="mt-4 max-w-[280px] rounded-xl border-1 border-gray-400 px-3 py-2">
                     <div className="flex flex-row items-center">
                       <div className="flex flex-col items-center justify-center rounded-full bg-blue-100 p-3">
                         <BiLock className="text-blue-800" size={22} />

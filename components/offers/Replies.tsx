@@ -192,7 +192,7 @@ export default function Replies({
           </div>
           {user && (user.userId === customerId || user.userId === studentId) && (
             <div className="mt-3">
-              <form className=" mx-auto mb-2 flex  flex-row items-center rounded-xl border-1border-gray-400 ">
+              <form className=" mx-auto mb-2 flex  flex-row items-center rounded-xl border-1 border-gray-400 ">
                 <input
                   placeholder="Reply"
                   value={newReply}

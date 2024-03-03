@@ -275,7 +275,7 @@ export default function AlertRoom() {
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 z-10 bg-white px-2 duration-300 ease-in">
-        <form className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1border-gray-400 ">
+        <form className="relative mx-auto mb-2 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1 border-gray-400 ">
           <input
             placeholder="Message"
             value={newMessage}
