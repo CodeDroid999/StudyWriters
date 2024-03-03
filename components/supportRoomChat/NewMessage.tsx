@@ -86,7 +86,7 @@ export default function NewMessage({
       lastMessageTimestamp: serverTimestamp(),
     })
 
-    router.push(`/support/${customerId}`)
+    router.push(`/support-room/${customerId}`)
 
     toast.success('Message sent. We will contact you within 2 hours.')
 
