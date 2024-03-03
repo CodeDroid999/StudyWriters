@@ -44,7 +44,7 @@ const ChatLayout = ({ children }) => {
                         <div className="button"><Link href="/signup">Signup</Link></div>
                     </div>,
                     {
-                        duration: 4000 // Duration in milliseconds (4 seconds in this example)
+                        duration: 1000 // Duration in milliseconds (4 seconds in this example)
                     }
 
                 );
