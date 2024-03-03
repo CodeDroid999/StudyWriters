@@ -34,9 +34,10 @@ const ChatLayout = ({ children }) => {
             try {
                 // Display a toast notification with a link
                 toast.success(
-                    <div>
-                        <p>You are not  logged in. Signup or proceed as guest.</p>
-                        <div className="button"><Link href="/signup">Signup</Link></div>
+                    <div className="flex flex-col">
+                        <p className="text-sm">You are not  logged in. Signup or proceed as guest.</p>
+                        <div className="rounded mt-2 shadow text-center button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
+                        <div className="button shadow text-center p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
                     </div>,
                     {
                         duration: 10000 // Duration in milliseconds (4 seconds in this example)
