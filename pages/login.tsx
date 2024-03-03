@@ -65,7 +65,6 @@ export default function LogIn() {
         toast.success('Logged In');
       }
     });
-
     return () => unsubscribe();
   }, [redirect, router]);
 
