@@ -29,7 +29,7 @@ export default function PaymentHistory() {
             className={`${activeTab === 'Outgoing'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
-              } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
+              } cursor-pointer border-1 border-x-transparent border-t-transparent px-3`}
             onClick={() => setActiveTab('Outgoing')}
           >
             Outgoing

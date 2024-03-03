@@ -28,7 +28,7 @@ export default function PaymentHistory() {
             className={`${activeTab === 'Earned'
               ? 'border-b-blue-600 text-green-950'
               : 'border-none'
-              } cursor-pointer border-1border-x-transparent border-t-transparent px-3 underline`}
+              } cursor-pointer border-1 border-x-transparent border-t-transparent px-3 underline`}
             onClick={() => setActiveTab('Earned')}
           >
             Earned

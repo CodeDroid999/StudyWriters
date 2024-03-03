@@ -64,7 +64,7 @@ export default function UserReviews({ userId }) {
           className={`${activeTab === 'Tutor'
             ? 'border-b-blue-600 text-green-950'
             : 'border-none'
-            } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
+            } cursor-pointer border-1 border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Tutor')}
         >
           As A Tutor
@@ -73,7 +73,7 @@ export default function UserReviews({ userId }) {
           className={`${activeTab === 'Student'
             ? 'border-b-blue-600 text-green-950'
             : 'border-none'
-            } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
+            } cursor-pointer border-1 border-x-transparent border-t-transparent px-3`}
           onClick={() => setActiveTab('Student')}
         >
           As A Student

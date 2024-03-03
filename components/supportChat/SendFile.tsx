@@ -39,9 +39,9 @@ export default function SendFile({ userId, chatId }) {
     })
   }
   return (
-    <div>
+    <div className="px-2">
       <label htmlFor="attachment">
-        <ImAttachment size={20} className="cursor-pointer" />
+        <ImAttachment size={20} className="cursor-pointer mt-2 text-green-950" />
       </label>
       <input
         id="attachment"

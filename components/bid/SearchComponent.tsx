@@ -62,7 +62,7 @@ const SearchComponent: React.FC = () => {
   }
 
   return (
-    <div className="top-135 fixed left-0 z-10 w-full  border-1border-x-transparent border-b-gray-500 border-t-gray-500  bg-white duration-300 ease-in">
+    <div className="top-135 fixed left-0 z-10 w-full  border-1 border-x-transparent border-b-gray-500 border-t-gray-500  bg-white duration-300 ease-in">
       <div className="m-auto flex max-w-[1100px] items-center justify-between p-3">
         <div className="flex w-full max-w-screen-xl items-center justify-between">
           <div

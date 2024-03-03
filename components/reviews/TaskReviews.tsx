@@ -70,7 +70,7 @@ export default function TaskReviews({ assignmentId }) {
               className={`${activeTab === 'Student'
                 ? 'border-b-blue-600 text-green-950'
                 : 'border-none'
-                } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
+                } cursor-pointer border-1 border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Student')}
             >
               Student
@@ -79,7 +79,7 @@ export default function TaskReviews({ assignmentId }) {
               className={`${activeTab === 'Tutor'
                 ? 'border-b-blue-600 text-green-950'
                 : 'border-none'
-                } cursor-pointer border-1border-x-transparent border-t-transparent px-3`}
+                } cursor-pointer border-1 border-x-transparent border-t-transparent px-3`}
               onClick={() => setActiveTab('Tutor')}
             >
               Tutor
