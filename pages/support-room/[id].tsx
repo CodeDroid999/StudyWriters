@@ -29,15 +29,15 @@ export default function SupportPage() {
   useEffect(() => {
     if (supportChatId) {
       // Listen for changes in the support chat messages
-      const messagesCollectionRef = collection(db, 'supportMessages');
+      const messagesCollectionRef = collection(db, 'supportChatMessages');
 
-      const unsubscribe = onSnapshot(messagesCollectionRef, async (snapshot) => {
+      onSnapshot(messagesCollectionRef, async (snapshot) => {
         const updatedMessages = await Promise.all(
           snapshot.docs.map(async (doc) => {
             const messageData = doc.data();
 
             return {
-              messageId: doc.id,
+              chatId: supportChatId, messageId: doc.id,
               createdAt: messageData.createdAt,
               content: messageData.content,
               read: messageData.read,
@@ -68,7 +68,7 @@ export default function SupportPage() {
     }
 
     // Add new message to the support chat
-    await addDoc(collection(db, 'supportMessages'), {
+    await addDoc(collection(db, 'supportChatMessages'), {
       messageId: supportChatId,
       content: newMessage,
       createdAt: serverTimestamp(),
