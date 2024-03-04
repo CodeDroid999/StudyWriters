@@ -7,8 +7,7 @@ import { MdSend } from 'react-icons/md';
 import { UserAuth } from 'context/AuthContext';
 import toast from 'react-hot-toast';
 import Navbar from 'components/layout/Navbar';
-import rando
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -24,7 +23,7 @@ export default function SupportPage() {
   const visitorId = router.query?.id
 
 
-  const supportChatId = random('alphanumeric');
+  const supportChatId = uuidv4();
 
 
   useEffect(() => {
@@ -70,7 +69,7 @@ export default function SupportPage() {
 
     // Add new message to the support chat
     await addDoc(collection(db, 'supportMessages'), {
-      messageId: ,
+      messageId: supportChatId,
       content: newMessage,
       createdAt: serverTimestamp(),
       senderId: visitorId,
