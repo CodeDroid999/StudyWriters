@@ -16,161 +16,144 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { onAuthStateChanged } from 'firebase/auth'
 import NewMessage from 'components/supportChat/NewMessage'
 import { MdArrowBack, MdSend } from 'react-icons/md'
 import SendFile from 'components/supportChat/SendFile'
+import { toast } from 'react-hot-toast'
 
 export default function Messages() {
-  const router = useRouter()
   const [supportChats, setSupportChats] = useState([])
   const [loading, setLoading] = useState(false)
-  const userId = router.query.id?.toString()
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
-  const [receiverId, setReceiverId] = useState('')
-  const [receiver, setReceiver] = useState(null)
+  const [chatId, setChatId] = useState('') // Define the chatId variable
+  const [isFormOpen, setIsFormOpen] = useState(false)
+  const [message, setMessage] = useState('')
+  const router = useRouter()
+  const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
+  const visitorId = router.query?.id
+  const receiverId = useState('chatAdminId')
+
+
 
   useEffect(() => {
-    if (userId) {
-      setLoading(true)
-      const unsubscribe = onSnapshot(
-        query(
-          collection(db, 'VSupportChats'),
-          where('participants', 'array-contains', userId)
-        ),
-        async (snapshot) => {
-          const updatedChats = await Promise.all(
-            snapshot.docs.map(async (doc) => {
-              const chatData = doc.data()
+    const messagesCollectionRef = collection(db, 'VSupportChats');
 
-              const otherParticipantId = chatData.participants.find(
-                (participantId: string) => participantId !== userId
-              )
+    const unsubscribe = onSnapshot(messagesCollectionRef, async (snapshot) => {
+      const updatedMessages = await Promise.all(
+        snapshot.docs.map(async (doc) => {
+          const messageData = doc.data();
 
-              const userQuerySnapshot = await getDocs(
-                query(
-                  collection(db, 'visitors'),
-                  where('userId', '==', otherParticipantId)
-                )
-              )
+          // Check if the message is sent between chatAdmin and visitor
+          const isChatAdminSender = messageData.senderId === chatAdminId;
+          const isChatAdminReceiver = messageData.receiverId === chatAdminId;
+          const isVisitorSender = messageData.senderId === visitorId;
+          const isVisitorReceiver = messageData.receiverId === visitorId;
 
-              const otherParticipantData = userQuerySnapshot.docs[0].data()
-
-              return {
-                chatId: doc.id,
-                ...chatData,
-                otherParticipant: otherParticipantData,
-              }
-            })
-          )
-          updatedChats.sort(
-            (a: any, b: any) => b.lastMessageTimestamp - a.lastMessageTimestamp
-          )
-          setSupportChats(updatedChats)
-          setLoading(false)
-        }
-      )
-
-      return () => {
-        unsubscribe()
-      }
-    }
-  }, [userId])
-
-  const chatId = router.query.id?.toString() || ''
-
-  useEffect(() => {
-    const messagesCollectionRef = collection(db, 'USupportChats', chatId, 'messages')
-
-    const unsubscribe = onSnapshot(
-      messagesCollectionRef,
-      async (snapshot) => {
-        const updatedMessages: any = await Promise.all(
-          snapshot.docs.map(async (doc) => {
-            const messageData = doc.data()
-            const senderSnapshot = await getDocs(
-              query(
-                collection(db, 'visitors'),
-                where('userId', '==', messageData.senderId)
-              )
-            )
-            const senderData = senderSnapshot.docs[0].data()
-
+          // Include message if it's between chatAdmin and visitor
+          if ((isChatAdminSender && isVisitorReceiver) || (isVisitorSender && isChatAdminReceiver)) {
             return {
               messageId: doc.id,
+              timestamp: messageData.timestamp,
+              content: messageData.content,
+              read: messageData.read,
+              senderId: messageData.senderId,
+              receiverId: messageData.receiverId,
               ...messageData,
-              senderDetails: senderData,
-            }
-          })
-        )
-
-        updatedMessages.sort(
-          (a: any, b: any) =>
-            a.timestamp?.toMillis() - b.timestamp?.toMillis()
-        )
-
-        setMessages(updatedMessages)
-
-        const unreadMessages = updatedMessages.filter(
-          (message: any) => !message.read && message.receiverId === userId
-        )
-
-        const updatePromises = unreadMessages.map(async (message: any) => {
-          const messageRef = doc(
-            db,
-            'VSupportChats',
-            chatId,
-            'messages',
-            message.messageId
-          )
-          await updateDoc(messageRef, { read: true })
+            };
+          } else {
+            return null; // Exclude message if it's not between chatAdmin and visitor
+          }
         })
+      );
 
-        // Wait for all updates to complete
-        await Promise.all(updatePromises).catch((error) => {
-          console.error('Error marking messages as read:', error)
-        })
-      }
-    )
+      // Filter out null values (excluded messages) and sort by timestamp
+      const filteredMessages = updatedMessages.filter(message => message !== null);
+      filteredMessages.sort((a, b) => a.timestamp?.toMillis() - b.timestamp?.toMillis());
+
+      setMessages(filteredMessages);
+    });
 
     return () => {
-      unsubscribe()
-    }
-  }, [chatId, userId])
+      unsubscribe();
+    };
+  }, []);
 
-  const sendMessage = async (event: any) => {
-    event.preventDefault()
-    if (!receiverId) {
+
+
+
+  const sendMessage = async (e: any) => {
+    e.preventDefault()
+
+    if (!message) {
       return
     }
-    if (!newMessage) {
-      return
+
+    const participants = [chatAdminId, visitorId]
+    participants.sort() // Sort to ensure consistent chat IDs
+
+    const chatQuery = query(
+      collection(db, 'VSupportChats'),
+      where('participants', '==', participants)
+    )
+
+    const querySnapshot = await getDocs(chatQuery)
+
+    let existingChatRef: any
+
+    if (!querySnapshot.empty) {
+      existingChatRef = querySnapshot.docs[0].ref
+    } else {
+      // Create a new chat since no existing chat was found
+      const newChatRef = await addDoc(collection(db, 'VSupportChats'), {
+        participants: participants,
+        lastMessage: message,
+        lastMessageTimestamp: serverTimestamp(),
+      })
+
+      existingChatRef = newChatRef
     }
 
-    const chatRef = doc(db, 'VSupportChats', chatId)
-    await addDoc(collection(chatRef, 'messages'), {
-      content: newMessage,
+    // Add the message to the messages subcollection of the chat
+    await addDoc(collection(existingChatRef, 'messages'), {
+      content: message,
       timestamp: serverTimestamp(),
-      senderId: userId,
-      receiverId: receiverId,
+      senderId: visitorId,
+      receiverId: chatAdminId,
       read: false,
     })
-    if (receiverId !== userId) {
-      await addDoc(collection(db, 'mail'), {
-        to: receiver?.email,
-        message: {
-          subject: 'New Message',
-          html: `A new site Visitor needs customer support has sent you a message. Please attend to him ASAP`,
-        },
-      })
-    }
-    await updateDoc(chatRef, {
-      lastMessage: newMessage,
+
+    await addDoc(collection(db, 'CustomerChatNotifications'), {
+      receiverId: chatAdminId,
+      senderId: visitorId,
+      type: 'Message',
+      content: 'has sent you a message on',
+      read: false,
+      createdAt: serverTimestamp(),
+    })
+    await addDoc(collection(db, 'mail'), {
+      to: "qualityunitedwriters@gmail.com",
+      message: {
+        subject: 'New Message',
+        html: `A Site Visitor has sent you a message from the support page. Please attend to him ASAP`,
+      },
+    })
+
+    // Update the existing chat document with the latest message details
+    await updateDoc(existingChatRef, {
+      lastMessage: message,
       lastMessageTimestamp: serverTimestamp(),
     })
-    setNewMessage('')
+
+    router.push(`/support/${visitorId}`)
+
+    toast.success('Message sent. We will contact you within 2 hours.')
+
+    setIsFormOpen(false)
+    setMessage('')
   }
+
+
 
 
   return (
@@ -187,10 +170,10 @@ export default function Messages() {
             <span className="sr-only">Loading...</span>
           </div>
         </div>
-      ) : supportChats.length === 0 ? (
+      ) : messages.length === 0 ? (
         <div className="flex h-screen items-center justify-center ">
-          <div className="fixed left-0 right-0 top-0  z-10 bg-white px-2 py-3 duration-300 ease-in">
-            <div className="mx-auto  max-w-[800px] ">
+          <div className="fixed left-0 right-0 top-0  z-10 bg-gray-100 shadow-xl px-2 py-3 duration-300 ease-in">
+            <div className="mx-auto  max-w-[800px] mt-20">
               <div
                 onClick={() => router.back()}
                 className="flex w-[70px] cursor-pointer flex-row items-center justify-start "
@@ -216,44 +199,42 @@ export default function Messages() {
                 key={chat.chatId}
                 className="my-3 w-full rounded-xl bg-gray-200 px-1.5 py-2 md:px-2 md:py-4"
               >
-                <Link href={`/chats/${chat.chatId}`}>
-                  <div className="flex flex-row items-center">
-                    <Image
-                      src={chat.otherParticipant?.profilePicture}
-                      width={50}
-                      height={50}
-                      alt="profile"
-                      className="h-[40px] w-[40px] rounded-full object-cover md:h-[50px] md:w-[50px]"
-                    />
-                    <div className="ml-1.5 flex flex-1 flex-col md:ml-3">
-                      <div className="flex  flex-row items-center justify-between">
-                        <span className="text-base font-medium text-green-950 md:text-lg">
-                          {chat.otherParticipant?.firstName}{' '}
-                          {chat.otherParticipant?.lastName}
-                        </span>
-                        <span className="text-xs font-medium text-gray-700">
-                          {new Date(
-                            chat.lastMessageTimestamp?.toMillis()
-                          ).toLocaleDateString('en-GB', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric',
-                          })}{' '}
-                          {new Date(
-                            chat.lastMessageTimestamp?.toMillis()
-                          ).toLocaleTimeString([], {
-                            hour: 'numeric',
-                            minute: '2-digit',
-                          })}
-                        </span>
-                      </div>
-
-                      <span className="text-sm font-normal text-gray-700">
-                        {chat.lastMessage}
+                <div className="flex flex-row items-center">
+                  <Image
+                    src={chat.otherParticipant?.profilePicture}
+                    width={50}
+                    height={50}
+                    alt="profile"
+                    className="h-[40px] w-[40px] rounded-full object-cover md:h-[50px] md:w-[50px]"
+                  />
+                  <div className="ml-1.5 flex flex-1 flex-col md:ml-3">
+                    <div className="flex  flex-row items-center justify-between">
+                      <span className="text-base font-medium text-green-950 md:text-lg">
+                        {chat.otherParticipant?.firstName}{' '}
+                        {chat.otherParticipant?.lastName}
+                      </span>
+                      <span className="text-xs font-medium text-gray-700">
+                        {new Date(
+                          chat.lastMessageTimestamp?.toMillis()
+                        ).toLocaleDateString('en-GB', {
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric',
+                        })}{' '}
+                        {new Date(
+                          chat.lastMessageTimestamp?.toMillis()
+                        ).toLocaleTimeString([], {
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        })}
                       </span>
                     </div>
+
+                    <span className="text-sm font-normal text-gray-700">
+                      {chat.lastMessage}
+                    </span>
                   </div>
-                </Link>
+                </div>
               </li>
             ))}
           </ul>
@@ -281,3 +262,8 @@ export default function Messages() {
     </div >
   )
 }
+
+
+
+
+

@@ -21,7 +21,12 @@ const generateVisitorId = () => {
 
 const ChatLayout = ({ children }) => {
     const router = useRouter();
-    const user = UserAuth(); // Assuming UserAuth returns the user object or null
+    const user = UserAuth();
+    const guestProfilePicture = 'https://i.postimg.cc/FRh8G3nP/emptyprofile.jpg'; // Set default profile picture for guest
+    const role = 'Visitor';
+    const visitorId = generateVisitorId();
+
+
 
     const handleClick = async () => {
         if (user && user.userId) {
@@ -32,35 +37,34 @@ const ChatLayout = ({ children }) => {
                 // Display a toast notification with a link
                 toast.success(
                     <div className="flex flex-col">
-                        <p className="font-bold text-right"><TfiClose size="25" /></p>
-                        <p className="font-bold">You are not logged in. Signup or proceed as guest.</p>
+                        <div className="font-bold flex align-right mb-2 ">
+                            <div className="px-2 py-1 bg-red-600 text-gray-100 rounded-l shadow text-sm">Close</div>
+                            <div className="mr-2 py-1 bg-red-600 text-gray-100 rounded-r shadow"><TfiClose size="20" /></div>
+                        </div>
+                        <p className="font-bold text-xs text-gray-600">You are not logged in. Signup or proceed as guest.</p>
                         <div className="rounded mt-2 shadow text-center button p-2 bg-green-700 text-gray-100 mb-2"><Link href="/signup">Signup</Link></div>
                         <div onClick={proceedAsGuest} className="shadow text-center p-2 bg-green-700 text-gray-100 mb-2">Proceed as guest</div>
                     </div>,
                     {
-                        duration: 4000 // Duration in milliseconds (10 seconds in this example)
+                        duration: 5000 // Duration in milliseconds (10 seconds in this example)
                     }
                 );
             } catch (error) {
-                console.error('Error creating guest user:', error);
+                console.error('Error displaying toast:', error);
                 // Handle error, display message to user, etc.
             }
         }
     };
 
     const proceedAsGuest = async () => {
-
-        // User is not logged in
-        const guestProfilePicture = 'default-profile-picture-url'; // Set default profile picture for guest
-        const role = 'Visitor';
-        const visitorId = generateVisitorId();
-
         try {
             // Add guest user to visitors collection with unique userId
             const docRef = await addDoc(collection(db, 'visitors'), {
                 userId: visitorId, // Assuming currentUser is authenticated
                 profilePicture: guestProfilePicture,
-                role: role
+                role: role,
+                firstName: "Guest",
+                lastName: ""
             });
             router.push(`/support/${visitorId}`);
             toast.success("Continued as guest!")
