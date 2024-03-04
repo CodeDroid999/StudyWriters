@@ -46,7 +46,7 @@ const ChatLayout = ({ children }) => {
                         <div onClick={proceedAsGuest} className="shadow text-center p-2 bg-green-700 text-gray-100 mb-2">Proceed as guest</div>
                     </div>,
                     {
-                        duration: 3000 // Duration in milliseconds (10 seconds in this example)
+                        duration: 2000 // Duration in milliseconds (10 seconds in this example)
                     }
                 );
             } catch (error) {
@@ -66,7 +66,7 @@ const ChatLayout = ({ children }) => {
                 firstName: "Guest",
                 lastName: ""
             });
-            router.push(`/support/${visitorId}`);
+            router.push(`/support-room/${visitorId}`);
             toast.success("Continued as guest!")
         } catch (error) {
             console.error('Error creating guest user:', error);

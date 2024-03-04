@@ -20,138 +20,186 @@ import NewMessage from 'components/supportChat/NewMessage'
 import { MdArrowBack, MdSend } from 'react-icons/md'
 import SendFile from 'components/supportChat/SendFile'
 import { toast } from 'react-hot-toast'
+import { formatDate } from 'pages/public-profile/[id]'
+import Router from 'next/router'
+import { UserAuth } from 'context/AuthContext'
 
 export default function Messages() {
-  const [supportChats, setSupportChats] = useState([])
-  const [loading, setLoading] = useState(false)
+  const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
-  const [chatId, setChatId] = useState('') // Define the chatId variable
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [message, setMessage] = useState('')
+  const [receiverId, setReceiverId] = useState('')
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
   const visitorId = router.query?.id
-  const receiverId = useState('chatAdminId')
+  const [chatId, setChatId] = useState(null); // Initialize chatId state
+
+  const participants = [chatAdminId, visitorId]
+  participants.sort() // Sort to ensure consistent chat IDs
 
 
+  async function fetchUserData(visitorId, chatAdminId) {
+    try {
+      let userData = null;
+
+      if (visitorId && visitorId === chatAdminId) {
+        // If visitorId exists and is equal to chatAdminId, query user data from the 'users' collection
+        const userQuery = query(collection(db, 'users'), where('userId', '==', chatAdminId));
+        const userQuerySnapshot = await getDocs(userQuery);
+
+        if (!userQuerySnapshot.empty) {
+          userData = userQuerySnapshot.docs[0].data();
+        }
+      } else if (visitorId) {
+        // If visitorId exists but is not equal to chatAdminId, query user data from the 'visitors' collection
+        const visitorQuery = query(collection(db, 'visitors'), where('userId', '==', visitorId));
+        const visitorQuerySnapshot = await getDocs(visitorQuery);
+
+        if (!visitorQuerySnapshot.empty) {
+          userData = visitorQuerySnapshot.docs[0].data();
+        }
+      }
+      return userData;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null; // Return null in case of error
+    }
+  }
 
   useEffect(() => {
-    const messagesCollectionRef = collection(db, 'VSupportChats');
+    const fetchChatIdAndMessages = async () => {
+      try {
+        if (!visitorId) {
+          console.log("Visitor ID is not available.");
+          return;
+        }
 
-    const unsubscribe = onSnapshot(messagesCollectionRef, async (snapshot) => {
-      const updatedMessages = await Promise.all(
-        snapshot.docs.map(async (doc) => {
-          const messageData = doc.data();
+        const q = query(
+          collection(db, 'VSupportChats'),
+          where('senderId', '==', visitorId)
+        );
+        const querySnapshot = await getDocs(q);
 
-          // Check if the message is sent between chatAdmin and visitor
-          const isChatAdminSender = messageData.senderId === chatAdminId;
-          const isChatAdminReceiver = messageData.receiverId === chatAdminId;
-          const isVisitorSender = messageData.senderId === visitorId;
-          const isVisitorReceiver = messageData.receiverId === visitorId;
+        if (!querySnapshot.empty) {
+          const chatDocument = querySnapshot.docs[0];
+          const chatId = chatDocument.id;
+          setChatId(chatId);
 
-          // Include message if it's between chatAdmin and visitor
-          if ((isChatAdminSender && isVisitorReceiver) || (isVisitorSender && isChatAdminReceiver)) {
-            return {
-              messageId: doc.id,
-              timestamp: messageData.timestamp,
-              content: messageData.content,
-              read: messageData.read,
-              senderId: messageData.senderId,
-              receiverId: messageData.receiverId,
-              ...messageData,
-            };
-          } else {
-            return null; // Exclude message if it's not between chatAdmin and visitor
-          }
-        })
-      );
-
-      // Filter out null values (excluded messages) and sort by timestamp
-      const filteredMessages = updatedMessages.filter(message => message !== null);
-      filteredMessages.sort((a, b) => a.timestamp?.toMillis() - b.timestamp?.toMillis());
-
-      setMessages(filteredMessages);
-    });
-
-    return () => {
-      unsubscribe();
+          // Fetch messages only after chatId is set
+          const messages = await fetchMessagesForChat(chatId);
+          setMessages(messages);
+        } else {
+          console.log(`No chat found where senderId is ${visitorId}`);
+        }
+      } catch (error) {
+        console.error('Error fetching chatId:', error);
+      }
     };
-  }, []);
+
+    fetchChatIdAndMessages(); // Call the function to fetch chatId and messages
+  }, [visitorId]); // Depend on visitorId to trigger the effect when it changes
 
 
+  const fetchMessagesForChat = async (chatId) => {
 
+    try {
+      // Construct a reference to the messages subcollection for the given chatId
+      const messagesCollectionRef = collection(db, 'VSupportChats', chatId, 'messages');
 
-  const sendMessage = async (e: any) => {
-    e.preventDefault()
+      // Query to get all messages in the subcollection
+      const q = query(messagesCollectionRef);
 
-    if (!message) {
+      // Execute the query and get the snapshot of documents
+      const querySnapshot = await getDocs(q);
+
+      // Initialize an array to store the messages
+      const messages = [];
+
+      // Iterate over each document in the snapshot
+      querySnapshot.forEach((doc) => {
+        // Extract data from each message document
+        const messageData = doc.data();
+
+        // Push the message data into the messages array
+        messages.push({
+          messageId: doc.id,
+          content: messageData.content,
+          read: messageData.read,
+          receiverId: messageData.receiverId,
+          senderId: messageData.senderId,
+          timestamp: messageData.timestamp.toDate(), // Convert Firebase Timestamp to JavaScript Date object
+        });
+      });
+
+      // Return the array of messages
+      return messages;
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      // Return an empty array or handle the error as needed
+      return [];
+    }
+  }
+  fetchMessagesForChat(chatId); // Call the function to fetch chatId and messages
+
+  useEffect(() => {
+    if (receiverId) {
+      setLoading(true)
+      const q = query(
+        collection(db, 'visitors'),
+        where('userId', '==', receiverId)
+      )
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0]
+          const userData = doc.data()
+          userData.createdAt = formatDate(userData.createdAt.toDate())
+          userData.userId = userData.userId
+          setReceiverId(userData.userId)
+        } else {
+          setReceiverId(chatAdminId)
+        }
+        setLoading(false)
+      })
+
+      return () => {
+        unsubscribe()
+      }
+    }
+  }, [receiverId])
+
+  const sendMessage = async (event: any) => {
+    event.preventDefault()
+    if (!receiverId) {
+      return
+    }
+    if (!newMessage) {
       return
     }
 
-    const participants = [chatAdminId, visitorId]
-    participants.sort() // Sort to ensure consistent chat IDs
-
-    const chatQuery = query(
-      collection(db, 'VSupportChats'),
-      where('participants', '==', participants)
-    )
-
-    const querySnapshot = await getDocs(chatQuery)
-
-    let existingChatRef: any
-
-    if (!querySnapshot.empty) {
-      existingChatRef = querySnapshot.docs[0].ref
-    } else {
-      // Create a new chat since no existing chat was found
-      const newChatRef = await addDoc(collection(db, 'VSupportChats'), {
-        participants: participants,
-        lastMessage: message,
-        lastMessageTimestamp: serverTimestamp(),
-      })
-
-      existingChatRef = newChatRef
-    }
-
-    // Add the message to the messages subcollection of the chat
-    await addDoc(collection(existingChatRef, 'messages'), {
-      content: message,
+    const chatRef = doc(db, 'VSupportChats', chatId)
+    await addDoc(collection(chatRef, 'messages'), {
+      content: newMessage,
       timestamp: serverTimestamp(),
       senderId: visitorId,
-      receiverId: chatAdminId,
+      receiverId: receiverId,
       read: false,
     })
-
-    await addDoc(collection(db, 'CustomerChatNotifications'), {
-      receiverId: chatAdminId,
-      senderId: visitorId,
-      type: 'Message',
-      content: 'has sent you a message on',
-      read: false,
-      createdAt: serverTimestamp(),
-    })
-    await addDoc(collection(db, 'mail'), {
-      to: "qualityunitedwriters@gmail.com",
-      message: {
-        subject: 'New Message',
-        html: `A Site Visitor has sent you a message from the support page. Please attend to him ASAP`,
-      },
-    })
-
-    // Update the existing chat document with the latest message details
-    await updateDoc(existingChatRef, {
-      lastMessage: message,
+    if (receiverId !== visitorId) {
+      await addDoc(collection(db, 'mail'), {
+        to: "qualityunitedwriters@gmail.com",
+        message: {
+          subject: 'New Message',
+          html: `Someone has sent you a message.`,
+        },
+      })
+    }
+    await updateDoc(chatRef, {
+      lastMessage: newMessage,
       lastMessageTimestamp: serverTimestamp(),
     })
-
-    router.push(`/support/${visitorId}`)
-
-    toast.success('Message sent. We will contact you within 2 hours.')
-
-    setIsFormOpen(false)
-    setMessage('')
+    setNewMessage('')
   }
+
 
 
 
@@ -193,51 +241,90 @@ export default function Messages() {
       ) : (
         <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen bg-white shadow-2xl">
           <h1 className="mb-3 text-2xl font-semibold text-green-950">Customer Support</h1>
-          <ul>
-            {supportChats.map((chat: any) => (
-              <li
-                key={chat.chatId}
-                className="my-3 w-full rounded-xl bg-gray-200 px-1.5 py-2 md:px-2 md:py-4"
-              >
-                <div className="flex flex-row items-center">
-                  <Image
-                    src={chat.otherParticipant?.profilePicture}
-                    width={50}
-                    height={50}
-                    alt="profile"
-                    className="h-[40px] w-[40px] rounded-full object-cover md:h-[50px] md:w-[50px]"
-                  />
-                  <div className="ml-1.5 flex flex-1 flex-col md:ml-3">
-                    <div className="flex  flex-row items-center justify-between">
-                      <span className="text-base font-medium text-green-950 md:text-lg">
-                        {chat.otherParticipant?.firstName}{' '}
-                        {chat.otherParticipant?.lastName}
-                      </span>
-                      <span className="text-xs font-medium text-gray-700">
+
+          <div className="mb-20 mt-5">
+            {messages.map((message: any) => (
+              <div key={message.messageId} className="my-3 w-full">
+                <div
+                  className={`flex items-start ${message.senderId === visitorId
+                    ? 'flex-row-reverse'
+                    : 'flex-row'
+                    }`}
+                >
+                  <div className="">
+                    <Image
+                      src={message.senderDetails.profilePicture}
+                      alt="profile"
+                      width={50}
+                      height={50}
+                      className="h-[45px] w-[45px] rounded-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`min-h-[60px] flex-1 rounded-md p-2 ${message.senderId === visitorId
+                      ? 'ml-6 mr-2 bg-green-950 text-gray-100 md:ml-14'
+                      : 'ml-2 mr-6 bg-gray-100 text-gray-800 md:mr-14'
+                      }`}
+                  >
+                    <div className="flex flex-row justify-between text-xs">
+                      <span>{message.senderDetails.firstName}</span>
+
+                      <span className="">
                         {new Date(
-                          chat.lastMessageTimestamp?.toMillis()
+                          message.timestamp?.toMillis()
                         ).toLocaleDateString('en-GB', {
                           day: '2-digit',
                           month: '2-digit',
                           year: 'numeric',
                         })}{' '}
                         {new Date(
-                          chat.lastMessageTimestamp?.toMillis()
+                          message.timestamp?.toMillis()
                         ).toLocaleTimeString([], {
                           hour: 'numeric',
                           minute: '2-digit',
                         })}
                       </span>
                     </div>
-
-                    <span className="text-sm font-normal text-gray-700">
-                      {chat.lastMessage}
-                    </span>
+                    {message.fileUrl ? (
+                      <div>
+                        {message.senderId === visitorId ? (
+                          <span>
+                            <p className="my-0.5 text-xs">File has been sent</p>
+                            <a
+                              href={message.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-base font-semibold"
+                            >
+                              View file
+                            </a>
+                          </span>
+                        ) : (
+                          <span className="flex flex-col">
+                            <p className=" text-sm text-gray-800">
+                              {message.senderDetails.firstName} shared a file
+                            </p>
+                            <a
+                              href={message.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-base font-semibold"
+                            >
+                              View file
+                            </a>
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="text-base ">{message.content}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
           <div className="fixed bottom-0 left-0 right-0 z-10 bg-gray-100 px-1 duration-300 ease-in shadow">
             <form className="relative mx-auto mb-2 mt-2 flex w-full max-w-[700px] flex-row items-center rounded border-2 border-green-950 ">
               <input
@@ -247,7 +334,7 @@ export default function Messages() {
                 className="h-15 rounded-xl  p-2 outline-none text-green-950"
               />
               <div className="absolute right-0 ml-1 rounded-r flex flex-row items-center justify-items-center space-x-2 bg-gray-100 border-2 border-green-950">
-                <SendFile userId={userId} chatId={chatId} />
+                <SendFile userId={visitorId} chatId={chatId} />
                 <MdSend
                   size={28}
                   className="cursor-pointer text-green-800"
@@ -266,4 +353,8 @@ export default function Messages() {
 
 
 
+
+function fetchMessagesForChat(chatId: string) {
+  throw new Error('Function not implemented.')
+}
 
