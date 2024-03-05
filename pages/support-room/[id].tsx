@@ -156,7 +156,7 @@ export default function SupportPage() {
                       : 'ml-2 mr-6 bg-gray-100 text-gray-800 md:mr-14'
                       }`}
                   >
-                    <div className="flex flex-row justify-between text-xs">
+                    <div className="flex flex-row justify-between text-xs shadow-xl">
                       <span>Guest User</span>
 
                       <span className="">
@@ -207,7 +207,7 @@ export default function SupportPage() {
                       </div>
                     ) : (
                       <div>
-                        <p className="text-base ">{message.content}</p>
+                        <p className="text-base shadow ">{message.content}</p>
                       </div>
                     )}
                   </div>
@@ -227,7 +227,7 @@ export default function SupportPage() {
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={handleKeyDown} // Add keydown event handler
-                className="h-15 rounded-xl  p-2 outline-none text-green-950 w-full"
+                className="h-15 rounded-xl  py-2 px-4 outline-none text-green-950 w-full"
               />
               <div className="absolute right-0 ml-1 rounded-full py-1 px-2 flex flex-row items-center justify-items-center space-x-2 bg-gray-100 border-2 border-green-950 ">
                 {/* Add file input or any other components as needed */}
