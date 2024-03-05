@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import Navbar from 'components/layout/Navbar';
 import { v4 as uuidv4 } from 'uuid';
 import NewMessage from 'components/supportRoomChat/NewMessage';
+import Image from 'next/image';
 
 
 
@@ -43,7 +44,6 @@ export default function SupportPage() {
               createdAt: messageData.createdAt,
               content: messageData.content,
               read: messageData.read,
-              senderId: messageData.senderId,
               ...messageData,
             };
           })
@@ -129,37 +129,109 @@ export default function SupportPage() {
           </div>
         </div>
       ) : (
-        <div className="container w-2/3  overflow-y-auto pt-2 rounded bg-green-950 shadow-inner">
+        <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen bg-white shadow-2xl">
+          <h1 className="mb-3 text-2xl font-semibold text-green-950">Customer Support</h1>
           {/* Messages section */}
-          <div className="mt-12 bg-white mx-2 min-h-[1/2] overflow-y-auto px-2">
-            {/* Display messages here */}
-            {messages.map((message: { messageId: string; createdAt: any; content: string }) => (
-              // Display message components
-              <div key={message.messageId} className="my-3 w-full h-full bg-gray-100">
-                {/* Render each message component */}
-                <div className="p-1 rounded">
-                  <p>You: {message.content}</p>
+          <div className="mb-20 mt-5">
+            {messages.map((message: any) => (
+              <div key={message.messageId} className="my-3 w-full">
+                <div
+                  className={`flex items-start ${message.senderId === visitorId
+                    ? 'flex-row-reverse'
+                    : 'flex-row'
+                    }`}
+                >
+                  <div className="">
+                    <Image
+                      src="https://i.postimg.cc/4xcSLb4k/emptyprofile.jpg"
+                      alt="profile"
+                      width={50}
+                      height={50}
+                      className="h-[45px] w-[45px] rounded-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`min-h-[60px] flex-1 rounded-md p-2 ${message.senderId === visitorId
+                      ? 'ml-6 mr-2 bg-green-950 text-gray-100 md:ml-14'
+                      : 'ml-2 mr-6 bg-gray-100 text-gray-800 md:mr-14'
+                      }`}
+                  >
+                    <div className="flex flex-row justify-between text-xs">
+                      <span>{message.firstName}</span>
+
+                      <span className="">
+                        {new Date(
+                          message.timestamp?.toMillis()
+                        ).toLocaleDateString('en-GB', {
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric',
+                        })}{' '}
+                        {new Date(
+                          message.timestamp?.toMillis()
+                        ).toLocaleTimeString([], {
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        })}
+                      </span>
+                    </div>
+                    {message.fileUrl ? (
+                      <div>
+                        {message.senderId === visitorId ? (
+                          <span>
+                            <p className="my-0.5 text-xs">File has been sent</p>
+                            <a
+                              href={message.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-base font-semibold"
+                            >
+                              View file
+                            </a>
+                          </span>
+                        ) : (
+                          <span className="flex flex-col">
+                            <p className=" text-sm text-gray-800">
+                              {message.senderDetails.firstName} shared a file
+                            </p>
+                            <a
+                              href={message.fileUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-base font-semibold"
+                            >
+                              View file
+                            </a>
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="text-base ">{message.content}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Message input and send button */}
-          <div className="fixed shadow bottom-0 left-0 right-0 z-10 bg-gray-300 px-2 border-1border-black duration-300 ease-in">
+          <div className="fixed bottom-0 left-0 right-0 z-10 bg-gray-100 px-1 duration-300 ease-in shadow">
             <form
               onSubmit={handleFormSubmit} // Use the custom handler
-              className="relative mx-auto mb-6 mt-7 bg-gray-500 flex w-full max-w-[800px] flex-row items-center rounded-xl border-1border-green-900"
+              className="relative mx-auto mb-4 mt-2 flex w-full max-w-[690px] flex-row items-center rounded-full border-y-2 border-x-1 border-green-950"
             >
               <input
-                placeholder="Message"
+                placeholder="Write new message..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={handleKeyDown} // Add keydown event handler
-                className="mr-16 h-16 w-full rounded-xl p-2 outline-none"
+                className="h-15 rounded-xl  p-2 outline-none text-green-950 w-full"
               />
-              <div className="absolute right-0 mr-1 flex flex-row items-center space-x-3 ">
+              <div className="absolute right-0 ml-1 rounded-full py-1 px-2 flex flex-row items-center justify-items-center space-x-2 bg-gray-100 border-2 border-green-950 ">
                 {/* Add file input or any other components as needed */}
-                <MdSend size={28} className="cursor-pointer" onClick={sendMessage} />
+                <MdSend size={28} className="cursor-pointer text-green-800" onClick={sendMessage} />
               </div>
             </form>
           </div>
