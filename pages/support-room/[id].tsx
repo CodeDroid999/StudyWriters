@@ -130,7 +130,7 @@ export default function SupportPage() {
         </div>
       ) : (
         <div className="mx-auto mt-24 max-w-[700px] px-3 h-screen bg-white shadow-2xl">
-          <h1 className="mb-3 text-2xl font-semibold text-green-950">Customer Support</h1>
+          <h1 className="text-2xl font-semibold text-green-950">Customer Support</h1>
           {/* Messages section */}
           <div className="mb-20 mt-5">
             {messages.map((message: any) => (
@@ -147,7 +147,7 @@ export default function SupportPage() {
                       alt="profile"
                       width={50}
                       height={50}
-                      className="h-[45px] w-[45px] rounded-full object-cover"
+                      className="h-[45px] w-[45px] rounded-full object-cover mt-2 border-2 border-gray-200 shadow"
                     />
                   </div>
                   <div
@@ -157,7 +157,7 @@ export default function SupportPage() {
                       }`}
                   >
                     <div className="flex flex-row justify-between text-xs">
-                      <span>{message.firstName}</span>
+                      <span>Guest User</span>
 
                       <span className="">
                         {new Date(
@@ -192,7 +192,7 @@ export default function SupportPage() {
                         ) : (
                           <span className="flex flex-col">
                             <p className=" text-sm text-gray-800">
-                              {message.senderDetails.firstName} shared a file
+                              A guest user shared a file
                             </p>
                             <a
                               href={message.fileUrl}
