@@ -141,7 +141,7 @@ export default function SupportPage() {
                     : 'flex-row'
                     }`}
                 >
-                  <div className="">
+                  <div className="flex justify-center align-middle">
                     <Image
                       src="https://i.postimg.cc/4xcSLb4k/emptyprofile.jpg"
                       alt="profile"
