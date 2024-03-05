@@ -33,15 +33,13 @@ export default function App({
     <>
       <AuthContextProvider>
         <Toaster position="bottom-center" />
-        <ChatLayout>
-          {draftMode ? (
-            <PreviewProvider token={token}>
-              <Component {...pageProps} />
-            </PreviewProvider>
-          ) : (
+        {draftMode ? (
+          <PreviewProvider token={token}>
             <Component {...pageProps} />
-          )}
-        </ChatLayout>
+          </PreviewProvider>
+        ) : (
+          <Component {...pageProps} />
+        )}
       </AuthContextProvider>
     </>
   )
