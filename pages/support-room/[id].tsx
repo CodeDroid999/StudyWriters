@@ -124,7 +124,7 @@ export default function SupportPage() {
             </div>
           </div>
           <div className="flex flex-col align-items-center justify-items-center text-lg font-semibold text-green-950 xl:text-2xl ">
-            <p className="text-center mb-4">You haven't sent any messages</p>
+            <p className="text-center text-gray-100 mb-4">You haven't sent any messages</p>
             <NewMessage />
           </div>
         </div>
