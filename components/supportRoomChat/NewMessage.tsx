@@ -1,93 +1,46 @@
-import AuthContext, { UserAuth } from 'context/AuthContext'
 import { db } from '../../firebase'
 import {
   addDoc,
   collection,
-  getDocs,
-  query,
   serverTimestamp,
-  updateDoc,
-  where,
 } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { MdSend } from 'react-icons/md'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import { UserAuth } from 'context/AuthContext'
 
-
-export default function NewMessage() {
+export default function NewMessage({ supportChatId, visitorId }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [message, setMessage] = useState('')
   const router = useRouter()
   const chatAdminId = "3dudMCx3G3PQUfYxd3FwhtQCNZG3"
-  const customerId = UserAuth();
-  const sendMessage = async (e: any) => {
+
+  const sendMessage = async (e) => {
     e.preventDefault()
 
     if (!message) {
       return
     }
 
-    const participants = [chatAdminId, customerId]
-    participants.sort() // Sort to ensure consistent chat IDs
+    try {
+      // Add new message to the support chat
+      await addDoc(collection(db, 'supportChatMessages'), {
+        messageId: supportChatId,
+        content: message,
+        createdAt: serverTimestamp(),
+        senderId: visitorId,
+        receiverId: chatAdminId,
+        read: false,
+      });
 
-    const chatQuery = query(
-      collection(db, 'USupportChats'),
-      where('participants', '==', participants)
-    )
-
-    const querySnapshot = await getDocs(chatQuery)
-
-    let existingChatRef: any
-
-    if (!querySnapshot.empty) {
-      existingChatRef = querySnapshot.docs[0].ref
-    } else {
-      // Create a new chat since no existing chat was found
-      const newChatRef = await addDoc(collection(db, 'USupportChats'), {
-        participants: participants,
-        lastMessage: message,
-        lastMessageTimestamp: serverTimestamp(),
-      })
-
-      existingChatRef = newChatRef
+      router.push(`/support-room/${visitorId}`);
+      toast.success('Message sent. We will contact you within 2 hours.');
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please try again later.');
     }
-
-    // Add the message to the messages subcollection of the chat
-    await addDoc(collection(existingChatRef, 'messages'), {
-      content: message,
-      timestamp: serverTimestamp(),
-      senderId: customerId,
-      receiverId: chatAdminId,
-      read: false,
-    })
-
-    await addDoc(collection(db, 'CustomerChatNotifications'), {
-      receiverId: chatAdminId,
-      senderId: customerId,
-      type: 'Message',
-      content: `The user with the user id : ${customerId} has sent you a message on the Support Room Chat.`,
-      read: false,
-      createdAt: serverTimestamp(),
-    })
-    await addDoc(collection(db, 'mail'), {
-      to: "qualityunitedwriters@gmail.com",
-      message: {
-        subject: 'New Message',
-        html: `The user with the user id : ${customerId} has sent you a message on the Support Room Chat. Please attend to him ASAP.`,
-      },
-    })
-
-    // Update the existing chat document with the latest message details
-    await updateDoc(existingChatRef, {
-      lastMessage: message,
-      lastMessageTimestamp: serverTimestamp(),
-    })
-
-    router.push(`/support-room/${customerId}`)
-
-    toast.success('Message sent. We will contact you within 2 hours.')
 
     setIsFormOpen(false)
     setMessage('')
@@ -104,7 +57,7 @@ export default function NewMessage() {
 
       {isFormOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-3 ">
-          <div className=" w-full max-w-[500px] rounded-lg bg-white p-4 shadow-2xl">
+          <div className=" w-full max-w-[500px] rounded-lg bg-gray-100 p-4 shadow-2xl">
             <div className="flex flex-row justify-between">
               <span className="text-base font-medium text-green-950">
                 New Message
@@ -116,15 +69,15 @@ export default function NewMessage() {
               />
             </div>
             <div className="mt-5">
-              <form className="relative mx-auto mb-2 flex w-full max-w-[900px] flex-row items-center rounded-xl border-1 border-gray-400 ">
+              <form className="relative mx-auto mb-2 flex w-full max-w-[900px] flex-row items-center rounded-xl border-2 border-gray-400 ">
                 <input
                   placeholder="Message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="mr-7 h-16 w-full rounded-xl p-2 outline-none"
+                  className="mr-16 h-16 w-full rounded-xl p-2 outline-none"
                 />
-                <button className="absolute right-0 mr-1" onClick={sendMessage}>
-                  <MdSend size={24} className="cursor-pointer" />
+                <button className="absolute right-0 mr-3" onClick={sendMessage}>
+                  <MdSend size={28} className="cursor-pointer" />
                 </button>
               </form>
             </div>
